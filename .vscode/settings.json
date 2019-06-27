@@ -1,0 +1,5 @@
+{
+  "editor.tabSize": 2,
+  "beautify.tabSize": 2,
+  "blade.format.enable": true
+}
