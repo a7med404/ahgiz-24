@@ -174,7 +174,7 @@
                                       <th>sub</th>
                                       <th>Status</th>
                                       <th>Level</th>
-                                      <th>Options</th>
+                                      <th>{{ __('home/labels.options') }}</th>
                                   </tr>
                                 </thead>
                                 <tbody>

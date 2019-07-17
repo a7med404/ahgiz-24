@@ -139,7 +139,7 @@
                                     <th>#ID</th>
                                     <th>Display Name</th>
                                     <th>Description</th>
-                                    <th>Options</th>
+                                    <th>{{ __('home/labels.options') }}</th>
                                   </tr>
                                 </thead>
                                 <tbody>

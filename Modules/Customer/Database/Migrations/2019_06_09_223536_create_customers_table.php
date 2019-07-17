@@ -22,7 +22,7 @@ class CreateCustomersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('password');
             $table->tinyInteger('gender')->nullable();
-            $table->tinyInteger('age')->nullable();
+            $table->tinyInteger('brithdate')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

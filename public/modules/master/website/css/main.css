@@ -9,7 +9,7 @@ header .slider .layout, .services, .show-cars, .brands .layout, .testimonials, .
   padding: 35px 0; }
 
 header .all-nav .navbar ul li .sale h5 span, header .slider .layout .content h3 span, .services .content h3 span, .show-cars h3 span, .brands .layout h3 span, .testimonials .content h3 span, .profile .show-cars h3 span {
-  color: #ee6b6d;
+  color: #d84f57;
   font-weight: bold; }
 
 header .all-nav .navbar ul li .sale h5, header .slider .layout .content h3, .services .content h3, .testimonials .content h3 {
@@ -38,7 +38,7 @@ header .slider .layout .content p::after, .testimonials .content .line::after {
   display: block;
   width: 70px;
   height: 2px;
-  background-color: #ee6b6d;
+  background-color: #d84f57;
   margin: 25px 0px; }
 
 body {
@@ -124,7 +124,7 @@ header {
         border-bottom: 2px solid transparent; }
         header .all-nav .navbar ul li a:focus, header .all-nav .navbar ul li a:hover {
           background-color: inherit;
-          border-color: #ee6b6d; }
+          border-color: #d84f57; }
       header .all-nav .navbar ul li ul {
         -webkit-transition: all .4s ease-in-out;
         -moz-transition: all .4s ease-in-out;
@@ -136,7 +136,7 @@ header {
         -o-transition-duration: 0.2s;
         transition-duration: 0.2s;
         color: #73879C;
-        border-top: 1px solid #ee6b6d;
+        border-top: 1px solid #d84f57;
         background-color: #fff;
         border: none;
         border-radius: .1875rem;
@@ -159,7 +159,7 @@ header {
       header .all-nav .navbar ul li .sale button {
         margin-bottom: 15px; }
       header .all-nav .navbar ul .dropdown .dropdown-menu {
-        border-top: 1px solid #ee6b6d;
+        border-top: 1px solid #d84f57;
         margin-top: -2px;
         min-width: 180px;
         box-shadow: 3px 6px 7px rgba(0, 0, 0, 0.175);
@@ -197,11 +197,11 @@ header {
           font-size: 16px; }
           header .slider .layout .content p span {
             padding: 0 3px;
-            background: #ee6b6d;
+            background: #d84f57;
             margin: 0 3px;
             font-style: italic; }
         header .slider .layout .content a i {
-          color: #ee6b6d; }
+          color: #d84f57; }
 
 .search {
   padding: 0;
@@ -259,7 +259,7 @@ header {
           padding: 6px;
           width: 100%; }
           .search .tabs .tab-content .form input[type="submit"]:hover {
-            background: #ee6b6d;
+            background: #d84f57;
             color: #FFF; }
 
 .under-search {
@@ -311,7 +311,7 @@ header {
       color: #73879C;
       font-size: 13px; }
       .show-cars .tabs .nav-pills li a:hover {
-        border-bottom: 1px solid #ee6b6d;
+        border-bottom: 1px solid #d84f57;
         background-color: transparent; }
   .show-cars .tabs .nav-pills li > a:focus,
   .show-cars .tabs .nav-pills li > a:hover,
@@ -319,7 +319,7 @@ header {
   .show-cars .tabs .nav-pills li.active > a:hover,
   .show-cars .tabs .nav-pills li.active > a {
     color: #33475b;
-    border-bottom: 1px solid #ee6b6d;
+    border-bottom: 1px solid #d84f57;
     background: transparent; }
     .show-cars .tabs .nav-pills li > a:focus::after,
     .show-cars .tabs .nav-pills li > a:hover::after,
@@ -329,7 +329,7 @@ header {
       content: "";
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
-      border-top: 6px solid #ee6b6d;
+      border-top: 6px solid #d84f57;
       height: 0;
       width: 0;
       position: absolute;
@@ -349,7 +349,7 @@ header {
       padding: 0;
       margin: 20px 5px;
       background-color: #FFF;
-      border-bottom: 1px solid #ee6b6d;
+      border-bottom: 1px solid #d84f57;
       overflow: hidden;
       border-radius: 8px; }
       .show-cars .cars-list .car-card:hover {
@@ -393,7 +393,7 @@ header {
         .show-cars .cars-list .car-card .detail .price a {
           font-size: 12px;
           color: #FFF;
-          background-color: #ee6b6d;
+          background-color: #d84f57;
           padding: 3px 10px;
           border-radius: 100px; }
         .show-cars .cars-list .car-card .detail .kilo a {
@@ -478,7 +478,7 @@ header {
 
 .help {
   padding: 5px;
-  background: #ee6b6d;
+  background: #d84f57;
   height: auto; }
   .help p {
     margin: 0;
@@ -504,7 +504,7 @@ header {
   .sing .contect .ads {
     width: 100%;
     height: 550px;
-    background-color: #ee6b6d;
+    background-color: #d84f57;
     position: relative;
     box-shadow: 5px 5px 8px 1px #ccc; }
     .sing .contect .ads .layout {
@@ -581,7 +581,7 @@ header {
       margin: 10px auto; }
     .profile .card .info > p {
       margin: 10px auto;
-      color: #ee6b6d;
+      color: #d84f57;
       font-weight: bold; }
     .profile .card .info > div {
       width: 100%; }
@@ -618,7 +618,7 @@ header {
         color: #73879C;
         font-size: 13px; }
         .profile .show-cars .tabs ul li a:hover {
-          border-bottom: 1px solid #ee6b6d; }
+          border-bottom: 1px solid #d84f57; }
   .profile .show-cars .cars-list {
     max-width: calc(970px - 5%);
     padding: 5px;
@@ -648,7 +648,7 @@ header {
         .profile .show-cars .cars-list .car-card .detail .price a {
           font-size: 12px;
           color: #FFF;
-          background-color: #ee6b6d;
+          background-color: #d84f57;
           padding: 2px 10px;
           border-radius: 100px; }
 
@@ -661,14 +661,14 @@ header {
     .car-details .card .details .status {
       padding: 3px 10px;
       color: #FFF;
-      background-color: #ee6b6d;
+      background-color: #d84f57;
       border-radius: 100px;
       padding: 2px 10px;
       border-radius: 100px;
       position: absolute;
       top: 20px;
       left: 30px;
-      box-shadow: 3px 10px 10px 2px #ee6b6d4d; }
+      box-shadow: 3px 10px 10px 2px #d84f574d; }
     .car-details .card .details p:first-of-type {
       margin-top: 15px;
       color: #73879C;
@@ -758,7 +758,7 @@ header {
   .filter .tabs .nav-pills li.active > a:hover,
   .filter .tabs .nav-pills li.active > a {
     color: #33475b;
-    border-bottom: 1px solid #ee6b6d;
+    border-bottom: 1px solid #d84f57;
     background: transparent; }
     .filter .tabs .nav-pills li > a:focus::after,
     .filter .tabs .nav-pills li > a:hover::after,
@@ -833,7 +833,7 @@ header {
         .filter .card .cars-list .car-card .detail .price a {
           font-size: 12px;
           color: #FFF;
-          background-color: #ee6b6d;
+          background-color: #d84f57;
           padding: 2px 10px;
           border-radius: 100px; }
 
@@ -851,7 +851,7 @@ header {
       justify-content: flex-start;
       flex-flow: wrap row; }
       .footer .content .about-us .social-links ul li a i {
-        border: 1px solid #ee6b6d;
+        border: 1px solid #d84f57;
         color: #73879C;
         width: 32px;
         height: 32px;
@@ -884,7 +884,7 @@ header {
     display: flex;
     justify-content: flex-end; }
     .footer-buttom .design .a7med404 {
-      color: #ee6b6d;
+      color: #d84f57;
       margin-left: 5px; }
 
 .add-car .card {
@@ -895,7 +895,7 @@ header {
     color: #73879C;
     margin-bottom: 20px; }
   .add-car .card h3 {
-    color: #ee6b6d; }
+    color: #d84f57; }
   .add-car .card .form .form-section .form-group {
     display: flex;
     flex-flow: row nowrap;
@@ -986,7 +986,7 @@ header {
     .show-cars .tabs .nav-pills li.active > a:hover,
     .show-cars .tabs .nav-pills li.active > a {
       color: #33475b;
-      border-bottom: 1px solid #ee6b6d;
+      border-bottom: 1px solid #d84f57;
       background: transparent; }
       .show-cars .tabs .nav-pills li > a:focus::after,
       .show-cars .tabs .nav-pills li > a:hover::after,
@@ -1104,7 +1104,7 @@ header {
     .show-cars .tabs .nav-pills li.active > a:hover,
     .show-cars .tabs .nav-pills li.active > a {
       color: #33475b;
-      border-bottom: 1px solid #ee6b6d;
+      border-bottom: 1px solid #d84f57;
       background: transparent; }
       .show-cars .tabs .nav-pills li > a:focus::after,
       .show-cars .tabs .nav-pills li > a:hover::after,

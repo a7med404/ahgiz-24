@@ -1,12 +1,16 @@
 .l-r-border {
-  border-left: 2px solid #ee6b6d;
-  border-right: 2px solid #ee6b6d;
+  border-left: 2px solid #d84f57;
+  border-right: 2px solid #d84f57;
   display: inline-block;
   padding: 0 12px; }
 
 .invalid-feedback {
-  color: #ee6b6d;
+  color: #d84f57;
   font-size: 12px;
+}
+
+.more-shadow{
+  box-shadow: 0 5px 18px rgba(0,0,0,.3);
 }
 .tabs .nav-pills li a, .custom-select, .custom-select select, .custom-select:hover::before {
   -webkit-transition: all .4s ease-in-out;
@@ -58,7 +62,7 @@ a:hover {
   padding: 5px 15px;
   margin-top: 10px;
   padding-right: 7px;
-  border: 1px solid #ee6b6d !important; }
+  border: 1px solid #d84f57 !important; }
   .btn-custom i {
     border-radius: 50%;
     height: 22px;
@@ -91,6 +95,14 @@ a:hover {
 hr {
   width: 100%; }
 
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    background-color: #d84f57;
+    border-color: #d84f57;
+}
+.pagination > li > a, .pagination > li > span {
+  padding: 10px 20px;
+  color: #d84f57;
+}
 .no-found {
   display: flex;
   flex-flow: column wrap;
@@ -126,7 +138,7 @@ hr {
   z-index: 100;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-bottom: 8px solid #ee6b6d;
+  border-bottom: 8px solid #d84f57;
   height: 0;
   width: 0;
   position: absolute;
@@ -148,7 +160,7 @@ hr {
 .tabs .nav-pills li.active > a:hover,
 .tabs .nav-pills li.active > a {
   color: #FFF;
-  background: #ee6b6d; }
+  background: #d84f57; }
 
 .tabs .nav-pills li:first-of-type > a:hover,
 .tabs .nav-pills li:first-of-type > a:focus,
@@ -420,7 +432,7 @@ textarea {
   .loading .circle {
     width: 15px;
     height: 15px;
-    background-color: #ee6b6d;
+    background-color: #d84f57;
     position: absolute;
     border-radius: 50%;
     animation-timing-function: linear;

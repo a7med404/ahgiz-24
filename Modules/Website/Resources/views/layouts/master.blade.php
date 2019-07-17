@@ -56,7 +56,11 @@
       $('#datepicker').datepicker({
         autoclose: true,
         language: 'ar',
+        rtl: true,
+        startDate: 'toDay',
+        format: 'yyyy-mm-dd'
       });
+      
       $('.selectpicker').selectpicker();
 
       </script>

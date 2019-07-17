@@ -1,5 +1,8 @@
-
-{!! Form::hidden('addressable_type', 'Modules\Company\Entities\Company', ['value' => "{{ old('addressable_type') }}"]) !!}
+@if (isset($companyInfo))
+    {!! Form::hidden('addressable_type', 'Modules\Company\Entities\Company', ['value' => "{{ old('addressable_type') }}"]) !!}
+@else
+    {!! Form::hidden('addressable_type', 'Modules\User\Entities\User', ['value' => "{{ old('addressable_type') }}"]) !!}
+@endif
 <div class="row">
     <div class="col col-xl-6 col-lg-6 col-md-6">
         <div class="form-group">
@@ -31,6 +34,7 @@
 </div>
 
 @if(isset($addressInfo))
+
 {!! Form::hidden('addressable_id', null, ['value' => "{{ old('addressable_id') }}"]) !!}
 <div class="row">
     <div class="col col-lg-6 col-md-6 col-sm-6 col-12">
@@ -38,7 +42,11 @@
     </div>
 </div>
 @else
-{!! Form::hidden('addressable_id', $companyInfo->id, ['value' => "{{ old('addressable_id') }}"]) !!}
+@if (isset($companyInfo))
+    {!! Form::hidden('addressable_id', $companyInfo->id, ['value' => "{{ old('addressable_id') }}"]) !!}
+@else
+    {!! Form::hidden('addressable_id', $userInfo->id, ['value' => "{{ old('addressable_id') }}"]) !!}
+@endif
 <div class="row m-t-40">
     <div class="col col-lg-6 col-md-6 col-sm-6 col-12">
         <button href="#" class="btn btn-primary">حـــفظ</button>

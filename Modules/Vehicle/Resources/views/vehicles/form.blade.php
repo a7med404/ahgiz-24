@@ -16,7 +16,7 @@
 <div class="row">
     <div class="form-group col-md-6">
         {!! Form::label('company_id', 'company_id', ['class' => 'control-label']) !!}
-        {!! Form::select('company_id', getSelect('company'), null, ['id' => 'company_id', 'class' => "form-control {{ $errors->has('company_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('company_id') }}", 'required']) !!}
+        {!! Form::select('company_id', getSelect('company'), null, ['id' => 'company_id', 'class' => "select2 form-control  {{ $errors->has('company_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('company_id') }}", 'required']) !!}
     </div>
     <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="form-group">

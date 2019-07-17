@@ -1,195 +1,187 @@
 @extends('cpanel.layouts.master')
 @section('title')
-  User Informations
+{{ __('home/sidebar.all_users') }}
 @endsection
 @section('header')
+<!-- icheck -->
+{!! Html::style(asset('modules/master/plugins/icheck-1.x/all.css')) !!}
+<!-- dataTable -->
+{!! Html::style(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.css')) !!}
+{!! Html::style(asset('modules/master/plugins/datatables/jquery.dataTables.min.css')) !!}
 @endsection
+@section('content')
+<section class="content-header">
+    <h1>{{ $userInfo->name }}</h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ url('\cpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
+        <li class="active"> {{ __('home/sidebar.all_users') }} </li>
+    </ol>
+</section>
 
-                @section('content')
-                <!-- Start  Breadcrumb -->
+{{-- {{ dd($userInfo->reservations->count()) }} --}}
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-3">
+
+          <!-- About Me Box -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">About Me</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <strong><i class="fa fa-map-marker margin-r-5"></i> {{ __('home/labels.name') }}</strong>
+              <p class="text-muted">{{ $userInfo->name }}</p>
+              <hr>
+              <strong><i class="fa fa-map-marker margin-r-5"></i> {{ __('home/labels.phone_number') }}</strong>
+              <p class="text-muted">{{ $userInfo->phone_number }}</p>
+              <hr>
+              <strong><i class="fa fa-map-marker margin-r-5"></i> {{ __('home/labels.email') }}</strong>
+              <p class="text-muted">{{ $userInfo->email }}</p>
+              <hr>
+              <strong><i class="fa fa-map-marker margin-r-5"></i> {{ __('home/labels.gender') }}</strong>
+              <p class="text-muted">{{ $userInfo->gender }}</p>
+              <hr>
+              <strong><i class="fa fa-pencil margin-r-5"></i> خطوط العمل </strong>
+              <p>
+                @foreach ($userInfo->roles as $key => $role)
+                  <span class="label label-info">{{ $role->display_name }} </span>
+                @endforeach
+              </p>
+              <hr>
+              <strong><i class="fa fa-book margin-r-5"></i> {{ __('home/labels.note') }}</strong>
+              <p class="text-muted"> {{ $userInfo->note }} </p>
+              
+              <a href="{{ route('users.edit',  ['id' => $userInfo->id]) }}" class="btn btn-primary btn-block"><b>تعديل بيانات الشركة</b></a>
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-right">
+              <li class="active"><a href="#address" data-toggle="tab">عنوان الشركة (المكاتب)</a></li>
+              <li><a href="#contact" data-toggle="tab">بيانات الاتصال</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane" id="address">
+                <button type="button" data-toggle="modal" data-target="#popup-form" href="#" class="btn btn-info"> <i class="fa fa-user-plus"></i> اضافة عنوان جديد </button>
+                <hr>
                 <div class="row">
-                  <div class="col-lg-12  float-right">
-                    <ol class="breadcrumb">
-                      <li><i class="fa fa-home"></i><a href="{{ url('\cpanel') }}">HOME</a></li>
-                      <li><i class="fa fa-users"></i><a href="{{ url('\cpanel\users') }}">All Users</a></li>
-                      <li><i class="fa fa-user"></i>User Informations</li>
-                    </ol>
-                  </div><!-- /.col-lg-12 -->
-                </div><!-- /.row -->
-                <!-- End  Breadcrumb -->
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2> {{ $userInfo->name}} </h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
-                      <div class="profile_img">
-                        <div id="crop-avatar">
-                          <!-- Current avatar -->
-                          <img class="img-responsive avatar-view">
+                  @foreach ($userInfo->addresses as $address)
+                  <div class="col-md-4">
+                    <div class="box box-success box-shadow">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">{{ getCity()[$address->city] }} <i class="fa fa-map-marker"></i> </h3>
+                        <div class="box-tools pull-right">
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         </div>
                       </div>
-                      <h3>{{ $userInfo->name}}</h3>
-                      <ul class="list-unstyled user_data">
-                        <li><i class="fa fa-map-marker user-profile-icon"></i> Khartoum, SUDAN </li>
-                        <li> <i class="fa fa-briefcase user-profile-icon"></i> 0923456789 </li>
-                        <li class="m-top-xs">
-                          <i class="fa fa-external-link user-profile-icon"></i>
-                          <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
-                        </li>
-                      </ul>
-                      <a href="{{ route('users.edit', ['id' => $userInfo->id]) }}" class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
-                      <br />
-                      <!-- start skills -->
-                      <ul class="list-unstyled user_data">
-                        <li>
-                          <p><h4>Has Offers</h4></p>
-                          <div class="btn btn-info">
-                            5
-                          </div>
-                        </li>
-                      </ul>
-                      <!-- end of skills -->
-                    </div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                      <div class="profile_title">
-                        <div class="col-md-6">
-                          <h2>User Activity Report</h2>
-                        </div>
-                        <div class="col-md-6">
-                          <div id="reportrange" class="pull-right" style="margin-top: 5px; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                            <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                          </div>
-                        </div>
+                      <div class="box-body">
+                        {{ getLocal()[$address->city] }} / 
+                        {{ getLocal()[$address->local] }} / 
+                        {{ $address->street_2 }} / 
+                        {{ $address->street_1 }} / 
+                        {{ $address->number }} 
                       </div>
-                      <!-- start of user-activity-graph -->
-                      {{-- <div id="graph_bar" style="width:100%; height:280px;"></div> --}}
-                      <!-- end of user-activity-graph -->
-                      <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"> Offers </a></li>
-                          <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Projects Worked on</a></li>
-                        </ul>
-                        {{-- <div id="myTabContent" class="tab-content">
-                          <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-
-                            {{-- <!-- start Last Offers -->
-                            <ul class="messages">
-                              @foreach($userInfo->offers as $offer)
-                              <li>
-                                {{-- <img src="{{ getUserImageOrDefaultImage($offer->image) }}" class="avatar" alt="Avatar"> --}}
-                                {{-- <div class="message_date">
-                                  <h3 class="date text-info">{{ customDate($offer->created_at) }}</h3> --}}
-                                  {{-- <p class="month">{{ getOfferPrice($offer->max_price, $offer->min_price) }} $</p>
-                                  <p class="month "> {{ getBalance($offer->max_price, $offer->min_price) }min_price} $</p>
-                                {{-- </div>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">{{ $offer->title }}</h4>
-                                  <blockquote class="message">{{ $offer->description }}</blockquote>
-                                  <br />
-                                    <ul class="">
-                                        <li class=""><strong> Department: </strong><a>{{ $offer->department->name }}</a>
-                                        </li>
-                                        <li class=""><strong> Level: </strong><a>{{ level()[$offer->level] }}</a>
-                                        </li>
-                                        <li class=""><strong> Status: </strong><a>{{ status()[$offer->status] }}</a>
-                                        </li>
-                                        <li class=""><strong> Powered By: </strong>
-                                          <a>
-                                            @if(isset($offer->provider->profile->first_name))
-                                              {{ $offer->provider->profile->first_name." ".$offer->provider->profile->last_name }}
-                                            @else
-                                              Not Accepted
-                                            @endif
-                                          </a>
-                                        </li>
-                                    </ul>
-                                  <p class="url">
-
-                                  </p>
-                                </div>
-                              </li>
-                              <div class="tags">
-                                    <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                                    <a href="#"><i class="fa fa-paperclip"></i><strong> Tages </strong></a><br /> --}}
-                                    {{-- @foreach($offer->jobs as $job)
-                                        <a href="#" class="tag"><i class="fa fa-tag"></i> {{ $job->name }} </a>
-                                    @endforeach --}}
-                              {{-- </div>
-                              @endforeach
-
-                            </ul> --}}
-                            <!-- end Last Offers --> 
-
-                          {{-- </div>
-                          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-
-                            <!-- start Users projects -->
-                            @if($userInfo->offers->count() > 0)
-                            <div class="table-responsive">
-                              <table class="data table table-striped no-margin">
-                                <thead>
-                                  <tr>
-                                      <th>#ID</th>
-                                      <th>Title</th>
-                                      <th>Price</th>
-                                      <th>sub</th>
-                                      <th>Status</th>
-                                      <th>Level</th>
-                                      <th>Options</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($userInfo->offers as $offer)
-                                  <tr>
-                                    <td>{{ ++$id }}</td>
-                                    <td>{{ $offer->title }}</td> --}}
-                                    {{-- <td>{{ getOfferPrice($offer->max_price, $offer->min_price) }}</td>
-                                    <td>{{ getBalance($offer->max_price, $offer->min_price) }}</td> --}}
-                                    {{-- <td>{{ status()[$offer->status] }}</td>
-                                    <td>{{ level()[$offer->level] }}</td>
-                                    <td>
-                                      <a class="btn btn-info btn-xs"   href="{{ route('offers.edit', ['id' => $offer->id]) }}">Edit</a>
-                                      <a class="btn btn-danger btn-xs" href="{{ url('cpanel/offer/'.$offer->id.'/delete') }}">Delete</a>
-                                    </td>
-                                  </tr>
-                                  @endforeach
-
-                                </tbody>
-                              </table>
-                            </div>
-                            @else
-                                <p> No Offers To Show...</p>
-                            @endif --}}
-                            <!-- end Users projects -->
-
-                          {{-- </div>
-                        </div>
-                      </div>  --}}
-
-                      Has Offers
+                      <div class="box-footer">
+                        <a type="button" class="btn btn-box-tool pull-left confirm" href="{{ route('addresses.delete',  ['id' => $address->id]) }}"><i class="fa fa-times"></i></a>
+                        <a type="button" class="btn btn-box-tool pull-left" href="{{ route('addresses.edit',  ['id' => $address->id]) }}"><i class="fa fa-pencil"></i></a>
+                      </div>
                     </div>
                   </div>
-                  </div>
+                  @endforeach
                 </div>
-                @endsection
+              </div>
 
+              <div class="tab-pane active" id="contact">
+                <button type="button" data-toggle="modal" data-target="#popup-form-contact" href="#" class="btn btn-info"> <i class="fa fa-user-plus"></i> اضافة جهة اتصال </button>
+                <hr>
+                <div class="row">
+                  @foreach ($userInfo->contacts as $contact)
+                  <div class="col-md-4">
+                    <div class="box box-success box-shadow">
+                      <div class="box-header with-border">
+                        <h3 class="box-title"> بيانات الاتصال <i class="fa fa-map-marker"></i> </h3>
+                        <div class="box-tools pull-right">
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                      </div>
+                      <div class="box-body">
+                        {{ $contact->number_1 }} / 
+                        {{ $contact->number_2 }} / 
+                        {{ $contact->email }} / 
+                        {{ $contact->note }} 
+                      </div>
+                      <div class="box-footer">
+                        <a type="button" class="btn btn-box-tool pull-left confirm" href="{{ route('contacts.delete',  ['id' => $contact->id]) }}"><i class="fa fa-times"></i></a>
+                        <a type="button" class="btn btn-box-tool pull-left" href="{{ route('contacts.edit',  ['id' => $contact->id]) }}"><i class="fa fa-pencil"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  @endforeach
+                </div>
+              </div>
+            </div>
+            <!-- /.tab-content -->
+          </div>
+          <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      @include('address::addresses.add', ['userInfo' => $userInfo])
+      @include('address::contacts.add', ['userInfo' => $userInfo])
+    </section>
+    <!-- /.content -->
+
+@stop
 @section('footer')
+<!-- icheck -->
+{!! Html::script(asset('modules/master/plugins/icheck.min.js')) !!}
+<!-- dataTable -->
+{!! Html::script(asset('modules/master/plugins/datatables/jquery.dataTables.min.js')) !!}
+{!! Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')) !!}
+<script>
+    $('#table_id').DataTable({
+        // processing: true,
+        // serverSide: true,
+        // "columnDefs":[
+        //   {
+        //     "targets":[1, 3, 7],
+        //     "orderable":false,
+        //   },
+        // ],
+        "stateSave": false,
+        "responsive": true,
+        "order": [
+            [0, 'desc']
+        ],
+        "pagingType": "full_numbers",
+        aLengthMenu: [
+            [10, 25, 50, 100, 200, -1],
+            [10, 25, 50, 100, 200, "All"]
+        ],
+        iDisplayLength: 25,
+        fixedHeader: true,
+    });
+    $(document).ready(function () {
+        /*
+            For iCheck =====================================>
+        */
+        $("input").iCheck({
+            checkboxClass: "icheckbox_square-yellow",
+            radioClass: "iradio_square-yellow",
+            increaseArea: "20%" // optional
+        });
+    });
+
+</script>
 @endsection
+
+
+

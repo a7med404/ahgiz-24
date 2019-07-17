@@ -5,6 +5,9 @@ namespace Modules\Reservation\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Reservation\Entities\Reservation;
+use Modules\Reservation\Http\Requests\CreateReservationRequest;
+use Session;
 
 class ReservationController extends Controller
 {
@@ -14,7 +17,20 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        return view('reservation::index');
+        $reservations = Reservation::orderBy('id', 'desc')->get();
+        return view('reservation::reservations.index', ['reservations' => $reservations]);
+    }
+
+    public function pendding()
+    {
+        $reservations = Reservation::where('status', 1)->orderBy('id', 'desc')->get();
+        return view('reservation::reservations.pendding', ['reservations' => $reservations]);
+    }
+
+    public function done()
+    {
+        $reservations = Reservation::where('status', 2)->orderBy('id', 'desc')->get();
+        return view('reservation::reservations.done', ['reservations' => $reservations]);
     }
 
     /**
@@ -31,9 +47,24 @@ class ReservationController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateReservationRequest $request, Reservation $reservation)
     {
-        //
+        // dd($request->all());
+        $number = str_replace('-', '', $request->date);
+        $data = [
+            'customer_id'       => $request->customer_id,
+            'reservation_id'    => $request->reservation_id,
+            'trip_id'           => $request->trip_id,
+            'status'            => $request->status
+        ];
+        $reservation = $reservation->create($data);
+        if($reservation){
+            if($request->seat_id){
+                $reservation->seats()->attach($request->seat_id);
+                Session::flash('flash_massage_type', 1);
+                return redirect('cpanel/reservations')->withFlashMassage('Reservation Added Successfully');
+            }
+        }
     }
 
     /**
@@ -43,7 +74,8 @@ class ReservationController extends Controller
      */
     public function show($id)
     {
-        return view('reservation::show');
+        $reservationInfo = Reservation::findOrFail($id);
+        return view('reservation::reservations.show', ['reservationInfo' => $reservationInfo]);
     }
 
     /**
@@ -53,7 +85,8 @@ class ReservationController extends Controller
      */
     public function edit($id)
     {
-        return view('reservation::edit');
+        $reservationInfo = Reservation::with('seats')->findOrFail($id);
+        return view('reservation::reservations.edit', ['reservationInfo' => $reservationInfo]);
     }
 
     /**
@@ -62,9 +95,24 @@ class ReservationController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateReservationRequest $request, $id)
     {
-        //
+        $reservationInfo = Reservation::findOrFail($id);
+        // $number = str_replace('-', '', $request->date);
+        $data = [
+            'customer_id'       => $request->customer_id,
+            'reservation_id'    => $request->reservation_id,
+            'trip_id'           => $request->trip_id,
+            'status'            => $request->status
+        ];
+        $reservation = $reservationInfo->fill($data)->save();
+        if($reservation){
+            if($request->seat_id){
+                $reservationInfo->seats()->sync($request->seat_id);
+                Session::flash('flash_massage_type', 2);
+                return redirect()->back()->withFlashMassage('Reservation Updated Successfully');
+            }
+        }
     }
 
     /**
@@ -74,6 +122,9 @@ class ReservationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reservationForDelete = Reservation::findOrFail($id);
+        $reservationForDelete->delete();
+        Session::flash('flash_massage_type', 2);
+        return redirect()->back()->withFlashMassage('Reservation Deleted Successfully');
     }
 }

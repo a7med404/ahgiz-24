@@ -127,10 +127,10 @@ hasdata.on("focus", function() {
 
 	 /* For niceScroll **/
     $("html").niceScroll({
-      cursorcolor: "#ee6b6d",
+      cursorcolor: "#d84f57",
       cursorwidth: "3px",
       cursoropcity: 0.5,
-      cursorborder: "2px solid #ee6b6d",
+      cursorborder: "2px solid #d84f57",
       zindex: 9999,
       scrollspeed:80
 		});

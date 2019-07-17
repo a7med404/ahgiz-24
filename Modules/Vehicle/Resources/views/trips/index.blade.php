@@ -6,8 +6,8 @@
 <!-- icheck -->
 {!! Html::style(asset('modules/master/plugins/icheck-1.x/all.css')) !!}
 <!-- dataTable -->
-{!! Html::style(asset('modules/master/plugins/dataTable/dataTables.bootstrap.min.css')) !!}
-{!! Html::style(asset('modules/master/plugins/dataTable/jquery.dataTables.min.css')) !!}
+{!! Html::style(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.css')) !!}
+{!! Html::style(asset('modules/master/plugins/datatables/jquery.dataTables.min.css')) !!}
 @endsection
 @section('content')
 <section class="content-header">
@@ -39,15 +39,15 @@
                     <thead>
                         <tr>
                             <th>#number</th>
-                            <th>date</th>
-                            <th>departure_time</th>
-                            <th>عدد المقاعد المتاحة</th>
-                            <th>price</th>
-                            <th>company</th>
-                            <th>from</th>
-                            <th>to</th>
-                            <th>status</th>
-                            <th>Options</th>
+                            <th>{{ __('home/labels.date') }}</th>
+                            <th>{{ __('home/labels.departure_time') }}</th>
+                            <th>{{ __('home/labels.available_seat') }}</th>
+                            <th>{{ __('home/labels.ticket_price') }}</th>
+                            <th>{{ __('home/labels.company') }}</th>
+                            <th>{{ __('home/labels.from') }}</th>
+                            <th>{{ __('home/labels.to') }}</th>
+                            <th>{{ __('home/labels.status') }}</th>
+                            <th>{{ __('home/labels.options') }}</th>
                         </tr>
                     </thead>
                     <tbody>      
@@ -91,10 +91,6 @@
             </div>
         </div>
         <!-- /.box-body -->
-        <div class="box-footer">
-            Footer
-        </div>
-        <!-- /.box-footer-->
     </div>
     <!-- /.box -->
     @include('vehicle::trips.add')

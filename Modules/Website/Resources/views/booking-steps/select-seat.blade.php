@@ -142,3 +142,124 @@ Home
 	
 {{-- <script src="{{ asset('modules/master/website/js/bootstrap-datepicker.js') }}"></script> --}}
 @endsection
+
+    
+<div class="modal fade " id="myModal-{{$trip->id}}">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title l-r-border text-uppercase"> اختيار المقاعد</h3>
+                    <button class="close" type="button" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="contect">
+                        <div class="select-seats">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="ads">
+                                        <div class="car-details">
+                                            <div class="overview">
+                                                <div class="details text-capitalize tabs">
+                                                    <div class="details-item"> 
+                                                        <span class="details-item-name">{{ $trip->company->name }}</span>
+                                                        <div class="details-item-value">{{ getSelect('station')[$request->from] }} </div>
+                                                        <div class="details-item-value m-t-10">{{ $trip->date }} </div>
+                                                        <div class="details-item-name">
+                                                            <span> {{ $trip->departure_time }} </span>
+                                                            <i class="fa fa-chevron-left"></i>
+                                                            <span> {{ $trip->arrive_time }} </span>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <div class="details-item"> 
+                                                        <div class="details-item-value"><span>المقاعد المختارة</span></div>
+                                                        <div class="details-item-name">[ 22, 12, 9 ]</div>
+                                                    </div> --}}
+                                                    <div class="details-item"> 
+                                                        <div class="details-item-value"><span>سعر التذكرة</span></div>
+                                                        <div class="details-item-name">{{ $trip->price }} ج.س  </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- <a type="submit" class="btn btn-custom text-uppercase" type="button" href="{{ route('bus-details',  ['id' => $trip->id]) }}">اكمال عملية الحجز <i class="fa fa-chevron-left"></i></a> --}}
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="start-form text-capitalize">
+                                        <section class="car-details" id="car-details">
+                                            <div class="">
+                                                <div class="card">
+                                                <div class="overview">
+                                                    <div class="tabs">
+                                                    {{-- <ul class="nav nav-pills mb-3 text-center text-uppercase" id="pills-tab" role="tablist">
+                                                        <li class="nav-item active"><a class="nav-link" id="pills-details-tab" data-toggle="pill" href="#pills-details" role="tab" aria-controls="pills-details" aria-selected="true">اختيار المقاعد</a></li>
+                                                        <li class="nav-item"><a class="nav-link" id="pills-features-tab" data-toggle="pill" href="#pills-features" role="tab" aria-controls="pills-features" aria-selected="true">نقطة الصعود</a></li>
+                                                        <li class="nav-item"><a class="nav-link" id="pills-specifications-tab" data-toggle="pill" href="#pills-specifications" role="tab" aria-controls="pills-specifications" aria-selected="true"> نتقة النزول</a></li>
+                                                    </ul> --}}
+                                                    <div class="tab-content sections-contents" id="pills-tabContent">
+                                                        <div class="tab-pane fade active in" id="pills-details" role="tabpanel" aria-labelledby="pills-details-tab"> 
+                                                            <div class="details text-capitalize">
+                                                                <div class="booking-details">
+    
+                                                                    <p class="text-center"> قم باختيار مقعدك المفضل </p>
+                                                                    <div id="legend" class="seatCharts-legend">
+                                                                        <ul class="seatCharts-legendList">
+                                                                            <li class="seatCharts-legendItem">
+                                                                                <div class="seatCharts-seat seatCharts-cell available"></div>
+                                                                                <span class="seatCharts-legendDescription">متوفرة</span>
+                                                                            </li>
+                                                                            <li class="seatCharts-legendItem">
+                                                                                <div class="seatCharts-seat seatCharts-cell ladies"></div>
+                                                                                <span class="seatCharts-legendDescription">متوفرة للسيدات</span>
+                                                                            </li>
+                                                                            <li class="seatCharts-legendItem">
+                                                                                <div class="seatCharts-seat seatCharts-cell selected"></div>
+                                                                                <span class="seatCharts-legendDescription">قمت باختياره</span>
+                                                                            </li>
+    
+                                                                            <li class="seatCharts-legendItem">
+                                                                                <div class="seatCharts-seat seatCharts-cell unavailable"></div>
+                                                                                <span class="seatCharts-legendDescription">محجوز</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+    
+                                                                </div>
+    
+                                                                {!! Form::open(['route' => ['save-seats'], 'method' => "POST", 'class' => 'form']) !!}
+                                                                    <div class="col col-xl-8 col-lg-8 col-md-8">
+                                                                        <div class="form-group">
+                                                                            {!! Form::label('seats', 'seats', ['class' => 'control-label']) !!}
+                                                                            {!! Form::select('seats[]', getSelect('seat'), null, ['id' => 'seats', 'multiple' => 'multiple', 'data-placeholder' => 'Select a State', 'class' => "select2 form-control  {{ $errors->has('seats') ? ' is-invalid' : '' }}", 'value' => "{{ old('seats') }}", 'required']) !!}
+                                                                        </div>
+                                                                    </div>
+                                                                    {!! Form::hidden('trip_id', $trip->id, ['value' => "{{ $trip->id }}"]) !!}
+                                                                    <div class="col col-xl-12 col-lg-12 col-md-12">
+                                                                        <div class="form-group">
+                                                                            <button type="submit" class="btn btn-custom btn-block text-uppercase">اكمال عملية الحجز <i class="fa fa-chevron-left"></i></button>
+                                                                        </div>
+                                                                    </div>
+                                                                {!! Form::close() !!}
+    
+                                                            
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+    
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="close" type="button" data-dismiss="modal">تراجع</button>
+                </div>
+            </div>
+        </div>
+    </div>

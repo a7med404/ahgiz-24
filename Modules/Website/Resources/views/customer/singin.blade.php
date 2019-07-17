@@ -24,7 +24,7 @@ Home
                         <div class="start-form text-capitalize">
                             <h3 class="l-r-border text-uppercase"> انشاء حساب جديد</h3><small>افضل خيار لك لحجز التذاكر
                                 اونلاين</small>
-                            <form class="form" action="" method="post">
+                            <form class="form" action="{{ route('post-singup') }}" method="post">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
@@ -80,7 +80,7 @@ Home
                         <div class="start-form text-capitalize">
                             <h3 class="l-r-border text-uppercase"> تسجيل الدخول</h3><small> <span
                                     class="h-light">احجز24</span> تميز معنا و استمتع بافضل خدمات الحجز </small>
-                            <form class="form" action="" method="post">
+                            <form class="form" action="{{ route('post-singin') }}" method="post">
                                 @csrf
                                 <div class="for-middel form-group">
                                     <label class="control-label" for="phone_number">رقم الموبايل</label>

@@ -6,7 +6,7 @@ $table->tinyInteger('status'); --}}
     <div class="col col-xl-12 col-lg-12 col-md-12">
         <div class="form-group">
             {!! Form::label('company_id', 'الشركة', ['class' => 'control-label']) !!}
-            {!! Form::select('company_id', getSelect('company'), null, ['id' => 'company_id', 'class' => "form-control {{ $errors->has('company_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('company_id') }}", 'required']) !!}
+            {!! Form::select('company_id', getSelect('company'), null, ['id' => 'company_id', 'class' => "select2 form-control  {{ $errors->has('company_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('company_id') }}", 'required']) !!}
         </div>
     </div>
 </div>
@@ -14,13 +14,13 @@ $table->tinyInteger('status'); --}}
         <div class="col col-xl-6 col-lg-6 col-md-6">
             <div class="form-group">
                 {!! Form::label('from_station_id', 'المسار(من)', ['class' => 'control-label']) !!}
-                {!! Form::select('from_station_id', getSelect('station'), null, ['id' => 'from_station_id', 'class' => "form-control {{ $errors->has('from_station_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('from_station_id') }}", 'required']) !!}
+                {!! Form::select('from_station_id', getSelect('station'), null, ['id' => 'from_station_id', 'class' => "select2 form-control  {{ $errors->has('from_station_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('from_station_id') }}", 'required']) !!}
             </div>
         </div>
         <div class="col col-xl-6 col-lg-6 col-md-6">
             <div class="form-group">
                 {!! Form::label('to_station_id', 'المسار(الي)', ['class' => 'control-label']) !!}
-                {!! Form::select('to_station_id', getSelect('station'), null, ['id' => 'to_station_id', 'class' => "form-control {{ $errors->has('to_station_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('to_station_id') }}", 'required']) !!}
+                {!! Form::select('to_station_id', getSelect('station'), null, ['id' => 'to_station_id', 'class' => "select2 form-control  {{ $errors->has('to_station_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('to_station_id') }}", 'required']) !!}
             </div>
         </div>
     </div>

@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/reservation', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['namespace' => 'API', 'prefix' => 'cpanel'], function () {
+    Route::resource('reservations','ApiReservationController');    
+});

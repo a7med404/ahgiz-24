@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
         //     $table->string('phone_number', 14);
         //     $table->string('username');
         //     $table->string('password');
-        //     $table->string('profile_image', 100)->nullable();
+            // $table->string('profile_image', 100)->nullable();
         //     // $table->tinyInteger('gender')->nullable();
         //     $table->string('note')->nullable();
         //     $table->boolean('status')->default(0);

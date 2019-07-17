@@ -93,6 +93,13 @@ return [
     'all_trips' => 'كل الرحلات',
     'add_trip' => 'اضافة رحلة جديد',
     'edit_trip' => 'تعديل بيانات الرحلة',
+    'trip_number' => 'رحلة رقم',
+    
+    'reservations' => 'الحجوزات',
+    'all_reservations' => 'كل الحجوزات',
+    'add_reservation' => 'اضافة حجز جديد',
+    'edit_reservation' => 'تعديل بيانات الحجز',
+    'reservation_number' => 'حجز رقم',
     
 
     /*

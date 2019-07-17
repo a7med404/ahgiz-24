@@ -6,8 +6,8 @@
 <!-- icheck -->
 {!! Html::style(asset('modules/master/plugins/icheck-1.x/all.css')) !!}
 <!-- dataTable -->
-{!! Html::style(asset('modules/master/plugins/dataTable/dataTables.bootstrap.min.css')) !!}
-{!! Html::style(asset('modules/master/plugins/dataTable/jquery.dataTables.min.css')) !!}
+{{-- {!! Html::style(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.css')) !!}
+{!! Html::style(asset('modules/master/plugins/datatables/jquery.dataTables.min.css')) !!} --}}
 @endsection
 @section('content')
 <section class="content-header">
@@ -25,7 +25,7 @@
         <div class="box-header with-border">
             {{-- <h3 class="box-title">Title</h3> --}}
             <button type="button" data-toggle="modal" data-target="#popup-form" href="#" class="btn btn-info"> <i
-                    class="fa fa-user-plus"></i> اضافة دور جديد </button>
+                    class="fa fa-user-plus"></i> اضافة شركة جديد </button>
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                     title="Collapse"><i class="fa fa-minus"></i></button>
@@ -39,10 +39,10 @@
                     <thead>
                         <tr>
                             <th>#ID</th>
-                            <th>Name</th>
-                            <th>Logo</th>
-                            <th>Note</th>
-                            <th>Options</th>
+                            <th>{{ __("home/labels.name") }}</th>
+                            <th>{{ __("home/labels.logo") }}</th>
+                            <th>{{ __("home/labels.note") }}</th>
+                            <th>{{ __('home/labels.options') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,10 +81,6 @@
             </div>
         </div>
         <!-- /.box-body -->
-        <div class="box-footer">
-            Footer
-        </div>
-        <!-- /.box-footer-->
     </div>
     <!-- /.box -->
     @include('company::companies.add')
@@ -95,9 +91,9 @@
 @section('footer')
 <!-- icheck -->
 {!! Html::script(asset('modules/master/plugins/icheck.min.js')) !!}
-<!-- dataTable -->
+{{-- <!-- dataTable -->
 {!! Html::script(asset('modules/master/plugins/datatables/jquery.dataTables.min.js')) !!}
-{!! Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')) !!}
+{!! Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')) !!} --}}
 <script>
     $('#table_id').DataTable({
         // processing: true,

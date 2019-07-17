@@ -32,7 +32,7 @@
                     <th>اسم خط السير</th>
                     <th>من </th>
                     <th> الي</th>
-                    <th>options</th>
+                    <th>{{ __('home/labels.options') }}</th>
                 </tr>
             </thead>
             <tbody>

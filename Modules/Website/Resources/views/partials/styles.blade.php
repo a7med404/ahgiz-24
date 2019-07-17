@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('modules/master/website/css/main-edit.css') }}">
     <link rel="stylesheet" href="{{ asset('modules/master/website/css/main-rtl.css') }}">
     
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('modules/master/plugins/select2/select2.min.css') }}">
     <script src="{{ asset('modules/master/website/js/webfontloader.min.js') }}"> </script>
     <script>
         WebFont.load({

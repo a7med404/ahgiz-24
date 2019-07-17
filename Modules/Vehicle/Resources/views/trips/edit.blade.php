@@ -51,16 +51,22 @@
 <!-- icheck -->
 {!! Html::script(asset('modules/master/plugins/icheck.min.js')) !!}
 <script>
-    $('#departure_time').datepicker({
-        autoclose: true,
-        language: 'ar',
-    });
-    $('#arrive_time').datepicker({
-        autoclose: true,
-        language: 'ar',
-    });
+
     $('#date').datepicker({
         autoclose: true,
+        language: 'ar',
+		rtl: true,
+		startDate: 'toDay',
+		format: 'yyyy-mm-dd'
+    });
+
+    //Timepicker
+    $("#departure_time").timepicker({
+        showInputs: false,
+        language: 'ar',
+    });
+    $("#arrive_time").timepicker({
+        showInputs: false,
         language: 'ar',
     });
 

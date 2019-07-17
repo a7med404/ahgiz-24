@@ -137,7 +137,7 @@ header .slider:before {
 .search .tabs li.active>a:focus,
 .search .tabs li.active>a:hover,
 .search .tabs li.active>a {
-  background-color: #ee6b6d;
+  background-color: #d84f57;
   color: #FFF;
 }
 
@@ -154,7 +154,7 @@ header .slider:before {
 .search-btn {
   padding: 10px 10px;
   min-height: 40px;
-  background-color: #ee6b6d;
+  background-color: #d84f57;
   border-radius: 4px 0px 0px 4px;
   margin: -1px;
 }
@@ -278,7 +278,7 @@ svg {
   border-radius: 0px;
   background-color: #fefefe;
   border: 1px solid #dee2e6;
-  border-bottom: 1px solid #ee6b6d;
+  border-bottom: 1px solid #d84f57;
 }
 
 .show-cars .cars-list {
@@ -338,7 +338,7 @@ svg {
 
 
 .h-light {
-  color: #ee6b6d;
+  color: #d84f57;
 }
 
 
@@ -353,7 +353,7 @@ svg {
 }
 
 .profile .ads .title{
-  background-color: #ee6b6d4d;
+  background-color: #d84f574d;
   padding: 15px;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
@@ -441,14 +441,14 @@ svg {
   max-width: none;
 }
 
-.select-seats button{
+.select-seats a{
   width: 100%;
   padding: 10px;
   border-radius: unset !important;
-  background: #ee6b6d;
+  background: #d84f57;
   color: #FFF;
 }
-.select-seats button:hover {
+.select-seats a:hover {
   color: #FFF;
 }
 
@@ -504,6 +504,9 @@ div.seatCharts-seat.available:focus {
 
 .bus-details .panel {
   text-align: right;
+  border: 1px solid #D7D7D7;
+  box-shadow: 0 0 3px -2px #333;
+  border-radius: 2px;
 }
 .panel-default > .panel-heading {
   color: #73879C;
@@ -557,7 +560,7 @@ div.seatCharts-seat.available:focus {
   padding: 20px;
 }
 
-.pay .tabs ul {
+.pay .tabs .nav {
   display: flex;
   justify-content: center;
 }
@@ -592,7 +595,7 @@ div.seatCharts-seat.available:focus {
 .pay .tabs .btn-custom {
   width: 100%;
   border-radius: 4px !important;
-  background: #ee6b6d;
+  background: #d84f57;
   color: #FFF;
   font-size: 16px;
 }
@@ -605,7 +608,7 @@ div.seatCharts-seat.available:focus {
 #quote-carousel .carousel-indicators .active {
   width: 18px;
   height: 18px;
-  background: #ee6b6d;
+  background: #d84f57;
 }
 
 #quote-carousel .carousel-indicators li {
@@ -824,7 +827,7 @@ select.selectpicker {
 }
 
 .bootstrap-select.btn-group .dropdown-menu li a:hover {
-  color: #ee6b6d;
+  color: #d84f57;
   background-color: #dee2e6;
 }
 
@@ -849,12 +852,12 @@ select.selectpicker {
 
 .bootstrap-select.btn-group .dropdown-menu li.selected a {
   color: #FFF;
-  background-color: #ee6b6d;
+  background-color: #d84f57;
 }
 
 .bootstrap-select.btn-group .dropdown-menu li.selected a:hover {
   color: #FFF;
-  background-color: #ee6b6d;
+  background-color: #d84f57;
 }
 
 .bootstrap-select.btn-group .dropdown-menu li a.opt {

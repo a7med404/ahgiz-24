@@ -67,9 +67,9 @@ Route::prefix('cpanel')->group(function() {
     // | Need Owner Roles
     // |--------------------------------------------------------------------------
     // */
-    // Route::middleware('role:superadministrator|administrator')->group(function () {
+    Route::middleware('role:superadministrator|administrator')->group(function () {
 
-    // });
+    });
 
 
     // /*

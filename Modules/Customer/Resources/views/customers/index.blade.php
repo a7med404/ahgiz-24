@@ -3,11 +3,11 @@
 {{ __('home/sidebar.all_customers') }}
 @endsection
 @section('header')
-<!-- icheck -->
+<!-- icheck --> 
 {!! Html::style(asset('modules/master/plugins/icheck-1.x/all.css')) !!}
 <!-- dataTable -->
-{!! Html::style(asset('modules/master/plugins/dataTable/dataTables.bootstrap.min.css')) !!}
-{!! Html::style(asset('modules/master/plugins/dataTable/jquery.dataTables.min.css')) !!}
+{!! Html::style(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.css')) !!}
+{!! Html::style(asset('modules/master/plugins/datatables/jquery.dataTables.min.css')) !!}
 @endsection
 @section('content')
 <section class="content-header">
@@ -36,11 +36,11 @@
                     <thead>
                         <tr>
                             <th>id</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Phone Number</th>
-                            <th>Has Reservation </th>
-                            <th>Options</th>
+                            <th>{{ __('home/labels.f_name') }}</th>
+                            <th>{{ __('home/labels.l_name') }}</th>
+                            <th>{{ __('home/labels.phone_number') }}</th>
+                            <th>{{ __('home/labels.has_reservation') }}</th>
+                            <th>{{ __('home/labels.options') }}</th>
                         </tr>
                     </thead>
                     <tbody>

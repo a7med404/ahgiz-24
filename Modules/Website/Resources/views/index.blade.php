@@ -38,7 +38,7 @@
                             </span>
                         </div> --}}
 
-                <form class="form" action="{{route('search-post')}}" method="post"> 
+                <form class="form" action="{{route('search-post')}}" method="get"> 
                         @csrf
                     <div class="row">
                     <div class="level col-md-3 col-sm-3">
@@ -50,24 +50,11 @@
                             </div>'>
                             مــن
                             </option>
-                            <option title="الخرطوم" data-content=
-                            '<div class="inline-items">
-                                <div class="h6 search-friend">الخرطوم</div>
-                            </div>'>
-                            1
-                            </option>
-                            <option title="بروتسودان" data-content=
-                            '<div class="inline-items">
-                                <div class="h6 search-friend">بروتسودان</div>
-                            </div>'>
-                            2
-                            </option>
-                            <option title="الخرطوم" data-content=
-                            '<div class="inline-items">
-                                <div class="h6 search-friend">الخرطوم</div>
-                            </div>'>
-                            3
-                            </option>
+                            @foreach ($stations as $station)
+                                <option title="{{$station->name}}" data-content=
+                                    '<div class="inline-items"> <div class="h6 search-friend">{{$station->name}}</div> </div>'> {{$station->id}}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="level col-md-3 col-sm-3">
@@ -81,24 +68,11 @@
                             </div>'>
                             الــي
                             </option>
-                            <option title="عطبرة" data-content=
-                            '<div class="inline-items">
-                                <div class="h6 search-friend">عطبرة</div>
-                            </div>'>
-                            4
-                            </option>
-                            <option title="بروتسودان" data-content=
-                            '<div class="inline-items">
-                                <div class="h6 search-friend">بروتسودان</div>
-                            </div>'>
-                            5
-                            </option>
-                            <option title="الخرطوم" data-content=
-                            '<div class="inline-items">
-                                <div class="h6 search-friend">الخرطوم</div>
-                            </div>'>
-                            6
-                            </option>
+                            @foreach ($stations as $station)
+                                <option title="{{$station->name}}" data-content=
+                                    '<div class="inline-items"> <div class="h6 search-friend">{{$station->name}}</div> </div>'> {{$station->id}}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="level col-md-3 col-sm-3"> 

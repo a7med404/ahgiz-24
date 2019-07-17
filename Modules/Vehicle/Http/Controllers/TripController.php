@@ -37,7 +37,7 @@ class TripController extends Controller
      */
     public function store(CreateTripRequest $request, Trip $trip)
     {
-        $number = str_replace('-', '', $request->date);
+        $number = (int)str_replace('-', '', $request->date).date('s');
         $data = [
             'departure_time'    => $request->departure_time,
             'arrive_time'       => $request->arrive_time,

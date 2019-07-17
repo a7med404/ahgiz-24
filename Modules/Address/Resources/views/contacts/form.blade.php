@@ -1,4 +1,9 @@
-{!! Form::hidden('contactable_type', 'Modules\Company\Entities\Company', ['value' => "{{ old('contactable_type') }}"]) !!}
+
+@if (isset($companyInfo))
+    {!! Form::hidden('contactable_type', 'Modules\Company\Entities\Company', ['value' => "{{ old('contactable_type') }}"]) !!}
+@else
+    {!! Form::hidden('contactable_type', 'Modules\User\Entities\User', ['value' => "{{ old('contactable_type') }}"]) !!}
+@endif
 <div class="row">
     <div class="col col-xl-6 col-lg-6 col-md-6">
         <div class="form-group">
@@ -39,7 +44,11 @@
     </div>
 </div>
 @else
-{!! Form::hidden('contactable_id', $companyInfo->id, ['value' => "{{ old('contactable_id') }}"]) !!}
+@if (isset($companyInfo))
+    {!! Form::hidden('contactable_id', $companyInfo->id, ['value' => "{{ old('contactable_id') }}"]) !!}
+@else
+    {!! Form::hidden('contactable_id', $userInfo->id, ['value' => "{{ old('contactable_id') }}"]) !!}
+@endif
 <div class="row m-t-40">
     <div class="col col-lg-6 col-md-6 col-sm-6 col-12">
         <button href="#" class="btn btn-primary">حـــفظ</button>

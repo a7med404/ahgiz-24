@@ -6,7 +6,7 @@
 // }
 
 // let gendars = ['انثي', 'ذكر'];
-// let cities = [];
+let cities = [];
 import Vue from "vue";
 export const globalStore = {
 

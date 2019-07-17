@@ -4,23 +4,20 @@ php artisan module:use Reservation
 php artisan module:unuse
 
 
-php artisan module:use Vehicle
+php artisan module:make-controller API/ApiPassengerController
 
-php artisan module:make-factory CustomerFactory
+php artisan module:make-factory PassengerFactory
 
-php artisan module:make-seed CustomerTableSeeder
+php artisan module:make-seed PassengerTableSeeder
 
-php artisan module:make-request CreateCustomerRequest
+php artisan module:make-request CreatePassengerRequest
 
-php artisan module:make-resource SiteCustomerResource --collection
+php artisan module:make-resource SinglePassengerResource 
 
 
-php artisan module:make-controller SiteCustomerController
-php artisan module:make-controller API/ApiSiteCustomerController
+php artisan module:make-model Passenger --migration
 
-php artisan module:make-model SeatReservation --migration
-
-php artisan module:migrate Vehicle
+php artisan module:migrate Reservation
 
 php artisan module:seed
 

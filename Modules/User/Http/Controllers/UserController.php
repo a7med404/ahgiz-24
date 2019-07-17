@@ -21,9 +21,11 @@ class UserController extends Controller
      * @return Response
      */
 
-    public function index(User $user){
-        $allUsers = $user->all();
-        return view('user::users.index', ['users' => $allUsers]);
+    public function index(User $user)
+    {
+        $roles = Role::all();
+        $allUsers = $user->all(); 
+        return view('user::users.index', ['users' => $allUsers, 'roles' => $roles]);
     }
     /**
      * Show the form for creating a new resource.
@@ -32,7 +34,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('cpanel.users.add', ['roles' => $roles]);
+        return view('user::users.add', ['roles' => $roles]);
     }
 
 
@@ -43,12 +45,13 @@ class UserController extends Controller
      */
     public function store(Request $request, User $user)
     {
+        // dd($request->all());
         $newUser = $user::create([
             'name'          => $request->name,
             'phone_number'  => $request->phone_number,
             'email'         => $request->email, 
             'username'      => $request->username,
-            'status'        => 0,//$request->status,
+            'status'        => $request->status,
             'note'          => $request->note,
             'password'      => Hash::make($request->password),
         ]);
@@ -56,7 +59,6 @@ class UserController extends Controller
             $request->roles != null ? $newUser->attachRoles($request->roles) : $newUser->attachRole('user');
           }
         Session::flash('flash_massage_type');
-        return response()->json(['message' => 'تم الحفظ بنجاح'], 201);
         return redirect('cpanel/users')->withFlashMassage('User Added Susscefully');
     }
 
@@ -66,7 +68,7 @@ class UserController extends Controller
      * @return Response
      */
     public function show($id)
-    {
+    { 
         $userInfo = User::findOrFail($id);
         return view('user::users.show', ['userInfo' => $userInfo]);
     }

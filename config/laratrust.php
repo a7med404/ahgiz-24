@@ -64,12 +64,12 @@ return [
         /**
          * Role model
          */
-        'role' => 'App\Role',
+        'role' => 'Modules\User\Entities\Role',
 
         /**
          * Permission model
          */
-        'permission' => 'App\Permission',
+        'permission' => 'Modules\User\Entities\Permission',
 
         /**
          * Team model

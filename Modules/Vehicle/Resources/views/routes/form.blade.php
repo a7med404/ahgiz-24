@@ -9,11 +9,11 @@
     </div>
     <div class="form-group col-md-6">
         {!! Form::label('from_station_id', 'from_station_id', ['class' => 'control-label']) !!}
-        {!! Form::select('from_station_id', getSelect('station'), null, ['id' => 'from_station_id', 'class' => "form-control {{ $errors->has('from_station_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('from_station_id') }}", 'required']) !!}
+        {!! Form::select('from_station_id', getSelect('station'), null, ['id' => 'from_station_id', 'class' => "select2 form-control  {{ $errors->has('from_station_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('from_station_id') }}", 'required']) !!}
     </div>
     <div class="form-group col-md-6">
         {!! Form::label('to_station_id', 'to_station_id', ['class' => 'control-label']) !!}
-        {!! Form::select('to_station_id', getSelect('station'), null, ['id' => 'to_station_id', 'class' => "form-control {{ $errors->has('to_station_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('to_station_id') }}", 'required']) !!}
+        {!! Form::select('to_station_id', getSelect('station'), null, ['id' => 'to_station_id', 'class' => "select2 form-control  {{ $errors->has('to_station_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('to_station_id') }}", 'required']) !!}
     </div>
 </div>
 

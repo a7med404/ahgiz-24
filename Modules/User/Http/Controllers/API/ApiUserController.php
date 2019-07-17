@@ -10,6 +10,7 @@ use \Hash;
 use \Session;
 use Modules\User\Transformers\UserResource;
 use Modules\User\Entities\Role;
+use \DB;
 
 class ApiUserController extends Controller
 {
@@ -168,5 +169,15 @@ class ApiUserController extends Controller
     {
         $userInfo = $Oneuser->findOrfail($id);
         return view('user::users.change-my-password', ['userInfo' => $userInfo]);
+    }
+
+    public function getDelegate($city_id, $local_id)
+    {
+        // $users = User::where('addresses.city', $city_id)->where('addresses.local', $local_id)->take(2)->get('phone_number');
+        $users = DB::table('users')
+            ->join('addresses', 'users.id', '=', 'addresses.addressable_id')
+            ->where('addresses.city', $city_id)->where('addresses.local', $local_id)
+            ->where('addressable_type', 'Modules\User\Entities\User')->take(2)->get('phone_number');
+        return response()->json(['message' => 'تم الحفظ بنجاح', 'data' => $users], 201);
     }
 }

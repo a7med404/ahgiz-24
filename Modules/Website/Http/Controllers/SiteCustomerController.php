@@ -123,6 +123,7 @@ class SiteCustomerController extends Controller
 
     public function singin(Request $request)
     {
+        dd($request->all());
         $rememberme = request()->has('remember_me')? true : false;
         // $customers = customer::where('phone_number', request('phone_number'))->where('password', request('password'))->get();
         if(auth()->guard('customer')->attempt(['phone_number' => request('phone_number'), 'password' => request('password')], $rememberme)){

@@ -1,4 +1,5 @@
 
 export default {
-
+  trips: [],
+  trip: '',
 }

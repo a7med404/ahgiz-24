@@ -1,27 +1,27 @@
 
 <div class="row">
     <div class="form-group col-md-6">
-        {!! Form::label('first_name', 'Frst Name', ['class' => 'form-label']) !!}
+        {!! Form::label('first_name', '{{ __("home/labels.f_name") }}', ['class' => 'form-label']) !!}
         {!! Form::text('first_name', null, ['id' => 'first_name', 'class' => "form-control  {{ $errors->has('first_name') ? ' is-invalid' : '' }}", 'value' => "{{ old('first_name') }}", 'required', 'autofocus']) !!}
     </div>
 
     <div class="form-group col-md-6">
-        {!! Form::label('last_name', 'Last Name', ['class' => 'form-label']) !!}
+        {!! Form::label('last_name', '{{ __("home/labels.l_name") }}', ['class' => 'form-label']) !!}
         {!! Form::text('last_name', null, ['id' => 'last_name', 'class' => "form-control  {{ $errors->has('last_name') ? ' is-invalid' : '' }}", 'value' => "{{ old('last_name') }}", 'required', 'autofocus']) !!}
     </div>
 </div>
 
 <div class="row">
     <div class="form-group col-md-6">
-        {!! Form::label('phone_number', 'Phone Number', ['class' => 'form-label']) !!}
+        {!! Form::label('phone_number', '{{ __("home/labels.phone_number") }}', ['class' => 'form-label']) !!}
         {!! Form::text('phone_number', null, ['id' => 'phone_number', 'class' => "form-control  {{ $errors->has('phone_number') ? ' is-invalid' : '' }}", 'value' => "{{ old('phone_number') }}", 'required', 'autofocus']) !!}
     </div>
 
     <div class="form-group col-md-6">
-        {!! Form::label('email', 'E-Mail', ['class' => 'form-label']) !!}
+        {!! Form::label('email', '{{ __("home/labels.email") }}', ['class' => 'form-label']) !!}
         {!! Form::text('email', null, ['id' => 'email', 'class' => "form-control  {{ $errors->has('email') ? ' is-invalid' : '' }}", 'value' => "{{ old('email') }}", 'required', 'autofocus']) !!}
     </div>
-</div>
+</div> 
 
 @if(isset($customerInfo))
 <div class="row">

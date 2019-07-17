@@ -2,9 +2,9 @@
 
 namespace Modules\Vehicle\Transformers;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class RouteResource extends ResourceCollection
+class RouteResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.

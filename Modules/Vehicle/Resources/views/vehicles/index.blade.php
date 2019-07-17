@@ -6,8 +6,8 @@
 <!-- icheck -->
 {!! Html::style(asset('modules/master/plugins/icheck-1.x/all.css')) !!}
 <!-- dataTable -->
-{!! Html::style(asset('modules/master/plugins/dataTable/dataTables.bootstrap.min.css')) !!}
-{!! Html::style(asset('modules/master/plugins/dataTable/jquery.dataTables.min.css')) !!}
+{!! Html::style(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.css')) !!}
+{!! Html::style(asset('modules/master/plugins/datatables/jquery.dataTables.min.css')) !!}
 @endsection
 @section('content')
 <section class="content-header">
@@ -39,11 +39,11 @@
                     <thead>
                         <tr>
                             <th>#ID</th>
-                            <th>Name</th>
-                            <th>seats_number</th>
-                            <th>company</th>
-                            <th>description</th>
-                            <th>Options</th>
+                            <th>{{ __("home/labels.name") }}</th>
+                            <th>{{ __("home/labels.seats_number") }}</th>
+                            <th>{{ __("home/labels.company") }}</th>
+                            <th>{{ __("home/labels.description") }}</th>
+                            <th>{{ __('home/labels.options') }}</th>
                         </tr>
                     </thead>
                     <tbody>      
@@ -83,10 +83,6 @@
             </div>
         </div>
         <!-- /.box-body -->
-        <div class="box-footer">
-            Footer
-        </div>
-        <!-- /.box-footer-->
     </div>
     <!-- /.box -->
     @include('vehicle::vehicles.add')

@@ -35,7 +35,7 @@
                     <th>الخط </th>
                     <th>المشرف</th>
                     <th>عدد الطلاب</th>
-                    <th>options</th>
+                    <th>{{ __('home/labels.options') }}</th>
                 </tr>
             </thead>
             <tbody>

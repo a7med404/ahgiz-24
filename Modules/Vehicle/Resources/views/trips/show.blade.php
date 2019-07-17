@@ -6,19 +6,19 @@
 <!-- icheck -->
 {!! Html::style(asset('modules/master/plugins/icheck-1.x/all.css')) !!}
 <!-- dataTable -->
-{!! Html::style(asset('modules/master/plugins/dataTable/dataTables.bootstrap.min.css')) !!}
-{!! Html::style(asset('modules/master/plugins/dataTable/jquery.dataTables.min.css')) !!}
+{!! Html::style(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.css')) !!}
+{!! Html::style(asset('modules/master/plugins/datatables/jquery.dataTables.min.css')) !!}
 @endsection
 @section('content')
 <section class="content-header">
-    <h1>{{ __('home/sidebar.all_trips') }} <small>it all starts here</small></h1>
+    <h1>{{ __('home/sidebar.trip_number') }} {{ $tripInfo->number }} <small>{{ $tripInfo->company->name }}</small></h1>
     <ol class="breadcrumb">
         <li><a href="{{ url('\cpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
         <li class="active"> {{ __('home/sidebar.all_trips') }} </li>
     </ol>
 </section>
 
-
+{{-- {{ dd($tripInfo->reservations->count()) }} --}}
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -27,19 +27,22 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="{{ getLogo($tripInfo->logo)  }}" alt="User profile picture">
+              {{-- <img class="profile-user-img img-responsive img-circle" src="{{ getLogo($tripInfo->logo)  }}" alt="User profile picture"> --}}
 
-              <h3 class="text-center">{{ $tripInfo->name }}</h3>
-              <p class="text-muted text-center">Software Engineer</p>
+              <h3 class="text-center">{{ $tripInfo->price."ج.س" }}</h3>
+              <p class="text-muted text-center">{{ tripStatus()[$tripInfo->status] }}</p>
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>عدد التذاكر</b> <a class="pull-left">1,322</a>
+                  <b> عدد التذاكر المتاحة</b> <a class="pull-left"><span class="label label-success">{{ $tripInfo->seats_number - $tripInfo->reservations->count() }}</span></a>
                 </li>
                 <li class="list-group-item">
-                  <b>عدد المركبات</b> <a class="pull-left">543</a>
+                  <b> عدد التذاكر المحجوزة</b> <a class="pull-left"><span class="label label-danger">{{ $tripInfo->reservations->count() }}</span></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Friends</b> <a class="pull-left">13,287</a>
+                  <b> التاريخ</b> <a class="pull-left">{{ $tripInfo->date }}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>زمن المغادرة</b> <a class="pull-left">{{ $tripInfo->departure_time }}</a>
                 </li>
               </ul>
               <a href="{{ route('trips.edit',  ['id' => $tripInfo->id]) }}" class="btn btn-primary btn-block"><b>تعديل بيانات الشركة</b></a>
@@ -55,22 +58,15 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
-
+              <strong><i class="fa fa-book margin-r-5"></i> وصف الرحلة</strong>
               <p class="text-muted">
-                B.S. in Computer Science from the University of Tennessee at Knoxville
+                  {{ $tripInfo->description }}
               </p>
-
               <hr>
-
-              <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-
-              <p class="text-muted">Malibu, California</p>
-
+              <strong><i class="fa fa-map-marker margin-r-5"></i> المسار</strong>
+              <p class="text-muted">{{ $tripInfo->fromStation->name }} -> {{ $tripInfo->toStation->name }}</p>
               <hr>
-
               <strong><i class="fa fa-pencil margin-r-5"></i> خطوط العمل </strong>
-
               <p>
                 <span class="label label-danger">UI Design</span>
                 <span class="label label-success">Coding</span>
@@ -79,11 +75,6 @@
                 <span class="label label-primary">Node.js</span>
               </p>
 
-              <hr>
-
-              <strong><i class="fa fa-file-text-o margin-r-5"></i> ملاحظة </strong>
-
-              <p>{{$tripInfo->note}}</p>
             </div>
             <!-- /.box-body -->
           </div>
@@ -432,8 +423,8 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-      {{-- @include('address::addresses.add', ['tripInfo' => $tripInfo])
-      @include('address::contacts.add', ['tripInfo' => $tripInfo]) --}}
+      @include('reservation::reservations.add', ['tripInfo' => $tripInfo])
+      {{-- @include('address::contacts.add', ['tripInfo' => $tripInfo]) --}}
     </section>
     <!-- /.content -->
 

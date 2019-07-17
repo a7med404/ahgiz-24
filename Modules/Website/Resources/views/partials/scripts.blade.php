@@ -1,4 +1,4 @@
-{{-- <script src="{{ asset('js/app.js') }}"></script>   --}}
+<script src="{{ asset('js/app.js') }}"></script>  
   
 <script src="{{ asset('modules/master/website/js/jquery.min.js') }}"></script>
 <script src="{{ asset('modules/master/website/js/bootstrap.min.js') }}"></script>
@@ -16,3 +16,21 @@
 <script src="{{ asset('modules/master/website/js/wow.min.js') }}"></script>
 <script src="{{ asset('modules/master/website/js/toastr.min.js') }}"></script>
 <script src="{{ asset('modules/master/website/js/frontend.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ asset('modules/master/plugins/select2/select2.full.min.js') }}"></script>
+
+
+<script>
+
+  $(".select2").select2();
+    // $("#example1").DataTable();
+    // $('#example2').DataTable({
+    //   "paging": true,
+    //   "lengthChange": false,
+    //   "searching": false,
+    //   "ordering": true,
+    //   "info": true,
+    //   "autoWidth": false
+    // });
+  // });
+</script>

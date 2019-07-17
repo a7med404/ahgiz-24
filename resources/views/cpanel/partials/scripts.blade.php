@@ -27,7 +27,7 @@ $.widget.bridge('uibutton', $.ui.button);
 <!-- jQuery Knob Chart -->
 <script src="{{ asset('modules/master/plugins/knob/jquery.knob.js') }}"></script>
 <!-- daterangepicker -->
-<script src="{{ asset('modules/master/js/script.js') }}"></script>
+{{-- <script src="{{ asset('modules/master/js/script.js') }}"></script> --}}
 <script src="{{ asset('modules/master/js/moment.js') }}"></script>
 <script src="{{ asset('modules/master/js/datatables-ar.js') }}"></script>
 <script src="{{ asset('modules/master/plugins/daterangepicker/daterangepicker.js') }}"></script>
@@ -47,6 +47,7 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="{{ asset('modules/master/plugins/echart/world.js') }}"></script>
 
 
+<script src="{{ asset('modules/master/plugins/jquery.nicescroll.min.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('modules/master/plugins/select2/select2.full.min.js') }}"></script>
 <!-- InputMask -->
@@ -57,8 +58,8 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="{{ asset('modules/master/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- DataTable -->
-<script src="{{ asset('modules/master/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+{{-- <script src="{{ asset('modules/master/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js') }}"></script> --}}
 <!-- bootstrap color picker -->
 <script src="{{ asset('modules/master/plugins/colorpicker/bootstrap-colorpicker.min.js') }}"></script>
 <!-- bootstrap time picker -->
@@ -74,16 +75,18 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="{{ asset('modules/master/js/backend.js') }}"></script>
 
 
+{!! Html::script(asset('modules/master/plugins/datatables/jquery.dataTables.min.js')) !!}
+{!! Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')) !!}
 <script>
 
-
+ 
     
 
     $(function () {
       $('#start_data').datepicker({
       autoclose: true
     });
-
+    $(".select2").select2();
       // $("#example1").DataTable();
       // $('#example2').DataTable({
       //   "paging": true,

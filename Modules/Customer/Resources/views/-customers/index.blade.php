@@ -6,8 +6,8 @@
     <!-- icheck -->
     {!! Html::style(asset('admin/css/icheck-1.x/all.css')) !!}
     <!-- dataTable -->
-    {!! Html::style(asset('admin/css/dataTable/dataTables.bootstrap.min.css')) !!}
-    {!! Html::style(asset('admin/css/dataTable/jquery.dataTables.min.css')) !!}
+    {!! Html::style(asset('admin/css/datatables/dataTables.bootstrap.min.css')) !!}
+    {!! Html::style(asset('admin/css/datatables/jquery.dataTables.min.css')) !!}
 @endsection
 
             @section('content')
@@ -57,7 +57,7 @@
                                         <th>Type</th>
                                         <th>Status</th>
                                         <th>Has Cars </th>
-                                        <th>Options</th>
+                                        <th>{{ __('home/labels.options') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -94,8 +94,8 @@
     <!-- icheck -->
     {!! Html::script(asset('admin/js/icheck.min.js')) !!}
     <!-- dataTable -->
-    {!! Html::script(asset('admin/js/dataTable/jquery.dataTables.min.js')) !!}
-    {!! Html::script(asset('admin/js/dataTable/dataTables.bootstrap.min.js')) !!}
+    {!! Html::script(asset('admin/js/datatables/jquery.dataTables.min.js')) !!}
+    {!! Html::script(asset('admin/js/datatables/dataTables.bootstrap.min.js')) !!}
     <script>
 
         $('#table_id').DataTable({

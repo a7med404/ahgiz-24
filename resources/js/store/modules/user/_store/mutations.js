@@ -11,8 +11,5 @@ export default {
     }
   },
 
-
-
   ALL_ROLES:    (state, roles) => (state.roles = roles),
 }
-  

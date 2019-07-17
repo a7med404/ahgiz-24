@@ -10,7 +10,7 @@
             <th>E-Mail</th>
             <th>Status</th>
             <th>Roles</th>
-            <th>Options</th>
+            <th>{{ __('home/labels.options') }}</th>
           </tr>
         </thead>
 
@@ -220,7 +220,7 @@
         props: [],
         created() {
           let self = this;
-          // self.fetchRoles();
+          self.fetchRoles();
           self.fetchUsers().then(function(){self.loading = false;});
         },
         watched() {

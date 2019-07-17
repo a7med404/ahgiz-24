@@ -5,7 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+// require('./bootstrap');
 window.Vue = require('vue');
 Vue.config.productionTip = false;
 const compiler = require('vue-template-compiler');
@@ -47,7 +47,14 @@ import App from './store/App';
 import AddUserForm from './store/modules/user/_components/AddUserForm';
 import UserTable from './store/modules/user/_components/UserTable';
 
+import Reservation from './store/modules/reservations/_components/Reservation';
+
 import search from './store/modules/website/_components/Search';
+import result from './store/modules/website/_components/Result';
+import busdetails from './store/modules/website/_components/BusDetails';
+import SelectSeats from './store/modules/website/_components/SelectSeats';
+import cashpay from './store/modules/website/_components/CashPay';
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -61,6 +68,12 @@ const app = new Vue({
     components: {
       AddUserForm,
       UserTable,
-      search
+      search,
+      Reservation,
+
+      result,
+      busdetails,
+      SelectSeats,
+      cashpay
     },
 });

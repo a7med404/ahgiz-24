@@ -40,18 +40,112 @@
                 </span>
               </a>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i> </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                    <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-                </ul>
-            </li>
 
             <li class="header">قسم الحجوزات و التذاكر</li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-calendar text-red"></i> <span>{{ __('home/sidebar.reservations') }}</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu" style="display: none;">
+                <li><a href="{{ route('reservations.index') }}"><i class="fa fa-circle-o text-aqua"></i> {{ __('home/sidebar.all_reservations') }}</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.reservations') }} 
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="{{ route('reservations.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_reservations') }}</a></li>
+                    <li><a href="{{ route('reservations.pendding') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.pendding') }}</a></li>
+                    <li><a href="{{ route('reservations.done') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.done') }}</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-users text-yellow"></i> <span>{{ __('home/sidebar.trips') }}</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu" style="display: none;">
+                <li><a href="{{ route('trips.index') }}"><i class="fa fa-circle-o text-aqua"></i> {{ __('home/sidebar.all_trips') }}</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.trips') }} 
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="{{ route('trips.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_trips') }}</a></li>
+                    <li><a href="{{ route('trips.create') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.add_trip') }}</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-users text-yellow"></i> <span>{{ __('home/sidebar.customers') }}</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu" style="display: none;">
+                <li><a href="{{ route('customers.index') }}"><i class="fa fa-circle-o text-aqua"></i> {{ __('home/sidebar.all_customers') }}</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.customers') }} 
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="{{ route('customers.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_customers') }}</a></li>
+                    <li><a href="{{ route('customers.create') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.add_customer') }}</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            {{-- @if (auth()->user()->hasRole('admin')) --}}
+            <li class="header">قسم الشركات</li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-industry text-aqua"></i> <span>{{ __('home/sidebar.all_companies') }}</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu" style="display: none;">
+                <li><a href="{{ route('companies.index') }}"><i class="fa fa-circle-o text-aqua"></i> كل الشركات</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.companies') }} 
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="{{ route('companies.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_companies') }}</a></li>
+                    <li><a href="{{ route('companies.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_company') }}</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o text-yellow"></i> {{ __('home/sidebar.contacts') }} 
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="{{ route('permissions.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_contacts') }}</a></li>
+                    <li><a href="{{ route('permissions.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_contact') }}</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            {{-- @endif --}}
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-bus text-red"></i> <span>{{ __('home/sidebar.vehicles') }}</span>
@@ -96,111 +190,7 @@
                 </li>
               </ul>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-users text-yellow"></i> <span>{{ __('home/sidebar.customers') }}</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu" style="display: none;">
-                <li><a href="{{ route('customers.index') }}"><i class="fa fa-circle-o text-aqua"></i> {{ __('home/sidebar.all_customers') }}</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.customers') }} 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('customers.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_customers') }}</a></li>
-                    <li><a href="{{ route('customers.create') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.add_customer') }}</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-yellow"></i> {{ __('home/sidebar.routes') }} 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('permissions.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_contacts') }}</a></li>
-                    <li><a href="{{ route('permissions.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_contact') }}</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-users text-yellow"></i> <span>{{ __('home/sidebar.trips') }}</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu" style="display: none;">
-                <li><a href="{{ route('trips.index') }}"><i class="fa fa-circle-o text-aqua"></i> {{ __('home/sidebar.all_trips') }}</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.trips') }} 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('trips.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_trips') }}</a></li>
-                    <li><a href="{{ route('trips.create') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.add_trip') }}</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-yellow"></i> {{ __('home/sidebar.routes') }} 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('permissions.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_contacts') }}</a></li>
-                    <li><a href="{{ route('permissions.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_contact') }}</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-
-
-            <li class="header">قسم الشركات</li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-industry text-aqua"></i> <span>{{ __('home/sidebar.all_companies') }}</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu" style="display: none;">
-                <li><a href="{{ route('companies.index') }}"><i class="fa fa-circle-o text-aqua"></i> كل الشركات</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.companies') }} 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('companies.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_companies') }}</a></li>
-                    <li><a href="{{ route('companies.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_company') }}</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-yellow"></i> {{ __('home/sidebar.contacts') }} 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('permissions.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_contacts') }}</a></li>
-                    <li><a href="{{ route('permissions.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_contact') }}</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-
-            <li class="header">قسم المستخدمين</li>
+            <li class="header">قسم الادارة</li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-users text-aqua"></i> <span>المستخدمين</span>
@@ -234,9 +224,7 @@
                 </li>
               </ul>
             </li>
-            
-
-            <li class="header">{{ __('home/sidebar.settings_section') }} </li>
+          
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-gears text-aqua"></i> <span>{{ __('home/sidebar.settings') }} </span>
@@ -259,13 +247,6 @@
                 </li>
               </ul>
             </li>
-
-            <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-            <li class="header">LABELS</li>
-            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
-
             <li class="header m-b-20"></li>
           </ul>
         </section>

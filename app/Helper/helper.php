@@ -7,19 +7,6 @@ function getTestimonial(){
 }
 
 
-function changeLocale()
-{
-
-    if (App::isLocale('en')) {
-        App::setLocale('ar');
-         \Session::put('locale', 'ar');
-    }else {
-    return "aaaaaaaaaaaa";
-        App::setLocale('en');
-         \Session::put('locale', 'en');
-    }
-}
-
 function maleOrfemale(){
     return [
         '0' => 'Female',
@@ -56,8 +43,24 @@ function status(){
 
 function tripStatus(){
     return [
+        '1' => 'متاحة للحجز',
+        '0' => 'غير متاحة للحجز',
+    ];
+}
+
+function reservationStatus(){
+    return [
         '0' => 'متاحة للحجز',
-        '1' => 'غير متاحة للحجز',
+        '1' => 'حجز مؤقت',
+        '2' => 'اكتمل الحجز',
+    ];
+}
+
+function payMethod(){
+    return [
+        '1' => 'نقــدي',
+        '2' => 'تطبيق بنكك',
+        '3' => 'تطبيق سايبر',
     ];
 }
 
@@ -136,8 +139,16 @@ function getSelect($tableName){
             $list = \DB::table('routes')->pluck('name', 'id');
             return $list->toArray();
             break;
+        case 'trip':
+            $list = \DB::table('trips')->pluck('number', 'id');
+            return $list->toArray();
+            break;
         case 'customer':
-            $list = \DB::table('customers')->where('status', 1)->pluck('phone_number', 'id');
+            $list = \DB::table('customers')->pluck('phone_number', 'id');
+            return $list->toArray();
+            break;
+        case 'seat':
+            $list = \DB::table('seats')->pluck('name', 'id');
             return $list->toArray();
             break;
         case 'company':
@@ -145,9 +156,39 @@ function getSelect($tableName){
             return $list->toArray();
             break;
         default:
-            $list = \App\Brand::get();
+            $list = \DB::table('companies')->pluck('name', 'id');
             break;
     }
+}
+
+function getName($tableName, $id)
+{
+    if ($id === null) {
+        return "...";
+    }
+    switch ($tableName) {
+        case 'trips':
+            $list = \DB::table('trips')->pluck('name', 'id');
+            return $list[$id];
+            break;
+        case 'stations':
+            $list = \DB::table('stations')->pluck('name', 'id');
+            return $list[$id];
+            break;
+            default:
+            $list = \DB::table('trips')->pluck('name', 'id');
+            return $list->toArray();
+            break;
+    }
+}
+
+function editRoute($name, $id)
+{
+    return route($name.'.edit', ['id' => $id]);
+}
+function showRoute($name, $id)
+{
+    return route($name.'.show', ['id' => $id]);
 }
 
 

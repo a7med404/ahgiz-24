@@ -32,7 +32,7 @@
                     <th>اسم المحطة</th>
                     <th>اسم الخط</th>
                     <th>القيم</th>
-                    <th>options</th>
+                    <th>{{ __('home/labels.options') }}</th>
                 </tr>
             </thead>
             <tbody>

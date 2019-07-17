@@ -36,11 +36,21 @@ Route::resource('site-customer', 'SiteCustomerController');
 Route::get('/profile', 'SiteCustomerController@profile')->name('profile');
 
 Route::get('/singup', 'SiteCustomerController@showSingupForm')->name('singup');
-Route::post('/singup', 'SiteCustomerController@store');
+Route::post('/singup', 'SiteCustomerController@store')->name('post-singup');
 Route::get('/singin', 'SiteCustomerController@showSinginForm')->name('singin');
-Route::post('/singin', 'SiteCustomerController@singin');
+Route::post('/singin', 'SiteCustomerController@singin')->name('post-singin');
 
 
+Route::get('/search-post', 'WebsiteController@searchPost')->name('search-post');
+Route::post('/save-seats', 'WebsiteController@saveSeats')->name('save-seats');
+Route::get('/bus-details/{id}', 'WebsiteController@busDetails')->name('bus-details');
+Route::get('/pay-page/{id}', 'WebsiteController@payPage')->name('pay-page');
+Route::get('/pay/{id}', 'WebsiteController@pay')->name('pay');
+
+Route::get('/print/{id}', 'WebsiteController@print')->name('print');
+
+
+Route::post('/save-passenger', 'WebsiteController@savePassenger')->name('save-passenger');
 
 Route::get('/sing', function () {
     return view('website::customer.sing-up-in');
@@ -57,18 +67,6 @@ Route::get('/select-seat', function () {
 Route::get('/bus-details', function () {
     return view('website::booking-steps.bus-details');
 })->name('bus-details');
-
-Route::get('/pay', function () {
-    return view('website::booking-steps.pay');
-})->name('pay');
-
-
-Route::post('/search-post', function () {
-    // return view('website::booking-steps.no-result');
-    return dd(request()->all());
-})->name('search-post');
-
-
 
 Route::get('/booking', function () {
     return view('website::booking-steps.booking');

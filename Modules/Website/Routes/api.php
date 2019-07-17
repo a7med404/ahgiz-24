@@ -16,3 +16,5 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/website', function (Request $request) {
     return $request->user();
 });
+Route::get('/search-post', 'API\ApiWebsiteController@searchPost')->name('search-post');
+Route::get('/bus-details/{id}', 'API\ApiWebsiteController@busDetails')->name('bus-details');

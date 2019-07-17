@@ -2,9 +2,9 @@
 
 namespace Modules\Ticket\Transformers;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class TicketResource extends ResourceCollection
+class TicketResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.

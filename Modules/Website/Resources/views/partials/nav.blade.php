@@ -52,9 +52,9 @@
               <li><a class="dropdown-item smoothscroll transition" href="{{ route('search-result') }}">search-result</a></li>
               <li><a class="dropdown-item smoothscroll transition" href="{{ route('booking') }}">booking</a></li>
               <li><a class="dropdown-item smoothscroll transition" href="{{ route('singup') }}">singup</a></li>
-              <li><a class="dropdown-item smoothscroll transition" href="{{ route('bus-details') }}">bus-details</a></li>
+              {{-- <li><a class="dropdown-item smoothscroll transition" href="{{ route('bus-details') }}">bus-details</a></li> --}}
               <li><a class="dropdown-item smoothscroll transition" href="{{ route('select-seat') }}">select-seat</a></li>
-              <li><a class="dropdown-item smoothscroll transition" href="{{ route('pay') }}">pay</a></li>
+              {{-- <li><a class="dropdown-item smoothscroll transition" href="{{ route('pay') }}">pay</a></li> --}}
               <li><a class="smoothscroll transition" href="">Last added cars</a></li>
               <li>
                 <a>
