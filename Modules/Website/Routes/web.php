@@ -20,20 +20,20 @@
 |****************************************************************************************************************************************
 */
 
-// Config::set('auth.defines', 'customer');
+Config::set('auth.defines', 'customer');
 
-// Route::group(['middleware' => 'customer:customer'], function () {
+Route::group(['middleware' => 'customer:customer'], function () {
 
-//     Route::get('/profile', 'AllCustomerController@profile')->name('profile');
-//     Route::get('/customer/logout', 'AllCustomerController@logout')->name('all-customers-logout');
+    Route::get('/profile', 'SiteCustomerController@profile')->name('profile');
+    Route::get('/customer/logout', 'SiteCustomerController@logout')->name('all-customers-logout');
 
-// });
+});
 
   
 Route::get('/', 'WebsiteController@index');
 
 Route::resource('site-customer', 'SiteCustomerController');
-Route::get('/profile', 'SiteCustomerController@profile')->name('profile');
+Route::get('/my-reservations', 'SiteCustomerController@myReservations')->name('my-reservations');
 
 Route::get('/singup', 'SiteCustomerController@showSingupForm')->name('singup');
 Route::post('/singup', 'SiteCustomerController@store')->name('post-singup');

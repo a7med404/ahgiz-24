@@ -13,19 +13,29 @@
         <div class="col-md-6 col-sm-6">
           <div class="top-end"> 
             <ul class="list-unstyled">
+              @auth('customer')
+                <li class="">
+                  <a href="{{ route('profile')  }}" title="">
+                      مرحبا 
+                    {{ Auth::guard('customer')->user()->first_name}}
+                  </a>
+                </li>
+              @else
+                <li class="text-uppercase">
+                  <a href="{{ route('singin')  }}" title="">
+                    <svg class="olymp-login-icon"><use xlink:href="{{ asset('modules/master/website/svg-icons/sprites/icons.svg#olymp-login-icon') }}"></use></svg>
+                    تسجيل دخول
+                  </a>
+                </li>
+                <li class="text-uppercase">
+                  <a href="{{ route('singup')  }}" title="">
+                    <svg class="olymp-register-icon"><use xlink:href="{{ asset('modules/master/website/svg-icons/sprites/icons.svg#olymp-register-icon') }}"></use></svg>
+                    إنشاء حساب
+                  </a>
+                </li>
+              @endauth
               {{-- <li class="text-uppercase"><a href="#" class="btn btn-custom" title=""><i class="fa fa-logine">Create Ads</i></a></li> --}}
-              <li class="text-uppercase">
-                <a href="{{ route('singin')  }}" title="">
-                  <svg class="olymp-login-icon"><use xlink:href="{{ asset('modules/master/website/svg-icons/sprites/icons.svg#olymp-login-icon') }}"></use></svg>
-                  تسجيل دخول
-                </a>
-              </li>
-              <li class="text-uppercase">
-                <a href="{{ route('singup')  }}" title="">
-                  <svg class="olymp-register-icon"><use xlink:href="{{ asset('modules/master/website/svg-icons/sprites/icons.svg#olymp-register-icon') }}"></use></svg>
-                  إنشاء حساب
-                </a>
-              </li>
+              
             </ul>
           </div>
         </div>
@@ -66,7 +76,7 @@
           <li class="nav-item dropdown" role="presentation"><a class="dropdown-toggle smoothscroll transition" href="javascript:;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> الحساب <i class="caret"></i></a>
             <ul class="dropdown-menu speesh" id="menu1" role="menu">
               <li><a class="dropdown-item" href="{{ route('profile') }}">profile</a></li>
-              <li><a class="dropdown-item">Manage My Cars</a></li>
+              <li><a class="dropdown-item" href="{{ route('my-reservations') }}">Manage My Reservations</a></li>
               <li><a class="dropdown-item">logout<i class="fa fa-sign-out pull-right"></i></a></li>
             </ul>
           </li>

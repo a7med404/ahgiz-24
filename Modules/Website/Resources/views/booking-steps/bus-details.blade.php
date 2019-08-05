@@ -8,7 +8,7 @@ Home
 {{-- <BusDetails :tripdetails="{{$trip}}"></BusDetails> --}}
 <section class="card">
     <div class="text-center">
-        <h3 class="text-capitalize l-r-border">filter  <span>resulte</span></h3>
+        <h3 class="text-capitalize l-r-border">تفاصيل <span> الباص و المسافرين</span></h3>
     </div>
 </section>
 <section>
@@ -51,7 +51,7 @@ Home
                                         <p class="city">{{ $trip->departure_time }}</p>
                                     </div>
                                     <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <p class="name">المقاعد المختارة:</p>
+                                        <p class="name">عدد المقاعد المختارة:</p>
                                         <p class="value">[ {{$seats}}
                                             {{-- @foreach ($seats as $seat)
                                                 {{ $seat.', ' }}
@@ -70,10 +70,9 @@ Home
                             </div>
                             <div class="panel-body">
                                 <p>اجمالي تكلفة التذاكر</p>
-                                <p class="value">{{ $trip->fromStation->name }}</p>
-                                <p class="city">{{ $trip->departure_time }}</p>
                                 <p class="price"> {{ $trip->price * $seats.' ج.س ' }} </p>
                                 <p class="date">{{ $trip->date }}</p>
+                                <p class="city">{{ $trip->departure_time }}</p>
                             </div>
                         </div>
                     </div>
@@ -89,6 +88,7 @@ Home
                                 <div class="row">
                                     <form class="form" action="{{route('save-passenger')}}" method="post">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <p>بيانات الركاب:</p>
                                         <div class="passenger">
                                             @csrf
                                             <?php $number = 1 ?>
@@ -96,10 +96,13 @@ Home
                                             <input name="trip_id" value="{{$trip->id}}" type="hidden">
                                             @while ((int)$seats)
                                                 <div class="row">
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-10"> 
                                                         <div class="for-middel form-group">
-                                                            <label class="control-label" for="name">اسم المسافر رقم {{$number++}} </label>
-                                                            <input id="name" name="{{$seats.'-name'}}" type="text"><span class="border-middel"></span>
+                                                            {!! Form::label('name', 'اسم المسافر رقم'.$number++, ['class' => 'control-label']) !!}
+                                                            {!! Form::text($seats.'-name', null, ['id' => 'name', 'class' => "{{ $errors->has('name') ? ' is-invalid' : '' }}", 'value' => "{{ old('name') }}", 'required', 'autofocus']) !!}
+                                                            <span class="border-middel"></span>
+                                                            {{-- <label class="control-label" for="name">اسم المسافر رقم {{$number++}} </label>
+                                                            <input id="name" name="{{$seats.'-name'}}" type="text" required="required"><span class="border-middel"></span> --}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -111,26 +114,33 @@ Home
                                                     <label for="{{$seats.'-gender'}}">انثي.</label>
                                                 </div>
                                                 <?php $seats-- ?>
+                                                <hr>
                                             @endwhile
-                                            
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <p>بيانات الاتصال</p>
+                                            <p>بيانات الاتصال:</p>
                                             <div class="for-middel form-group">
-                                                <label class="control-label" for="phone_number">رقم الموبايل</label>
-                                                <input id="phone_number" placeholder="xxx xxx xxxx" name="phone_number" type="text" autofocus><span class="border-middel"></span>
+                                                {{-- <label class="control-label" for="phone_number">رقم الموبايل</label>
+                                                <input id="phone_number" placeholder="xxx xxx xxxx" name="phone_number" type="text"  required="required" autofocus><span class="border-middel"></span> --}}
+                                                {!! Form::label('phone_number', 'رقم الموبايل', ['class' => 'control-label']) !!}
+                                                {!! Form::text('phone_number', null, ['id' => 'phone_number', 'placeholder' => 'xxx xxx xxxx', 'class' => "{{ $errors->has('phone_number') ? ' is-invalid' : '' }}", 'value' => "{{ Auth::guard('customer') ? Auth::guard('customer')->user()->phone_number : old('phone_number') }}", 'required', 'autofocus']) !!}
+                                                <span class="border-middel"></span>
                                             </div>
                                             <div class="feed-back">سوف يتم ارسال بيانات الحجز الي هذا الرقم.</div>
                                             <div class="for-middel form-group">
-                                                <label class="control-label" for="email">البريد الالكتروني</label>
-                                                <input id="email" placeholder="" name="email" type="text" autofocus><span class="border-middel"></span>
+                                                {{-- <label class="control-label" for="email">البريد الالكتروني</label>
+                                                <input id="email" placeholder="exmple@exmple.com" name="email" type="text" required="required" autofocus><span class="border-middel"></span> --}}
+                                                {!! Form::label('email', 'البريد الالكتروني', ['class' => 'control-label']) !!}
+                                                {!! Form::text('email', null, ['id' => 'email', 'placeholder' => 'exmple@exmple.com', 'class' => "{{ $errors->has('email') ? ' is-invalid' : '' }}", 'value' => "{{ old('email') }}", 'autofocus']) !!}
+                                                <span class="border-middel"></span>
                                             </div>
-                                            <input class="btn btn-custom text-uppercase" id="name" type="submit" value="انشاء حساب">
+                                            <button type="submit" class="btn btn-block text-uppercase">اكمال عملية الحجز <i class="fa fa-chevron-left"></i></button>
+                                            {{-- <input class="btn btn-custom text-uppercase" id="name" type="submit" value="اكمال عملية الحجز"> --}}
                                         </form>
-                                        <div class="social-register">
+                                        {{-- <div class="social-register">
                                             <button class="btn btn-custom text-uppercase"> <i class="fa fa-facebook"></i> التسجيل عن طريق فيسبوك</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

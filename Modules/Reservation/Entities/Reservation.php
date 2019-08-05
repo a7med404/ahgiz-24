@@ -10,7 +10,7 @@ use Modules\User\Entities\User;
 use Modules\Reservation\Entities\Passenger;
 class Reservation extends Model
 {
-    protected $fillable = ['customer_id','trip_id', 'user_id', 'pay_method', 'status'];
+    protected $fillable = ['customer_id', 'number', 'trip_id', 'user_id', 'pay_method', 'status'];
 
     public function customer(){
         return $this->belongsTo(Customer::class);

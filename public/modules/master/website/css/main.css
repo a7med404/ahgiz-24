@@ -256,7 +256,7 @@ header {
           transition-duration: 0.7s;
           border-radius: 2px !important;
           color: #73879C;
-          padding: 6px;
+          padding: 5px;
           width: 100%; }
           .search .tabs .tab-content .form input[type="submit"]:hover {
             background: #d84f57;
@@ -918,7 +918,8 @@ header {
   header .slider .layout, .services, .show-cars, .brands .layout, .testimonials, .sing, .sing .contect .ads .layout, .profile .show-cars, .footer .content {
     margin-bottom: 15px;
     padding: 20px 0; }
-  .top-nav .top-start {
+  .top-nav .top-start,
+  .top-nav .top-end {
     display: none !important; }
   .all-nav .navbar .navbar-header {
     border-bottom: 1px solid #dbdbdb; }
@@ -939,6 +940,7 @@ header {
     padding-bottom: 0;
     margin-top: 20vh; }
     .slider .layout .content a {
+      padding: 10px 20px;
       margin-top: 30px; }
     .slider .layout .content p::after {
       margin: 25px auto !important; }
@@ -1050,7 +1052,8 @@ header {
   header .slider .layout, .services, .show-cars, .brands .layout, .testimonials, .sing, .sing .contect .ads .layout, .profile .show-cars, .footer .content {
     margin-bottom: 15px;
     padding: 20px 0; }
-  .top-nav .top-start {
+  .top-nav .top-start,
+  .top-nav .top-end {
     display: none !important; }
   .all-nav .navbar ul li .menu-panel {
     position: static;
@@ -1062,9 +1065,9 @@ header {
   .slider .layout a {
     margin-top: 30px; }
   .search {
-    -webkit-box-shadow: 0px 2px 2px #dedede;
-    -moz-box-shadow: 0px 2px 2px #dedede;
-    box-shadow: 0px 2px 2px #dedede;
+    -webkit-box-shadow: 0px 2px 20px #ededed;
+    -moz-box-shadow: 0px 2px 20px #ededed;
+    box-shadow: 0px 2px 20px #ededed;
     padding: 0;
     width: 95%;
     margin: 30px auto 10px;

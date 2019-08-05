@@ -73,17 +73,15 @@ function toggleTrusted(){
 
 
 
-function seatNumber(){
-    return [
-        '1' => '1',
-        '2' => '2',
-        '3' => '3',
-        '4' => '4',
-        '5' => '5',
-        '6' => '6',
-        '7' => '7',
-        '8' => '8'
-    ];
+function seatNumber($seatNumber){
+    $numbers = [];
+    for($i = 1; $i <= $seatNumber; $i++){
+        $numbers[$i] = $i;
+        if ($i == 8) {
+            break;
+        }
+    }
+    return $numbers;
 }
 
 

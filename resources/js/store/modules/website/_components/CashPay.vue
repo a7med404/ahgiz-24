@@ -176,9 +176,7 @@
         },
         props: [],
 
-        created() {
-          
-        },
+        created() { },
         watched() {
           console.log(this.studentid);
         }

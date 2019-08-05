@@ -64,6 +64,14 @@ class SiteCustomerController extends Controller
         return view('website::customer.profile', ['customerInfo' => $customerInfo]);
     }
 
+    public function myReservations()
+    {
+        // $customerInfo = Customer::findOrFail(auth()->user()->id);
+        $customerInfo = Customer::findOrFail(4);
+        return view('website::customer.my-reservations', ['customerInfo' => $customerInfo]);
+    }
+
+    
     /**
      * Show the form for editing the specified resource.
      * @param int $id
@@ -123,7 +131,6 @@ class SiteCustomerController extends Controller
 
     public function singin(Request $request)
     {
-        dd($request->all());
         $rememberme = request()->has('remember_me')? true : false;
         // $customers = customer::where('phone_number', request('phone_number'))->where('password', request('password'))->get();
         if(auth()->guard('customer')->attempt(['phone_number' => request('phone_number'), 'password' => request('password')], $rememberme)){

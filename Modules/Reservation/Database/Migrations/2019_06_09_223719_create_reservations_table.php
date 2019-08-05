@@ -11,27 +11,28 @@ class CreateReservationsTable extends Migration
      *
      * @return void
      */
-    // public function up()
-    // {
-    //     Schema::create('reservations', function (Blueprint $table) {
-    //         $table->bigIncrements('id');
-    //         $table->unsignedBigInteger('customer_id')->foreign()->references('id')->on('customers');
-    //         $table->unsignedBigInteger('trip_id')->foreign()->references('id')->on('trips');
-    //         $table->unsignedBigInteger('user_id')->foreign()->references('id')->on('users')->nullable();
-    //         $table->tinyInteger('pay_method')->nullable();
-    //         $table->tinyInteger('pay_method')->nullable();
-    //         $table->integer('status');
-    //         $table->timestamps();
-    //     });
-    // }
+    public function up()
+    {
+        Schema::create('reservations', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('customer_id')->foreign()->references('id')->on('customers');
+            $table->unsignedBigInteger('trip_id')->foreign()->references('id')->on('trips');
+            $table->unsignedBigInteger('user_id')->foreign()->references('id')->on('users')->nullable();
+            $table->unsignedBigInteger('number')->unique();
+            $table->tinyInteger('pay_method')->nullable();
+            $table->tinyInteger('pay_method')->nullable();
+            $table->integer('status');
+            $table->timestamps();
+        });
+    }
 
-    // /**
-    //  * Reverse the migrations.
-    //  *
-    //  * @return void
-    //  */
-    // public function down()
-    // {
-    //     Schema::dropIfExists('reservations');
-    // }
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('reservations');
+    }
 }

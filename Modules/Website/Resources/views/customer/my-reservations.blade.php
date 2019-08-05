@@ -9,42 +9,7 @@ Home
 <section class="profile" id="porfile">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                <div class="info"><img class="img-responsive thumbnail" src="{{ asset('modules/master/website/images/profile-image.jpg') }}">
-                    <p class="center text-capitalize">{{ $customerInfo->first_name }} {{ $customerInfo->last_name }}</p>
-                    <hr>
-                    <div class="row text-center">
-                    <div class="col-md-4 col-xs-4">
-                        <div class="data">
-                        <p>12</p><span>الحجوزات</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-4">
-                        <div class="data have-border">
-                        <p>12</p><span>cars</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-4">
-                        <div class="data">
-                            <p>12</p><span>cars</span>
-                        </div>
-                    </div>
-                    </div>
-                    <hr>
-                    <h3 class="text-capitalize">البيانات الشخصية</h3>
-                    <ul class="list-unstyled">
-                    <li class="text-capitalize">الاسم: <span>{{ $customerInfo->first_name }} {{ $customerInfo->last_name }}</span> </li>
-                    <li class="text-capitalize">رقم الهاتف: <span>{{ $customerInfo->phone_number }}</span> </li>
-                    <li class="text-capitalize">البريد الالكتروني: <span>{{ $customerInfo->email }}</span> </li>
-                    <li class="text-capitalize">النوع: <span>{{ $customerInfo->gender }}</span> </li>
-                    <li class="text-capitalize">تاريخ الميلاد: <span>{{ $customerInfo->brithdate }}</span> </li>
-                    </ul><a>
-                    <button type="button" data-toggle="modal" data-target="#popup-form" href="#" class="btn btn-custom text-uppercase">تعديل المعلومات الشخصية <i class="fa fa-chevron-left"></i></button></a>
-                </div>
-                </div>
-            </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <section class="filter" id="filter">
                     <div class="">
                         <div class="row">
@@ -85,25 +50,25 @@ Home
         </div>
     </div>
 
-<!-- Popup  -->
-<div class="modal fade" id="popup-form">
-    <div class="modal-dialog" tabindex="-1" role="dialog" aria-labelledby="popup-form" aria-hidden="true">
-        <div class="modal-content modal-content-box">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                <h4 class="title">بيانات المستخدم</h4>
-            </div>
-            <div class="modal-body">
-                {!! Form::model($customerInfo, ['route' => ['customers.update', $customerInfo->id], 'method' => "PATCH"]) !!}
-                @include('customer::customers.form')
-                {!! Form::close() !!}
+    <!-- Popup  -->
+    <div class="modal fade" id="popup-form">
+        <div class="modal-dialog" tabindex="-1" role="dialog" aria-labelledby="popup-form" aria-hidden="true">
+            <div class="modal-content modal-content-box">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="title">بيانات المستخدم</h4>
+                </div>
+                <div class="modal-body">
+                    {!! Form::model($customerInfo, ['route' => ['customers.update', $customerInfo->id], 'method' => "PATCH"]) !!}
+                    @include('customer::customers.form')
+                    {!! Form::close() !!}
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- ... end Popup  -->
-    
+    <!-- ... end Popup  -->
+        
 
     <div class="modal fade " id="myModal">
         <div class="modal-dialog modal-lg">

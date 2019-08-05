@@ -50,11 +50,11 @@ class ReservationController extends Controller
     public function store(CreateReservationRequest $request, Reservation $reservation)
     {
         // dd($request->all());
-        $number = str_replace('-', '', $request->date);
+        $number = Time().rand(0, 100000);
         $data = [
             'customer_id'       => $request->customer_id,
-            'reservation_id'    => $request->reservation_id,
             'trip_id'           => $request->trip_id,
+            'number'            => $number,
             'status'            => $request->status
         ];
         $reservation = $reservation->create($data);
@@ -98,7 +98,6 @@ class ReservationController extends Controller
     public function update(CreateReservationRequest $request, $id)
     {
         $reservationInfo = Reservation::findOrFail($id);
-        // $number = str_replace('-', '', $request->date);
         $data = [
             'customer_id'       => $request->customer_id,
             'reservation_id'    => $request->reservation_id,
