@@ -1,4 +1,4 @@
-<header class="header" id="header">
+<header class="header main-header" id="header">
 
     <div class="slider">
       <div class="layout">

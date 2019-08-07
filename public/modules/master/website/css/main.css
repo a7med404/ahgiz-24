@@ -534,7 +534,6 @@ header {
         margin-bottom: 20px;
         text-align: center; }
       .sing .contect .ads .layout button {
-        width: 50%;
         border-radius: 0 !important;
         border: 0.5px solid #FFF !important;
         color: #fff;
@@ -542,7 +541,7 @@ header {
         padding: 10px;
         margin-top: 20px; }
   .sing .contect .start-form {
-    height: 550px;
+    min-height: 550px;
     padding: 5px;
     margin: 0 auto;
     display: flex;
@@ -835,7 +834,7 @@ header {
           color: #FFF;
           background-color: #d84f57;
           padding: 2px 10px;
-          border-radius: 100px; }
+          border-radius: 3px; }
 
 .footer {
   background: #F4F4F4;
@@ -918,8 +917,11 @@ header {
   header .slider .layout, .services, .show-cars, .brands .layout, .testimonials, .sing, .sing .contect .ads .layout, .profile .show-cars, .footer .content {
     margin-bottom: 15px;
     padding: 20px 0; }
-  .top-nav .top-start,
-  .top-nav .top-end {
+  header .all-nav .top-nav {
+    display: none !important;
+  }
+    .top-nav .top-start,
+    .top-nav .top-end{
     display: none !important; }
   .all-nav .navbar .navbar-header {
     border-bottom: 1px solid #dbdbdb; }
@@ -1052,6 +1054,9 @@ header {
   header .slider .layout, .services, .show-cars, .brands .layout, .testimonials, .sing, .sing .contect .ads .layout, .profile .show-cars, .footer .content {
     margin-bottom: 15px;
     padding: 20px 0; }
+  header .all-nav .top-nav {
+    display: none !important;
+  }
   .top-nav .top-start,
   .top-nav .top-end {
     display: none !important; }

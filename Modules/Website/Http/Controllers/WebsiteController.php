@@ -13,6 +13,7 @@ use Modules\Reservation\Http\Requests\CreateReservationRequest;
 use Session;
 use Auth;
 use Carbon\Traits\Date;
+use Modules\Customer\Entities\Customer;
 
 class WebsiteController extends Controller
 {
@@ -40,35 +41,24 @@ class WebsiteController extends Controller
             ->where('to_station_id', $request->to)
             ->where('date', $request->date)->where('status', 1)->where('date', '>=', Date('Y-m-d'))->orderBy('id', 'desc')->paginate(10);
         }
-            // $trips = Trip::all();
+
         return view('website::booking-steps.result', ['trips' => $trips, 'request' => $request, 'tripsCount' => $tripsCount]);
     }
 
     public function saveSeats(Request $request)
     {
-        // dd($request->all());
         $seats = $request->seats;
         $trip = Trip::findOrFail($request->trip_id);
         return view('website::booking-steps.bus-details', ['trip' => $trip, 'seats' => $seats])->withFlashMassage('Reservation Added Successfully');
-        // $data = [
-        //     'customer_id'       => 1,//$request->customer_id,
-        //     'trip_id'           => $request->trip_id,
-        //     'status'            => 1
-        // ];
-        // $reservation = Reservation::create($data);
-        // if($reservation){
-        //     if($request->seats){
-        //         $reservation->seats()->attach($request->seats);
-        //         Session::flash('flash_massage_type', 1);
-        //         return view('website::booking-steps.bus-details', ['trip' => $trip, 'seats' => $seats, 'reservation' => $reservation])->withFlashMassage('Reservation Added Successfully');
-        //     }
-        // }
     }
     
 
 
     public function savePassenger(Request $request)
     {
+        if($request->email && Auth::guard('customer')->user()->email == null){
+            Customer::findOrFail(Auth::guard('customer')->user()->id)->update(['email' => $request->email]);
+        }
         $number = Time().rand(0, 100000);
         $seats = $request->seats;
         $data = [
@@ -81,7 +71,7 @@ class WebsiteController extends Controller
         if($reservation){
             if($seats){
                 while ($seats >= 1) {
-                    $a = Passenger::create([
+                    Passenger::create([
                         'name'              => request($seats.'-name'),
                         'gender'            => request($seats.'-gender'),
                         'reservation_id'    => $reservation->id,
@@ -110,6 +100,32 @@ class WebsiteController extends Controller
         return view('website::booking-steps.done', ['reservation' => $reservation, 'blance' => $blance]);
     }
 
+    public function reservationDone(Request $request)
+    {
+        #TODO::set the class
+        $reservation = Reservation::findOrFail(82);
+        $blance = $reservation->seats->count() * $reservation->trip->price;
+        return view('website::booking-steps.done', ['reservation' => $reservation, 'blance' => $blance]);
+    }
+    
+
+
+    public function concelReservation()
+    {
+        return view('website::booking-steps.concel-reservation');
+    }
+
+    public function concelReservationPost(Request $request)
+    {
+        dd( $request->all());
+        # this for test
+        $reservation = Reservation::findOrFail(82);
+        $blance = $reservation->seats->count() * $reservation->trip->price;
+        return view('website::booking-steps.done', ['reservation' => $reservation, 'blance' => $blance]);
+    }
+    
+
+    
     public function busDetails(Request $request, $id)
     {
         $trip = Trip::findOrFail($id);

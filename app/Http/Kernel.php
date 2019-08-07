@@ -66,6 +66,8 @@ class Kernel extends HttpKernel
         'ability' => \Laratrust\Middleware\LaratrustAbility::class,
 
         'customer' => \App\Http\Middleware\CustomerAuth::class,
+        'customer-guest' => \App\Http\Middleware\CustomerGuest::class,
+        
     ];
 
     /**

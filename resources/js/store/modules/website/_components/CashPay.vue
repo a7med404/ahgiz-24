@@ -56,7 +56,7 @@
                               <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="form-group">
                                   <label class="control-label">المدينة</label>
-                                  <select class="form-control " v-model="address.city" @change="getLocals($event)">
+                                  <select class="select2 form-control " v-model="address.city" @change="getLocals($event)">
                                     <option 
                                       v-for="(value, index) in cities" 
                                       :key="index" :value="index" 
@@ -69,7 +69,7 @@
                               <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="form-group">
                                   <label class="control-label">المحلية</label>
-                                  <select class="form-control" v-model="address.local" @change="getDelegate($event)" :disabled="disableLocal">
+                                  <select class="select2 form-control" v-model="address.local" @change="getDelegate($event)" :disabled="disableLocal">
                                     <option 
                                       v-for="(value, index) in locals" 
                                       :key="index" :value="index" 
@@ -89,7 +89,7 @@
                             :key="number.phone_number"
                             v-text="number.phone_number">
                         </p>
-                        <p class="city">يمكنك الاتصال برقم المندوب من تاكيد عملية الحجز.</p>
+                        <p class="city"> في حالة الدفع النقدي يمكنك الاتصال برقم المندوب من اجل تاكيد عملية الحجز.</p>
                         <div class="social-register">
                             <button class="btn btn-custom text-uppercase"> تاكيد عملية الحجز </button>
                         </div>

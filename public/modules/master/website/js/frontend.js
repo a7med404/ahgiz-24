@@ -16,7 +16,17 @@ $(function (){
 	// 	$(this).addClass('selected').siblings().removeClass('selected');
 	// });
 
-
+  $(window).load(function() {
+    $(".loading-container").fadeOut(1000, function() {
+      /** To Dispaly of Continer */
+      // $(this)
+      //   .fadeOut(1000, function() {
+      //     /** To Dispaly Continer Of Overlay And Her content */
+      //     $("body").css("overflow", "auto"); /** To Show Scroll In Body */
+      //     $(this).remove(); /** To Remove Overlay Tags Form Dom Tree */
+      //   });
+    });
+  });
 
 	$('#myTab a').on('click', function (e) {
 	  e.preventDefault()

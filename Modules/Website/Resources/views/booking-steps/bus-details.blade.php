@@ -87,61 +87,88 @@ Home
                             <div class="panel-body">
                                 <div class="row">
                                     <form class="form" action="{{route('save-passenger')}}" method="post">
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <p>بيانات الركاب:</p>
-                                        <div class="passenger">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <p class="sub_title">بيانات الركاب:</p>
                                             @csrf
-                                            <?php $number = 1 ?>
+                                            <?php $number = 2; $i = 1 ?>
                                             <input name="seats" value="{{$seats}}" type="hidden">
                                             <input name="trip_id" value="{{$trip->id}}" type="hidden">
-                                            @while ((int)$seats)
+
+                                            
+                                            @while ( $i <= (int)$seats)
+                                            @if ($i == 1)
+                                            <div class="passenger">
                                                 <div class="row">
                                                     <div class="col-md-10"> 
                                                         <div class="for-middel form-group">
-                                                            {!! Form::label('name', 'اسم المسافر رقم'.$number++, ['class' => 'control-label']) !!}
-                                                            {!! Form::text($seats.'-name', null, ['id' => 'name', 'class' => "{{ $errors->has('name') ? ' is-invalid' : '' }}", 'value' => "{{ old('name') }}", 'required', 'autofocus']) !!}
+                                                            {!! Form::label('name', 'اسم المسافر رقم 1', ['class' => 'control-label']) !!}
+                                                            {!! Form::text('1-name', Auth::guard('customer') ? Auth::guard('customer')->user()->first_name.' '.Auth::guard('customer')->user()->first_name : null , ['id' => 'name', 'class' => "{{ $errors->has('name') ? ' is-invalid' : '' }}", 'value' => "{{ old('name') }}", 'required', 'autofocus']) !!}
                                                             <span class="border-middel"></span>
-                                                            {{-- <label class="control-label" for="name">اسم المسافر رقم {{$number++}} </label>
-                                                            <input id="name" name="{{$seats.'-name'}}" type="text" required="required"><span class="border-middel"></span> --}}
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group text-uppercase remember">
                                                     <label class="control-label">النوع </label><br>
-                                                    <input id="{{$seats.'-gender'}}" value="1" name="{{$seats.'-gender'}}" type="radio">
-                                                    <label for="{{$seats.'-gender'}}">ذكـر.</label>
-                                                    <input id="{{$seats.'-gender'}}" value="0" name="{{$seats.'-gender'}}" type="radio">
-                                                    <label for="{{$seats.'-gender'}}">انثي.</label>
+                                                    <input id="1-gender" value="1" {{ Auth::guard('customer')->user()->gender === 1 ? 'checked' : '' }} name="1-gender" type="radio">
+                                                    <label for="1-gender">ذكـر.</label>
+                                                    <input id="1-gender" value="0" {{ Auth::guard('customer')->user()->gender === 0 ? 'checked' : '' }} name="1-gender" type="radio">
+                                                    <label for="1-gender">انثي.</label>
                                                 </div>
-                                                <?php $seats-- ?>
-                                                <hr>
+                                            </div>
+                                            @else
+                                            <div class="passenger">
+                                                <div class="row">
+                                                    <div class="col-md-10"> 
+                                                        <div class="for-middel form-group">
+                                                            {!! Form::label('name', ' اسم المسافر رقم '.$number++, ['class' => 'control-label']) !!}
+                                                            {!! Form::text($i.'-name', null, ['id' => 'name', 'class' => "{{ $errors->has('name') ? ' is-invalid' : '' }}", 'value' => "{{ old('name') }}", 'required', 'autofocus']) !!}
+                                                            <span class="border-middel"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group text-uppercase remember">
+                                                    <label class="control-label">النوع </label><br>
+                                                    <input id="{{$i.'-gender'}}" value="1" name="{{$i.'-gender'}}" type="radio">
+                                                    <label for="{{$i.'-gender'}}">ذكـر.</label>
+                                                    <input id="{{$i.'-gender'}}" value="0" name="{{$i.'-gender'}}" type="radio">
+                                                    <label for="{{$i.'-gender'}}">انثي.</label>
+                                                </div>
+                                            </div>
+
+                                            @endif
+                                            <?php $i++ ?>
                                             @endwhile
                                         </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <p>بيانات الاتصال:</p>
-                                            <div class="for-middel form-group">
-                                                {{-- <label class="control-label" for="phone_number">رقم الموبايل</label>
-                                                <input id="phone_number" placeholder="xxx xxx xxxx" name="phone_number" type="text"  required="required" autofocus><span class="border-middel"></span> --}}
-                                                {!! Form::label('phone_number', 'رقم الموبايل', ['class' => 'control-label']) !!}
-                                                {!! Form::text('phone_number', null, ['id' => 'phone_number', 'placeholder' => 'xxx xxx xxxx', 'class' => "{{ $errors->has('phone_number') ? ' is-invalid' : '' }}", 'value' => "{{ Auth::guard('customer') ? Auth::guard('customer')->user()->phone_number : old('phone_number') }}", 'required', 'autofocus']) !!}
-                                                <span class="border-middel"></span>
-                                            </div>
-                                            <div class="feed-back">سوف يتم ارسال بيانات الحجز الي هذا الرقم.</div>
-                                            <div class="for-middel form-group">
-                                                {{-- <label class="control-label" for="email">البريد الالكتروني</label>
-                                                <input id="email" placeholder="exmple@exmple.com" name="email" type="text" required="required" autofocus><span class="border-middel"></span> --}}
-                                                {!! Form::label('email', 'البريد الالكتروني', ['class' => 'control-label']) !!}
-                                                {!! Form::text('email', null, ['id' => 'email', 'placeholder' => 'exmple@exmple.com', 'class' => "{{ $errors->has('email') ? ' is-invalid' : '' }}", 'value' => "{{ old('email') }}", 'autofocus']) !!}
-                                                <span class="border-middel"></span>
-                                            </div>
-                                            <button type="submit" class="btn btn-block text-uppercase">اكمال عملية الحجز <i class="fa fa-chevron-left"></i></button>
-                                            {{-- <input class="btn btn-custom text-uppercase" id="name" type="submit" value="اكمال عملية الحجز"> --}}
-                                        </form>
-                                        {{-- <div class="social-register">
-                                            <button class="btn btn-custom text-uppercase"> <i class="fa fa-facebook"></i> التسجيل عن طريق فيسبوك</button>
-                                        </div> --}}
-                                    </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <hr>
+                                                <p class="sub_title">بيانات الاتصال:</p>
+                                                <div class="feed-back">سوف يتم ارسال بيانات الحجز الي هذا الرقم.</div>
+                                                <div class="for-middel form-group">
+                                                    {!! Form::label('phone_number', 'رقم الموبايل', ['class' => 'control-label']) !!}
+                                                    @if (Auth::guard('customer')->user()->phone_number)
+                                                        {!! Form::text('phone_number', Auth::guard('customer') ? Auth::guard('customer')->user()->phone_number : null , ['id' => 'phone_number', 'placeholder' => 'xxx xxx xxxx', 'disabled' => 'disabled', 'class' => "{{ $errors->has('phone_number') ? ' is-invalid' : '' }}", 'value' => "{{ old('phone_number') }}", 'required', 'autofocus']) !!}
+                                                    @else                                                    
+                                                    {!! Form::text('phone_number', Auth::guard('customer') ? Auth::guard('customer')->user()->phone_number : null , ['id' => 'phone_number', 'placeholder' => 'xxx xxx xxxx', 'class' => "{{ $errors->has('phone_number') ? ' is-invalid' : '' }}", 'value' => "{{ old('phone_number') }}", 'required', 'autofocus']) !!}
+                                                     
+                                                    @endif
+                                                    <span class="border-middel"></span>
+                                                </div>
+                                                <div class="for-middel form-group">
+                                                    {!! Form::label('email', 'البريد الالكتروني', ['class' => 'control-label']) !!}
+                                                    @if (Auth::guard('customer')->user()->email)
+                                                        {!! Form::text('email', Auth::guard('customer') ? Auth::guard('customer')->user()->email : null, ['id' => 'email', 'placeholder' => 'exmple@exmple.com', 'disabled' =>'disabled', 'class' => "{{ $errors->has('email') ? ' is-invalid' : '' }}", 'value' => "{{ old('email') }}", 'autofocus']) !!}
+                                                    @else
+                                                        {!! Form::text('email', Auth::guard('customer') ? Auth::guard('customer')->user()->email : null, ['id' => 'email', 'placeholder' => 'exmple@exmple.com', 'class' => "{{ $errors->has('email') ? ' is-invalid' : '' }}", 'value' => "{{ old('email') }}", 'autofocus']) !!}                                                        
+                                                    @endif
+                                                    <span class="border-middel"></span>
+                                                </div>
+                                                <button type="submit" class="btn btn-block text-uppercase">اكمال عملية الحجز <i class="fa fa-chevron-left"></i></button>
+                                                {{-- <input class="btn btn-custom text-uppercase" id="name" type="submit" value="اكمال عملية الحجز"> --}}
+                                        </div>
+                                    </form>
+                                    {{-- <div class="social-register">
+                                        <button class="btn btn-custom text-uppercase"> <i class="fa fa-facebook"></i> التسجيل عن طريق فيسبوك</button>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

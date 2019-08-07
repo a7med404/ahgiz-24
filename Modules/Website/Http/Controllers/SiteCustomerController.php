@@ -9,6 +9,8 @@ use Modules\Customer\Entities\Customer;
 use Modules\Customer\Http\Requests\CreateCustomerRequest;
 use Illuminate\Support\Facades\Hash;
 use Session;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Auth;
 
 class SiteCustomerController extends Controller
 {
@@ -37,7 +39,6 @@ class SiteCustomerController extends Controller
      */
     public function store(CreateCustomerRequest $request, Customer $customer)
     {
-        // dd($request->all());
         $data = [
             'first_name'    => $request->first_name,
             'last_name'     => $request->last_name,
@@ -45,9 +46,13 @@ class SiteCustomerController extends Controller
             'phone_number'  => $request->phone_number,
             'password'      => Hash::make('password'),
         ];
-        $customer->create($data);
+        $customer = $customer->create($data);
+        Auth::guard('customer')->login($customer);
         Session::flash('flash_massage_type', 1);
-        return redirect('/profile')->withFlashMassage('Customer Added Successfully');
+        if(URL::previous() == route('singup')){
+            return redirect()->route('profile')->withFlashMassage('تم انشاء الحساب بنجاح');
+        }
+        return redirect()->back()->withFlashMassage('تم انشاء الحساب بنجاح');
     }
 
 
@@ -58,16 +63,14 @@ class SiteCustomerController extends Controller
      * @return Response
      */
     public function profile()
-    {
-        // $customerInfo = Customer::findOrFail(auth()->user()->id);
-        $customerInfo = Customer::findOrFail(4);
+    { 
+        $customerInfo = Auth::guard('customer')->user();
         return view('website::customer.profile', ['customerInfo' => $customerInfo]);
     }
 
     public function myReservations()
     {
-        // $customerInfo = Customer::findOrFail(auth()->user()->id);
-        $customerInfo = Customer::findOrFail(4);
+        $customerInfo = Customer::findOrFail(Auth::guard('customer')->user()->id);
         return view('website::customer.my-reservations', ['customerInfo' => $customerInfo]);
     }
 
@@ -129,13 +132,16 @@ class SiteCustomerController extends Controller
     }
 
 
+
     public function singin(Request $request)
     {
         $rememberme = request()->has('remember_me')? true : false;
-        // $customers = customer::where('phone_number', request('phone_number'))->where('password', request('password'))->get();
-        if(auth()->guard('customer')->attempt(['phone_number' => request('phone_number'), 'password' => request('password')], $rememberme)){
+        if(Auth::guard('customer')->attempt(['phone_number' => request('phone_number'), 'password' => request('password')], $rememberme)){
           Session::flash('flash_massage_type');
-          return redirect('/')->withFlashMassage('Login Susscefully');
+          if(URL::previous() == route('singin')){
+            return redirect()->route('profile')->withFlashMassage('Login Susscefully');
+          }
+          return redirect()->back()->withFlashMassage('Login Susscefully');
         }else{
           Session::flash('flash_massage_type', 4);
           return redirect()->back()->withFlashMassage('Phone Number Or Password Is\'t Correct');
@@ -145,7 +151,6 @@ class SiteCustomerController extends Controller
     public function logout(Request $request)
     {
         \Auth::guard('customer')->logout();
-        return redirect('/sing')->withFlashMassage('Logout Susscefully');
-        // return redirect()->guest(route( 'admin.login' ));
+        return redirect()->back()->withFlashMassage('Logout Susscefully');
     }
 }

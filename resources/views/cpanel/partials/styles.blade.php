@@ -33,8 +33,8 @@
       {{-- <link href="{{ asset('modules/master/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
       <link href="{{ asset('modules/master/plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet"> --}}
       
-{!! Html::style(asset('modules/master/plugins/datatables/jquery.dataTables.min.css')) !!} 
-{!! Html::style(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.css')) !!}
+      {!! Html::style(asset('modules/master/plugins/datatables/jquery.dataTables.min.css')) !!} 
+      {!! Html::style(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.css')) !!}
 
       <!-- Ionicons -->
       <link href="{{ asset('modules/master/plugins/ionicons/css/ionicons.min.css') }}" rel="stylesheet">

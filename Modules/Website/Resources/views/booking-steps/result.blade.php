@@ -104,7 +104,7 @@ Home
 </section>
 {{-- {{dd($trips)}} --}}
 {{-- <result :trips="{{$trips}}"></result> --}}
-<section class="filter" id="filter">
+<section class="filter" id="filter"> 
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -112,17 +112,21 @@ Home
                 <section class="show-cars card" id="show-cars">
                     <div class="text-center">
                         <h3 class="text-capitalize l-r-border">مـن <span> {{ getSelect('station')[$request->from] }} </span>الـي <span> {{ getSelect('station')[$request->to] }} </span></h3>
-                        <p><span class="h-light">{{ $tripsCount }}</span> من نتائج البحث </p>
+                        <p><span class="h-light">{{-- $tripsCount --}}</span> الرحلة المتوفرة </p>
                         <div class="cars-list scale">
                             <div class="row">
                                 
                                 @forelse ($trips as $trip)
-                                    @if ($trip->seats_number - $trip->reservations->count() > 0)
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                    @php $reservedSeats = 0 @endphp 
+                                    @foreach ($trip->reservations as $reservation)
+                                        @php $reservedSeats += $reservation->passengers->count() @endphp 
+                                    @endforeach
+                                    @if (($trip->seats_number - $reservedSeats) > 0)
+                                        <div class="col-md-12 col-sm-12 col-xs-12 animated slideInRight fast">
                                             <div class="car-card text-center hover-box">
                                                 {{-- <div class="car-img"><img class="img-responsive img-fluid" src="../images/pexels-photo-981041.jpeg"></div> --}}
                                                 <div class="detail">
-                                                    <h3 class="text-uppercase">{{ $trip->company->name }}</h3><span class="price"><a>{{ $trip->price }} ج.س  </a></span><span class="kilo"><a><i class="fa fa-user"></i>  <span class="h-light">{{ $trip->seats_number - $trip->reservations->count() }}</span> مقعد متوفر</a></span>
+                                                    <h3 class="text-uppercase">{{ $trip->company->name }}</h3><span class="price"><a>{{ $trip->price }} ج.س  </a></span><span class="kilo"><a><i class="fa fa-user"></i>  <span class="h-light">{{ $trip->seats_number - $reservedSeats }}</span> مقعد متوفر</a></span>
                                                     <p class="time"><svg class="olymp-month-calendar-icon icon"><use xlink:href="{{ asset('modules/master/website/svg-icons/sprites/icons.svg#olymp-month-calendar-icon') }}"></use></svg> تاريخ المغادرة <span class="h-light">({{ $trip->date }})</span> </p>
                                                     <ul class="list-unstyled">
                                                         <li>زمن انطلاق الباص:  <span> {{ $trip->departure_time }}<span></li>
@@ -130,7 +134,12 @@ Home
                                                         <li>زمن وصول الباص:  <span> {{ $trip->arrive_time }}<span></li>
                                                         <li>المسافة: <span> 560<span> /كم</li>
                                                     </ul>
-                                                    <button class="btn btn-custom text-uppercase" type="button" data-toggle="modal" data-target="#myModal-{{$trip->id}}"> اختيار المقاعد <i class="fa fa-chevron-left"></i></button>
+                                                    @auth('customer')
+                                                        <button class="btn btn-custom text-uppercase" type="button" data-toggle="modal" data-target="#myModal-{{$trip->id}}"> اختيار المقاعد <i class="fa fa-chevron-left"></i></button>
+                                                    @else
+                                                        <button class="btn btn-custom text-uppercase" type="button" data-toggle="modal" data-target="#myModal-sing-in-out"> اختيار المقاعد <i class="fa fa-chevron-left"></i></button>                                                    
+                                                    @endauth
+
                                                 </div>
                                             </div>
                                         </div>
@@ -143,7 +152,6 @@ Home
                                         </div>
                                     </div>
                                 @endforelse
-
                             </div>
                         </div>
                     </div>
@@ -248,7 +256,7 @@ Home
                                                                         <div class="col col-xl-6 col-lg-6 col-md-6">
                                                                             <div class="form-group">
                                                                                 {!! Form::label('seats', 'عدد المقاعد', ['class' => 'control-label']) !!}
-                                                                                {!! Form::select('seats', seatNumber($trip->seats_number - $trip->reservations->count()), null, ['id' => 'seats', 'data-placeholder' => 'Select a State', 'class' => "form-control  {{ $errors->has('seats') ? ' is-invalid' : '' }}", 'value' => "{{ old('seats') }}", 'required']) !!}
+                                                                                {!! Form::select('seats', seatNumber($trip->seats_number - $reservedSeats), null, ['id' => 'seats', 'data-placeholder' => 'Select a State', 'class' => "form-control {{ $errors->has('seats') ? ' is-invalid' : '' }}", 'value' => "{{ old('seats') }}", 'required']) !!}
                                                                             </div>
                                                                         </div>
                                                                         @csrf
@@ -281,4 +289,69 @@ Home
     </div>
 </div>
 @endforeach
+
+    
+<div class="modal fade sing-in-out" id="myModal-sing-in-out">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                {{-- <div class="modal-header">
+                    <h3 class="modal-title l-r-border text-uppercase"> اختيار المقاعد</h3>
+                    <button class="close" type="button" data-dismiss="modal">&times;</button>
+                </div> --}}
+                <div class="modal-body">
+                        <button class="close" type="button" data-dismiss="modal">&times;</button>
+                    <section class="sing" id="sing">
+                        <div class="">
+                            <div class="contect">
+                                <div class="singup">
+                                    <div class="row">
+                                        <div class="col-md-5 col-sm-5">
+                                            <div class="ads">
+                                                <div class="layout"><img class="img-responsive"
+                                                        src="{{ asset('modules/master/website/images/writer.svg') }}">
+                                                    <p class="text-capitalize">Welcome.</p>
+                                                    <p class="text-capitalize">this is your best place to fine your dream car.</p>
+                                                    <button class="btn btn-custom text-uppercase change-sing">تسجيل الدخول</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-7">
+                                            <div class="start-form text-capitalize">
+                                                <h3 class="l-r-border text-uppercase"> انشاء حساب جديد</h3><small>افضل خيار لك لحجز التذاكر اونلاين</small>
+                                                @include('website::customer.singup-form')
+                                                <button class="btn btn-custom text-uppercase change change-sing">تسجيل الدخول</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="singin">
+                                    <div class="row">
+                                        <div class="col-md-5 col-sm-5">
+                                            <div class="ads">
+                                                <div class="layout"><img class="img-responsive" src="{{ asset('modules/master/website/images/tmb_img.png') }}">
+                                                    <p class="text-capitalize">احجز 24</p>
+                                                    <p class="text-capitalize">افضل خيار لك لحجز التذاكر اونلاين.</p>
+                                                    <button class="btn btn-custom text-uppercase change-sing">انشاء حساب جديد</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-sm-7">
+                                            <div class="start-form text-capitalize">
+                                                <h3 class="l-r-border text-uppercase"> تسجيل الدخول</h3><small> <span class="h-light">احجز24</span> تميز معنا و استمتع بافضل خدمات الحجز </small>
+                                                @include('website::customer.singin-form')
+                                                <button class="btn btn-custom text-uppercase change change-sing">انشاء حساب جديد</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                {{-- <div class="modal-footer">
+                    <button class="close" type="button" data-dismiss="modal">تراجع</button>
+                </div> --}}
+            </div>
+        </div>
+    </div>
 @stop

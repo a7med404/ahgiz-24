@@ -13,6 +13,9 @@ body {
   opacity: .8;
 }
 
+.navbar-header button svg{
+  fill: #d84f57;
+}
 .hover-box {
   background-color: #fafbfd !important;
   transition: all .5s ease-in-out;
@@ -41,6 +44,9 @@ body {
 
 }
 
+header .all-nav {
+  border-top: 3px solid #d84f57;
+}
 header .navbar-collapse {
   padding-right: 0 !important;
   padding-left: 0 !important;
@@ -58,10 +64,18 @@ header .slider {
   animation: sidedownscroll 30s infinite ease;
   /* animation: sidedownscroll 30s infinite cubic-bezier(.6,-0.28,.74,.05); */
   background-size: auto;
+
+
+  height: 75vh;
 }
+
 
 header .slider:before {
   background-color: rgba(255, 94, 58, 0.95);
+}
+
+.services .content {
+  padding-top: 0
 }
 
 /* @-webkit-keyframes sidedownscroll {
@@ -91,7 +105,9 @@ header .slider:before {
   margin-bottom: 40px;
 }
 
-
+header .slider .layout .content {
+  padding-bottom: 10vh; 
+}
 
 @media(max-width: 380px) {
   header .all-nav .top-nav .top-end ul {
@@ -108,24 +124,56 @@ header .slider:before {
   padding: 0px 13px !important;
 }
 
+
 .search {
-  top: 65%;
+  top: 50%;
   left: 14%;
   width: 72%;
 }
 
-@media(max-width: 768px) {
+@media (min-width:768px) and (max-width:1024px) {
   .search {
-    top: 55%;
+    left: 7%;
+    width: 86%;
+  }  
+}
+@media(max-width: 767px) {
+  .search {
+    /* top: 55%;
     left: 5%;
+    width: 90%; */
+    top: 50%;
+    left: 0;
     width: 90%;
+    bottom: auto;
+    height: auto;
+    position: absolute;
+
+    box-shadow: none;
   }
 
   header .slider .layout .content {
     padding-bottom: 25vh;
   }
+
+  .services {
+    margin-top: 90px;
+  }
+  .modal-content {
+    max-width: 100%;
+  }
+
+
 }
 
+@media(max-width: 480px) {
+  header .slider .layout .content h3 {
+    font-size: 24px;
+  }
+  .slider .layout .content {
+    margin-top: 30vh !important;
+  }
+}
 .search .tabs .tab-content .form {
   min-height: auto;
 }
@@ -148,12 +196,7 @@ header .slider:before {
   border-left: 1px solid #cbcbcb;
 }
 
-@media(max-width: 380px) {
-  .search .tabs .tab-content form .level {
-      padding: 5px 10px;
-      border-left: none;
-  }
-}
+
 
 .search-btn {
   padding: 10px 10px;
@@ -182,10 +225,11 @@ header .slider:before {
 
 @media(max-width: 480px) {
   .search .tabs .tab-content form .level {
+    border-left: none;
     padding: 5px 10px;
     border-bottom: 1px solid #cbcbcb;
   }
-
+  
   .search-btn {
     border-radius: 0;
   }
@@ -511,6 +555,50 @@ div.seatCharts-seat.available:focus {
 } */
 
 
+/***************************** sing-in-out   ******************************/
+.sing-in-out .modal-content {
+  border: none;
+}
+.sing-in-out .modal-body {
+  position: relative;
+  padding: 0;
+}
+.sing-in-out .close {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  padding: 10px;
+  border: 1px solid #C2474E;
+  border-radius: 50%;
+  line-height: 12px;
+  z-index: 1000;
+}
+.sing-in-out .sing {
+  padding: 0;
+  margin-bottom: auto;
+} 
+.sing-in-out .sing .contect {
+  width: 100%;
+  margin: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.sing-in-out .sing .contect .ads {
+    box-shadow: none;
+}
+.sing-in-out .start-form .change {
+  border-radius: 4px !important;
+  padding-left: 7px;
+  width: 100%;
+  background: #D84F57;
+  color: #FFF;
+}
+@media(min-width: 768px){
+  .sing-in-out .start-form .change {
+    display: none;
+  }
+}
 /***************************** bus-details   ******************************/
 
 .bus-details .panel {
@@ -548,7 +636,7 @@ div.seatCharts-seat.available:focus {
 }
 
 .panel .feed-back{
-  margin-top: -12px;
+  margin-top: -3px;
   margin-bottom: 15px;
   font-size: 12px;
 }
@@ -566,7 +654,29 @@ div.seatCharts-seat.available:focus {
   justify-content: center;
   align-items: center;
 }
+.passenger {
+  box-shadow: 0 0 2px 0 hsla(0,0%,64%,.5);
+  padding: 1em 1em .5em;
+  background: #fff;
+  margin-bottom: .5em;
+  border-radius: 2px;
+}
+@media (max-width: 768px) {
+  .bus-details .panel-body {
+    padding: 10px;
+  }
+}
 
+.passenger label {
+  display: inline-block;
+  font-size: .875em;
+}
+
+.bus-details .sub_title {
+  color: #4a4a4a;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+}
 
 /***************************** pay   ******************************/
 .pay .tabs{
@@ -1146,7 +1256,7 @@ select.selectpicker {
   .navbar-nav {
     margin: 3px 0 !important;
   }
-  header {
+  .main-header {
     padding-top: 50px;
   }
 
@@ -1174,10 +1284,10 @@ select.selectpicker {
   .filter .card .cars-list .car-card .detail .price a {
     font-size: 13px;
     padding: 3px 8px;
-    transform: rotate(-45deg);
+    /* transform: rotate(-45deg); */
     position: absolute;
-    top: 15%;
-    left: 5px;
+    top: 11%;
+    left: 10px;
   }
   .show-cars .cars-list .car-card .detail ul {
     padding: 10px 0 0;

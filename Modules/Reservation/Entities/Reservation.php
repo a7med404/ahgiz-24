@@ -19,6 +19,13 @@ class Reservation extends Model
     public function passengers(){
         return $this->hasMany(Passenger::class);
     }
+    public function getPassengers(){
+        $x = 0;
+        foreach($this->passengers() as $passenger){
+            $x += $passenger->passengers->count();
+        }
+        return $x;
+    }
 
     public function trip(){
         return $this->belongsTo(Trip::class);

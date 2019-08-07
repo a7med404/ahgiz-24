@@ -18,28 +18,33 @@ Home
                             <section class="show-cars card">
                             <div class="text-center">
                                 <h3 class="text-capitalize l-r-border"> الحجوزات التي قمت بها</h3>
-                                <div class="cars-list scale">
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <div class="car-card text-center hover-box">
-                                            <div class="detail">
-                                                <h3 class="text-uppercase">شركة جاسكابو للنقل البري</h3><span class="price"><a>35,50 ج.س  </a></span><span class="kilo"><a> 5 minute a go <i class="fa fa-char"></i></a></span>
-                                                <p class="time"><svg class="olymp-month-calendar-icon icon"><use xlink:href="{{ asset('modules/master/website/svg-icons/sprites/icons.svg#olymp-month-calendar-icon') }}"></use></svg> تاريخ المغادرة <span class="h-light">(12/06/2019)</span> </p>
-                                                <ul class="list-unstyled">
-                                                <li>زمن انطلاق الباص:  <span> 12:50<span></li>
-                                                <li>مدة السير: <span> 12:50<span></li>
-                                                <li>زمن وصول الباص:  <span> 12:50<span></li>
-                                                <li>المسافة: <span> 560<span> /كم</li>
-                                                </ul>
-                                                <button class="btn btn-custom text-uppercase">تفاصيل الحجز <i class="fa fa-chevron-left"></i></button>
-                                                <button class="btn btn-custom text-uppercase pull-left btn-cancel" type="button" data-toggle="modal" data-target="#myModal">الغاء الحجز </button>
-                                            </div>
+                                @forelse($customerInfo->reservations as $reservation)
+                                    <div class="cars-list scale">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <div class="car-card text-center hover-box">
+                                                <div class="detail">
+                                                    <h3 class="text-uppercase">{{ $reservation->trip->company->name }}</h3>
+                                                    <span class="price"><a>{{ $reservation->passengers->count() * $reservation->trip->price }} ج.س  </a>
+                                                    </span><span class="kilo"><a> تاريخ الحجز {{ date('d-m H:i', strtotime($reservation->created_at)) }} </a></span>
+                                                    </span><span class="kilo m-r-20"><a> عدد المقاعد  [ {{ $reservation->passengers->count() }} ]</a></span>
+                                                    <p class="time"><svg class="olymp-month-calendar-icon icon"><use xlink:href="{{ asset('modules/master/website/svg-icons/sprites/icons.svg#olymp-month-calendar-icon') }}"></use></svg> تاريخ المغادرة <span class="h-light">({{ $reservation->trip->date }})</span> </p>
+                                                    <ul class="list-unstyled">
+                                                        <li>زمن انطلاق الباص:  <span> {{ $reservation->trip->departure_time }}<span></li>
+                                                        <li>مدة السير: <span> {{intval((strtotime(date($reservation->trip->arrive_time))-strtotime($reservation->trip->departure_time)))}}<span></li>
+                                                        <li>زمن وصول الباص:  <span> {{ $reservation->trip->arrive_time }}<span></li>
+                                                        <li>المسافة: <span> 560<span> /كم</li>
+                                                    </ul>
+                                                    <button class="btn btn-custom text-uppercase">تفاصيل الحجز <i class="fa fa-chevron-left"></i></button>
+                                                </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <h3 class="text-capitalize"> لم تقم باي حجز حتي الان</h3>
-                                <button class="btn btn-custom text-uppercase">حجز الان <i class="fa fa-chevron-left"></i></button>
+                                @empty
+                                    <h3 class="text-capitalize"> لم تقم باي حجز حتي الان</h3>
+                                    <a href="{{url('/')}}" class="btn btn-custom text-uppercase">حجز الان <i class="fa fa-chevron-left"></i></a>
+                                @endforelse
                             </div>
                             </section>
                         </div>

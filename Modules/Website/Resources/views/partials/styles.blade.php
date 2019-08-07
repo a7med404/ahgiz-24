@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('modules/master/website/css/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('modules/master/website/css/datepicker3.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('modules/master/website/css/main-olymu.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('modules/master/website/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('modules/master/website/css/framework.css') }}">
     <link rel="stylesheet" href="{{ asset('modules/master/website/css/framework-rtl.css') }}">
     <link rel="stylesheet" href="{{ asset('modules/master/website/css/main.css') }}">
