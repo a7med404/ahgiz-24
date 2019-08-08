@@ -14,7 +14,7 @@
           <div class="top-start">
             <ul class="list-unstyled">
               <li class="text-uppercase"> <i class="fa fa-home"></i>{{getSetting('main_address')}}</li>
-              <li class="text-uppercase"><i class="fa fa-phone"></i>{{getSetting('Mobile')}} </li>
+              <li class="text-uppercase"><i class="fa fa-phone"></i>{{getSetting('mobile')}} </li>
             </ul>
           </div>
         </div>
@@ -28,7 +28,7 @@
                     {{ Auth::guard('customer')->user()->first_name }}
                   </a>
                 </li>
-                <li class="text-uppercase"><i class="fa fa-phone"></i>{{getSetting('Mobile')}} </li>
+                <li class="text-uppercase"><i class="fa fa-phone"></i>{{getSetting('hot_line')}} </li>
               @else
                 <li class="text-uppercase">
                   <a href="{{ route('singin')  }}" title="">
@@ -57,7 +57,9 @@
       <div class="navbar-header">
         <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#3t_nav" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
           <svg class="olymp-menu-icon"><use xlink:href="{{ asset('modules/master/website/svg-icons/sprites/icons.svg#olymp-menu-icon') }}"></use></svg>
-        </button><a class="smoothscroll navbar-brand text-uppercase" href="/">ahgiz-24</a>
+        </button><a class="smoothscroll navbar-brand text-uppercase" href="/">
+          <img class="img-responsive a7giz-logo" src="{{ asset('modules/master/website/images/tmb_img.png') }}">
+        </a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="3t_nav"> 

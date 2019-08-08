@@ -1,6 +1,6 @@
 @extends('website::layouts.master')
 @section('title')
-Home
+حجوزاتي
 @stop
 
 @section('content')

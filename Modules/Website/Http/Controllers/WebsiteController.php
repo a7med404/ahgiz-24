@@ -14,6 +14,7 @@ use Session;
 use Auth;
 use Carbon\Traits\Date;
 use Modules\Customer\Entities\Customer;
+use Illuminate\Support\Facades\DB;
 
 class WebsiteController extends Controller
 {
@@ -29,6 +30,8 @@ class WebsiteController extends Controller
 
     public function searchPost(Request $request)
     {
+
+        $stations = Station::orderBy('id', 'desc')->get();
         if ($request->date === null) {
             $tripsCount = Trip::where('from_station_id', $request->from)
             ->where('to_station_id', $request->to)->where('status', 1)->where('date', '>=', Date('Y-m-d'))->orderBy('id', 'desc')->count();
@@ -42,7 +45,7 @@ class WebsiteController extends Controller
             ->where('date', $request->date)->where('status', 1)->where('date', '>=', Date('Y-m-d'))->orderBy('id', 'desc')->paginate(10);
         }
 
-        return view('website::booking-steps.result', ['trips' => $trips, 'request' => $request, 'tripsCount' => $tripsCount]);
+        return view('website::booking-steps.result', ['trips' => $trips, 'request' => $request, 'tripsCount' => $tripsCount, 'stations' => $stations]);
     }
 
     public function saveSeats(Request $request)
@@ -117,11 +120,23 @@ class WebsiteController extends Controller
 
     public function concelReservationPost(Request $request)
     {
-        dd( $request->all());
-        # this for test
-        $reservation = Reservation::findOrFail(82);
-        $blance = $reservation->seats->count() * $reservation->trip->price;
-        return view('website::booking-steps.done', ['reservation' => $reservation, 'blance' => $blance]);
+        if(request('t-c-concel-reservation')){
+            $reservation = Reservation::join('customers', function ($join) {
+                $join->on('reservations.customer_id', '=', 'customers.id');
+            })->where('number', $request->number)->select('customers.id as customer_id', 'customers.phone_number', 'reservations.*')->first();
+            if($reservation){
+                if($reservation->phone_number === $request->phone_number){
+                    $reservation->update(['conceled_at' => now()]);
+                    return redirect()->back()->withFlashMassage('هذا الحجز.');
+                }else{
+                    return redirect()->back()->withFlashMassage('رقم الهاتف الذي قمت بادخاله لم يتم استخدامه في  اجراء هذا الحجز.');
+                }
+            }else{
+                return redirect()->back()->withFlashMassage('رقم الحجز الحجز غير صحيح.');
+            }
+        }else{
+            return redirect()->back()->withFlashMassage('يبجب الموافقة علي شروط و قوانين الغاء الحجز.');
+        }
     }
     
 

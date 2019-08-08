@@ -427,7 +427,7 @@ textarea {
   .loading-container {
     width: 100%;
     height: 100%;
-    background: #fafbfd;
+    background-color:rgba(35, 35, 35, 0.72);
     position: fixed;
     z-index: 11112222111;
     top: 0;

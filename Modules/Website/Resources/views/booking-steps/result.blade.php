@@ -1,6 +1,6 @@
 @extends('website::layouts.master')
 @section('title')
-Home
+الرحلة المتوفرة
 @stop
 @section('header')
 	<style>
@@ -95,6 +95,7 @@ Home
                     </div>
                     </div>
                 </form>
+                
             </div>
             <div class="tab-pane fade" id="pills-new" role="tabpanel" aria-labelledby="pills-new-tab">new</div>
             <div class="tab-pane fade" id="pills-used" role="tabpanel" aria-labelledby="pills-used-tab">used</div>
@@ -119,9 +120,11 @@ Home
                                 @forelse ($trips as $trip)
                                     @php $reservedSeats = 0 @endphp 
                                     @foreach ($trip->reservations as $reservation)
-                                        @php $reservedSeats += $reservation->passengers->count() @endphp 
+                                        @if (!$reservation->conceled_at)
+                                            @php $reservedSeats += $reservation->passengers->count() @endphp 
+                                        @endif
                                     @endforeach
-                                    @if (($trip->seats_number - $reservedSeats) > 0)
+                                    @if (($trip->seats_number - $reservedSeats) > 0 )
                                         <div class="col-md-12 col-sm-12 col-xs-12 animated slideInRight fast">
                                             <div class="car-card text-center hover-box">
                                                 {{-- <div class="car-img"><img class="img-responsive img-fluid" src="../images/pexels-photo-981041.jpeg"></div> --}}

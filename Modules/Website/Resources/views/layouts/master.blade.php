@@ -12,7 +12,7 @@
     <link rel="icon" href="{{ asset('admin/images/visa.png') }}" type="image/ico" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} || @yield('title') </title>
+    <title>{{getSetting()}} || @yield('title') </title>
     @include('website::partials.styles')
     @yield('header')
   </head>

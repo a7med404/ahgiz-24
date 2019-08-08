@@ -1,6 +1,6 @@
 @extends('website::layouts.master')
 @section('title')
-Home
+الغاء حجز
 @stop
 
 @section('content')
@@ -25,23 +25,10 @@ Home
                                         <div class="contect">
                                             <div class="singup">
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="ads">
-                                                            <div class="layout">
-                                                                <p class="text-capitalize title">شروط و قوانين الغاء الحجز الخاص بشركات النقل.</p>
-                                                                <p class="text-capitalize">this is your best place to fine your dream car.</p>
-                                                                <p class="text-capitalize">this is your best place to fine your your dream car.</p>
-                                                                <p class="text-capitalize">this is your best place to fine your dream car.</p>
-                                                                <p class="text-capitalize">this is your best place to fine your fine your dream car.</p>
-                                                                <p class="text-capitalize">this is your best place to fine your dream car.</p>
-                                                                <p class="text-capitalize">this is your best place to fine your  fine your dream car.</p>
-                                                                <p class="text-capitalize">this is your best place to fine youplace to fine your dream car.</p>
-                                                                <p class="text-capitalize">this is your best place to fine your dream car.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <div class="col-md-6">
                                                         <div class="start-form text-capitalize">
+                                                            <img class="img-responsive concel-img center-img" src="{{ asset('modules/master/website/images/cancel.svg') }}">
                                                             <p>لطلب اي مساعدة يمكنك الاتصال علي الرقم <span class="h-light"> {{getSetting('hot_line')}}. </span></p>
                                                             {!! Form::open(['route' => ['concel-reservation-post'], 'method' => "POST", 'class' => 'form']) !!}
                                                                 <div class="row"> 
@@ -68,6 +55,21 @@ Home
                                                                 </div>
                                                                 <button class="btn btn-custom text-uppercase" type="submit">تاكيد الغاء الحجز <i class="fa fa-chevron-left"></i></button>
                                                             {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="ads">
+                                                            <div class="layout">
+                                                                <p class="text-capitalize title">شروط و قوانين الغاء الحجز الخاص بشركات النقل.</p>
+                                                                <p class="text-capitalize">this is your best place to fine your dream car.</p>
+                                                                <p class="text-capitalize">this is your best place to fine your your dream car.</p>
+                                                                <p class="text-capitalize">this is your best place to fine your dream car.</p>
+                                                                <p class="text-capitalize">this is your best place to fine your fine your dream car.</p>
+                                                                <p class="text-capitalize">this is your best place to fine your dream car.</p>
+                                                                <p class="text-capitalize">this is your best place to fine your  fine your dream car.</p>
+                                                                <p class="text-capitalize">this is your best place to fine youplace to fine your dream car.</p>
+                                                                <p class="text-capitalize">this is your best place to fine your dream car.</p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
