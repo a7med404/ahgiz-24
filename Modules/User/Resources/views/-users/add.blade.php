@@ -34,7 +34,7 @@
             For iCheck =====================================>
         */
         $("input").iCheck({
-            checkboxClass:"icheckbox_square-yellow",
+            checkboxClass:"icheckbox_square-red",
             radioClass:"iradio_square-yellow",
             increaseArea:"20%" // optional
         });
