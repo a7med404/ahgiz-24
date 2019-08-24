@@ -17,20 +17,37 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = Reservation::orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('conceled_at', null)->orderBy('id', 'desc')->get();
         return view('reservation::reservations.index', ['reservations' => $reservations]);
+    }
+
+    public function conceled()
+    {
+        $reservations = Reservation::where('conceled_at', '!=', null)->orderBy('id', 'desc')->get();
+        return view('reservation::reservations.conceled', ['reservations' => $reservations]);
     }
 
     public function pendding()
     {
-        $reservations = Reservation::where('status', 1)->orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('conceled_at', null)->where('status', 1)->orderBy('id', 'desc')->get();
         return view('reservation::reservations.pendding', ['reservations' => $reservations]);
     }
 
     public function done()
     {
-        $reservations = Reservation::where('status', 2)->orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('conceled_at', null)->where('status', 2)->orderBy('id', 'desc')->get();
         return view('reservation::reservations.done', ['reservations' => $reservations]);
+    }
+
+    
+    public function markAsPayed($id)
+    {
+        $reservationInfo = Reservation::findOrFail($id);
+        $reservation = $reservationInfo->fill(['status'   => 2])->save();
+        if($reservation){
+            Session::flash('flash_massage_type', 2);
+            return redirect()->back()->withFlashMassage('Reservation Updated Successfully');
+        }
     }
 
     /**

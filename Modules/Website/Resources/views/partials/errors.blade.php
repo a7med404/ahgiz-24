@@ -1,7 +1,7 @@
 @if($errors->any())
     <script>
         toastr.options = {
-            "hideDuration": "5000",
+            "hideDuration": "7000",
         }
       </script>
     @foreach($errors->all() as $error)

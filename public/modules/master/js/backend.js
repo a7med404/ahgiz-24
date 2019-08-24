@@ -3,8 +3,27 @@ $(function (){
 
 
   /*Confirmtion Massege In Press Button Delete*/
-	$('.confirm').click(function(){
+	$('.delete-confirm').click(function(){
 		return confirm('Are You Sure Do You Want Delete This ?');
+		// return confirm(
+		// swal({
+		// 	title: "Are you sure?",
+		// 	text: "Once deleted, you will not be able to recover this imaginary file!",
+		// 	icon: "warning",
+		// 	buttons: true,
+		// 	dangerMode: true,
+		// })
+		// .then((willDelete) => {
+		// 	if (willDelete) {
+		// 		swal("Poof! Your imaginary file has been deleted!", {
+		// 			icon: "success",
+		// 		});
+		// 	} else {
+		// 		swal("Your imaginary file is safe!");
+		// 	}
+		// })
+		// )
+		
 	});
 
 

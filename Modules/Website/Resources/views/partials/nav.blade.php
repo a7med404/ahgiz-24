@@ -68,23 +68,23 @@
           <li><a class="smoothscroll transition hsg-nav__link-wrapper"  href="{{url('/')}}#services">كيف يعمل</a></li>
           <li><a class="smoothscroll transition hsg-nav__link-wrapper"  href="{{url('/')}}#testimonials">اراء العملاء</a></li>
           <li><a class="smoothscroll transition hsg-nav__link-wrapper"  href="{{url('/')}}#testimonials">وجهات السفر</a></li>
-          <li class="nav-item dropdown" role="presentation">
+          {{-- <li class="nav-item dropdown" role="presentation">
             <a class="dropdown-toggle smoothscroll transition" href="javascript:;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pages <i class="caret"></i></a>
-            <ul class="dropdown-menu speesh" id="menu1" role="menu">
+            <ul class="dropdown-menu speesh" id="menu1" role="menu"> --}}
               {{-- <li><a class="dropdown-item smoothscroll transition" href="{{ route('search-result') }}">search-result</a></li>
               <li><a class="dropdown-item smoothscroll transition" href="{{ route('booking') }}">booking</a></li>
               <li><a class="dropdown-item smoothscroll transition" href="{{ route('singup') }}">singup</a></li>
               {{-- <li><a class="dropdown-item smoothscroll transition" href="{{ route('bus-details') }}">bus-details</a></li> --}}
-              {{-- <li><a class="dropdown-item smoothscroll transition" href="{{ route('select-seat') }}">select-seat</a></li> --}} --}}
+              {{-- <li><a class="dropdown-item smoothscroll transition" href="{{ route('select-seat') }}">select-seat</a></li> --}}
               {{-- <li><a class="dropdown-item smoothscroll transition" href="{{ route('pay') }}">pay</a></li> --}}
-              <li><a class="smoothscroll transition" href="">Last added cars</a></li>
+              {{-- <li><a class="smoothscroll transition" href="">Last added cars</a></li>
               <li>
                 <a>
                   <button class="btn btn-custom text-uppercase">all brands <i class="fa fa-home"></i></button>
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
           <li class="nav-item dropdown" role="presentation"><a class="dropdown-toggle smoothscroll transition" href="javascript:;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ Auth::guard('customer')->user() ? Auth::guard('customer')->user()->first_name : 'الحساب' }} <i class="caret"></i></a>
             <ul class="dropdown-menu speesh" id="menu1" role="menu">
                 @auth('customer')

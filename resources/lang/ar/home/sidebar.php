@@ -97,6 +97,9 @@ return [
     
     'reservations' => 'الحجوزات',
     'all_reservations' => 'كل الحجوزات',
+    'pendding-reservations' => 'الحجوزات المؤقتة',
+    'done-reservations' => 'الحجوزات المكتملة',
+    'conceled' => 'تم الغائها',
     'add_reservation' => 'اضافة حجز جديد',
     'edit_reservation' => 'تعديل بيانات الحجز',
     'reservation_number' => 'حجز رقم',

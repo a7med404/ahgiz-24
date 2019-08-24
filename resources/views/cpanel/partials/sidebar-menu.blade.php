@@ -51,18 +51,9 @@
               </a>
               <ul class="treeview-menu" style="display: none;">
                 <li><a href="{{ route('reservations.index') }}"><i class="fa fa-circle-o text-aqua"></i> {{ __('home/sidebar.all_reservations') }}</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.reservations') }} 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('reservations.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_reservations') }}</a></li>
-                    <li><a href="{{ route('reservations.pendding') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.pendding') }}</a></li>
-                    <li><a href="{{ route('reservations.done') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.done') }}</a></li>
-                  </ul>
-                </li>
+                <li><a href="{{ route('reservations.pendding') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.pendding-reservations') }}</a></li>
+                <li><a href="{{ route('reservations.done') }}"><i class="fa fa-circle-o text-success"></i> {{ __('home/sidebar.done-reservations') }}</a></li>
+                <li><a href="{{ route('reservations.conceled') }}"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.conceled') }}</a></li>
               </ul>
             </li>
             <li class="treeview">

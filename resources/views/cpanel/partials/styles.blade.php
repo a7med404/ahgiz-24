@@ -53,6 +53,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
 
+    <link rel="stylesheet" href="{{ asset('modules/master/css/sweetalert.css') }}">
+
       <link href="{{ asset('modules/master/css/framwork.css') }}" rel="stylesheet">
       <link href="{{ asset('modules/master/css/AdminLTE.min.css') }}" rel="stylesheet">
       <link href="{{ asset('modules/master/css/AdminLTE-RTL.css') }}" rel="stylesheet">

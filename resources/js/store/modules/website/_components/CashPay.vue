@@ -56,7 +56,7 @@
                               <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="form-group">
                                   <label class="control-label">المدينة</label>
-                                  <select class="select2 form-control " v-model="address.city" @change="getLocals($event)">
+                                  <select class=" form-control " v-model="address.city" @change="getLocals($event)">
                                     <option 
                                       v-for="(value, index) in cities" 
                                       :key="index" :value="index" 
@@ -69,7 +69,7 @@
                               <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="form-group">
                                   <label class="control-label">المحلية</label>
-                                  <select class="select2 form-control" v-model="address.local" @change="getDelegate($event)" :disabled="disableLocal">
+                                  <select class=" form-control" v-model="address.local" @change="getDelegate($event)" :disabled="disableLocal">
                                     <option 
                                       v-for="(value, index) in locals" 
                                       :key="index" :value="index" 
@@ -84,11 +84,14 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <p class="name m-t-25">رقم المندوب</p>
-                        <p class="value"
-                            v-for="number in numbers" 
-                            :key="number.phone_number"
-                            v-text="number.phone_number">
-                        </p>
+                        <div  v-if="numbers.length > 1">
+                          <p class="value"
+                              v-for="number in numbers" 
+                              :key="number.phone_number"
+                              v-text="number.phone_number">
+                          </p>
+                        </div>
+                        <p class="value" v-else>اتصل علي الخط الساخن {{ hot_line }} </p>
                         <p class="city"> في حالة الدفع النقدي يمكنك الاتصال برقم المندوب من اجل تاكيد عملية الحجز.</p>
                         <div class="social-register">
                             <button class="btn btn-custom text-uppercase"> تاكيد عملية الحجز </button>
@@ -116,6 +119,8 @@
           return {
             locals : [],     
             numbers: [],
+
+            hot_line: '',
 
             cities      : globalStore.cities,
             locals      : globalStore.locals,
@@ -163,11 +168,10 @@
           getDelegate: function(e){
             var self = this;
             self.local_id = e.target.options[e.target.options.selectedIndex].value;
-            console.log(self.city_id, self.local_id);
             axios.get(`api/cpanel/users/city/${self.city_id}/local/${self.local_id}`)
             .then(function(response){
                 self.numbers = response.data.data;
-              console.log(self.numbers);
+                self.hot_line = response.data.hot_line;
             })
             .catch(function(error){
               console.log(error);

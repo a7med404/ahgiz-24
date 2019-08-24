@@ -1,6 +1,6 @@
 @extends('cpanel.layouts.master')
 @section('title')
-{{ __('home/sidebar.all_reservations') }}
+{{ __('home/sidebar.done-reservations') }}
 @endsection
 @section('header')
 <!-- icheck -->
@@ -11,10 +11,10 @@
 @endsection
 @section('content')
 <section class="content-header">
-    <h1>{{ __('home/sidebar.all_reservations') }} <small>it all starts here</small></h1>
+    <h1>{{ __('home/sidebar.done-reservations') }} <small>it all starts here</small></h1>
     <ol class="breadcrumb">
         <li><a href="{{ url('\cpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
-        <li class="active"> {{ __('home/sidebar.all_reservations') }} </li>
+        <li class="active"> {{ __('home/sidebar.done-reservations') }} </li>
     </ol>
 </section>
 
@@ -43,11 +43,7 @@
                             <th>{{ __('home/labels.cusromer') }}</th>
                             <th>{{ __('home/labels.date') }}</th>
                             <th>{{ __('home/labels.trip_number') }}</th>
-                            <th>{{ __('home/labels.departure_time') }}</th>
-                            <th>{{ __('home/labels.company') }}</th>
                             <th>{{ __('home/labels.seats_number') }}</th>
-                            <th>{{ __('home/labels.status') }}</th>
-                            <th>{{ __('home/labels.user') }}</th>
                             <th>{{ __('home/labels.options') }}</th>
                         </tr>
                     </thead>
@@ -58,11 +54,8 @@
                             <td ><span v-text="{{$reservation->customer->phone_number}}"  data-toggle="tooltip" data-original-title="{{$reservation->customer->first_name .' '. $reservation->customer->last_name}}"></span></td>
                             <td>{{ $reservation->trip->date }}</td>
                             <td ><span v-text="{{$reservation->trip->number}}"  data-toggle="tooltip" data-original-title="{{$reservation->trip->fromStation->name .' - '. $reservation->trip->toStation->name}}"></span></td>
-                            <td>{{ $reservation->trip->departure_time }}</td>
-                            <td>{{ $reservation->trip->company->name }}</td>
+                            
                             <td>{{ $reservation->seats->count() }}</td>
-                            <td>{{ reservationStatus()[$reservation->status] }}</td>
-                            <td>{{ $reservation->user->name }}</td>
                             <td>
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -73,7 +66,7 @@
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('reservations.edit',  ['id' => $reservation->id]) }}">تعديل</a></li>
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{ __('home/sidebar.contacts') }}</a></li>
                                         <li role="presentation" class="divider"></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="confirm" href="{{ route('reservations.delete',['id' => $reservation->id]) }}">حذف</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="delete-confirm" href="{{ route('reservations.delete',['id' => $reservation->id]) }}">حذف</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -106,28 +99,6 @@
 {!! Html::script(asset('modules/master/plugins/datatables/jquery.dataTables.min.js')) !!}
 {!! Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')) !!}
 <script>
-    $('#table_id').DataTable({
-        // processing: true,
-        // serverSide: true,
-        // "columnDefs":[
-        //   {
-        //     "targets":[1, 3, 7],
-        //     "orderable":false,
-        //   },
-        // ],
-        "stateSave": false,
-        "responsive": true,
-        "order": [
-            [0, 'desc']
-        ],
-        "pagingType": "full_numbers",
-        aLengthMenu: [
-            [10, 25, 50, 100, 200, -1],
-            [10, 25, 50, 100, 200, "All"]
-        ],
-        iDisplayLength: 25,
-        fixedHeader: true,
-    });
     $(document).ready(function () {
         /*
             For iCheck =====================================>

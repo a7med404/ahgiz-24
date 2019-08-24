@@ -59,10 +59,11 @@ class WebsiteController extends Controller
 
     public function savePassenger(Request $request)
     {
+        # TODO:: handel dublicte reservtion on refresh page
         if($request->email && Auth::guard('customer')->user()->email == null){
             Customer::findOrFail(Auth::guard('customer')->user()->id)->update(['email' => $request->email]);
         }
-        $number = Time().rand(0, 100000);
+        $number = Time().rand(0, 100);
         $seats = $request->seats;
         $data = [
             'customer_id'       => Auth::guard('customer')->user()->id,
@@ -127,7 +128,8 @@ class WebsiteController extends Controller
             if($reservation){
                 if($reservation->phone_number === $request->phone_number){
                     $reservation->update(['conceled_at' => now()]);
-                    return redirect()->back()->withFlashMassage('هذا الحجز.');
+                    Session::flash('flash_massage_type', 1);
+                    return redirect()->back()->withFlashMassage('تم الغاء الحجز بنجاح.');
                 }else{
                     return redirect()->back()->withFlashMassage('رقم الهاتف الذي قمت بادخاله لم يتم استخدامه في  اجراء هذا الحجز.');
                 }

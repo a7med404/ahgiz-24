@@ -72,7 +72,7 @@
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('trips.edit',  ['id' => $trip->id]) }}">تعديل</a></li>
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{ __('home/sidebar.contacts') }}</a></li>
                                         <li role="presentation" class="divider"></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="confirm" href="{{ route('trips.delete',['id' => $trip->id]) }}">حذف</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="delete-confirm" href="{{ route('trips.delete',['id' => $trip->id]) }}">حذف</a></li>
                                     </ul>
                                 </div>
                             </td>

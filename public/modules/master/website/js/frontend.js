@@ -126,7 +126,7 @@ hasdata.on("focus", function() {
 
 
   /*Confirmtion Massege In Press Button Delete*/
-	$('.confirm').click(function(){
+	$('.delete-confirm').click(function(){
 		return confirm('Are You Sure Do You Want Delete This ?');
 	});
 

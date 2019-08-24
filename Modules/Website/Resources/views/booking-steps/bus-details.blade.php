@@ -102,7 +102,7 @@ Home
                                                     <div class="col-md-10"> 
                                                         <div class="for-middel form-group">
                                                             {!! Form::label('name', 'اسم المسافر رقم 1', ['class' => 'control-label']) !!}
-                                                            {!! Form::text('1-name', Auth::guard('customer') ? Auth::guard('customer')->user()->first_name.' '.Auth::guard('customer')->user()->first_name : null , ['id' => 'name', 'class' => "{{ $errors->has('name') ? ' is-invalid' : '' }}", 'value' => "{{ old('name') }}", 'required', 'autofocus']) !!}
+                                                            {!! Form::text('1-name', Auth::guard('customer') ? Auth::guard('customer')->user()->first_name.' '.Auth::guard('customer')->user()->last_name : null , ['id' => 'name', 'class' => "{{ $errors->has('name') ? ' is-invalid' : '' }}", 'value' => "{{ old('name') }}", 'required', 'autofocus']) !!}
                                                             <span class="border-middel"></span>
                                                         </div>
                                                     </div>

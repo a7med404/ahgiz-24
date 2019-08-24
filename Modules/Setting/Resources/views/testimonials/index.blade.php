@@ -59,7 +59,7 @@
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('testimonials.edit',  ['id' => $testimonial->id]) }}">تعديل</a></li>
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">طباعة</a></li>
                                         <li role="presentation" class="divider"></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="confirm" href="{{ route('testimonials.delete',['id' => $testimonial->id]) }}">حذف</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="delete-confirm" href="{{ route('testimonials.delete',['id' => $testimonial->id]) }}">حذف</a></li>
                                     </ul>
                                 </div>
                             </td>

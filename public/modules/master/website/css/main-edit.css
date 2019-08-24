@@ -1336,3 +1336,11 @@ select.selectpicker {
     margin: auto;
   }
 }
+
+
+/************************** modal **************************/
+.sa-confirm-button-container .btn-primary {
+  color: #fff;
+  background-color: #d84f57;
+  border: none;
+}

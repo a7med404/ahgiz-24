@@ -97,7 +97,7 @@ function getCity(){
         '7' => 'Coupe',
         '8' => 'Wagon',
     ];
-}
+} 
 
 
 function getLocal(){

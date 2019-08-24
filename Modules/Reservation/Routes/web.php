@@ -22,10 +22,13 @@ Route::prefix('cpanel')->group(function() {
     Route::group(['middleware' => ['web', 'auth']], function(){
         
         Route::resource('reservations','ReservationController');
+        Route::get('reservations-conceled', 'ReservationController@conceled')->name('reservations.conceled');
         Route::get('reservations/delete/{id}', 'ReservationController@destroy')->name('reservations.delete');
-        Route::get('reservations/pendding', 'ReservationController@pendding')->name('reservations.pendding');
-        Route::get('reservations/done', 'ReservationController@done')->name('reservations.done');
-
+        Route::get('reservations-pendding', 'ReservationController@pendding')->name('reservations.pendding');
+        Route::get('reservations-done', 'ReservationController@done')->name('reservations.done');
+        
+        Route::get('mark-as-payed/{id}', 'ReservationController@markAsPayed')->name('reservations.mark-as-payed');
+        
     });
 
 

@@ -178,6 +178,6 @@ class ApiUserController extends Controller
             ->join('addresses', 'users.id', '=', 'addresses.addressable_id')
             ->where('addresses.city', $city_id)->where('addresses.local', $local_id)
             ->where('addressable_type', 'Modules\User\Entities\User')->take(2)->get('phone_number');
-        return response()->json(['message' => 'تم الحفظ بنجاح', 'data' => $users], 201);
+        return response()->json(['message' => 'تم الحفظ بنجاح', 'data' => $users, 'hot_line' => getSetting('hot_line')], 201);
     }
 }

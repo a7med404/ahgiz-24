@@ -29,14 +29,21 @@
             <div class="box-body box-profile">
               {{-- <img class="profile-user-img img-responsive img-circle" src="{{ getLogo($tripInfo->logo)  }}" alt="User profile picture"> --}}
 
+              @php $reservedSeats = 0 @endphp 
+              @foreach ($tripInfo->reservations as $reservation)
+                  @if (!$reservation->conceled_at)
+                      @php $reservedSeats += $reservation->passengers->count() @endphp 
+                  @endif
+              @endforeach
+
               <h3 class="text-center">{{ $tripInfo->price."ج.س" }}</h3>
               <p class="text-muted text-center">{{ tripStatus()[$tripInfo->status] }}</p>
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b> عدد التذاكر المتاحة</b> <a class="pull-left"><span class="label label-success">{{ $tripInfo->seats_number - $tripInfo->reservations->count() }}</span></a>
+                  <b> عدد التذاكر المتاحة</b> <a class="pull-left"><span class="label label-success">{{ $tripInfo->seats_number - $reservedSeats }}</span></a>
                 </li>
                 <li class="list-group-item">
-                  <b> عدد التذاكر المحجوزة</b> <a class="pull-left"><span class="label label-danger">{{ $tripInfo->reservations->count() }}</span></a>
+                  <b> عدد التذاكر المحجوزة</b> <a class="pull-left"><span class="label label-danger">{{ $reservedSeats }}</span></a>
                 </li>
                 <li class="list-group-item">
                   <b> التاريخ</b> <a class="pull-left">{{ $tripInfo->date }}</a>
@@ -378,7 +385,7 @@
                         {{ $address->number }} 
                       </div>
                       <div class="box-footer">
-                        <a type="button" class="btn btn-box-tool pull-left confirm" href="{{ route('addresses.delete',  ['id' => $address->id]) }}"><i class="fa fa-times"></i></a>
+                        <a type="button" class="btn btn-box-tool pull-left delete-confirm" href="{{ route('addresses.delete',  ['id' => $address->id]) }}"><i class="fa fa-times"></i></a>
                         <a type="button" class="btn btn-box-tool pull-left" href="{{ route('addresses.edit',  ['id' => $address->id]) }}"><i class="fa fa-pencil"></i></a>
                       </div>
                     </div>
@@ -407,7 +414,7 @@
                         {{ $contact->note }} 
                       </div>
                       <div class="box-footer">
-                        <a type="button" class="btn btn-box-tool pull-left confirm" href="{{ route('contacts.delete',  ['id' => $contact->id]) }}"><i class="fa fa-times"></i></a>
+                        <a type="button" class="btn btn-box-tool pull-left delete-confirm" href="{{ route('contacts.delete',  ['id' => $contact->id]) }}"><i class="fa fa-times"></i></a>
                         <a type="button" class="btn btn-box-tool pull-left" href="{{ route('contacts.edit',  ['id' => $contact->id]) }}"><i class="fa fa-pencil"></i></a>
                       </div>
                     </div>

@@ -42,7 +42,6 @@ class SiteCustomerController extends Controller
         $data = [
             'first_name'    => $request->first_name,
             'last_name'     => $request->last_name,
-            'email'         => $request->email,
             'phone_number'  => $request->phone_number,
             'password'      => Hash::make('password'),
         ];
@@ -94,6 +93,7 @@ class SiteCustomerController extends Controller
      */
     public function update(CreateCustomerRequest $request, $id)
     {
+        # TODO:: set email and birthday
         $customerInfo = Customer::findOrFail($id);
         $data = [
             'first_name' => $request->first_name,
@@ -135,7 +135,19 @@ class SiteCustomerController extends Controller
 
     public function singin(Request $request)
     {
+        // Validation::class($request, [
+        //     'phone_number' => 'required', 'password' => 'required',
+        // ]);
+
+        # TODO::login don't work 
         $rememberme = request()->has('remember_me')? true : false;
+        // dd(Auth::guard('customer')->attempt($request->only('phone_number','password'),$request->filled('remember_me')));
+        //     //Authentication passed...
+        //     return redirect()
+        //         ->intended(route('admin.home'))
+        //         ->with('status','You are Logged in as Admin!');
+        // }
+
         if(Auth::guard('customer')->attempt(['phone_number' => request('phone_number'), 'password' => request('password')], $rememberme)){
           Session::flash('flash_massage_type');
           if(URL::previous() == route('singin')){

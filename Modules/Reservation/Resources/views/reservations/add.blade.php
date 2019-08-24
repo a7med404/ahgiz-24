@@ -18,48 +18,4 @@
 </div>
 <!-- ... end Popup  -->
 
-@section('footer')
-<script>
-
-    $('#date').datepicker({
-        autoclose: true,
-        language: 'ar',
-		rtl: true,
-		startDate: 'toDay',
-		format: 'yyyy-mm-dd'
-    });
-
-    //Timepicker
-    $("#departure_time").timepicker({
-        showInputs: false,
-        language: 'ar',
-    });
-    $("#arrive_time").timepicker({
-        showInputs: false,
-        language: 'ar',
-    });
-    // var defaults = $.fn.datepicker.defaults = {
-	// 	autoclose: false,
-	// 	beforeShowDay: $.noop,
-	// 	calendarWeeks: false,
-	// 	clearBtn: false,
-	// 	daysOfWeekDisabled: [],
-	// 	endDate: Infinity,
-	// 	forceParse: true,
-	// 	format: 'mm/dd/yyyy',
-	// 	keyboardNavigation: true,
-	// 	language: 'en',
-	// 	minViewMode: 0,
-	// 	multidate: false,
-	// 	multidateSeparator: ',',
-	// 	orientation: "auto",
-	// 	rtl: false,
-	// 	startDate: -Infinity,
-	// 	startView: 0,
-	// 	todayBtn: false,
-	// 	todayHighlight: false,
-	// 	weekStart: 0
-	// };
-</script>
-@endsection
 

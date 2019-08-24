@@ -2685,6 +2685,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2697,6 +2700,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return _ref = {
       locals: [],
       numbers: [],
+      hot_line: '',
       cities: _helper_general_js__WEBPACK_IMPORTED_MODULE_2__["globalStore"].cities
     }, _defineProperty(_ref, "locals", _helper_general_js__WEBPACK_IMPORTED_MODULE_2__["globalStore"].locals), _defineProperty(_ref, "disableLocal", true), _defineProperty(_ref, "city_id", ''), _defineProperty(_ref, "local_id", ''), _defineProperty(_ref, "address", {
       city: '',
@@ -2724,10 +2728,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getDelegate: function getDelegate(e) {
       var self = this;
       self.local_id = e.target.options[e.target.options.selectedIndex].value;
-      console.log(self.city_id, self.local_id);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/cpanel/users/city/".concat(self.city_id, "/local/").concat(self.local_id)).then(function (response) {
         self.numbers = response.data.data;
-        console.log(self.numbers);
+        self.hot_line = response.data.hot_line;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -5998,7 +6001,7 @@ var render = function() {
                                   expression: "address.city"
                                 }
                               ],
-                              staticClass: "form-control ",
+                              staticClass: " form-control ",
                               on: {
                                 change: [
                                   function($event) {
@@ -6063,7 +6066,7 @@ var render = function() {
                                   expression: "address.local"
                                 }
                               ],
-                              staticClass: "form-control",
+                              staticClass: " form-control",
                               attrs: { disabled: _vm.disableLocal },
                               on: {
                                 change: [
@@ -6111,30 +6114,33 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-6 col-sm-6 col-xs-12" },
-              [
-                _c("p", { staticClass: "name m-t-25" }, [
-                  _vm._v("رقم المندوب")
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.numbers, function(number) {
-                  return _c("p", {
-                    key: number.phone_number,
-                    staticClass: "value",
-                    domProps: { textContent: _vm._s(number.phone_number) }
-                  })
-                }),
-                _vm._v(" "),
-                _c("p", { staticClass: "city" }, [
-                  _vm._v("يمكنك الاتصال برقم المندوب من تاكيد عملية الحجز.")
-                ]),
-                _vm._v(" "),
-                _vm._m(1)
-              ],
-              2
-            )
+            _c("div", { staticClass: "col-md-6 col-sm-6 col-xs-12" }, [
+              _c("p", { staticClass: "name m-t-25" }, [_vm._v("رقم المندوب")]),
+              _vm._v(" "),
+              _vm.numbers.length > 1
+                ? _c(
+                    "div",
+                    _vm._l(_vm.numbers, function(number) {
+                      return _c("p", {
+                        key: number.phone_number,
+                        staticClass: "value",
+                        domProps: { textContent: _vm._s(number.phone_number) }
+                      })
+                    }),
+                    0
+                  )
+                : _c("p", { staticClass: "value" }, [
+                    _vm._v("اتصل علي الخط الساخن " + _vm._s(_vm.hot_line) + " ")
+                  ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "city" }, [
+                _vm._v(
+                  " في حالة الدفع النقدي يمكنك الاتصال برقم المندوب من اجل تاكيد عملية الحجز."
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
           ])
         ])
       ])
@@ -31215,7 +31221,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "globalStore", function() { return globalStore; });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-var _certificateTypes, _experience_years;
+var _certificateTypes, _experience_years, _4, _5;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -31391,21 +31397,188 @@ var globalStore = {
     '2023/2024': '2023/2024',
     '2024/2025': '2024/2025'
   },
+  //   cities: { 
+  //     1 : 'الخرطوم',
+  //     2 : 'خرطوم بحري',
+  //     3 : 'أم درمان',
+  //     4 : 'بورتسودان',
+  //     5 : 'نيالا',
+  //     6 : 'الأبيض',
+  //     7 : 'كسلا',
+  //     8 : 'كوستي',
+  //     9 : 'ود مدنى',
+  //     10 : 'الفاشر',
+  //     11 : 'القضارف',
+  //     12 : 'عطبرة',
+  //     13 : 'الدامر',
+  //     14 : 'سنار',
+  //     15 : 'دنقلا',
+  //     16 : 'سواكن',
+  //     17 : 'وادي حلفا',
+  //     18 : 'حلفا الجديدة',
+  //     19 : 'أم روابة',
+  //     20 : 'شندي',
+  //     21 : 'ربك',
+  //     22 : 'الجنينة',
+  //     23 : 'كادقلى',
+  //     24 : 'الدويم',
+  //     25 : 'سنجة',
+  //     26 : 'الضعين',
+  //     27 : 'الدمازين',
+  //   },
   cities: {
-    1: 'الفاشر',
-    2: 'القضارف',
-    3: 'عطبرة',
-    4: 'بابنوسة'
+    1: 'ولاية الخرطوم',
+    2: 'ولاية البحر الأحمر',
+    3: 'الولاية الشمالية',
+    4: 'ولاية نهر النيل',
+    5: 'ولاية النيل الأبيض',
+    6: 'ولاية الجزيرة ',
+    7: 'ولاية شمال كردفان',
+    8: 'ولاية جنوب كردفان',
+    9: 'ولاية شمال دارفور',
+    10: 'ولاية غرب دارفور',
+    11: 'ولاية جنوب دارفور',
+    12: 'ولاية سنار',
+    13: 'ولاية كسلا ',
+    14: 'ولاية القضارف ',
+    15: 'ولاية النيل الأزرق'
   },
   locals: {
-    1: {
-      1: 'الفاشر',
-      2: 'الطينة',
-      3: 'كرنوي'
+    1: _defineProperty({
+      1: 'الخرطوم',
+      2: 'الخرطوم بحري',
+      3: ' أمدرمان',
+      4: 'شرق النيل',
+      5: ' جبل أولياء',
+      6: ' أم بدة'
+    }, "6", 'كرري'),
+    2: {
+      1: 'بورتسودان',
+      2: 'حلايب',
+      3: 'سنكات',
+      4: 'طوكر',
+      5: 'سواكن',
+      6: 'عقيق',
+      7: 'القنب والاوليب',
+      8: 'هيا'
     },
-    2: 'القضارف',
-    3: 'عطبرة',
-    4: 'بابنوسة'
+    3: {
+      1: 'الدبة',
+      2: 'دنقلا- مروي',
+      3: 'وادي حلفا',
+      4: 'دلقو',
+      5: 'البرقيق',
+      6: 'القولد'
+    },
+    4: _defineProperty({
+      1: 'أبو حمد',
+      2: 'الدامر- المتمة'
+    }, "2", 'بربر- شندي -عطبرة'),
+    5: {
+      1: 'الجبلين',
+      2: 'الدويم',
+      3: 'القطينة',
+      4: 'كوستي',
+      5: 'السلام',
+      6: 'تندلتى',
+      7: 'ام رمته',
+      8: 'ربك'
+    },
+    6: _defineProperty({
+      1: 'الحصاحيصا',
+      2: 'الكاملين',
+      3: 'المناقل',
+      4: 'أم القرى',
+      5: 'جنوب الجزيرة',
+      6: 'شرق الجزيرة'
+    }, "6", 'ود مدني الكبرى'),
+    7: {
+      1: 'أم روابة',
+      2: 'بارا- جبرة الشيخ',
+      3: 'سودري',
+      4: 'شيكان',
+      5: 'النهود',
+      6: 'غبيش',
+      7: 'ابوزبد',
+      8: 'ودبندة'
+    },
+    8: {
+      1: 'أبو جبيهة',
+      2: 'الدلنج',
+      3: 'الرشاد',
+      4: 'تلودي',
+      5: 'كادوقلي',
+      6: 'السلام',
+      7: 'ابيي',
+      8: 'لقاوة',
+      9: 'كليك',
+      10: 'ابو جبيهه'
+    },
+    9: (_4 = {
+      1: 'الفاشر',
+      2: 'أم كدادة',
+      3: 'كبكابية',
+      4: 'كتم',
+      5: 'مليط',
+      6: 'الواحة',
+      7: 'الطينة',
+      8: 'الطويشة اللعيت',
+      9: 'دار السلام',
+      10: 'كلمندو',
+      11: 'الكومة',
+      12: 'سرف عمرة'
+    }, _defineProperty(_4, "2", 'السريف'), _defineProperty(_4, "2", 'المالحة'), _4),
+    10: (_5 = {
+      1: 'الجنينة',
+      2: 'جبل مرة',
+      3: 'زالنجي',
+      4: 'كليس',
+      5: 'مكجر -هبيلا -وادي صالح',
+      6: 'ركورو',
+      7: 'ازوم',
+      8: 'الجنينة',
+      9: 'بيضة',
+      10: 'سربا',
+      11: 'نيرتيا'
+    }, _defineProperty(_5, "2", 'كرينك'), _defineProperty(_5, 12, 'ام دخن'), _5),
+    11: {
+      1: 'الضعين',
+      2: 'برام',
+      3: 'تلس',
+      4: 'رهيد البردي',
+      5: 'شعيرية',
+      6: 'عد الفرسان- عديلة',
+      7: 'كاس',
+      8: 'نيالا'
+    },
+    12: {
+      1: 'الدندر- سنار',
+      2: 'شرق سنار',
+      3: 'سنجة',
+      4: 'السوكي'
+    },
+    13: {
+      1: 'القاش',
+      2: 'ستيت',
+      3: 'كسلا',
+      4: 'نهر عطبرة -همشكوريب'
+    },
+    14: {
+      1: 'الرهد',
+      2: 'الفاو',
+      3: 'الفشقة',
+      4: 'القضارف',
+      5: 'القلابات الغربية',
+      6: 'القلابات الشرقية',
+      7: 'البطانة'
+    },
+    15: {
+      1: 'الدمازين',
+      2: 'الروصيرص',
+      3: 'الكرمك',
+      4: 'باو',
+      5: 'قيسان'
+    }
   }
 };
 

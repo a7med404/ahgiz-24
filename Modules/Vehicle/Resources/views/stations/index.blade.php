@@ -57,7 +57,7 @@
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('stations.edit',  ['id' => $station->id]) }}">تعديل</a></li>
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">طباعة</a></li>
                                         <li role="presentation" class="divider"></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="confirm" href="{{ route('stations.delete',['id' => $station->id]) }}">حذف</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="delete-confirm" href="{{ route('stations.delete',['id' => $station->id]) }}">حذف</a></li>
                                     </ul>
                                 </div>
                             </td>

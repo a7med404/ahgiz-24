@@ -75,12 +75,39 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="{{ asset('modules/master/js/backend.js') }}"></script>
 
 
+<script src="{{ asset('modules/master/js/sweetalert.min.js') }}"></script>
+
 {!! Html::script(asset('modules/master/plugins/datatables/jquery.dataTables.min.js')) !!}
 {!! Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')) !!}
 <script>
 
  
-    
+    $('#table_id').DataTable({
+        // processing: true,
+        // serverSide: true,
+        // "columnDefs":[
+        //   {
+        //     "targets":[1, 3, 7],
+        //     "orderable":false,
+        //   },
+        // ],
+        "columnDefs": [{
+            "defaultContent": "-",
+            "targets": "_all"
+        }],
+        "stateSave": false,
+        "responsive": true,
+        "order": [
+            [0, 'desc']
+        ],
+        "pagingType": "full_numbers",
+        aLengthMenu: [
+            [10, 25, 50, 100, 200, -1],
+            [10, 25, 50, 100, 200, "All"]
+        ],
+        iDisplayLength: 25,
+        fixedHeader: true,
+    });
 
     $(function () {
       $('#start_data').datepicker({

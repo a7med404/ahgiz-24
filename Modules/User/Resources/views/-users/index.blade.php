@@ -57,13 +57,13 @@
         <div class="btn-group">
             <a class="btn btn-default btn-sm" href="{{ route('users.show',  ['id' => $user->id]) }}"><i class="fa fa-arrows-alt"></i></a>
             <a class="btn btn-info    btn-sm" href="{{ route('users.edit',  ['id' => $user->id]) }}"><i class="fa fa-pencil"></i></a>
-            <a class="btn btn-danger  btn-sm confirm" href="{{ route('users.delete',['id' => $user->id]) }}"> <i class="fa fa-times"></i></a>
+            <a class="btn btn-danger  btn-sm delete-confirm" href="{{ route('users.delete',['id' => $user->id]) }}"> <i class="fa fa-times"></i></a>
           </div>
         <div class="btn-group">
             <a class="btn btn-default" href="#"><i class="fa fa-arrows-alt"></i></a>
             <router-link :to="{name: 'edit-user', params: {id:user.id}}" class="btn btn-info" type="button" data-toggle="modal"><i class="fa fa-pencil"></i></router-link>
             <!-- <a class="btn btn-info" @click.prevent="editStusent(user)" type="button" data-toggle="modal"><i class="fa fa-pencil"></i></a> -->
-            <a class="btn btn-danger confirm" href="#" @click.prevent="deleteUser(user.id)"> <i class="fa fa-times"></i></a>
+            <a class="btn btn-danger delete-confirm" href="#" @click.prevent="deleteUser(user.id)"> <i class="fa fa-times"></i></a>
         </div>
     </td>
 </tr> --}}

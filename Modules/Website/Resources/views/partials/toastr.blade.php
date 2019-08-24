@@ -4,7 +4,17 @@
           @switch($i)
               @case(1)
               <script>
-                  toastr.success("{{ Session::get('flash_massage') }}","Sccess")
+
+                $(function () {
+                    swal({
+                        title: "Good job!",
+                        text: "{{ Session::get('flash_massage') }}",
+                        icon: "success",
+                        button: "Ok",
+                    });
+                });
+
+                //   toastr.success("{{ Session::get('flash_massage') }}","Sccess")
               </script>
                   @break
               @case(2)

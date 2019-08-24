@@ -3,11 +3,11 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="{{route('cpanel')}}" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>A</b>24</span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b>24</b> ahgiz</span>
+    <span class="logo-lg"><b>24</b> ahjez</span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -32,7 +32,7 @@
             <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-                <img src="modules/master/images/user.png" class="img-circle" alt="User Image">
+                <img src="{{asset('modules/master/images/user.png')}}" class="img-circle" alt="User Image">
                 <p>
                     {{ auth()->user()->name }} - مدير
                     <small>عضو منذ. {{ auth()->user()->created_at->diffForHumans() }}</small>

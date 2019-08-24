@@ -388,7 +388,7 @@
                           {{ $vehicle->description }} 
                         </div>
                         <div class="box-footer">
-                          <a type="button" class="btn btn-box-tool pull-left confirm" href="{{ route('vehicles.delete',  ['id' => $vehicle->id]) }}"><i class="fa fa-times"></i></a>
+                          <a type="button" class="btn btn-box-tool pull-left delete-confirm" href="{{ route('vehicles.delete',  ['id' => $vehicle->id]) }}"><i class="fa fa-times"></i></a>
                           <a type="button" class="btn btn-box-tool pull-left" href="{{ route('vehicles.edit',  ['id' => $vehicle->id]) }}"><i class="fa fa-pencil"></i></a>
                         </div>
                       </div>
@@ -418,7 +418,7 @@
                         {{ $address->number }} 
                       </div>
                       <div class="box-footer">
-                        <a type="button" class="btn btn-box-tool pull-left confirm" href="{{ route('addresses.delete',  ['id' => $address->id]) }}"><i class="fa fa-times"></i></a>
+                        <a type="button" class="btn btn-box-tool pull-left delete-confirm" href="{{ route('addresses.delete',  ['id' => $address->id]) }}"><i class="fa fa-times"></i></a>
                         <a type="button" class="btn btn-box-tool pull-left" href="{{ route('addresses.edit',  ['id' => $address->id]) }}"><i class="fa fa-pencil"></i></a>
                       </div>
                     </div>
@@ -447,7 +447,7 @@
                         {{ $contact->note }} 
                       </div>
                       <div class="box-footer">
-                        <a type="button" class="btn btn-box-tool pull-left confirm" href="{{ route('contacts.delete',  ['id' => $contact->id]) }}"><i class="fa fa-times"></i></a>
+                        <a type="button" class="btn btn-box-tool pull-left delete-confirm" href="{{ route('contacts.delete',  ['id' => $contact->id]) }}"><i class="fa fa-times"></i></a>
                         <a type="button" class="btn btn-box-tool pull-left" href="{{ route('contacts.edit',  ['id' => $contact->id]) }}"><i class="fa fa-pencil"></i></a>
                       </div>
                     </div>

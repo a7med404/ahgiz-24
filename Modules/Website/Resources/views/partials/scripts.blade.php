@@ -21,7 +21,6 @@
 
 
 <script>
-
   $(".select2").select2();
     // $("#example1").DataTable();
     // $('#example2').DataTable({

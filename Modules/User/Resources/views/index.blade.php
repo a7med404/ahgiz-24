@@ -65,7 +65,7 @@
                 <div class="btn-group">
                   <a class="btn btn-default btn-sm" href="{{ route('users.show',  ['id' => $user->id]) }}"><i class="fa fa-arrows-alt"></i></a>
                   <a class="btn btn-info    btn-sm" href="{{ route('users.edit',  ['id' => $user->id]) }}"><i class="fa fa-pencil"></i></a>
-                  <a class="btn btn-danger  btn-sm confirm" href="{{ route('users.delete',['id' => $user->id]) }}"> <i class="fa fa-times"></i></a>
+                  <a class="btn btn-danger  btn-sm delete-confirm" href="{{ route('users.delete',['id' => $user->id]) }}"> <i class="fa fa-times"></i></a>
                 </div>
               </td>
             </tr>

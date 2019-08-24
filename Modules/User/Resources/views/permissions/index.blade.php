@@ -62,7 +62,7 @@
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('permissions.edit',  ['id' => $permission->id]) }}">تعديل</a></li>
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">طباعة</a></li>
                                         <li role="presentation" class="divider"></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="confirm" href="{{ route('permissions.delete',['id' => $permission->id]) }}">حذف</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="delete-confirm" href="{{ route('permissions.delete',['id' => $permission->id]) }}">حذف</a></li>
                                     </ul>
                                 </div>
                             </td>
