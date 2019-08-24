@@ -2688,6 +2688,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -6129,8 +6131,15 @@ var render = function() {
                     }),
                     0
                   )
-                : _c("p", { staticClass: "value" }, [
-                    _vm._v("اتصل علي الخط الساخن " + _vm._s(_vm.hot_line) + " ")
+                : _c("div", [
+                    _c("p", {
+                      staticClass: "value",
+                      domProps: {
+                        textContent: _vm._s(
+                          "اتصل علي الخط الساخن" + _vm.hot_line
+                        )
+                      }
+                    })
                   ]),
               _vm._v(" "),
               _c("p", { staticClass: "city" }, [

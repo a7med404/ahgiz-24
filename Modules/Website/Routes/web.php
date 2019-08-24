@@ -32,7 +32,7 @@ Route::group(['middleware' => 'customer:customer'], function () {
 
     Route::post('/save-seats', 'WebsiteController@saveSeats')->name('save-seats');
     Route::get('/bus-details/{id}', 'WebsiteController@busDetails')->name('bus-details');
-    Route::get('/pay-page/{id}', 'WebsiteController@payPage')->name('pay-page');
+    Route::get('/pay-page', 'WebsiteController@payPage')->name('pay-page');
     Route::get('/pay/{id}', 'WebsiteController@pay')->name('pay');
 
     Route::get('/concel-reservation', 'WebsiteController@concelReservation')->name('concel-reservation');

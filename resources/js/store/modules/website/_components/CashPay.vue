@@ -84,14 +84,16 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <p class="name m-t-25">رقم المندوب</p>
-                        <div  v-if="numbers.length > 1">
+                        <div v-if="numbers.length > 1">
                           <p class="value"
                               v-for="number in numbers" 
                               :key="number.phone_number"
                               v-text="number.phone_number">
                           </p>
                         </div>
-                        <p class="value" v-else>اتصل علي الخط الساخن {{ hot_line }} </p>
+                        <div v-else>
+                          <p class="value" v-text="'اتصل علي الخط الساخن'+ hot_line "> </p>
+                        </div>
                         <p class="city"> في حالة الدفع النقدي يمكنك الاتصال برقم المندوب من اجل تاكيد عملية الحجز.</p>
                         <div class="social-register">
                             <button class="btn btn-custom text-uppercase"> تاكيد عملية الحجز </button>

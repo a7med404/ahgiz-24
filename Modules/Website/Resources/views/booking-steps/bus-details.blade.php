@@ -90,7 +90,10 @@ Home
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <p class="sub_title">بيانات الركاب:</p>
                                             @csrf
-                                            <?php $number = 2; $i = 1 ?>
+                                            <?php $number = 2; $i = 1;
+                                            \Session::put('isSameForm', Time().rand(0, 100))
+                                            ?>
+                                            <input name="number" value="{{ \Session::get('isSameForm') }}" type="hidden">
                                             <input name="seats" value="{{$seats}}" type="hidden">
                                             <input name="trip_id" value="{{$trip->id}}" type="hidden">
 

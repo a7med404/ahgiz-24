@@ -15,6 +15,7 @@ use Auth;
 use Carbon\Traits\Date;
 use Modules\Customer\Entities\Customer;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class WebsiteController extends Controller
 {
@@ -59,33 +60,43 @@ class WebsiteController extends Controller
 
     public function savePassenger(Request $request)
     {
-        # TODO:: handel dublicte reservtion on refresh page
-        if($request->email && Auth::guard('customer')->user()->email == null){
-            Customer::findOrFail(Auth::guard('customer')->user()->id)->update(['email' => $request->email]);
-        }
-        $number = Time().rand(0, 100);
-        $seats = $request->seats;
-        $data = [
-            'customer_id'       => Auth::guard('customer')->user()->id,
-            'trip_id'           => $request->trip_id,
-            'number'            => $number,
-            'status'            => 1,
-        ];
-        $reservation = Reservation::create($data);
-        if($reservation){
-            if($seats){
-                while ($seats >= 1) {
-                    Passenger::create([
-                        'name'              => request($seats.'-name'),
-                        'gender'            => request($seats.'-gender'),
-                        'reservation_id'    => $reservation->id,
-                    ]);
-                    $seats--;
+        $isSameForm = session()->get('isSameForm');
+        // dd($isSameForm, request()->all(), $isSameForm == $request->number);
+
+        # this check for don't debricate row in the database on refresh page
+        if($isSameForm == $request->number){
+            if($request->email && Auth::guard('customer')->user()->email == null){
+                Customer::findOrFail(Auth::guard('customer')->user()->id)->update(['email' => $request->email]);
+            }
+            // $number = Time().rand(0, 100);
+            $seats = $request->seats;
+            $data = [
+                'customer_id'       => Auth::guard('customer')->user()->id,
+                'trip_id'           => $request->trip_id,
+                'number'            => $request->number,
+                'status'            => 1,
+            ];
+            $reservation = Reservation::create($data);
+            if($reservation){
+                if($seats){
+                    while ($seats >= 1) {
+                        Passenger::create([
+                            'name'              => request($seats.'-name'),
+                            'gender'            => request($seats.'-gender'),
+                            'reservation_id'    => $reservation->id,
+                        ]);
+                        $seats--;
+                    }
+                    session()->put('isSameForm', null);
+                    session()->put('reservationID', $reservation->id);
                 }
             }
+        }else {
+            $reservation = Reservation::where('id', session()->get('reservationID'))->first();
         }
         $blance = $reservation->passengers->count() * $reservation->trip->price;
         Session::flash('flash_massage_type', 1);
+        // return redirect()->route('pay-page')->with(['reservation' => $reservation, 'blance' => $blance])->withFlashMassage('تم اجراء حجز مبدئي الرجاء تأكيد الحجز عن طريق سداد رسوم التزاكر.');
         return view('website::booking-steps.pay', ['reservation' => $reservation, 'blance' => $blance])->withFlashMassage('Reservation Added Successfully');
     }
 
@@ -111,7 +122,6 @@ class WebsiteController extends Controller
         $blance = $reservation->seats->count() * $reservation->trip->price;
         return view('website::booking-steps.done', ['reservation' => $reservation, 'blance' => $blance]);
     }
-    
 
 
     public function concelReservation()
