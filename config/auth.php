@@ -47,8 +47,14 @@ return [
 
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
+            'hash' => false,
+        ],
+
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'customers',
             'hash' => false,
         ],
     ],
@@ -108,11 +114,11 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
-        'customers' => [
-            'provider' => 'customers',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
+        // 'customers' => [
+        //     'provider' => 'customers',
+        //     'table' => 'password_resets',
+        //     'expire' => 60,
+        // ],
     ],
 
 ];

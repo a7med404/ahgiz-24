@@ -11,23 +11,24 @@ class CreateStationsTable extends Migration
      *
      * @return void
      */
-    // public function up()
-    // {
-    //     Schema::create('stations', function (Blueprint $table) {
-    //         $table->bigIncrements('id');
-    //         $table->string('name', 200);
-    //         $table->integer('city')->nullable();
-    //         $table->timestamps();
-    //     });
-    // }
+    public function up()
+    {
+        Schema::create('stations', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name', 200);
+            $table->integer('city')->nullable();
+            $table->integer('status')->default(1);
+            $table->timestamps();
+        });
+    }
 
-    // /**
-    //  * Reverse the migrations.
-    //  *
-    //  * @return void
-    //  */
-    // public function down()
-    // {
-    //     Schema::dropIfExists('stations');
-    // }
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('stations');
+    }
 }

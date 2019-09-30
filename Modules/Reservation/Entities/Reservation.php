@@ -24,6 +24,9 @@ class Reservation extends Model
         return $this->belongsTo(Trip::class);
     }
 
+    // public function trips(){
+    //     return $this->hasMany(Trip::class, 'reserveration_id');
+    // }
     public function user(){
         return $this->belongsTo(User::class);
     }

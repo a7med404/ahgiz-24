@@ -16,8 +16,7 @@ class CreateCustomerRequest extends FormRequest
     public function rules(Customer $customer)
     {
         return [
-            'first_name'    => 'required|string|max:100|min:2', 
-            'last_name'     => 'required|string|max: 100|min: 2', 
+            'c_name'    => 'required|string|max:100|min:2',  
             // 'phone_number' => 'required|unique:customers,phone_number|string|max:14|min:10',Rule::unique('customers')->ignore($customer->id), #not work
             'phone_number'  => 'required|unique:customers,phone_number|string|max:14|min:10',Rule::unique('customers')->ignore($customer->id), #not work
             'email'         => 'nullable|string|email|max:255',
@@ -34,6 +33,6 @@ class CreateCustomerRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 }

@@ -11,7 +11,7 @@
               <p>{{ auth()->user()->name }}</p>
               <a href="#">
                 <i class="fa fa-circle text-success"></i> متصل الان
-              </a>
+              </a><p>shahab</p>
             </div>
           </div>
           <!-- search form -->
@@ -166,6 +166,18 @@
                   <ul class="treeview-menu">
                     <li><a href="{{ route('stations.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_stations') }}</a></li>
                     <li><a href="{{ route('stations.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_station') }}</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.cities') }} 
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="{{ route('cities.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.cities') }}</a></li>
+                    <li><a href="{{ route('cities.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_') }}</a></li>
+                    <li><a href="{{ route('cities.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_cities') }}</a></li>
                   </ul>
                 </li>
                 <li>

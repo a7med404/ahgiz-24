@@ -16,20 +16,21 @@ class TripResource extends Resource
     { 
         return  [
             'id'                => $this->id,
-            'departure_time'    => $this->departure_time,
-            'arrive_time'       => $this->arrive_time,
+            // 'departure_time'    => $this->departure_time,
+            // 'arrive_time'       => $this->arrive_time,
             'date'              => $this->date,
-            'number'            => $this->number,
+            // 'number'            => $this->number,
             'price'             => $this->price,
-            'company'           => $this->company,
+            //'company'           => $this->company,
             'fromStation'       => getName('stations', $this->from_station_id),
             'toStation'         => getName('stations', $this->to_station_id),
             'status'            => tripStatus()[$this->status],
-            'editRoute'         => editRoute('trips', $this->id),
-            'showRoute'         => showRoute('trips', $this->id),
-            'description'       => $this->description,
+            // 'editRoute'         => editRoute('trips', $this->id),
+            // 'showRoute'         => showRoute('trips', $this->id),
+            // 'description'       => $this->description,
             'seats_number'      => $this->seats_number,
-            'avalibale_seats'   => $this->seats_number - $this->reservations->count() 
+            'avalibale_seats'   => $this->seats_number - $this->reservations->count() ,
+            'reservations'   => $this->reservations 
         ];
         return parent::toArray($request);
     }

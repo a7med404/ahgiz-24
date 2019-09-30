@@ -15,18 +15,20 @@ class ReservationResource extends JsonResource
     public function toArray($request)
     {
         return  [
-            'id'            => $this->id,
-            'customer'      => $this->customer,
-            'trip'          => $this->trip,
-            'seats'         => $this->seats,
-            'user'          => $this->user,
-            'company'       => $this->trip->company,
-            'fromStation'   => getName('stations', $this->trip->from_station_id),
-            'toStation'     => getName('stations', $this->trip->to_station_id),
-            'status'        => reservationStatus()[$this->status],
-            'editRoute'     => editRoute('reservations', $this->id),
-            // 'deleteRoute'   => deleteRoute()[$this->status]
+            'id'                => $this->id,
+            'customer'          => $this->customer->c_name,
+            'user'              => $this->user,
+            'company'           => $this->trip->company->name,
+            'fromStation'       => $this->trip->fromStation->name,
+            'toStation'         => $this->trip->toStation->name,
+            'departure_time'    => $this->trip->departure_time,
+            'arrive_time'       => $this->trip->arrive_time,
+            'number'            => $this->trip->number,
+            'saleprice'         => $this->trip->saleprice,
+            'date'              => $this->trip->date,
+            'seats_number'      => $this->trip->seats_number,
+            'editRoute'         => showRoute('reservations', $this->id),
         ];
-        return parent::toArray($request);
+        // return parent::toArray($request);
     } 
 }

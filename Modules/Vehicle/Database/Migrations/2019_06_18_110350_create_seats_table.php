@@ -16,6 +16,7 @@ class CreateSeatsTable extends Migration
         Schema::create('seats', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('trip_id');
             $table->timestamps();
         });
     }

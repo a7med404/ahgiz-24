@@ -18,15 +18,20 @@ Route::prefix('setting')->group(function() {
 
 Route::prefix('cpanel')->group(function() {
     Route::group(['middleware' => ['web', 'auth']], function(){
+
         Route::Resource('testimonials', 'TestimonialController');
         Route::get('testimonials/delete/{id}', 'TestimonialController@destroy')->name('testimonials.delete');
 
         Route::Resource('settings', 'SettingController');
         Route::get('/sitesetting', 'SettingController@index')->name('site-setting');
         Route::post('/sitesetting/update', 'SettingController@store')->name('site-setting-update');
+
+
         
     });
 
+        Route::get('/app-settings', 'AppSettingController@index')->name('app-setting');
+        Route::post('/app-settings/update', 'AppSettingController@store')->name('app-setting-update');
 
     
 

@@ -116,7 +116,7 @@ Home
                         <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
     
                         <div class="info-box-content">
-                        <span class="info-box-text">اولياء الامور</span>
+                        <span class="info-box-text">الرحلات</span>
                         <span class="info-box-number">950</span>
     
                         <div class="progress">
@@ -133,7 +133,7 @@ Home
                         <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
     
                         <div class="info-box-content">
-                        <span class="info-box-text">طلاب غائبون</span>
+                        <span class="info-box-text">الرحلات</span>
                         <span class="info-box-number">114</span>
     
                         <div class="progress">
@@ -150,7 +150,7 @@ Home
                         <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
     
                         <div class="info-box-content">
-                        <span class="info-box-text">عدد الرحلات في الترحيل</span>
+                        <span class="info-box-text">عدد الرحلات</span>
                         <span class="info-box-number">163</span>
     
                         <div class="progress">
