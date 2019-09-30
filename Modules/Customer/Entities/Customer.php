@@ -22,7 +22,7 @@ class Customer extends Authenticatable
     public function reservations(){
         return $this->hasMany(Reservation::class);
     }
-        /**
+    /**
      * Get the guard to be used during authentication.
      *
      * @return \Illuminate\Contracts\Auth\StatefulGuard

@@ -74,7 +74,7 @@ Home
                 <div class="col-md-9 col-sm-12 col-xs-12">
                     <div class="box box-info">
                         <div class="box-header with-border">
-                        <h3 class="box-title"> رسوم الرحلات</h3>
+                        <h3 class="box-title"> عدد الرحلات و التذاكر خلال العام الحالي</h3>
                         <div class="box-tools pull-left">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fa fa-minus"></i></button>
@@ -281,7 +281,7 @@ Home
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="box box-danger">
                         <div class="box-header with-border">
-                            <h3 class="box-title">تعداد الذكور و الاناث</h3>
+                            <h3 class="box-title">الذكور و الاناث من المسافرين</h3>
                             <div class="box-tools pull-left">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                                 <i class="fa fa-minus"></i></button>
@@ -456,13 +456,12 @@ Home
     
             title : {
                 show: true,
-                text: 'رسوم الرحلات خلال العام', 
+                text: 'عدد الرحلات و التذاكر خلال العام الحالي', 
                 textStyle:{
                 color: '#73879c',
                 fontFamily: "'Helvetica Neue', 'Droid Sans', 'sans-serif'"
                 },
-                // subtext: 'رسوم الرحلات خلال العام',
-    
+                // subtext: 'عدد الرحلات و التذاكر خلال العام الحالي خلال العام',
                 
                 padding: [6, 10],
                 itemGap: 10,
@@ -484,7 +483,7 @@ Home
                 }
             },
             legend: {
-                data:[' طلاب تم سداد الرسوم',' طلاب لم يقوموا بسداد الرسوم'],
+                data:[' الرحلات',' الحجوزات'],
                 type: 'scroll', // scroll, plain  Scrollable legend. It helps when too many legend items needed to be shown.
                 show: true,
                 orient : 'horizontal', // vertical  default => horizontal
@@ -501,7 +500,7 @@ Home
                 },
                 data: [
                 {
-                    name: 'طلاب تم سداد الرسوم', //Name of legend, which should be the name value of a certain series. If it is a pie chart, legend name can also be the name of a single data item // compulsorily set icon as a circle
+                    name: 'الرحلات', //Name of legend, which should be the name value of a certain series. If it is a pie chart, legend name can also be the name of a single data item // compulsorily set icon as a circle
                     icon: 'roundRect', // Icon types provided by ECharts includes 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
                     textStyle: {
                     color: '#ffcc33',
@@ -509,7 +508,7 @@ Home
                     }
                 },
                 {
-                    name: ' طلاب لم يقوموا بسداد الرسوم',
+                    name: ' الحجوزات',
                     icon: 'pin',
                     textStyle: {
                     fontFamily: "'Helvetica Neue', 'Droid Sans', 'sans-serif'",
@@ -626,12 +625,12 @@ Home
     
                 */
                     textStyle:{
-                        fontFamily: "'Helvetica Neue', 'Droid Sans', 'sans-serif'"
+                        fontFamily: "'Helvetica Neue', 'Droid Sans', 'sans-serif'",
                     },
                     type : 'category', 
-                    data : ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
+                    // data : ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
     
-                    // data : ['يناير','فبراير','مارس','ابريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'],
+                    data : ['يناير','فبراير','مارس','ابريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'],
                 
                     show: true,
                     position: 'bottom',
@@ -698,7 +697,7 @@ Home
             ],
             series : [
             {
-                name:'طلاب تم سداد الرسوم',
+                name:'الرحلات',
                 type:'bar',
                 color: ['#ffcc33'],
                 // '6'
@@ -720,7 +719,7 @@ Home
                 }
             },
             {
-                name:' طلاب لم يقوموا بسداد الرسوم',
+                name:' الحجوزات',
                 type:'bar',
                 color: ['#2f4554'],
                 data:[ 2,8,10,13,16,7,9,12,3,3,8,5],
@@ -1010,7 +1009,7 @@ Home
                     }
                 },
                 series: [{
-                    name: 'Access to the resource',
+                    name: 'العدد',
                     type: 'pie',
                     radius: ['35%', '50%'],
                     itemStyle: {
@@ -1062,7 +1061,8 @@ Home
             legend: {
                 x: 'center',
                 y: 'bottom',
-                data: ['مرحلة رياض الاطفال', 'المرحلة الاساسية', 'المرحلة الثانوية']
+
+                data: ['سايبر', 'تطبيق بنكك', 'نقدي']
             },
             toolbox: {
                 show: true,
@@ -1093,13 +1093,13 @@ Home
                 sort: 'ascending',
                 data: [{
                 value: 110,
-                name: 'مرحلة رياض الاطفال'
+                name: 'سايبر'
                 }, {
                 value: 800,
-                name: 'المرحلة الاساسية'
+                name: 'تطبيق بنكك'
                 }, {
                 value: 500,
-                name: 'المرحلة الثانوية'
+                name: 'نقدي'
                 }]
             }]
             });

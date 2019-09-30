@@ -48,6 +48,7 @@ class SiteCustomerController extends Controller
         $customer = $customer->create($data);
         Auth::guard('customer')->login($customer);
         Session::flash('flash_massage_type', 1);
+
         if(URL::previous() == route('singup')){
             return redirect()->route('profile')->withFlashMassage('تم انشاء الحساب بنجاح');
         }
