@@ -11,7 +11,7 @@
               <p>{{ auth()->user()->name }}</p>
               <a href="#">
                 <i class="fa fa-circle text-success"></i> متصل الان
-              </a>
+              </a><p>shahab</p>
             </div>
           </div>
           <!-- search form -->
