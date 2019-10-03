@@ -14,6 +14,7 @@
 Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/cpanel', function () { return view('cpanel.app'); })->name('cpanel');       
 });
+
 /*
 | All Routes For Website
 |****************************************************************************************************************************************
