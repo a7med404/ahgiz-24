@@ -5,7 +5,7 @@ php artisan module:use Vehicle
 
 php artisan module:unuse
 
-
+  
 
 php artisan module:use Address
 
