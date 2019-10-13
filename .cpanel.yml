@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/afisc/public_html/ahjez24/
+    - /bin/cp -a * $DEPLOYPATH
