@@ -7,7 +7,9 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Vehicle\Entities\Trip;
 use Modules\Vehicle\Http\Requests\CreateTripRequest;
+use Carbon\Carbon;
 use Session;
+use DateTime;
 
 class TripController extends Controller
 {
@@ -15,9 +17,31 @@ class TripController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $trips = Trip::orderBy('id', 'desc')->get();
+        if($request->has('filter')){
+            $requestAll = array_except($request->toArray(), ['date_from', 'date_to']);
+            $query = Trip::orderBy('id','desc');
+
+            foreach ($requestAll as $key => $req) {
+                if (!($req == "" || null)) {
+                    $query->where($key, $req);
+                }
+            }
+
+            if (!($request->date_from == "" || null) && ($request->date_to   == "" || null)) {
+                $query = $query->where('date', '>=', $request->date_from);
+            }elseif (($request->date_from == "" || null) && !($request->date_to   == "" || null)) {
+                $query = $query->where('date', '<=', $request->date_to);
+            }elseif(!($request->date_from == "" || null) && !($request->date_to   == "" || null)){
+                $query = $query->whereBetween('date', [$request->date_from, $request->date_to]);
+            }
+            
+
+            $trips = $query->get();
+        }else {
+            $trips = Trip::orderBy('id', 'desc')->get();
+        }
         return view('vehicle::trips.index', ['trips' => $trips]);
     }
 
@@ -105,7 +129,71 @@ class TripController extends Controller
         Session::flash('flash_massage_type', 2);
         return redirect()->back()->withFlashMassage('Trip Updated Successfully');
     }
+    public function search(Request $request)
+    {
+        // get all trip 
+        $searchTrip = Trip::orderBy('id')->where('from_station_id','$request->from_station_id')
+                                         ->where('to_station_id','$request->to_station_id')
+                                         ->where('departure_time','$request->departure_time')
+                                         ->first();
+        dd($searchTrip);
+    }
 
+    // get the previous trips //
+    public function previousTrip(Request $request)
+    {
+        if($request->has('filter')){
+            $requestAll = array_except($request->toArray(), ['date_from', 'date_to']);
+            $query = Trip::orderBy('id','desc');
+
+            foreach ($requestAll as $key => $req) {
+                if (!($req == "" || null)) {
+                    $query->where($key, $req);
+                }
+            }
+
+            if (!($request->date_from == "" || null) && ($request->date_to   == "" || null)) {
+                $query = $query->where('date', '>=', $request->date_from);
+            }elseif (($request->date_from == "" || null) && !($request->date_to   == "" || null)) {
+                $query = $query->where('date', '<=', $request->date_to);
+            }elseif(!($request->date_from == "" || null) && !($request->date_to   == "" || null)){
+                $query = $query->whereBetween('date', [$request->date_from, $request->date_to]);
+            }
+            $trips = $query->where('date','<=' , Carbon::today())->get();
+        }else {
+            $trips = Trip::whereDate('date' ,'<=' , Carbon::today())->get();
+        }
+        return view('vehicle::trips.previous', ['trips' => $trips]);
+    }
+
+
+    // get the next trips //
+    public function nextTrip(Request $request)
+    {
+        if($request->has('filter')){
+            $requestAll = array_except($request->toArray(), ['date_from', 'date_to']);
+            $query = Trip::orderBy('id','desc');
+
+            foreach ($requestAll as $key => $req) {
+                if (!($req == "" || null)) {
+                    $query->where($key, $req);
+                }
+            }
+
+            if (!($request->date_from == "" || null) && ($request->date_to   == "" || null)) {
+                $query = $query->where('date', '>=', $request->date_from);
+            }elseif (($request->date_from == "" || null) && !($request->date_to   == "" || null)) {
+                $query = $query->where('date', '<=', $request->date_to);
+            }elseif(!($request->date_from == "" || null) && !($request->date_to   == "" || null)){
+                $query = $query->whereBetween('date', [$request->date_from, $request->date_to]);
+            }
+
+            $trips = $query->get();
+        }else {
+            $trips = Trip::whereDate('date' ,'>=' , Carbon::tomorrow())->get();
+        }
+        return view('vehicle::trips.next', ['trips' => $trips]);
+    }
     /**
      * Remove the specified resource from storage.
      * @param int $id

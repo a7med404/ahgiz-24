@@ -22,7 +22,7 @@ Home
                 <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text"> عدد المستخدمين</span>
-                  <span class="info-box-number">1,410</span>
+                  <span class="info-box-number">{{ $customers->count() }}</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -32,10 +32,14 @@ Home
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="info-box">
                 <span class="info-box-icon bg-green"><i class="ion ion-ios-cloud-download-outline"></i></span>
-    
+
                 <div class="info-box-content">
                   <span class="info-box-text">حجوزات تم الغائها </span>
-                  <span class="info-box-number">410</span>
+                  @forelse ($canceled_reservations as $canceled_reservation)
+                  <span class="info-box-number">{{ $canceled_reservations }}</span>
+                  @empty
+                  <span class="info-box-number">0</span>
+                  @endforelse
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -45,10 +49,9 @@ Home
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="info-box">
                 <span class="info-box-icon bg-yellow"><i class="ion ion-ios-gear-outline"></i></span>
-    
                 <div class="info-box-content">
                   <span class="info-box-text">الحجوزات المكتملة</span>
-                  <span class="info-box-number">13,648</span>
+                <span class="info-box-number">{{ $done_reservations->count() }}</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -60,8 +63,9 @@ Home
                 <span class="info-box-icon bg-red"><i class="ion ion-ios-pricetag-outline"></i></span>
     
                 <div class="info-box-content">
-                  <span class="info-box-text"> الحجوزات المؤقتة</span>
-                  <span class="info-box-number">3,139</span>
+                    <span class="info-box-text"> الحجوزات المؤقتة</span>
+                    <span class="info-box-number">{{ $panding_reservation->count() }}</span>
+                    
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -116,7 +120,7 @@ Home
                         <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
     
                         <div class="info-box-content">
-                        <span class="info-box-text">اولياء الامور</span>
+                        <span class="info-box-text">الرحلات</span>
                         <span class="info-box-number">950</span>
     
                         <div class="progress">
@@ -133,7 +137,7 @@ Home
                         <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
     
                         <div class="info-box-content">
-                        <span class="info-box-text">طلاب غائبون</span>
+                        <span class="info-box-text">الرحلات</span>
                         <span class="info-box-number">114</span>
     
                         <div class="progress">
@@ -150,7 +154,7 @@ Home
                         <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
     
                         <div class="info-box-content">
-                        <span class="info-box-text">عدد الرحلات في الترحيل</span>
+                        <span class="info-box-text">عدد الرحلات</span>
                         <span class="info-box-number">163</span>
     
                         <div class="progress">

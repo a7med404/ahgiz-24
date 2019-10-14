@@ -131,6 +131,7 @@ function getSelect($tableName){
             break;
         case 'station':
             $list = \DB::table('stations')->pluck('name', 'id');
+            array_add($list, '', 'الكل');
             return $list->toArray();
             break;
         case 'route':
@@ -139,6 +140,7 @@ function getSelect($tableName){
             break;
         case 'trip':
             $list = \DB::table('trips')->pluck('number', 'id');
+            array_add($list, '', 'الكل');
             return $list->toArray();
             break;
         case 'customer':
@@ -151,6 +153,7 @@ function getSelect($tableName){
             break;
         case 'company':
             $list = \DB::table('companies')->pluck('name', 'id');
+            array_add($list, '', 'الكل');
             return $list->toArray();
             break;
         default:
