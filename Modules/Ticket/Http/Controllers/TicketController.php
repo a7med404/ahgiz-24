@@ -4,6 +4,7 @@ namespace Modules\Ticket\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Ticket\Entities\Ticket;
 use Illuminate\Routing\Controller;
 
 class TicketController extends Controller
@@ -14,7 +15,10 @@ class TicketController extends Controller
      */
     public function index()
     {
-        return view('ticket::index');
+        
+        $ticket = Ticket::all();
+        //dd($ticket);
+        return view('ticket::ticket.index',['ticket' => $ticket]);
     }
 
     /**

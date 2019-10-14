@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('cpanel.app');
+        $user = Customer::count();
+        dd($user);
+        return view('cpanel.app',compact('user'));
     }
 }

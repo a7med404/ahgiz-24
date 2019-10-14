@@ -15,11 +15,13 @@ class Reservation extends Model
     public function customer(){
         return $this->belongsTo(Customer::class);
     }
-
+    
     public function passengers(){
         return $this->hasMany(Passenger::class);
     }
-
+    public function tickets(){
+        return $this->hasMany(Ticket::class);
+    }
     public function trip(){
         return $this->belongsTo(Trip::class);
     }
