@@ -1,11 +1,12 @@
 <?php
+use Modules\Reservation\Transformers\PassengerResource;
+
 function getSetting($settingName = 'side_name'){
     return Modules\Setting\Entities\Setting::where('name_setting', $settingName)->get()[0]->value;
 }
 function getTestimonial(){
     return Modules\Setting\Entities\Testimonial::where('status', 1)->get();
 }
-
 
 function maleOrfemale(){
     return [
@@ -43,24 +44,24 @@ function status(){
 
 function tripStatus(){
     return [
-        '1' => 'متاحة للحجز',
-        '0' => 'غير متاحة للحجز',
+        '1' => 'ﻣﺘﺎﺣﺔ ﻟﻠﺤﺠﺰ,',
+        '0' => 'ﻏﻴﺮ ﻣﺘﺎﺣﺔ ﻟﻠﺤﺠﺰ,',
     ];
 }
 
 function reservationStatus(){
     return [
-        '0' => 'متاحة للحجز',
-        '1' => 'حجز مؤقت',
-        '2' => 'اكتمل الحجز',
+        '0' => 'ﻣﺘﺎﺣﺔ ﻟﻠﺤﺠﺰ ',
+        '1' => 'ﺣﺠﺰ ﻣﺆﻗ,'   ,   
+        '2' => 'اﻛﺘﻤﻞ اﻟﺤﺠﺰ ',
     ];
 }
 
 function payMethod(){
     return [
-        '1' => 'نقــدي',
-        '2' => 'تطبيق بنكك',
-        '3' => 'تطبيق سايبر',
+        '1' =>'ﻘــﺪﻱ',
+        '2' => 'ﺗﻄﺒﻴﻖ ﺑﻨﻜﻚ',        
+        '3' => 'ﺗﻄﺒﻴﻖ ﺳﺎﻳﺒﺮ',
     ];
 }
 
@@ -84,9 +85,29 @@ function seatNumber($seatNumber){
     return $numbers;
 }
 
+function getSettingSelect($tableName)
+{
+
+    switch ($tableName) {
+        case 'time_booking':
+            return [
+                '7' => 'Coupe',
+                '8' => 'Wagon',
+            ];
+            break;
+        case 'station':
+            $list = \DB::table('stations')->pluck('name', 'id');
+            return $list->toArray();
+            break;
+        default:
+            $list = \DB::table('companies')->pluck('name', 'id');
+            break;
+    }
+}
 
 
-function getCity(){
+function getCity()
+{
     return [
         '1' => 'Sedan',
         '2' => 'SUV / Crossover',
@@ -122,11 +143,22 @@ function toggleLevelClass(){
         '4' => 'label label-success',
     ];
 }
+function getCities(){
+    $list = \DB::table('cities')->pluck('name', 'id');
+    array_add($list, '', 'مدينة');
+    return $list->toArray();
+}
+
+
 function getSelect($tableName){
 
     switch ($tableName) {
         case 'role':
             $list = \DB::table('roles')->pluck('name', 'id');
+            return $list->toArray();
+            break;
+        case 'cities':
+            $list = \DB::table('cities')->pluck('name', 'id');
             return $list->toArray();
             break;
         case 'station':
@@ -162,6 +194,30 @@ function getSelect($tableName){
     }
 }
 
+function filterData($tableName, $id)
+{
+    if ($id === null) {
+        return "...";
+    }
+    switch ($tableName) {
+        case 'passengers':
+            $list = PassengerResource::collection(\DB::table($tableName)->where('reservation_id', $id)->get());
+            // dd($list);
+            return $list;
+            break;
+        case 'stations':
+            $list = \DB::table('stations')->pluck('name', 'id');
+            return $list[$id];
+        break;
+            default:
+            $list = \DB::table('trips')->pluck('name', 'id');
+            return $list->toArray();
+        break;
+    }
+}
+
+
+
 function getName($tableName, $id)
 {
     if ($id === null) {
@@ -187,6 +243,7 @@ function editRoute($name, $id)
 {
     return route($name.'.edit', ['id' => $id]);
 }
+
 function showRoute($name, $id)
 {
     return route($name.'.show', ['id' => $id]);

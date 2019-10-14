@@ -25,6 +25,9 @@ Route::prefix('cpanel')->group(function() {
 
         Route::resource('contacts','ContactController');
         Route::get('contacts/delete/{id}', 'ContactController@destroy')->name('contacts.delete');
+
+        Route::resource('cities','CityController');
+        Route::get('cities/delete/{id}', 'CityController@destroy')->name('cities.delete');
     });
 
 

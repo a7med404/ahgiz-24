@@ -44,7 +44,7 @@ class CustomerController extends Controller
             'last_name'     => $request->last_name,
             'email'         => $request->email,
             'phone_number'  => $request->phone_number,
-            'password'      => Hash::make('password'),
+            //'password'      => Hash::make('password'),
         ];
         $customer->create($data);
         Session::flash('flash_massage_type', 1);

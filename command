@@ -1,28 +1,35 @@
 php artisan module:make Website
 
-php artisan module:use Reservation
+php artisan module:use Vehicle
+
+
 php artisan module:unuse
 
 
-php artisan module:make-controller API/ApiPassengerController
 
-php artisan module:make-factory PassengerFactory
+php artisan module:use Address
 
-php artisan module:make-seed PassengerTableSeeder
+php artisan module:make-controller cityController
+php artisan module:make-controller API/ApicityController
 
-php artisan module:make-request CreatePassengerRequest
+php artisan module:make-factory cityFactory
 
-php artisan module:make-resource SinglePassengerResource 
+php artisan module:make-seed cityTableSeeder
 
+php artisan module:make-request CreatecityRequest
 
-php artisan module:make-model Passenger --migration
+php artisan module:make-resource cityResource
 
-php artisan module:migrate Reservation
+php artisan module:make-model city --migration
+
+php artisan module:migrate Setting
 
 php artisan module:seed
 
 php artisan module:publish-migration
 
+
+php artisan migrate --path=/Modules/Address/Database/Migrations/2019_09_28_040656_create_cities_table.php
 
 // the migration
 

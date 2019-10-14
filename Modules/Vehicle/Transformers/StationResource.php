@@ -4,7 +4,7 @@ namespace Modules\Vehicle\Transformers;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class StationResource extends JsonResource
+class StationResource extends JsonResource 
 {
     /**
      * Transform the resource collection into an array.
@@ -14,6 +14,10 @@ class StationResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+            return[
+            'id'                => $this->id,
+            'name'              => $this->name,
+            ];
+
     }
 }

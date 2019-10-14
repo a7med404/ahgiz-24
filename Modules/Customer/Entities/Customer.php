@@ -2,25 +2,27 @@
 
 namespace Modules\Customer\Entities;
 
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Modules\Reservation\Entities\Reservation;
 
 class Customer extends Authenticatable
 {
+    use HasApiTokens;
     protected $table = "customers";
     protected $fillable = [
-        'id', 'first_name', 'last_name', 'phone_number', 'email', 'password'
+        'id', 'c_name', 'phone_number', 'email','password','birthdate',
     ];  
 
     protected $hidden = [
-        'password', 'remember_token',
+         'remember_token',
     ];
 
     public function reservations(){
         return $this->hasMany(Reservation::class);
     }
-        /**
+    /**
      * Get the guard to be used during authentication.
      *
      * @return \Illuminate\Contracts\Auth\StatefulGuard

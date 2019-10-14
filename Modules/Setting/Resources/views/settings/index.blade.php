@@ -37,8 +37,8 @@
                     {!! Form::text($setting->name_setting, $setting->value, ['id' => '{{ $setting->name_setting }}', 'class' => "form-control {{ $errors->has($setting->name_setting) ? ' is-invalid' : '' }}", 'value' => "{{ old($setting->name_setting) }}", 'autofocus']) !!}
                   @elseif($setting->type == 0)
                     {!! Form::textarea($setting->name_setting, $setting->value, ['id' => '{{ $setting->name_setting }}', 'class' => "form-control {{ $errors->has($setting->name_setting) ? ' is-invalid' : '' }}", 'value' => "{{ old($setting->name_setting) }}", 'autofocus']) !!}
-                  @elseif($setting->type == 4)
-                    {!! Form::select($setting->name_setting, getSelect('role'), null, ['placeholder' => $setting->slug, 'class' => "form-control {{ $errors->has($setting->name_setting) ? ' is-invalid' : '' }}", 'value' => "{{ old($setting->name_setting) }}", 'required']) !!}
+                  @elseif($setting->type == 3)
+                    {!! Form::select($setting->name_setting, getSettingSelect($setting->name_setting), null, ['placeholder' => $setting->slug, 'class' => "form-control {{ $errors->has($setting->name_setting) ? ' is-invalid' : '' }}", 'value' => "{{ old($setting->name_setting) }}", 'required']) !!}
                   @else
                     {!! Form::file($setting->name_setting, ['id' => '{{ $setting->name_setting }}', 'class' => "form-control {{ $errors->has($setting->name_setting) ? ' is-invalid' : '' }}", 'value' => "{{ old($setting->name_setting) }}", 'autofocus']) !!}
                   @endif

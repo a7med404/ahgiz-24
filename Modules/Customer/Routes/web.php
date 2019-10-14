@@ -15,7 +15,7 @@ Route::prefix('customer')->group(function() {
     Route::get('/', 'CustomerController@index');
 });
 
-
+Route::get('/cusR', 'ApiCustomerController@register');
 
 Route::prefix('cpanel')->group(function() {
     Route::group(['middleware' => ['web', 'auth']], function(){

@@ -11,5 +11,13 @@ class Seat extends Model
 
     public function reservations(){
         return $this->BelongsToMany(Reservation::class, 'seat_reservations');
+
+
+        
+    }
+    
+    public function trip()
+    {
+    	return $this->belongTo(Trip::class);
     }
 }

@@ -16,3 +16,5 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/vehicle', function (Request $request) {
     return $request->user();
 });
+
+Route::post('getStation', 'API\ApiStationController@getStation');
