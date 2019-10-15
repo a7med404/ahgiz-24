@@ -40,6 +40,7 @@ class StationController extends Controller
         $data = [
             'name'    => $request->name,
             'city'    => $request->city,
+            'type'    => $request->type,
         ];
         $station->create($data);
         Session::flash('flash_massage_type', 1);
@@ -80,6 +81,8 @@ class StationController extends Controller
         $data = [
             'name'    => $request->name,
             'city'    => $request->city,
+            'type'    => $request->type,
+
         ];
         $stationInfo->fill($data)->save();
         Session::flash('flash_massage_type', 2);

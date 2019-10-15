@@ -1,5 +1,5 @@
 <?php
-use Modules\Reservation\Transformers\PassengerResource;
+use Modules\Reservation\Transformers\SinglePassengerResource;
 
 function getSetting($settingName = 'side_name'){
     return Modules\Setting\Entities\Setting::where('name_setting', $settingName)->get()[0]->value;
@@ -74,6 +74,8 @@ function toggleTrusted(){
 
 
 
+
+
 function seatNumber($seatNumber){
     $numbers = [];
     for($i = 1; $i <= $seatNumber; $i++){
@@ -121,6 +123,26 @@ function getCity()
 } 
 
 
+function CompanyType()
+{
+    return [
+        '0' => 'شـركة بصات',
+        '1' => 'شـركة طيران',
+        
+    ];
+} 
+
+
+function StationType()
+{
+    return [
+        '0' => 'محطــة بصات',
+        '1' => 'محطــة طيران',
+        
+    ];
+} 
+
+
 function getLocal(){
     return [
         '1' => 'Sedan',
@@ -163,6 +185,7 @@ function getSelect($tableName){
             break;
         case 'station':
             $list = \DB::table('stations')->pluck('name', 'id');
+            array_add($list, '', 'الكل');
             return $list->toArray();
             break;
         case 'route':
@@ -171,6 +194,7 @@ function getSelect($tableName){
             break;
         case 'trip':
             $list = \DB::table('trips')->pluck('number', 'id');
+            array_add($list, '', 'الكل');
             return $list->toArray();
             break;
         case 'customer':
@@ -183,6 +207,10 @@ function getSelect($tableName){
             break;
         case 'company':
             $list = \DB::table('companies')->pluck('name', 'id');
+            array_add($list, '', 'الكل');
+            return $list->toArray();
+            case 'Companytype':
+            $list = \DB::table('companies')->pluck('type', 'id');
             return $list->toArray();
             break;
         default:
@@ -198,7 +226,7 @@ function filterData($tableName, $id)
     }
     switch ($tableName) {
         case 'passengers':
-            $list = PassengerResource::collection(\DB::table($tableName)->where('reservation_id', $id)->get());
+            $list = SinglePassengerResource::collection(\DB::table($tableName)->where('reservation_id', $id)->get());
             // dd($list);
             return $list;
             break;

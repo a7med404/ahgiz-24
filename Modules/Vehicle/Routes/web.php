@@ -31,7 +31,11 @@ Route::prefix('cpanel')->group(function() {
 
         Route::resource('trips','TripController');
         Route::get('trips/delete/{id}', 'TripController@destroy')->name('trips.delete');
+        route::post('/search-trip','TripController@search')->name('trips.search');
+        route::get('/previous-trip','TripController@previousTrip')->name('trips.previous');
+        route::get('/next-trip','TripController@nextTrip')->name('trips.next');
 
+        
     });
 
 

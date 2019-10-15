@@ -73,6 +73,8 @@
                   </a>
                   <ul class="treeview-menu">
                     <li><a href="{{ route('trips.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_trips') }}</a></li>
+                    <li><a href="{{ route('trips.previous') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_previous_trips') }}</a></li>
+                    <li><a href="{{ route('trips.next') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_next_trip') }}</a></li>
                     <li><a href="{{ route('trips.create') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.add_trip') }}</a></li>
                   </ul>
                 </li>
@@ -168,7 +170,7 @@
                   <ul class="treeview-menu">
                     <li><a href="{{ route('vehicles.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_vehicles') }}</a></li>
                     <li><a href="{{ route('vehicles.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_vehicle') }}</a></li>
-                  </ul>
+                    </ul>
                 </li>
                 <li>
                   <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.stations') }} 

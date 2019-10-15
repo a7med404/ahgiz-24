@@ -5,6 +5,13 @@
         {!! Form::text('name', null, ['id' => 'name', 'class' => "form-control  {{ $errors->has('name') ? ' is-invalid' : '' }}", 'value' => "{{ old('name') }}", 'required', 'autofocus']) !!}
     </div>
 
+    <div class="col col-xl-6 col-lg-6 col-md-6">
+        <div class="form-group">
+            {!! Form::label('type', 'نوع المحطة', ['class' => 'control-label']) !!}
+            {!! Form::select('type', StationType(), null, ['id' => 'type', 'class' => "select2 form-control  {{ $errors->has('type') ? ' is-invalid' : '' }}", 'value' => "{{ old('type') }}", 'required']) !!}
+        </div>
+    </div>
+
     <div class="form-group col-md-6">
         {!! Form::label('city', 'المدينة', ['class' => 'control-label']) !!}
         {!! Form::select('city', getCity(), null, ['id' => 'city', 'class' => "form-control {{ $errors->has('city') ? ' is-invalid' : '' }}", 'value' => "{{ old('city') }}", 'required']) !!}

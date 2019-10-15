@@ -21,6 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->string('note')->nullable();
             $table->boolean('type')->nullable();
             $table->boolean('status')->default(0);
+            $table->string('type');
             // $table->unsignedBigInteger('address_id')->nullable();
             // $table->foreign('address_id')
             //     ->references('id')->on('addresses')

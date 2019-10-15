@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Modules\Reservation\Entities\Reservation;
 
 class HomeController extends Controller
 {
@@ -23,8 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Customer::count();
-        dd($user);
-        return view('cpanel.app',compact('user'));
+        return view('cpanel.app');
     }
 }

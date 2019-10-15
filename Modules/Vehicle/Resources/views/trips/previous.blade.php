@@ -1,6 +1,6 @@
 @extends('cpanel.layouts.master')
 @section('title')
-{{ __('home/sidebar.all_trips') }}
+{{ __('home/sidebar.all_previous_trips') }}
 @endsection
 @section('header')
 <!-- icheck -->
@@ -11,10 +11,10 @@
 @endsection
 @section('content')
 <section class="content-header">
-    <h1>{{ __('home/sidebar.all_trips') }} <small>it all starts here</small></h1>
+<h1> عــدد {{ __('home/sidebar.all_previous_trips') }} {{ $trips->count()  }}</h1>
     <ol class="breadcrumb">
         <li><a href="{{ url('\cpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
-        <li class="active"> {{ __('home/sidebar.all_trips') }} </li>
+        <li class="active"> {{ __('home/sidebar.all_previous_trips') }} </li>
     </ol>
 </section>
 
@@ -24,8 +24,8 @@
 <div class="box box-info">
 <div class="box-header with-border">
     {{-- <h3 class="box-title">Title</h3> --}}
-    <button type="button" data-toggle="modal" data-target="#popup-form" href="#" class="btn btn-info"> <i
-            class="fa fa-user-plus"></i> {{ __('home/sidebar.add_trip') }} </button>
+    {{-- <button type="button" data-toggle="modal" data-target="#popup-form" href="#" class="btn btn-info"> <i
+            class="fa fa-user-plus"></i> {{ __('home/sidebar.add_trip') }} </button> --}}
     <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
             title="Collapse"><i class="fa fa-minus"></i></button>

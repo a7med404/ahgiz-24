@@ -25,7 +25,8 @@ class ApiReservationController extends Controller
     public function myReservationDetails($id)
     {
      // return dd(Reservation::find($id));
-   return new SingleReservationResource(Reservation::find($id)); 
+    //  dd(333);
+   return new SingleReservationResource(Reservation::findOrFail($id)); 
     }
 
   public function availableReservation(Request $request, Trip $trip, $seats = 3)

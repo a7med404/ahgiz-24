@@ -10,10 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/cpanel', 'DashboardController@index')->name('cpanel');
 });
+
 
 /*
 | All Routes For Website

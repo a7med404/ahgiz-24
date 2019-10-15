@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/reservation', function (Request $request) {
     return $request->user();
 });
+
 Route::get('myreserv/{id}', 'API\ApiReservationController@myReservations');
 Route::get('myreserv-details/{id}', 'API\ApiReservationController@myReservationDetails');
 Route::post('available-reserve', 'API\ApiReservationController@availableReservation');

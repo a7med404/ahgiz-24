@@ -98,6 +98,8 @@ return [
     'add_trip' => 'اضافة رحلة جديد',
     'edit_trip' => 'تعديل بيانات الرحلة',
     'trip_number' => 'رحلة رقم',
+    'all_previous_trips' => 'الرحلات السابقة',
+    'all_next_trip' => 'الرحلات التالية' ,
     
     'reservations' => 'الحجوزات',
     'all_reservations' => 'كل الحجوزات',
@@ -131,4 +133,6 @@ return [
     'edit_testimonial' => 'تعديل بيانات',
     
 
+    'edit_customer' => 'تعديل بيانات المستفيدين',
+    
 ];

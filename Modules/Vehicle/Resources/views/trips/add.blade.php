@@ -29,6 +29,20 @@
 		format: 'yyyy-mm-dd'
     });
 
+    
+$('#date_from').datepicker({
+        autoclose: true,
+        language: 'ar',
+		rtl: true,
+		format: 'yyyy-mm-dd'
+    });
+
+    $('#date_to').datepicker({
+        autoclose: true,
+        language: 'ar',
+		rtl: true,
+		format: 'yyyy-mm-dd'
+    });
     //Timepicker
     $("#departure_time").timepicker({
         showInputs: false,

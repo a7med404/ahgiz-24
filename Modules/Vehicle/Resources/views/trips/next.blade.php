@@ -1,6 +1,6 @@
 @extends('cpanel.layouts.master')
 @section('title')
-{{ __('home/sidebar.all_trips') }}
+{{ __('home/sidebar.next_trips') }}
 @endsection
 @section('header')
 <!-- icheck -->
@@ -11,10 +11,10 @@
 @endsection
 @section('content')
 <section class="content-header">
-    <h1>{{ __('home/sidebar.all_trips') }} <small>it all starts here</small></h1>
+    <h1>عــدد {{ __('home/sidebar.next_trips') }} {{$trips->count() }}</h1>
     <ol class="breadcrumb">
         <li><a href="{{ url('\cpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
-        <li class="active"> {{ __('home/sidebar.all_trips') }} </li>
+        <li class="active"> {{ __('home/sidebar.next_trips') }} </li>
     </ol>
 </section>
 

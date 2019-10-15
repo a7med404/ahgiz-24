@@ -16,3 +16,5 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/company', function (Request $request) {
     return $request->user();
 });
+
+route::get('plane-company','API\ApiCompanyController@planecompany');

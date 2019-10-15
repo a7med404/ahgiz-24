@@ -6,6 +6,14 @@
             {!! Form::text('name', null, ['id' => 'name', 'class' => "form-control  {{ $errors->has('name') ? ' is-invalid' : '' }}", 'value' => "{{ old('name') }}", 'required', 'autofocus']) !!}
         </div>
     </div>
+
+        <div class="col col-xl-6 col-lg-6 col-md-6">
+            <div class="form-group">
+                {!! Form::label('type', 'نوع الشركة', ['class' => 'control-label']) !!}
+                {!! Form::select('type', CompanyType(), null, ['id' => 'type', 'class' => "select2 form-control  {{ $errors->has('type') ? ' is-invalid' : '' }}", 'value' => "{{ old('type') }}", 'required']) !!}
+            </div>
+        </div>
+
     <div class="col col-xl-6 col-lg-6 col-md-6">
         <div class="form-group">
             {!! Form::label('logo', 'Logo', ['class' => 'control-label']) !!}
@@ -13,6 +21,8 @@
         </div>
     </div>
 </div>
+
+
 <div class="row">
     <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="form-group">
