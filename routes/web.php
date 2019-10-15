@@ -12,7 +12,7 @@
 */
 
 Route::group(['middleware' => ['web', 'auth']], function(){
-    Route::get('/cpanel', function () { return view('cpanel.app'); })->name('cpanel');       
+    Route::get('/cpanel', 'DashboardController@index')->name('cpanel');
 });
 
 /*

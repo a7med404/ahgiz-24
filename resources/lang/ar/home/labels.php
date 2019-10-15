@@ -34,6 +34,7 @@ return [
     'logo' => 'الشعار',
     'description' => 'الوصـف',
     
+    'ticket_number' => 'رقم التذكرة',
 
     'seats_number' => 'عدد المقاعد',
     'note' => 'ملاحظة',

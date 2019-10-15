@@ -26,6 +26,10 @@ return [
     'add_customer' => 'إضافة مستفيد',
     'customers_repports' => 'تقارير عن المستفيدين',
 
+    'tickets' => 'التذاكر',
+    'all_tickets' => 'كل التذاكر',
+    'tickets_repports' => 'تقارير عن التذاكر',
+
     'departments' => 'الاقسام',
     'all_departments' => 'كل الاقسام',
     'add_department' => 'إضافة قسم',
@@ -103,6 +107,8 @@ return [
     'add_reservation' => 'اضافة حجز جديد',
     'edit_reservation' => 'تعديل بيانات الحجز',
     'reservation_number' => 'حجز رقم',
+
+    'all_tickets' => 'كل التذاكر',
     
 
     /*
