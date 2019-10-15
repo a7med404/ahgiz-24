@@ -32,7 +32,7 @@ class SentOTPToCustomerListener implements ShouldQueue
         $url = "https://mazinhost.com/smsv1/sms/api?action=send-sms&api_key=YWhqZXoyNDpRfnZrR2VZTHt2NWh7SE44&to=". $event->customer->phone_number. "&from=ahjez-24&sms=".$event->message;
 
         $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', $url);
+        // $response = $client->request('GET', $url);
 
         // dd($response->getStatusCode(), $response->getHeaderLine('content-type'));
         // echo $response->getStatusCode(); # 200

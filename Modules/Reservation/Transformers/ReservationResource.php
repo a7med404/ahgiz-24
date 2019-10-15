@@ -27,6 +27,8 @@ class ReservationResource extends JsonResource
             'saleprice'         => $this->trip->saleprice,
             'date'              => $this->trip->date,
             'seats_number'      => $this->trip->seats_number,
+            'status'            => $this->status,
+            'current_date'            => now(),
             'editRoute'         => showRoute('reservations', $this->id),
         ];
         // return parent::toArray($request);

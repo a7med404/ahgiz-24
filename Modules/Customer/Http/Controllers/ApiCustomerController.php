@@ -73,6 +73,7 @@ class ApiCustomerController extends Controller
             ]);
             // Access token 
             $accessToken = $customer->createToken('customerToken')->accessToken;
+
             // return response 
             if ($customer) {
                 event(new CustomerRegisteredOrLoginEvent($customer, $this->getOTP()));
@@ -86,6 +87,7 @@ class ApiCustomerController extends Controller
             $json['access_token'] = $accessToken;
             $json['isNew'] = 1;
             $json['otp'] = $this->getOTP();
+            
             return response()->json(['customer' => $json], 200);
         }
     }
@@ -100,7 +102,7 @@ class ApiCustomerController extends Controller
 
     public function deleteAccount(Request $request)
     {
-         $successStatus = 200;
+        $successStatus = 200;
         $client = Client::find(1);   
         return response()->json([''], 204);
     }

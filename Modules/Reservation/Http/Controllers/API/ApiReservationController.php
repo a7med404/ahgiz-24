@@ -18,8 +18,8 @@ use DB;
 class ApiReservationController extends Controller
 {
     public function myReservations(Request $request, $id)
-    {
-   return ReservationResource::collection(Reservation::orderBy('id')->where('customer_id',$id)->get()); 
+    { 
+        return ReservationResource::collection(Reservation::orderBy('id')->where('customer_id',$id)->get()); 
     }
 
     public function myReservationDetails($id)
