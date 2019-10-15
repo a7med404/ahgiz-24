@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Company \Entities\Company;
+use Modules\Company\Transformers\PlaneCompanyResource;
 
 class ApiCompanyController extends Controller
 {
@@ -17,10 +18,10 @@ class ApiCompanyController extends Controller
      // get the plane companies //
     public function planecompany(){
                 
-        $planeCompany = Company::where('type','=',1)->get();
-        return response()->json($planeCompany,200);
+        $planeCompany = Company::where('type',1)->get();
+        return PlaneCompanyResource::collection($planeCompany);
 
-     }
+     }      
      
     public function index()
     {

@@ -2,6 +2,7 @@ php artisan module:make Website
 
 php artisan module:use Vehicle
 
+php artisan module:make-resource PlaneStationResource
 
 php artisan module:unuse
 
@@ -18,7 +19,7 @@ php artisan module:make-seed CompanyTableSeeder
 
 php artisan module:make-request CreateCompanyRequest
 
-php artisan module:make-resource CompanyResource
+php artisan module:make-resource PlaneCompanyResource
 
 php artisan module:make-model Company --migration
 

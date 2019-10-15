@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Modules\Vehicle\Entities\Station;
 use Modules\Vehicle\Transformers\StationResource;
 use Illuminate\Routing\Controller;
+use Modules\Vehicle\Transformers\PlaneStationResource;
 
 class ApiStationController extends Controller
 {
@@ -18,6 +19,6 @@ class ApiStationController extends Controller
  public function planestation(){
 
    $planeStations = Station::where('type','=',1)->get();
-   return response()->json($planeStations,200);
+   return PlaneStationResource::collection($planeStations);
  }
 }
