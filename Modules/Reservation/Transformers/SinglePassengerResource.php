@@ -14,6 +14,6 @@ class SinglePassengerResource extends Resource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+       // return parent::toArray($request);
     }
 }

@@ -1,5 +1,5 @@
 <?php
-use Modules\Reservation\Transformers\PassengerResource;
+use Modules\Reservation\Transformers\SinglePassengerResource;
 
 function getSetting($settingName = 'side_name'){
     return Modules\Setting\Entities\Setting::where('name_setting', $settingName)->get()[0]->value;
@@ -226,7 +226,7 @@ function filterData($tableName, $id)
     }
     switch ($tableName) {
         case 'passengers':
-            $list = PassengerResource::collection(\DB::table($tableName)->where('reservation_id', $id)->get());
+            $list = SinglePassengerResource::collection(\DB::table($tableName)->where('reservation_id', $id)->get());
             // dd($list);
             return $list;
             break;

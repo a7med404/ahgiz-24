@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/vehicle', function (Request $request) {
 
 Route::post('getStation', 'API\ApiStationController@getStation');
 route::get('plane-stations','API\ApiStationController@planestation');
+
