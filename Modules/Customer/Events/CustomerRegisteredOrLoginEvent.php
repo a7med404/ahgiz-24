@@ -3,12 +3,12 @@
 namespace Modules\Customer\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use Modules\Customer\Entities\Customer;
 
-class CustomerRegisteredOrLoginEvent implements ShouldBroadcast
+class CustomerRegisteredOrLoginEvent implements ShouldQueue
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     
@@ -24,6 +24,6 @@ class CustomerRegisteredOrLoginEvent implements ShouldBroadcast
     public function __construct(Customer $customer, $otp)
     {
         $this->customer = $customer;
-        $this->message = '' . $this->otp . '';
+        $this->message  = __('app/messages.otp_message')."\n".$otp;
     }
 }

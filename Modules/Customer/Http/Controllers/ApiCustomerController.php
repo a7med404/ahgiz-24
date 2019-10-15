@@ -18,6 +18,7 @@ use Modules\Customer\Events\CustomerRegisteredOrLoginEvent;
 use Ramsey\Uuid\Generator\RandomBytesGenerator;
 use Session;
 use Validator;
+
 class ApiCustomerController extends Controller
 {   
 
@@ -49,7 +50,7 @@ class ApiCustomerController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        if (Auth::guard('customer')->attempt(['phone_number' => $request->phone_number, 'password' => $request->phone_number])) {
+        if (Auth::guard('customer')->attempt(['phone_number' => addSudanKey($request->phone_number), 'password' => addSudanKey($request->phone_number)])) {
             $customer = Auth::guard('customer')->user();
             $json['id'] = $customer->id;
             $json['c_name'] = $customer->c_name;
@@ -61,19 +62,21 @@ class ApiCustomerController extends Controller
             $json['isNew'] = 0;
             $json['otp'] = $this->getOTP();
             if($customer) {
-                event(new CustomerRegisteredOrLoginEvent($customer, $otp));
+                event(new CustomerRegisteredOrLoginEvent($customer, $this->getOTP()));
             }
             return response()->json(['customer' => $json], 200);
         } else {
             // created data for customer 
-            $pass = $request->phone_number;
             $customer = Customer::create([
-                'phone_number'      => $request->phone_number,
-                'password'          => Hash::make($pass),
+                'phone_number'      => addSudanKey($request->phone_number),
+                'password'          => Hash::make(addSudanKey($request->phone_number)),
             ]);
             // Access token 
             $accessToken = $customer->createToken('customerToken')->accessToken;
             // return response 
+            if ($customer) {
+                event(new CustomerRegisteredOrLoginEvent($customer, $this->getOTP()));
+            }
             $json['id'] = $customer->id;
             $json['c_name'] = $customer->c_name;
             $json['phone_number'] = $customer->phone_number;

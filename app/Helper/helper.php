@@ -17,7 +17,13 @@ function maleOrfemale(){
 
 
 
-function visibility(){
+function addSudanKey($number){
+    //TODO::check 0 in phone number
+    return "249".$number;
+}
+
+function visibility()
+{
     return [
         '0' => 'Visibile',
         '1' => 'Hidden',
