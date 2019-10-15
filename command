@@ -1,4 +1,4 @@
-php artisan module:make Website
+CompanyControllerphp artisan module:make Website
 
 php artisan module:use Vehicle
 
