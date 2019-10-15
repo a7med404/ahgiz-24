@@ -62,6 +62,7 @@ class ApiCustomerController extends Controller
             $json['isNew'] = 0;
             $json['otp'] = $this->getOTP();
             if($customer) {
+                //TODO::handel return value of CustomerRegisteredOrLoginEvent
                 event(new CustomerRegisteredOrLoginEvent($customer, $this->getOTP()));
             }
             return response()->json(['customer' => $json], 200);
