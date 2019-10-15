@@ -9,7 +9,7 @@ use Modules\Vehicle\Entities\Vehicle;
 
 class Company extends Model
 {
-    protected $fillable = ['name', 'logo', 'note', 'status'];
+    protected $fillable = ['name', 'logo', 'note', 'status','type'];
 
     public function addresses()
     {

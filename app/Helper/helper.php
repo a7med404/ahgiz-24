@@ -74,6 +74,8 @@ function toggleTrusted(){
 
 
 
+
+
 function seatNumber($seatNumber){
     $numbers = [];
     for($i = 1; $i <= $seatNumber; $i++){
@@ -117,6 +119,26 @@ function getCity()
         '6' => 'Pickup Truck',
         '7' => 'Coupe',
         '8' => 'Wagon',
+    ];
+} 
+
+
+function CompanyType()
+{
+    return [
+        '0' => 'شـركة بصات',
+        '1' => 'شـركة طيران',
+        
+    ];
+} 
+
+
+function StationType()
+{
+    return [
+        '0' => 'محطــة بصات',
+        '1' => 'محطــة طيران',
+        
     ];
 } 
 
@@ -186,6 +208,9 @@ function getSelect($tableName){
         case 'company':
             $list = \DB::table('companies')->pluck('name', 'id');
             array_add($list, '', 'الكل');
+            return $list->toArray();
+            case 'Companytype':
+            $list = \DB::table('companies')->pluck('type', 'id');
             return $list->toArray();
             break;
         default:

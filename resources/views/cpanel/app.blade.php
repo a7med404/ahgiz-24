@@ -22,7 +22,7 @@ Home
                 <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text"> عدد المستخدمين</span>
-                  <span class="info-box-number">{{ $customers->count() }}</span>
+                <span class="info-box-number">{{ $user }}</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -32,14 +32,10 @@ Home
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="info-box">
                 <span class="info-box-icon bg-green"><i class="ion ion-ios-cloud-download-outline"></i></span>
-
+    
                 <div class="info-box-content">
                   <span class="info-box-text">حجوزات تم الغائها </span>
-                  @forelse ($canceled_reservations as $canceled_reservation)
-                  <span class="info-box-number">{{ $canceled_reservations }}</span>
-                  @empty
-                  <span class="info-box-number">0</span>
-                  @endforelse
+                <span class="info-box-number">{{ $cancelRes }}</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -49,9 +45,10 @@ Home
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="info-box">
                 <span class="info-box-icon bg-yellow"><i class="ion ion-ios-gear-outline"></i></span>
+    
                 <div class="info-box-content">
                   <span class="info-box-text">الحجوزات المكتملة</span>
-                <span class="info-box-number">{{ $done_reservations->count() }}</span>
+                  <span class="info-box-number">{{ $complateRes }}</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -63,9 +60,8 @@ Home
                 <span class="info-box-icon bg-red"><i class="ion ion-ios-pricetag-outline"></i></span>
     
                 <div class="info-box-content">
-                    <span class="info-box-text"> الحجوزات المؤقتة</span>
-                    <span class="info-box-number">{{ $panding_reservation->count() }}</span>
-                    
+                  <span class="info-box-text"> الحجوزات المؤقتة</span>
+                <span class="info-box-number">{{ $TempRes }}</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -203,56 +199,20 @@ Home
                         <!-- /.box-header -->
                         <div class="box-body">
                         <ul class="products-list product-list-in-box">
+                            @foreach ($pendingRes as $pending)
                             <li class="item">
                             <div class="product-img">
                                 <img src="modules/master/images/default-50x50.gif" alt="Product Image">
                             </div>
                             <div class="product-info">
-                                <a href="javascript:void(0)" class="product-title">ابراهيم السيد
-                                <span class="label label-success pull-left">399</span></a>
+                                <a href="javascript:void(0)" class="product-title"> {{ $pending->customer->first_name }}{{ $pending->customer->last_name }} 
+                                <span class="label label-success pull-left">{{ $pending->passengers->count() }}</span></a>
                                     <span class="product-description">
-                                    دفع رسوم التسجيل 
+                                    {{ reservationStatus()[$pending->status] }}
                                     </span>
                             </div>
                             </li>
-                            <!-- /.item -->
-                            <li class="item">
-                            <div class="product-img">
-                                <img src="modules/master/images/default-50x50.gif" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                                <a href="javascript:void(0)" class="product-title">محمد ابراهيم 
-                                <span class="label label-warning pull-left">1800</span></a>
-                                    <span class="product-description">
-                                    دفع رسوم تعليمية للطالب ابراهيم السيد 
-                                    </span>
-                            </div>
-                            </li>
-                            <!-- /.item -->
-                            <li class="item">
-                            <div class="product-img">
-                                <img src="modules/master/images/default-50x50.gif" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                                <a href="javascript:void(0)" class="product-title">ابراهيم السيد
-                                <span class="label label-info pull-left">700</span></a>
-                                    <span class="product-description">
-                                    اخذ مكافة ايمان السيد ابو العلا 
-                                    </span>
-                            </div>
-                            </li>
-                            <!-- /.item -->
-                            <li class="item">
-                            <div class="product-img">
-                                <img src="modules/master/images/default-50x50.gif" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                                <a href="javascript:void(0)" class="product-title"> السيد ابو العلا <span class="label label-danger pull-left">350</span></a>
-                                    <span class="product-description">
-                                    اخذ سٌلف ايمان السيد ابو العلا 
-                                    </span>
-                            </div>
-                            </li>
+                            @endforeach
                             <!-- /.item -->
                         </ul>
                         </div>
@@ -300,150 +260,7 @@ Home
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-8 col-sm-8 col-xs-12">
-                    <!-- TABLE: LATEST ORDERS -->
-                    <div class="box box-info">
-                        <div class="box-header with-border">
-                        <h3 class="box-title">العمليات المالية خلال اليوم</h3>
-    
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                        <div class="table-responsive">
-                            <table class="table no-margin">
-                            <thead class="on-thead-style">
-                            <tr>
-                                <th>الطالب</th>
-                                <th>المبلغ</th>
-                                <th>نوع العملية</th>
-                                <th>التاريخ</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">ايمان السيد ابو العلا</a></td>
-                                <td>450 ج.س</td>
-                                <td><span class="label label-success">رسوم تعليمية</span></td>
-                                <td>
-                                <div class="sparkbar" data-color="#00a65a" data-height="20">10/03/2019 12:00:00 ص</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">ايمان السيد ابو العلا</a></td>
-                                <td>5000 ج.س</td>
-                                <td><span class="label label-warning">زي مدرسي</span></td>
-                                <td>
-                                <div class="sparkbar" data-color="#f39c12" data-height="20">3/03/2019 12:00:00 ص</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">محمد ابراهيم ابراهيم السيد</a></td>
-                                <td>600 ج.س</td>
-                                <td><span class="label label-danger">كتب</span></td>
-                                <td>
-                                <div class="sparkbar" data-color="#f56954" data-height="20">20/03/2019 7:00:00 ص</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">السيد ابو العل</a></td>
-                                <td>70 ج.س</td>
-                                <td><span class="label label-info">مصروفات عامة</span></td>
-                                <td>
-                                <div class="sparkbar" data-color="#00c0ef" data-height="20">20/03/2019 12:00:00 ص</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html"> ابراهيم ابراهيم السيد</a></td>
-                                <td>3000 ج.س</td>
-                                <td><span class="label label-warning">زي مدرسي</span></td>
-                                <td>
-                                <div class="sparkbar" data-color="#f39c12" data-height="20">20/03/2019 12:00:00 ص</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">ابراهيم السيد</a></td>
-                                <td>200 ج.س</td>
-                                <td><span class="label label-danger">كتب</span></td>
-                                <td>
-                                <div class="sparkbar" data-color="#f56954" data-height="20">20/03/2019 12:00:00 ص</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">السيد ابو العل</a></td>
-                                <td>500 ج.س</td>
-                                <td><span class="label label-success">رسوم تعليمية</span></td>
-                                <td>
-                                <div class="sparkbar" data-color="#00a65a" data-height="20">20/03/2019 12:00:00 ص</div>
-                                </td>
-                            </tr>
-                            </tbody>
-                            </table>
-                        </div>
-                        <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
-                        </div>
-                        <!-- /.box-footer -->
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                    <!-- USERS LIST -->
-                    <div class="box box-danger">
-                        <div class="box-header with-border">
-                        <h3 class="box-title"> الموظفين النشطون حاليا</h3>
-    
-                        <div class="box-tools pull-right">
-                            <span class="label label-danger"> 8 </span>
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                            </button>
-                        </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body no-padding">
-                        <ul class="users-list clearfix">
-                            <li>
-                            <img src="modules/master/images/user1-128x128.jpg" alt="User Image">
-                            <a class="users-list-name" href="#">shahab Ibrahim</a>
-                            <span class="users-list-date">Today</span>
-                            </li>
-                            <li>
-                            <img src="modules/master/images/user8-128x128.jpg" alt="User Image">
-                            <a class="users-list-name" href="#">Norman</a>
-                            <span class="users-list-date">Yesterday</span>
-                            </li>
-                            <li>
-                            <img src="modules/master/images/user6-128x128.jpg" alt="User Image">
-                            <a class="users-list-name" href="#">John</a>
-                            <span class="users-list-date">12 Jan</span>
-                            </li>
-                            <li>
-                            <img src="modules/master/images/user2-160x160.jpg" alt="User Image">
-                            <a class="users-list-name" href="#">Alexander</a>
-                            <span class="users-list-date">13 Jan</span>
-                            </li>
-                        </ul>
-                        <!-- /.users-list -->
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer text-center">
-                        <a href="javascript:void(0)" class="uppercase">عرض الكل</a>
-                        </div>
-                        <!-- /.box-footer -->
-                    </div>
-                    <!--/.box -->
-                </div>
-    
-            </div>
+        
         </section>
     
     
@@ -1039,11 +856,11 @@ Home
                     },
                     data: [
                         {
-                        value: '1200',
-                        name: 'الذكور (1200)',
+                        value: '<?php echo $genderMale?>',
+                        name: 'الذكور (<?php echo $genderMale?>)',
                         }, {
-                        value: '400',
-                        name: 'الاناث (400)'
+                        value: '<?php echo $genderFemale?>',
+                        name: 'الاناث (<?php echo $genderFemale?>)'
                         }
                     ]
                 }]
@@ -1096,13 +913,13 @@ Home
                 max: 800,
                 sort: 'ascending',
                 data: [{
-                value: 110,
+                value: <?php echo $syperMethod?>,
                 name: 'سايبر'
                 }, {
-                value: 800,
+                value: <?php echo $bankMethod?>,
                 name: 'تطبيق بنكك'
                 }, {
-                value: 500,
+                value: <?php echo $cashMethod?>,
                 name: 'نقدي'
                 }]
             }]

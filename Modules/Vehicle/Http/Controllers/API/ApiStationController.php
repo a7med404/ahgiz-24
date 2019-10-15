@@ -13,4 +13,11 @@ class ApiStationController extends Controller
  public function getStation(){
     return StationResource::collection(Station::orderBy('id')->where('status', 1)->get()); 
  }   
+
+ // get plane stations //
+ public function planestation(){
+
+   $planeStations = Station::where('type','=',1)->get();
+   return response()->json($planeStations,200);
+ }
 }

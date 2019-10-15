@@ -20,6 +20,7 @@ class CreateCompaniesTable extends Migration
             $table->string('logo', 100)->nullable();
             $table->string('note')->nullable();
             $table->boolean('status')->default(0);
+            $table->string('type');
             // $table->unsignedBigInteger('address_id')->nullable();
             // $table->foreign('address_id')
             //     ->references('id')->on('addresses')

@@ -43,6 +43,7 @@ class CompanyController extends Controller
             'name'          => $request->name,
             'logo'          => $logoName,
             'note'          => $request->note,
+            'type'          => $request->type,
             'status'        => 0,//$request->status,
         ]);
         Session::flash('flash_massage_type');
@@ -89,6 +90,8 @@ class CompanyController extends Controller
             'logo'          => $logoName,
             'note'          => $request->note,
             'status'        => 0,//$request->status,
+            'type'          => $request->type,
+
         ];
         $companyUpdate->fill($data)->save();
         if ($companyUpdate) {

@@ -8,7 +8,7 @@ use Modules\Vehicle\Entities\Trip;
 
 class Station extends Model
 {
-    protected $fillable = ['name', 'city','status'];
+    protected $fillable = ['name', 'city','status','type'];
     public function fromTrip()
     {
         return $this->belongsToMany(Trip::Class, 'from_station_id', 'id');
