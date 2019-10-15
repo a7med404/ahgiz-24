@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use DB;
 use App\Models\Passport\Token;
+use Modules\Customer\Events\CustomerRegisteredOrLoginEvent;
 use Ramsey\Uuid\Generator\RandomBytesGenerator;
 use Session;
 use Validator;
@@ -47,6 +48,7 @@ class ApiCustomerController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
+
         if (Auth::guard('customer')->attempt(['phone_number' => $request->phone_number, 'password' => $request->phone_number])) {
             $customer = Auth::guard('customer')->user();
             $json['id'] = $customer->id;
@@ -58,6 +60,9 @@ class ApiCustomerController extends Controller
             $json['access_token'] = $customer->createToken('MyApp')->accessToken;
             $json['isNew'] = 0;
             $json['otp'] = $this->getOTP();
+            if($customer) {
+                event(new CustomerRegisteredOrLoginEvent($customer, $otp));
+            }
             return response()->json(['customer' => $json], 200);
         } else {
             // created data for customer 
