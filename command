@@ -5,22 +5,22 @@ php artisan module:use Vehicle
 
 php artisan module:unuse
 
+  CompanyController
 
+php artisan module:use Company
 
-php artisan module:use Address
+php artisan module:make-controller CompanyController
+php artisan module:make-controller API/ApiCompanyController
 
-php artisan module:make-controller cityController
-php artisan module:make-controller API/ApicityController
+php artisan module:make-factory CompanyFactory
 
-php artisan module:make-factory cityFactory
+php artisan module:make-seed CompanyTableSeeder
 
-php artisan module:make-seed cityTableSeeder
+php artisan module:make-request CreateCompanyRequest
 
-php artisan module:make-request CreatecityRequest
+php artisan module:make-resource CompanyResource
 
-php artisan module:make-resource cityResource
-
-php artisan module:make-model city --migration
+php artisan module:make-model Company --migration
 
 php artisan module:migrate Setting
 

@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-    protected $fillable = [];
+    protected $fillable = ['ticket_number'];
+    
+    public function Reservation()
+    {
+        return $this->belongsTo(Reservation::Class);
+    }
 }
+

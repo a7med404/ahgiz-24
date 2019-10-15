@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $reservations = Reservation::orderBy('id','desc')->get();
-        return view('cpanel.app',['reservation' => $reservations]);
+        return view('cpanel.app');
     }
 }

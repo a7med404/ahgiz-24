@@ -102,6 +102,19 @@
                 </li>
               </ul>
             </li>
+            <li class="treeview">
+                          <a href="#">
+                            <i class="fa fa-users text-yellow"></i> <span>{{ __('home/sidebar.tickets') }}</span>
+                            <span class="pull-right-container">
+                              <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                          </a>
+                          <ul class="treeview-menu" style="display: none;">
+                            <li><a href="{{ route('ticket.index') }}"><i class="fa fa-circle-o text-aqua"></i>
+                                {{ __('home/sidebar.all_tickets') }}</a></li>
+                           
+                          </ul>
+                        </li>
 
             {{-- @if (auth()->user()->hasRole('admin')) --}}
             <li class="header">قسم الشركات</li>

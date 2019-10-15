@@ -16,11 +16,9 @@ class CreateStationsTable extends Migration
         Schema::create('stations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 200);
+            $table->boolean('type')->nullable();
             $table->integer('city')->nullable();
-<<<<<<< HEAD
             $table->integer('status')->default(1);
-=======
->>>>>>> 101ddc6a294ce779492345d37eee4454d3796a98
             $table->timestamps();
         });
     }
