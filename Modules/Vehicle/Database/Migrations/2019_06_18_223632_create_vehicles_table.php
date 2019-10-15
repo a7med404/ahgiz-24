@@ -11,24 +11,24 @@ class CreateVehiclesTable extends Migration
      *
      * @return void
      */
-    // public function up()
-    // {
-    //     Schema::create('vehicles', function (Blueprint $table) {
-    //         $table->bigIncrements('id');
-    //         $table->string('name', 200);
-    //         $table->text('description')->nullable();
-    //         $table->unsignedBigInteger('company_id')->foreign()->references('id')->on('companies');
-    //         $table->timestamps();
-    //     });
-    // }
+    public function up()
+    {
+        Schema::create('vehicles', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name', 200);
+            $table->text('description')->nullable();
+            $table->unsignedBigInteger('company_id')->foreign()->references('id')->on('companies');
+            $table->timestamps();
+        });
+    }
 
-    // /**
-    //  * Reverse the migrations.
-    //  *
-    //  * @return void
-    //  */
-    // public function down()
-    // {
-    //     Schema::dropIfExists('vehicles');
-    // }
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('vehicles');
+    }
 }

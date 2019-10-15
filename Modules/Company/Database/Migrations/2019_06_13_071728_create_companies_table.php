@@ -21,15 +21,14 @@ class CreateCompaniesTable extends Migration
             $table->string('note')->nullable();
             $table->boolean('type')->nullable();
             $table->boolean('status')->default(0);
-            $table->string('type');
-            // $table->unsignedBigInteger('address_id')->nullable();
-            // $table->foreign('address_id')
-            //     ->references('id')->on('addresses')
-            //     ->onDelete('cascade');
-            // $table->unsignedBigInteger('contact_id')->nullable();;
-            // $table->foreign('contact_id')
-            //     ->references('id')->on('contacts')
-            //     ->onDelete('cascade');
+            $table->unsignedBigInteger('address_id')->nullable();
+            $table->foreign('address_id')
+                ->references('id')->on('addresses')
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('contact_id')->nullable();;
+            $table->foreign('contact_id')
+                ->references('id')->on('contacts')
+                ->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -25,14 +25,14 @@ class CreateEmployeesTable extends Migration
             $table->string('note')->nullable();
             $table->boolean('status')->default(0);
             $table->dateTime('last_login')->nullable();
-            // $table->unsignedBigInteger('address_id')->nullable();
-            // $table->foreign('address_id')
-            //     ->references('id')->on('addresses')
-            //     ->onDelete('cascade');
-            // $table->unsignedBigInteger('contact_id')->nullable();;
-            // $table->foreign('contact_id')
-            //     ->references('id')->on('contacts')
-            //     ->onDelete('cascade');
+            $table->unsignedBigInteger('address_id')->nullable();
+            $table->foreign('address_id')
+                ->references('id')->on('addresses')
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('contact_id')->nullable();;
+            $table->foreign('contact_id')
+                ->references('id')->on('contacts')
+                ->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
