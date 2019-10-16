@@ -63,10 +63,10 @@ class ApiCustomerController extends Controller
             $json['access_token'] = $customer->createToken('MyApp')->accessToken;
             $json['isNew'] = 0;
             $json['otp'] = $this->optValue;
-            // if($customer) {
-            //     //TODO::handel return value of CustomerRegisteredOrLoginEvent
-            //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
-            // }
+            if($customer) {
+                //TODO::handel return value of CustomerRegisteredOrLoginEvent
+                event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
+            }
             return response()->json(['customer' => $json], 200);
         } else {
             // created data for customer 
@@ -78,9 +78,9 @@ class ApiCustomerController extends Controller
             $accessToken = $customer->createToken('customerToken')->accessToken;
 
             // return response 
-            // if ($customer) {
-            //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
-            // }
+            if ($customer) {
+                event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
+            }
             $json['id'] = $customer->id;
             $json['c_name'] = $customer->c_name;
             $json['phone_number'] = $customer->phone_number;
