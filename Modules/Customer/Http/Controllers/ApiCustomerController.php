@@ -44,6 +44,7 @@ class ApiCustomerController extends Controller
 
     public function loginRegister(Request $request)
     {
+        $this->optValue = $this->getOTP();
         $validator = Validator::make($request->all(), [
             'phone_number'=>'required|string|max:14|min:9',
         ]);
@@ -97,7 +98,7 @@ class ApiCustomerController extends Controller
     public function getOTP()
     {
         $number = random_int(1000,9999);
-        $this->optValue = $number;
+        return $number;
     }
 
     ///////////////////// forget password ////////////////////////////////////
