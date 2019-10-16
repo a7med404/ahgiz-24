@@ -7,6 +7,15 @@
 
     </div>
 
+    <div class="col col-xl-6 col-lg-6 col-md-6">
+        <div class="form-group">
+            <?php echo Form::label('type', 'نوع المحطة', ['class' => 'control-label']); ?>
+
+            <?php echo Form::select('type', StationType(), null, ['id' => 'type', 'class' => "select2 form-control  <?php echo e($errors->has('type') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('type')); ?>", 'required']); ?>
+
+        </div>
+    </div>
+
     <div class="form-group col-md-6">
         <?php echo Form::label('city', 'المدينة', ['class' => 'control-label']); ?>
 
@@ -32,3 +41,4 @@
     </div>
 </div>
 <?php endif; ?>
+<?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/Modules/Vehicle/Providers/../Resources/views/stations/form.blade.php ENDPATH**/ ?>

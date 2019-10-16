@@ -25,7 +25,7 @@
         <div class="box-header with-border">
             {{-- <h3 class="box-title">Title</h3> --}}
             <button type="button" data-toggle="modal" data-target="#popup-form" href="#" class="btn btn-info"> <i
-                    class="fa fa-user-plus"></i> اضافة دور جديد </button>
+                    class="fa fa-user-plus"></i> اضافة صلاحية </button>
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                     title="Collapse"><i class="fa fa-minus"></i></button>
@@ -108,28 +108,7 @@
 {!! Html::script(asset('modules/master/plugins/datatables/jquery.dataTables.min.js')) !!}
 {!! Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')) !!}
 <script>
-    $('#table_id').DataTable({
-        // processing: true,
-        // serverSide: true,
-        // "columnDefs":[
-        //   {
-        //     "targets":[1, 3, 7],
-        //     "orderable":false,
-        //   },
-        // ],
-        "stateSave": false,
-        "responsive": true,
-        "order": [
-            [0, 'desc']
-        ],
-        "pagingType": "full_numbers",
-        aLengthMenu: [
-            [10, 25, 50, 100, 200, -1],
-            [10, 25, 50, 100, 200, "All"]
-        ],
-        iDisplayLength: 25,
-        fixedHeader: true,
-    });
+
     $(document).ready(function () {
         /*
             For iCheck =====================================>

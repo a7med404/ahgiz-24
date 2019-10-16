@@ -11,6 +11,7 @@ use Session;
 
 class ReservationController extends Controller
 {
+    # TODO::in case the customer typed anthor phone_number for the reservation
     /**
      * Display a listing of the resource.
      * @return Response
@@ -66,8 +67,7 @@ class ReservationController extends Controller
      */
     public function store(CreateReservationRequest $request, Reservation $reservation)
     {
-        // dd($request->all());
-        $number = Time().rand(0, 100000);
+        $number = Time().rand(0, 100);
         $data = [
             'customer_id'       => $request->customer_id,
             'trip_id'           => $request->trip_id,

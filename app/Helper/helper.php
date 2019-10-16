@@ -97,10 +97,28 @@ function getSettingSelect($tableName)
 {
 
     switch ($tableName) {
-        case 'time_booking':
+        case 'cash_status':
             return [
-                '7' => 'Coupe',
-                '8' => 'Wagon',
+                '1' => 'متاح',
+                '0' => 'غير متاح',
+            ];
+            break;
+        case 'BOK_status':
+            return [
+                '1' => 'متاح',
+                '0' => 'غير متاح',
+            ];
+            break;
+        case 'ciper_status':
+            return [
+                '1' => 'متاح',
+                '0' => 'غير متاح',
+            ];
+            break;
+        case 'EPS_status':
+            return [
+                '1' => 'متاح',
+                '0' => 'غير متاح',
             ];
             break;
         case 'station':
