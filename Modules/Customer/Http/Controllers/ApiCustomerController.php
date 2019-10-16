@@ -22,6 +22,7 @@ use Validator;
 class ApiCustomerController extends Controller
 {   
 
+    public $optValue;
     ////////////// for Registerain Customers ///////////// 
 
     public function update(Request $request, $id)
@@ -60,10 +61,10 @@ class ApiCustomerController extends Controller
             $json['birthdate'] = $customer->birthdate;
             $json['access_token'] = $customer->createToken('MyApp')->accessToken;
             $json['isNew'] = 0;
-            $json['otp'] = $this->getOTP();
+            $json['otp'] = $this->optValue;
             if($customer) {
                 //TODO::handel return value of CustomerRegisteredOrLoginEvent
-                event(new CustomerRegisteredOrLoginEvent($customer, $this->getOTP()));
+                event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
             }
             return response()->json(['customer' => $json], 200);
         } else {
@@ -77,7 +78,7 @@ class ApiCustomerController extends Controller
 
             // return response 
             if ($customer) {
-                event(new CustomerRegisteredOrLoginEvent($customer, $this->getOTP()));
+                event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
             }
             $json['id'] = $customer->id;
             $json['c_name'] = $customer->c_name;
@@ -87,7 +88,7 @@ class ApiCustomerController extends Controller
             $json['brithdate'] = $customer->brithdate;
             $json['access_token'] = $accessToken;
             $json['isNew'] = 1;
-            $json['otp'] = $this->getOTP();
+            $json['otp'] = $this->optValue;
             
             return response()->json(['customer' => $json], 200);
         }
@@ -96,7 +97,7 @@ class ApiCustomerController extends Controller
     public function getOTP()
     {
         $number = random_int(1000,9999);
-        return $number;
+        $this->optValue = $number;
     }
 
     ///////////////////// forget password ////////////////////////////////////
