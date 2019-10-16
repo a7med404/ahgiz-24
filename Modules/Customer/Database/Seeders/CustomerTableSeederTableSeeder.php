@@ -4,6 +4,7 @@ namespace Modules\Customer\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Customer\Entities\Customer;
 
 class CustomerTableSeederTableSeeder extends Seeder
 {
@@ -14,8 +15,11 @@ class CustomerTableSeederTableSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
+        // Model::unguard();
 
+        $count = 100;
+        factory(Customer::class, $count)->create();
+    
         // $this->call("OthersTableSeeder");
     }
 }
