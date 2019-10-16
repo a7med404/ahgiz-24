@@ -31,6 +31,20 @@
 		format: 'yyyy-mm-dd'
     });
 
+    
+$('#date_from').datepicker({
+        autoclose: true,
+        language: 'ar',
+		rtl: true,
+		format: 'yyyy-mm-dd'
+    });
+
+    $('#date_to').datepicker({
+        autoclose: true,
+        language: 'ar',
+		rtl: true,
+		format: 'yyyy-mm-dd'
+    });
     //Timepicker
     $("#departure_time").timepicker({
         showInputs: false,
@@ -65,3 +79,4 @@
 </script>
 <?php $__env->stopSection(); ?>
 
+<?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/Modules/Vehicle/Providers/../Resources/views/trips/add.blade.php ENDPATH**/ ?>

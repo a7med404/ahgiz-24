@@ -55,7 +55,7 @@
                             <td ><span v-text="{{$reservation->customer->phone_number}}"  data-toggle="tooltip" data-original-title="{{$reservation->customer->first_name .' '. $reservation->customer->last_name}}"></span></td>
                             <td>{{ $reservation->trip->date }}</td>
                             <td ><span v-text="{{$reservation->trip->number}}"  data-toggle="tooltip" data-original-title="{{$reservation->trip->fromStation->name .' - '. $reservation->trip->toStation->name}}"></span></td>
-                            <td>{{ $reservation->seats->count() }}</td>
+                            <td>{{ $reservation->passengers->count() }}</td>
                             <td>{{ reservationStatus()[$reservation->status] }}</td>
                             <td>
                                 <div class="dropdown">

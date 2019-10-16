@@ -73,6 +73,8 @@
                   </a>
                   <ul class="treeview-menu">
                     <li><a href="<?php echo e(route('trips.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_trips')); ?></a></li>
+                    <li><a href="<?php echo e(route('trips.previous')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_previous_trips')); ?></a></li>
+                    <li><a href="<?php echo e(route('trips.next')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_next_trip')); ?></a></li>
                     <li><a href="<?php echo e(route('trips.create')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.add_trip')); ?></a></li>
                   </ul>
                 </li>
@@ -100,6 +102,19 @@
                 </li>
               </ul>
             </li>
+            <li class="treeview">
+                          <a href="#">
+                            <i class="fa fa-users text-yellow"></i> <span><?php echo e(__('home/sidebar.tickets')); ?></span>
+                            <span class="pull-right-container">
+                              <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                          </a>
+                          <ul class="treeview-menu" style="display: none;">
+                            <li><a href="<?php echo e(route('ticket.index')); ?>"><i class="fa fa-circle-o text-aqua"></i>
+                                <?php echo e(__('home/sidebar.all_tickets')); ?></a></li>
+                           
+                          </ul>
+                        </li>
 
             
             <li class="header">قسم الشركات</li>
@@ -155,7 +170,7 @@
                   <ul class="treeview-menu">
                     <li><a href="<?php echo e(route('vehicles.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_vehicles')); ?></a></li>
                     <li><a href="<?php echo e(route('vehicles.create')); ?>"><i class="fa fa-circle-o"></i><?php echo e(__('home/sidebar.add_vehicle')); ?></a></li>
-                  </ul>
+                    </ul>
                 </li>
                 <li>
                   <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.stations')); ?> 
@@ -166,6 +181,18 @@
                   <ul class="treeview-menu">
                     <li><a href="<?php echo e(route('stations.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_stations')); ?></a></li>
                     <li><a href="<?php echo e(route('stations.create')); ?>"><i class="fa fa-circle-o"></i><?php echo e(__('home/sidebar.add_station')); ?></a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.cities')); ?> 
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?php echo e(route('cities.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.cities')); ?></a></li>
+                    <li><a href="<?php echo e(route('cities.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_')); ?></a></li>
+                    <li><a href="<?php echo e(route('cities.create')); ?>"><i class="fa fa-circle-o"></i><?php echo e(__('home/sidebar.add_cities')); ?></a></li>
                   </ul>
                 </li>
                 <li>

@@ -33,7 +33,7 @@ class Reservation extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function seats(){
-        return $this->BelongsToMany(Seat::class, 'seat_reservations');
-    }
+    // public function seats(){
+    //     return $this->BelongsToMany(Seat::class, 'seat_reservations');
+    // }
 }
