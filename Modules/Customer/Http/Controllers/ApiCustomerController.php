@@ -20,24 +20,30 @@ use Session;
 use Validator;
 
 class ApiCustomerController extends Controller
-{   
+{
 
     public $optValue;
     ////////////// for Registerain Customers ///////////// 
 
     public function update(Request $request, $id)
     {
-            if(empty($id))
-            return response()->json(['message' => 'Is Not Empty'], 422);
-            // update data for customer 
-            $customer = Customer::where('id',$id)
-                                ->update([
-                                    'email'             => $request->email,
-                                    'c_name'            => $request->c_name,
-                                    'gender'            => $request->gender,
-                                    'birthdate'         => $request->birthdate
-                                        ]);
-            return response()->json(200);
+        if (empty($id))
+            return response()->json(['errors' => 'Invalid Customer id'], 404);
+
+        $validator = Validator::make($request->all(), [
+            'c_name' => 'required|string|max:14',
+            // 'email' => 'email|string|min:5',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // update data for customer 
+        $customer = Customer::where('id', $id)->update($request->all());
+        if ($customer) {
+            return response()->json(['message' => 'User Created Successfuly'], 200);
+        }
+        return response()->json(['errors' => 'Invalid Customer id'], 404);
     }
 
     /////////// for Login Customers /////////////////////
@@ -46,7 +52,7 @@ class ApiCustomerController extends Controller
     {
         $this->optValue = $this->getOTP();
         $validator = Validator::make($request->all(), [
-            'phone_number'=>'required|string|max:14|min:9',
+            'phone_number' => 'required|string|max:9|min:9',
         ]);
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
@@ -63,7 +69,7 @@ class ApiCustomerController extends Controller
             $json['access_token'] = $customer->createToken('MyApp')->accessToken;
             $json['isNew'] = 0;
             $json['otp'] = $this->optValue;
-            if($customer) {
+            if ($customer) {
                 //TODO::handel return value of CustomerRegisteredOrLoginEvent
                 event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
             }
@@ -90,14 +96,14 @@ class ApiCustomerController extends Controller
             $json['access_token'] = $accessToken;
             $json['isNew'] = 1;
             $json['otp'] = $this->optValue;
-            
+
             return response()->json(['customer' => $json], 200);
         }
     }
 
     public function getOTP()
     {
-        $number = random_int(1000,9999);
+        $number = random_int(1000, 9999);
         return $number;
     }
 
@@ -106,11 +112,11 @@ class ApiCustomerController extends Controller
     public function deleteAccount(Request $request)
     {
         $successStatus = 200;
-        $client = Client::find(1);   
+        $client = Client::find(1);
         return response()->json([''], 204);
     }
 
-///////////////////////////////// user profile /////////////////////////////
+    ///////////////////////////////// user profile /////////////////////////////
 
     public function profile(Request $request)
     {
@@ -120,10 +126,9 @@ class ApiCustomerController extends Controller
             'user'          => $user,
             'status_code'   => 200
         ));
-        
     }
 
-////////////////////////////// logout //////////////////////////////////
+    ////////////////////////////// logout //////////////////////////////////
 
     public function logout(Request $request)
     {
@@ -137,21 +142,6 @@ class ApiCustomerController extends Controller
             'message'       => 'you are logged out',
             'status_code'   => 200
         ));
-        return response()->json(['status'=>true], 204);
+        return response()->json(['status' => true], 204);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 }

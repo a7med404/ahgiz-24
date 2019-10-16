@@ -22,17 +22,16 @@ Route::middleware('auth:api')->get('/customer', function (Request $request) {
     |--------------------------------------------------------------------------
     |*/
     Route::group(['prefix' => 'auth'], function () {
+
         Route::post('/login-register', 'ApiCustomerController@loginRegister');
-        Route::post('/delete', 'ApiCustomerController@deleteAccount');
-        Route::post('/update/{id}', 'ApiCustomerController@update');
+        Route::post('/customer-delete', 'ApiCustomerController@deleteAccount');
+        Route::post('/customer-update/{id}', 'ApiCustomerController@update');
         Route::post('/register', 'ApiCustomerController@register');
 
     /*
     | This group for all API Routes 'middleware' => 'auth'
     */
         Route::group(['middleware' => 'auth:api'], function () {
-        Route::post('/logout-api', 'ApiCustomerController@logout');
-        Route::post('/logout-api', 'ApiCustomerController@logout');
-            
+        Route::post('/customer-logout-api', 'ApiCustomerController@logout');
         });
     });
