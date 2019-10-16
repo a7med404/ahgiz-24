@@ -49,6 +49,8 @@ class ApiReservationController extends Controller
         }
         return AvailableTripResource::collection(collect($validTrips));
     }
+
+    
     public function cancelReservation(Request $request)
     {
         $reservation = Reservation::join('customers', function ($join) {
