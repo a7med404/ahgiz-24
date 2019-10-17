@@ -27,6 +27,7 @@ class ApiCustomerController extends Controller
 
     public function update(Request $request, $id)
     {
+        # this function for complate register and update customer profile
         if (empty($id))
             return response()->json(['errors' => 'Invalid Customer id'], 404);
 
@@ -69,10 +70,14 @@ class ApiCustomerController extends Controller
             $json['access_token'] = $customer->createToken('MyApp')->accessToken;
             $json['isNew'] = 0;
             $json['otp'] = $this->optValue;
-            if ($customer) {
-                //TODO::handel return value of CustomerRegisteredOrLoginEvent
-                event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
-            }
+            $json['customer_update'] = route('customer-update', ['id' => $customer->id]);
+            $json['customer_logout'] = route('customer-logout-api');
+            $json['customer_delete'] = route('customer-delete');
+            $json['my_reservations'] = route('customer-reservations', ['id' => $customer->id]);
+            // if ($customer) {
+            //     //TODO::handel return value of CustomerRegisteredOrLoginEvent
+            //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
+            // }
             return response()->json(['customer' => $json], 200);
         } else {
             // created data for customer 
@@ -84,9 +89,9 @@ class ApiCustomerController extends Controller
             $accessToken = $customer->createToken('customerToken')->accessToken;
 
             // return response 
-            if ($customer) {
-                event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
-            }
+            // if ($customer) {
+            //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
+            // }
             $json['id'] = $customer->id;
             $json['c_name'] = $customer->c_name;
             $json['phone_number'] = $customer->phone_number;
@@ -96,6 +101,10 @@ class ApiCustomerController extends Controller
             $json['access_token'] = $accessToken;
             $json['isNew'] = 1;
             $json['otp'] = $this->optValue;
+            $json['customer_update'] = route('customer-update', ['id' => $customer->id]);
+            $json['customer_logout'] = route('customer-logout-api');
+            $json['customer_delete'] = route('customer-delete');
+            $json['my_reservations'] = route('my-reservations', ['id' => $customer->id]);
 
             return response()->json(['customer' => $json], 200);
         }
@@ -126,7 +135,7 @@ class ApiCustomerController extends Controller
                 'status_code'   => 200
             ]);
         }
-        return response()->json(['status' => true], 304);
+        return response()->json(['status' => false], 500);
     }
 
     ///////////////////////////////// user profile /////////////////////////////
@@ -155,6 +164,6 @@ class ApiCustomerController extends Controller
                 'status_code'   => 204
             ]);
         }
-        return response()->json(['status' => true], 304);
+        return response()->json(['status' => false], 500);
     }
 }

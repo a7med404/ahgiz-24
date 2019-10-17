@@ -19,7 +19,17 @@ class ApiReservationController extends Controller
 {
     public function myReservations(Request $request, $id)
     {
-        return ReservationResource::collection(Reservation::orderBy('id')->where('customer_id', $id)->get());
+
+        // $reservations = DB::table('reservations')
+        //     ->join('trips', function ($join) {
+        //         $join->on('reservations.trip_id', '=', 'trips.id');
+        //             // ->where('trips.reservation_id', '>', 5);
+        //     })
+        //     ->get();
+// ->whereDate('trips.date', '<=', '2014-07-10')
+        $reservations = Reservation::orderBy('id')->where('customer_id', $id)->get();
+        // return $reservations;//, $reservations->trip->date, now());
+        return ReservationResource::collection($reservations);
     }
 
     public function myReservationDetails($id)
