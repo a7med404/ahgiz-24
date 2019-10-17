@@ -31,7 +31,7 @@
 
               @php $reservedSeats = 0 @endphp 
               @foreach ($tripInfo->reservations as $reservation)
-                  @if (!$reservation->conceled_at)
+                  @if (!$reservation->canceled_at)
                       @php $reservedSeats += $reservation->passengers->count() @endphp 
                   @endif
               @endforeach

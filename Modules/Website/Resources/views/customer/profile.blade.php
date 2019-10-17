@@ -54,7 +54,7 @@
                             <div class="text-center">
                                 <h3 class="text-capitalize l-r-border"> الحجوزات التي قمت بها</h3>
                                 @forelse($customerInfo->reservations as $reservation)
-                                    @if (!$reservation->conceled_at)
+                                    @if (!$reservation->canceled_at)
                                         <div class="cars-list scale">
                                             <div class="row">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">

@@ -8,7 +8,7 @@ $factory->define(Model::class, function (Faker $faker) {
 	    'trip_id' => $faker->numberBetween(1, 5),     
 	    'user_id' => $faker->numberBetween(1, 5),     
 	    'number' => $faker->numberBetween(1, 5),     
-	    'conceled_at' => $faker->word,     
+	    'canceled_at' => $faker->word,     
 	    'pay_method' => $faker->word,     
 	    'status' => $faker->numberBetween(1, 5),     
     ];

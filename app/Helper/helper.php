@@ -60,6 +60,7 @@ function reservationStatus(){
         '0' => 'ﻣﺘﺎﺣﺔ ﻟﻠﺤﺠﺰ ',
         '1' => 'ﺣﺠﺰ ﻣﺆﻗ,'   ,   
         '2' => 'اﻛﺘﻤﻞ اﻟﺤﺠﺰ ',
+        '3' => 'تزكرة',
     ];
 }
 
@@ -287,9 +288,15 @@ function getName($tableName, $id)
     }
 }
 
+function formatCurrency($value)
+{
+    return $value.' ج.س';
+}
+
+
 function editRoute($name, $id)
 {
-    return route($name.'.edit', ['id' => $id]);
+    return route($name . '.edit', ['id' => $id]);
 }
 
 function showRoute($name, $id)

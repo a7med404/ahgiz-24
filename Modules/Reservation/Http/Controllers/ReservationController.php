@@ -18,25 +18,25 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = Reservation::where('conceled_at', null)->orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('canceled_at', null)->orderBy('id', 'desc')->get();
         return view('reservation::reservations.index', ['reservations' => $reservations]);
     }
 
     public function conceled()
     {
-        $reservations = Reservation::where('conceled_at', '!=', null)->orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('canceled_at', '!=', null)->orderBy('id', 'desc')->get();
         return view('reservation::reservations.conceled', ['reservations' => $reservations]);
     }
 
     public function pendding()
     {
-        $reservations = Reservation::where('conceled_at', null)->where('status', 1)->orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('canceled_at', null)->where('status', 1)->orderBy('id', 'desc')->get();
         return view('reservation::reservations.pendding', ['reservations' => $reservations]);
     }
 
     public function done()
     {
-        $reservations = Reservation::where('conceled_at', null)->where('status', 2)->orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('canceled_at', null)->where('status', 2)->orderBy('id', 'desc')->get();
         return view('reservation::reservations.done', ['reservations' => $reservations]);
     }
 

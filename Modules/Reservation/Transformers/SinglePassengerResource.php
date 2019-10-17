@@ -14,6 +14,10 @@ class SinglePassengerResource extends Resource
      */
     public function toArray($request)
     {
+        return  [
+            'name'     => $this->name,
+            'gender'   => maleOrfemale()[$this->gender],
+        ];
        // return parent::toArray($request);
     }
 }

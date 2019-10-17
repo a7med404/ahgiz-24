@@ -34,7 +34,7 @@
 
               <?php $reservedSeats = 0 ?> 
               <?php $__currentLoopData = $tripInfo->reservations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reservation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <?php if(!$reservation->conceled_at): ?>
+                  <?php if(!$reservation->canceled_at): ?>
                       <?php $reservedSeats += $reservation->passengers->count() ?> 
                   <?php endif; ?>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

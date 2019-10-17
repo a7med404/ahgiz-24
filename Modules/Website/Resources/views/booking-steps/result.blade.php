@@ -120,7 +120,7 @@
                                 @forelse ($trips as $trip)
                                     @php $reservedSeats = 0 @endphp 
                                     @foreach ($trip->reservations as $reservation)
-                                        @if (!$reservation->conceled_at)
+                                        @if (!$reservation->canceled_at)
                                             @php $reservedSeats += $reservation->passengers->count() @endphp 
                                         @endif
                                     @endforeach
