@@ -132,7 +132,10 @@ return [
     'add_testimonial' => 'اضافة جديد',
     'edit_testimonial' => 'تعديل بيانات',
     
-
     'edit_customer' => 'تعديل بيانات المستفيدين',
-    
+
+    // cities //
+    'all_cities' => 'كل المـــدن',
+    'edit_city' =>  'تعديل المدن',
+    'add_city' => 'إضافة مـدينة',
 ];

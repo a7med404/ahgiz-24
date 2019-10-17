@@ -7,7 +7,7 @@
 
     <div class="form-group col-md-6">
         {!! Form::label('parent_id', 'المدينة', ['class' => 'control-label']) !!}
-        {!! Form::select('parent_id', getCities(), null, ['id' => 'parent_id', 'class' => "form-control {{ $errors->has('parent_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('parent_id') }}"]) !!}
+        {!! Form::select('parent_id', getCities(), null, ['id' => 'parent_id', 'class' => "select2 form-control {{ $errors->has('parent_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('parent_id') }}"]) !!}
     </div>
 </div>
 

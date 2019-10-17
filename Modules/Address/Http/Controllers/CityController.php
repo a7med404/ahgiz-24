@@ -1,7 +1,6 @@
 <?php
 
 namespace Modules\Address\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -28,6 +27,7 @@ class CityController extends Controller
      */
     public function create()
     {
+
         return view('address::create');
     }
 
@@ -50,8 +50,8 @@ class CityController extends Controller
      */
     public function show($id)
     {
-        $stationInfo = City::findOrFail($id);
-        return view('address::cities.show', ['stationInfo' => $stationInfo]);
+        $cityInfo = City::findOrFail($id);
+        return view('address::cities.show', ['cityInfo' => $cityInfo]);
     }
 
     /**
@@ -61,8 +61,8 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        $stationInfo = City::findOrFail($id);
-        return view('address::cities.edit', ['stationInfo' => $stationInfo]);
+        $cityInfo = City::findOrFail($id);
+        return view('address::cities.edit', ['cityInfo' => $cityInfo]);
     }
 
     /**
@@ -73,8 +73,8 @@ class CityController extends Controller
      */
     public function update(CreateCityRequest $request, $id)
     {
-        $stationInfo = City::findOrFail($id);
-        $stationInfo->fill($request->all())->save();
+        $cityInfo = City::findOrFail($id);
+        $cityInfo->fill($request->all())->save();
         Session::flash('flash_massage_type', 2);
         return redirect()->back()->withFlashMassage('City Updated Successfully');
     }
@@ -86,8 +86,8 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        $stationForDelete = City::findOrFail($id);
-        $stationForDelete->delete();
+        $cityInfoForDelete = City::findOrFail($id);
+        $cityInfoForDelete->delete();
         Session::flash('flash_massage_type', 2);
         return redirect()->back()->withFlashMassage('City Deleted Successfully');
     }

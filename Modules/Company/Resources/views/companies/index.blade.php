@@ -41,16 +41,23 @@
                             <th>#ID</th>
                             <th>{{ __("home/labels.name") }}</th>
                             <th>{{ __("home/labels.logo") }}</th>
+                            <th>{{ __("home/labels.CompanyType") }}</th>
                             <th>{{ __("home/labels.note") }}</th>
                             <th>{{ __('home/labels.options') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($companies as $company)
-                        <tr>
+                        <tr >
                             <td>{{ $company->id }}</td>
                             <td>{{ $company->name }}</td>
                             <td>{{ $company->logo }}</td>
+                            @if($company->type == 1){
+                                <td>{{ 'شـركة طـيران' }}</td>
+                            }@else{
+                                <td>{{ 'شـركة بصـات' }}</td>
+                            }
+                            @endif
                             <td>{{ $company->note }}</td>
                             <td>
                                 <div class="dropdown">
