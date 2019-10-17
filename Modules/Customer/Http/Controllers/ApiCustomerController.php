@@ -132,16 +132,16 @@ class ApiCustomerController extends Controller
 
     public function logout(Request $request)
     {
-        // dd(4444);
-        $accessToken = Auth::guard('customer')->token();
-        dump($accessToken);
-        DB::table('oauth_access_tokens')->where('id', $accessToken->id)->update(['revoked' => true]);
-        $accessToken->revoke();
-        return response()->json(array(
-            'error'         => false,
-            'message'       => 'you are logged out',
-            'status_code'   => 200
-        ));
-        return response()->json(['status' => true], 204);
+        $accessToken = Auth::user()->token();
+        $revoked = DB::table('oauth_access_tokens')->where('id', $accessToken->id)->update(['revoked' => true]);
+        $accessTokenDone = $accessToken->revoke();
+        if($revoked){
+            return response()->json([
+                'error'         => false,
+                'message'       => 'you are logged out',
+                'status_code'   => 204
+            ]);
+        }
+        return response()->json(['status' => true], 304);
     }
 }

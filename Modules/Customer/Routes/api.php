@@ -24,14 +24,14 @@ Route::middleware('auth:api')->get('/customer', function (Request $request) {
     Route::group(['prefix' => 'auth'], function () {
 
         Route::post('/login-register', 'ApiCustomerController@loginRegister');
-        Route::post('/customer-delete', 'ApiCustomerController@deleteAccount');
-        Route::post('/customer-update/{id}', 'ApiCustomerController@update');
-        Route::post('/register', 'ApiCustomerController@register');
+        Route::delete('/customer-delete', 'ApiCustomerController@deleteAccount');
+        // Route::post('/register', 'ApiCustomerController@register');
 
     /*
     | This group for all API Routes 'middleware' => 'auth'
     */
         Route::group(['middleware' => 'auth:api'], function () {
-        Route::post('/customer-logout-api', 'ApiCustomerController@logout');
+            Route::post('/customer-update/{id}', 'ApiCustomerController@update');
+            Route::get('/customer-logout-api', 'ApiCustomerController@logout');
         });
     });
