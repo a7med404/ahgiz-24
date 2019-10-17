@@ -89,9 +89,9 @@ class ApiCustomerController extends Controller
             $accessToken = $customer->createToken('customerToken')->accessToken;
 
             // return response 
-            // if ($customer) {
-            //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
-            // }
+            if ($customer) {
+                event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
+            }
             $json['id'] = $customer->id;
             $json['c_name'] = $customer->c_name;
             $json['phone_number'] = $customer->phone_number;
