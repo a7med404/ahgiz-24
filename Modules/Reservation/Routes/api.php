@@ -19,7 +19,7 @@ Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'res
     Route::get('my-reservation-details/{id}', 'ApiReservationController@myReservationDetails')->name('my-reservation-details');
     
     Route::post('cancel-reservation', 'ApiReservationController@cancelReservation')->name('cancele-reservation');
-    
-    Route::post('available-reserve', 'ApiReservationController@availableReservation');
+
+    Route::post('available-reservation', 'ApiReservationController@availableReservation');
     // Route::resource('reservations', 'ApiReservationController');
 });

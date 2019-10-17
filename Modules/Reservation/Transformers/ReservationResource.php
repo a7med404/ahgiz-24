@@ -27,6 +27,7 @@ class ReservationResource extends JsonResource
             // 'number'                    => $this->trip->number,
             'saleprice'                 => $this->trip->saleprice,
             'date'                      => $this->trip->date,
+            'passengers'              => $this->passengers->count(),
             // 'seats_number'              => $this->trip->seats_number,
             'status'                    => $this->status, 
             'is_valid'                  => (strtotime($this->trip->date . $this->trip->departure_time) >= strtotime(now()->toDateTimeString())) ? true : false,
