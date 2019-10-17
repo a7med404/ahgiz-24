@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Address\Entities\Address;
 use Modules\Address\Entities\Contact;
 use Modules\Vehicle\Entities\Vehicle;
+use Modules\Reservation\Entities\PlaneReservation;
+
 
 class Company extends Model
 {
@@ -23,5 +25,10 @@ class Company extends Model
     public function vehicles()
     {
         return $this->hasMany(Vehicle::Class);
+    }
+
+    public function PlaneReservations()
+    {
+        return $this->hasMany(PlaneReservation::Class);
     }
 }
