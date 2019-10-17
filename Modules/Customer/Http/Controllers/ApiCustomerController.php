@@ -111,9 +111,22 @@ class ApiCustomerController extends Controller
 
     public function deleteAccount(Request $request)
     {
-        $successStatus = 200;
-        $client = Client::find(1);
-        return response()->json([''], 204);
+        $customerForDelete = Auth::user();
+        $customerTokens = $customerForDelete->tokens;
+
+        foreach ($customerTokens as $token) {
+            $token->revoke();
+            $token->delete();
+        }
+        $done = $customerForDelete->delete();
+        if($done){
+            return response()->json([
+                'error'         => false,
+                'message'       => 'Customer Deleted Successfully',
+                'status_code'   => 200
+            ]);
+        }
+        return response()->json(['status' => true], 304);
     }
 
     ///////////////////////////////// user profile /////////////////////////////
@@ -134,7 +147,7 @@ class ApiCustomerController extends Controller
     {
         $accessToken = Auth::user()->token();
         $revoked = DB::table('oauth_access_tokens')->where('id', $accessToken->id)->update(['revoked' => true]);
-        $accessTokenDone = $accessToken->revoke();
+        $accessToken->revoke();
         if($revoked){
             return response()->json([
                 'error'         => false,

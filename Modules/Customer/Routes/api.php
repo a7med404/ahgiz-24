@@ -24,7 +24,6 @@ Route::middleware('auth:api')->get('/customer', function (Request $request) {
     Route::group(['prefix' => 'auth'], function () {
 
         Route::post('/login-register', 'ApiCustomerController@loginRegister');
-        Route::delete('/customer-delete', 'ApiCustomerController@deleteAccount');
         // Route::post('/register', 'ApiCustomerController@register');
 
     /*
@@ -33,5 +32,6 @@ Route::middleware('auth:api')->get('/customer', function (Request $request) {
         Route::group(['middleware' => 'auth:api'], function () {
             Route::post('/customer-update/{id}', 'ApiCustomerController@update');
             Route::get('/customer-logout-api', 'ApiCustomerController@logout');
+            Route::delete('/customer-delete', 'ApiCustomerController@deleteAccount');
         });
     });

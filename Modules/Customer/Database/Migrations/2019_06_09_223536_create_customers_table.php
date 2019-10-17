@@ -18,7 +18,7 @@ class CreateCustomersTable extends Migration
             $table->string('c_name', 100)->nullable();
             $table->string('phone_number', 14)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('email')->unique()->nullable();
+            $table->string('email')->nullable();
             $table->string('password');
             $table->tinyInteger('gender')->nullable();
             $table->date('birthdate')->nullable();
