@@ -2,9 +2,9 @@
 
 namespace Modules\Vehicle\Transformers;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class SingleTripResource extends Resource
+class SingleTripResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,6 +14,18 @@ class SingleTripResource extends Resource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id'                => $this->id,
+            'date'              => $this->date,
+            'saleprice'         => $this->saleprice,
+            'fromStation'       => $this->fromStation->name,
+            'toStation'         => $this->toStation->name,
+            'departure_time'    => $this->departure_time,
+            'arrive_time'       => $this->arrive_time,
+            'company'           => __('app/messages.agency') . ' ' . $this->company->name,
+            // 'number'            => $this->number,
+            'reserve_step_two'    => route('reserve-step-two', ['id' => $this->id]),
+        ];
+
     }
 }

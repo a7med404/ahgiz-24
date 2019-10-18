@@ -14,6 +14,7 @@ use Modules\Customer\Entities\Customer;
 use Modules\Vehicle\Entities\Trip;
 use Auth;
 use DB;
+use Modules\Vehicle\Transformers\SingleTripResource;
 
 class ApiReservationController extends Controller
 {
@@ -29,30 +30,45 @@ class ApiReservationController extends Controller
         return new SingleReservationResource(Reservation::findOrFail($id));
     }
 
-    public function availableReservation(Request $request, Trip $trip, $seats = 3)
+    public function availableReservation(Request $request, Trip $trip)
     {
-        $trips =  Trip::orderBy('id')->get();
-        $multiplied = $trips->map(function ($trip) {
-            $reservations = $trip->reservations->map(function ($reservation) use ($trip) {
-                $ss = $reservation->passengers->count();
-                return  $ss;
-            });
-            $s = array_sum($reservations->toArray());
-            return $s;
-        });
+        $trips =  Trip::orderBy('id')
+            ->where('from_station_id', $request->from_station_id)
+            ->where('to_station_id', $request->to_station_id)->where('status', 1);
+        if ($request->date != null) {
+            $trips = $trips->where('date', $request->date)->get();
+        } else {
+            $trips = $trips->where('date', '>=', Date('Y-m-d'))->get();
+        }
 
-        $validTrips = [];
-        foreach ($multiplied as $key => $value) {
-            foreach ($trips as $trip) {
-                if (($trip->seats_number - $value) >= $seats) {
-                    $validTrips[] = $trip;
+        # this section for get number of booked seats at any trip
+        $passengers_nubmers_for_trip = $trips->map(function ($trip) {
+            # loop through any reservation to get number of passengers for this reservation
+            $reservations = $trip->reservations->map(function ($reservation) {
+                $passengers = $reservation->passengers->count();
+                return  $passengers;
+            });
+            # sum of the number of passengers for any trip
+            return array_sum($reservations->toArray());
+        });
+        /**
+         * ! to loop through any trip and filter that trip has avaliable seat less than required
+         */
+        // TODO:: Fix seat number issus
+        $validTrips = $trips->map(function ($trip) use ($passengers_nubmers_for_trip, $request) {
+            foreach ($passengers_nubmers_for_trip as $key => $value) {
+                // dd(($trip->seats_number - $value)- $request->seats_number);
+                if (($trip->seats_number - $value) >= $request->seats_number) {
+                    return  $trip;
+                } else {
+                    return;
                 }
             }
-        }
+        });
         return AvailableTripResource::collection(collect($validTrips));
     }
 
-    
+
     public function cancelReservation(Request $request)
     {
         $reservation = Reservation::join('customers', function ($join) {
@@ -66,7 +82,50 @@ class ApiReservationController extends Controller
                 return response()->json(['message' => 'uncorrect phone number'], 422);
             }
         } else {
-            return response()->json(['message' => 'uncorrect Reservation number'], 401);
+            return response()->json(['message' => 'uncorrect Reservation number'], 422);
         }
+    }
+
+
+
+    // public function     reserveStepOne(Request $request, $id)
+    // {
+    //     $trip =  Trip::orderBy('id')->where('id', $request->id)->first();
+    //     return new SingleTripResource($trip);
+    // }
+
+
+    public function     reserveStepOne(Request $request)
+    {
+        $seats = $request->seats;
+        $data = [
+            'customer_id'       => Auth::guard('customer')->user()->id,
+            'trip_id'           => $request->trip_id,
+            'number'            => $request->number,
+            'status'            => 1,
+        ];
+        $reservation = Reservation::create($data);
+        if ($reservation) {
+            if ($seats) {
+                while ($seats >= 1) {
+                    Passenger::create([
+                        'name'              => request($seats . '-name'),
+                        'gender'            => request($seats . '-gender'),
+                        'reservation_id'    => $reservation->id,
+                    ]);
+                    $seats--;
+                }
+            }
+        }
+
+        $blance = $reservation->passengers->count() * $reservation->trip->price;
+        return response()->json([
+            'error'         => false,
+            'message'       => 'you are logged out',
+            'status_code'   => 200
+        ]);
+        Session::flash('flash_massage_type', 1);
+        // return redirect()->route('pay-page')->with(['reservation' => $reservation, 'blance' => $blance])->withFlashMassage('تم اجراء حجز مبدئي الرجاء تأكيد الحجز عن طريق سداد رسوم التزاكر.');
+        return view('website::booking-steps.pay', ['reservation' => $reservation, 'blance' => $blance])->withFlashMassage('Reservation Added Successfully');
     }
 }
