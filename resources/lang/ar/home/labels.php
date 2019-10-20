@@ -4,6 +4,8 @@ return [
     'trip_date' => 'تاريخ الرحلة',
     'trip' => 'الرحلة',
     
+    // company type //
+    'CompanyType' => 'نوع الشركة',
 
     'departure_time' => 'زمن انطلاق الرحلة',
     'arrive_time' => 'زمن وصول الرحلة',
@@ -44,4 +46,8 @@ return [
     'number' => 'الرقم',
     'date' => 'التاريخ',
 
+    // plne reservation //
+
+    'company_name' => 'اسم الشركة',
+    
 ];

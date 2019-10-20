@@ -132,7 +132,20 @@ return [
     'add_testimonial' => 'اضافة جديد',
     'edit_testimonial' => 'تعديل بيانات',
     
-
     'edit_customer' => 'تعديل بيانات المستفيدين',
+
+    // cities //
+    'all_cities' => 'كل المـــدن',
+    'edit_city' =>  'تعديل المدن',
+    'add_city' => 'إضافة مـدينة',
+
+    // pane reservations //
+    'planeReservation' => 'حجوزات الطــيران ',
+    'all_planeReservations' => 'كل الحجوزات',
+    'add_PlaneReservation' => 'إَضافة حجــز',
+    'edit_PlaneReservation' => 'تعديل بيانات الحجز',
+
+
+
     
 ];

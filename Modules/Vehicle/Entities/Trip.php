@@ -7,6 +7,8 @@ use Modules\Reservation\Entities\Reservation;
 use Modules\Company\Entities\Company;
 use Modules\Vehicle\Entities\Route;
 use Modules\Vehicle\Entities\Station;
+use Modules\Reservation\Entities\PlaneReservation;
+
 
 class Trip extends Model
 {
@@ -15,6 +17,12 @@ class Trip extends Model
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
+    }
+
+
+    public function PlaneReservations()
+    {
+        return $this->hasMany(PlaneReservation::class);
     }
     
     // public function reservations()
@@ -44,4 +52,5 @@ class Trip extends Model
     {
         return $this->hasOne(Station::Class, 'id', 'to_station_id');
     }
+
 }

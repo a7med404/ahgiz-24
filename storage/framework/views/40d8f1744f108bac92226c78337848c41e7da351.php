@@ -58,6 +58,20 @@
             </li>
             <li class="treeview">
               <a href="#">
+                <i class="fa fa-calendar text-red"></i> <span><?php echo e(__('home/sidebar.planeReservation')); ?></span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu" style="display: none;">
+                <li><a href="<?php echo e(route('planeReservations.index')); ?>"><i class="fa fa-circle-o text-aqua"></i> <?php echo e(__('home/sidebar.all_reservations')); ?></a></li>
+                <li><a href="<?php echo e(route('planeReservations.pendding')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.pendding-reservations')); ?></a></li>
+                <li><a href="<?php echo e(route('planeReservations.done')); ?>"><i class="fa fa-circle-o text-success"></i> <?php echo e(__('home/sidebar.done-reservations')); ?></a></li>
+                <li><a href="<?php echo e(route('planeReservations.conceled')); ?>"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.conceled')); ?></a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
                 <i class="fa fa-users text-yellow"></i> <span><?php echo e(__('home/sidebar.trips')); ?></span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
@@ -263,6 +277,20 @@
                     <li><a href="<?php echo e(route('testimonials.create')); ?>"><i class="fa fa-circle-o"></i><?php echo e(__('home/sidebar.add_testimonial')); ?></a></li>
                   </ul>
                 </li>
+              </ul>
+            </li>
+
+            <li class="header">قسم المــدن</li>
+            <li class="treeview">        
+              <a href="#">
+                <i class="fa fa-users text-aqua"></i> <span> المـــدن</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu" style="display: none;">
+                <li><a href="<?php echo e(route('cities.index')); ?>"><i class="fa fa-circle-o text-aqua"></i> كل المـــدن</a></li>
+  
               </ul>
             </li>
             <li class="header m-b-20"></li>

@@ -37,7 +37,9 @@
                         <tr>
                             <th>id</th>
                             <th>Name</th>
+                            <th>type</th>
                             <th>City</th>
+
                             <th>{{ __('home/labels.options') }}</th>
                         </tr>
                     </thead>
@@ -46,6 +48,12 @@
                         <tr>
                             <td>{{ $station->id }}</td>
                             <td>{{ $station->name }}</td>
+                            @if($station->type == 1){
+                                <td>{{ 'محــطة طـيران' }}</td>
+                            }@else{
+                                <td>{{ 'محــطة بصـات' }}</td>
+                            }
+                            @endif
                             <td>{{ getCity()[$station->city] }}</td>
                             <td>
                                 <div class="dropdown">

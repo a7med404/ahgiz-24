@@ -21,7 +21,7 @@ php artisan module:make-request CreateCompanyRequest
 
 php artisan module:make-resource PlaneCompanyResource
 
-php artisan module:make-model Company --migration
+php artisan module:make-model    Company --migration
 
 php artisan module:migrate Setting
 

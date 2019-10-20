@@ -9,6 +9,7 @@ use Laratrust\Traits\LaratrustUserTrait;
 use Modules\Reservation\Entities\Reservation;
 use Modules\Address\Entities\Address;
 use Modules\Address\Entities\Contact;
+use Modules\Reservation\Entities\PlaneReservation;
 
 class User extends Authenticatable
 {
@@ -40,5 +41,10 @@ class User extends Authenticatable
 
     public function reservations(){
         return $this->hasMany(Reservation::class);
+    }
+
+
+    public function PlaneReservations(){
+        return $this->hasMany(PlaneReservation::class);
     }
 }

@@ -41,16 +41,24 @@
                             <th>#ID</th>
                             <th><?php echo e(__("home/labels.name")); ?></th>
                             <th><?php echo e(__("home/labels.logo")); ?></th>
+                            <th><?php echo e(__("home/labels.CompanyType")); ?></th>
                             <th><?php echo e(__("home/labels.note")); ?></th>
                             <th><?php echo e(__('home/labels.options')); ?></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $__empty_1 = true; $__currentLoopData = $companies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                        <tr>
+                        <tr >
                             <td><?php echo e($company->id); ?></td>
                             <td><?php echo e($company->name); ?></td>
                             <td><?php echo e($company->logo); ?></td>
+                            <?php if($company->type == 1): ?>{
+                                <td><?php echo e('شـركة طـيران'); ?></td>
+                            }<?php else: ?>{
+                                <td><?php echo e('شـركة بصـات'); ?></td>
+                            }
+                            <?php endif; ?>
+                            
                             <td><?php echo e($company->note); ?></td>
                             <td>
                                 <div class="dropdown">

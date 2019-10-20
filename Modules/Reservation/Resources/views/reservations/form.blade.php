@@ -18,12 +18,12 @@
             {!! Form::select('status', reservationStatus(), null, ['id' => 'status', 'class' => "select2 form-control {{ $errors->has('status') ? ' is-invalid' : '' }}", 'value' => "{{ old('status') }}", 'required']) !!}
         </div>
     </div> 
-    <div class="col col-xl-6 col-lg-6 col-md-6">
+    {{-- <div class="col col-xl-6 col-lg-6 col-md-6">
         <div class="form-group">
             {!! Form::label('seat_id', 'المسار(من)', ['class' => 'control-label']) !!}
             {{-- {!! Form::select('seat_id[]', getSelect('seat'), null, ['id' => 'seat_id', 'multiple' => 'multiple', 'data-placeholder' => 'Select a State', 'class' => "select2 form-control  {{ $errors->has('seat_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('seat_id') }}", 'required']) !!} --}}
         </div>
-    </div>
+    </div> --}}
 </div>
 
 @if(isset($reservationInfo))

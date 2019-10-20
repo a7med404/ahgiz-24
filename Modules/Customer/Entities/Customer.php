@@ -6,6 +6,8 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Modules\Reservation\Entities\Reservation;
+use Modules\Reservation\Entities\PlaneReservation;
+
 
 class Customer extends Authenticatable
 {
@@ -21,6 +23,10 @@ class Customer extends Authenticatable
 
     public function reservations(){
         return $this->hasMany(Reservation::class);
+    }
+
+    public function PlaneReservations(){
+        return $this->hasMany(PlaneReservation::class);
     }
     /**
      * Get the guard to be used during authentication.
