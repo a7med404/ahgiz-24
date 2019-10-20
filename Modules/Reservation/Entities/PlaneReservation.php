@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Customer\Entities\Customer;
 use Modules\Vehicle\Entities\Trip;
 use Modules\User\Entities\User;
-use Modules\Cmpany\Entities\Company;
+use Modules\Company\Entities\Company;
+use Modules\Vehicle\Entities\Station;
 
 
 
@@ -26,11 +27,19 @@ class PlaneReservation extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function fromStation()
+    {
+        return $this->hasOne(Station::Class, 'id', 'from_station_id');
+    }
+
+    public function toStation()
+    {
+        return $this->hasOne(Station::Class, 'id', 'to_station_id');
+    }
 
     public function company(){  
         return $this->belongsTo(Company::class);
     }
 
-    
-    
+
 }

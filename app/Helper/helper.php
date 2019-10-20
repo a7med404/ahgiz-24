@@ -69,6 +69,7 @@ function toggleTrusted(){
     return [
         '0' => 'label label-danger',
         '1' => 'label label-success',
+        '3' => 'labe lalel-primary',
     ];
 }
 

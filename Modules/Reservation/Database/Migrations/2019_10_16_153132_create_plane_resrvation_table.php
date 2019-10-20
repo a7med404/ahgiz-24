@@ -13,7 +13,7 @@ class CreatePlaneresrvationTable extends Migration
      */
     public function up()
     {
-        Schema::create('planeresrvation', function (Blueprint $table) {
+        Schema::create('plane_resrvations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('customer_id');
             $table->integer('from_station_id');
@@ -34,6 +34,6 @@ class CreatePlaneresrvationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planeresrvation');
+        Schema::dropIfExists('plane_resrvations');
     }
 }

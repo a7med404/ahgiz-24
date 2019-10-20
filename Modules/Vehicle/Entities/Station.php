@@ -12,7 +12,7 @@ class Station extends Model
     public function fromTrip()
     {
         return $this->belongsToMany(Trip::Class, 'from_station_id', 'id');
-    }
+    } 
 
     public function toTrip()
     {

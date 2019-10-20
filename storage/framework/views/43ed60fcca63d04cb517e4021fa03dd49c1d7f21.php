@@ -24,14 +24,7 @@
 
         </div>
     </div> 
-    <div class="col col-xl-6 col-lg-6 col-md-6">
-        <div class="form-group">
-            <?php echo Form::label('seat_id', 'المسار(من)', ['class' => 'control-label']); ?>
-
-            <?php echo Form::select('seat_id[]', getSelect('seat'), null, ['id' => 'seat_id', 'multiple' => 'multiple', 'data-placeholder' => 'Select a State', 'class' => "select2 form-control  <?php echo e($errors->has('seat_id') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('seat_id')); ?>", 'required']); ?>
-
-        </div>
-    </div>
+    
 </div>
 
 <?php if(isset($reservationInfo)): ?>

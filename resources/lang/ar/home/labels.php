@@ -46,4 +46,8 @@ return [
     'number' => 'الرقم',
     'date' => 'التاريخ',
 
+    // plne reservation //
+
+    'company_name' => 'اسم الشركة',
+    
 ];

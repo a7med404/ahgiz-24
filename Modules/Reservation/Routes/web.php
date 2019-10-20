@@ -29,6 +29,13 @@ Route::prefix('cpanel')->group(function() {
         
         Route::get('mark-as-payed/{id}', 'ReservationController@markAsPayed')->name('reservations.mark-as-payed');
         
+        // plane reservations //
+        Route::resource('planeReservations','PlaneReservationController');
+        Route::get('planeReservations-conceled', 'PlaneReservationController@conceled')->name('planeReservations.conceled');
+        Route::get('planeReservations/delete/{id}', 'PlaneReservationController@destroy')->name('planeReservations.delete');
+        Route::get('planeReservations-pendding', 'PlaneReservationController@pendding')->name('planeReservations.pendding');
+        Route::get('planeReservations-done', 'PlaneReservationController@done')->name('planeReservations.done');
+
     });
 
 

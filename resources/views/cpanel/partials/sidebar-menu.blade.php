@@ -58,6 +58,20 @@
             </li>
             <li class="treeview">
               <a href="#">
+                <i class="fa fa-calendar text-red"></i> <span>{{ __('home/sidebar.planeReservation') }}</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu" style="display: none;">
+                <li><a href="{{ route('planeReservations.index') }}"><i class="fa fa-circle-o text-aqua"></i> {{ __('home/sidebar.all_reservations') }}</a></li>
+                <li><a href="{{ route('planeReservations.pendding') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.pendding-reservations') }}</a></li>
+                <li><a href="{{ route('planeReservations.done') }}"><i class="fa fa-circle-o text-success"></i> {{ __('home/sidebar.done-reservations') }}</a></li>
+                <li><a href="{{ route('planeReservations.conceled') }}"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.conceled') }}</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
                 <i class="fa fa-users text-yellow"></i> <span>{{ __('home/sidebar.trips') }}</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
