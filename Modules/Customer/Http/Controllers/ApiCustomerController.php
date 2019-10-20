@@ -31,13 +31,13 @@ class ApiCustomerController extends Controller
         if (empty($id))
             return response()->json(['errors' => 'Invalid Customer id'], 404);
 
-        $validator = Validator::make($request->all(), [
-            'c_name' => 'required|string|max:14',
-            // 'email' => 'email|string|min:5',
-        ]);
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
+        // $validator = Validator::make($request->all(), [
+        //     'c_name' => 'required|string|max:14',
+        //     // 'email' => 'email|string|min:5',
+        // ]);
+        // if ($validator->fails()) {
+        //     return response()->json(['errors' => $validator->errors()], 422);
+        // }
 
         // update data for customer 
         $customer = Customer::where('id', $id)->update($request->all());
