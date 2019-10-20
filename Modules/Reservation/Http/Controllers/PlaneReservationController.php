@@ -19,8 +19,8 @@ class PlaneReservationController extends Controller
     public function index()
     {
 
-        $planereservations = PlaneReservation::where('conceled_at', null)->orderBy('id', 'desc')->get();
-        return view('reservation::planereservation.index',['planereservations'=> $planereservations]);
+        $planereservations = PlaneReservation::where('canceled_at', null)->orderBy('id', 'desc')->get();
+        return view('reservation::planereservation.index', ['planereservations' => $planereservations]);
     }
 
     /**
@@ -62,7 +62,7 @@ class PlaneReservationController extends Controller
 
         $planereservationsInfo = PlaneReservation::findOrFail($id);
         return view('reservation::planereservation.edit', ['planereservationsInfo' => $planereservationsInfo]);
-     }
+    }
 
     /**
      * Update the specified resource in storage.

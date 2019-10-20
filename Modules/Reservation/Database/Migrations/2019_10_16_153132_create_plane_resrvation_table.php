@@ -22,7 +22,7 @@ class CreatePlaneresrvationTable extends Migration
             $table->integer('user_id');
             $table->date('date');
             $table->boolean('status')->default(0);
-            $table->dateTime('conceled_at')->nullable();
+            $table->dateTime('canceled_at')->nullable();
             $table->timestamps();
         });
     }
