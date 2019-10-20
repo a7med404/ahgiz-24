@@ -46,7 +46,7 @@ class ApiCustomerController extends Controller
         ];
         $customer = Customer::where('id', $id)->update($data);
         if ($customer) {
-            return response()->json(['message' => 'User Created Successfuly'], 200);
+            return response()->json([], 200);
         }
         return response()->json(['errors' => 'Invalid Customer id'], 404);
     }
