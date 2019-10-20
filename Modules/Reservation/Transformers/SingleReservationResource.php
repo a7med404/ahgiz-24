@@ -16,11 +16,10 @@ class SingleReservationResource extends JsonResource
     {
         return  [
             'id'                => $this->id,
-            'customer'          => $this->customer->c_name,
+            // 'customer'          => $this->customer->c_name,
             // 'trip'          => $this->trip,
             // 'seats'         => $this->seats,
-            'passengers'        => filterData('passengers', $this->id),//$this->passengers,
-            'user'              => $this->user,
+            // 'user'              => $this->user,
             'company'           => $this->trip->company->name,
             'fromStation'       => $this->trip->fromStation->name,
             'toStation'         => $this->trip->toStation->name,
@@ -29,7 +28,10 @@ class SingleReservationResource extends JsonResource
             'number'            => $this->trip->number,
             'saleprice'         => $this->trip->saleprice,
             'date'              => $this->trip->date,
-            'saleprice'         => $this->trip->saleprice,
+            'saleprice'         => formatCurrency($this->trip->saleprice),
+            'status'            => $this->status, 
+            'status_value'            => reservationStatus()[$this->status],
+            'passengers'        => filterData('passengers', $this->id),//$this->passengers,
             // 'status'        => reservationStatus()[$this->status],
             // 'editRoute'     => editRoute('reservations', $this->id),
             // 'deleteRoute'   => deleteRoute()[$this->status]

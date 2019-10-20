@@ -17,7 +17,13 @@ function maleOrfemale(){
 
 
 
-function visibility(){
+function addSudanKey($number){
+    //TODO::check 0 in phone number
+    return "249".$number;
+}
+
+function visibility()
+{
     return [
         '0' => 'Visibile',
         '1' => 'Hidden',
@@ -54,6 +60,7 @@ function reservationStatus(){
         '0' => 'ﻣﺘﺎﺣﺔ ﻟﻠﺤﺠﺰ ',
         '1' => 'ﺣﺠﺰ ﻣﺆﻗ,'   ,   
         '2' => 'اﻛﺘﻤﻞ اﻟﺤﺠﺰ ',
+        '3' => 'تزكرة',
     ];
 }
 
@@ -92,10 +99,28 @@ function getSettingSelect($tableName)
 {
 
     switch ($tableName) {
-        case 'time_booking':
+        case 'cash_status':
             return [
-                '7' => 'Coupe',
-                '8' => 'Wagon',
+                '1' => 'متاح',
+                '0' => 'غير متاح',
+            ];
+            break;
+        case 'BOK_status':
+            return [
+                '1' => 'متاح',
+                '0' => 'غير متاح',
+            ];
+            break;
+        case 'ciper_status':
+            return [
+                '1' => 'متاح',
+                '0' => 'غير متاح',
+            ];
+            break;
+        case 'EPS_status':
+            return [
+                '1' => 'متاح',
+                '0' => 'غير متاح',
             ];
             break;
         case 'station':
@@ -139,7 +164,6 @@ function StationType()
     return [
         '0' => 'محطــة بصات',
         '1' => 'محطــة طيران',
-        
     ];
 } 
 
@@ -265,9 +289,15 @@ function getName($tableName, $id)
     }
 }
 
+function formatCurrency($value)
+{
+    return $value.' ج.س';
+}
+
+
 function editRoute($name, $id)
 {
-    return route($name.'.edit', ['id' => $id]);
+    return route($name . '.edit', ['id' => $id]);
 }
 
 function showRoute($name, $id)

@@ -91,6 +91,15 @@
     </div>
     <div class="col col-xl-4 col-lg-4 col-md-4">
         <div class="form-group">
+            <?php echo Form::label('saleprice', 'سعر  بيع التذكرة', ['class' => 'control-label']); ?>
+
+            <?php echo Form::text('saleprice', null, ['id' => 'saleprice', 'class' => "form-control
+            <?php echo e($errors->has('saleprice') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('saleprice')); ?>", 'required', 'autofocus']); ?>
+
+        </div>
+    </div>
+    <div class="col col-xl-4 col-lg-4 col-md-4">
+        <div class="form-group">
             <?php echo Form::label('seats_number', 'عدد المقاعد', ['class' => 'control-label']); ?>
 
             <?php echo Form::text('seats_number', null, ['id' => 'seats_number', 'class' => "form-control  <?php echo e($errors->has('seats_number') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('seats_number') ? 49 : old('seats_number')); ?>", 'required', 'autofocus']); ?>
@@ -134,3 +143,4 @@
     </div>
 </div>
 <?php endif; ?>
+<?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/Modules/Vehicle/Providers/../Resources/views/trips/form.blade.php ENDPATH**/ ?>

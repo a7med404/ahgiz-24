@@ -11,31 +11,32 @@ use Session;
 
 class ReservationController extends Controller
 {
+    # TODO::in case the customer typed anthor phone_number for the reservation
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        $reservations = Reservation::where('conceled_at', null)->orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('canceled_at', null)->orderBy('id', 'desc')->get();
         return view('reservation::reservations.index', ['reservations' => $reservations]);
     }
 
     public function conceled()
     {
-        $reservations = Reservation::where('conceled_at', '!=', null)->orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('canceled_at', '!=', null)->orderBy('id', 'desc')->get();
         return view('reservation::reservations.conceled', ['reservations' => $reservations]);
     }
 
     public function pendding()
     {
-        $reservations = Reservation::where('conceled_at', null)->where('status', 1)->orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('canceled_at', null)->where('status', 1)->orderBy('id', 'desc')->get();
         return view('reservation::reservations.pendding', ['reservations' => $reservations]);
     }
 
     public function done()
     {
-        $reservations = Reservation::where('conceled_at', null)->where('status', 2)->orderBy('id', 'desc')->get();
+        $reservations = Reservation::where('canceled_at', null)->where('status', 2)->orderBy('id', 'desc')->get();
         return view('reservation::reservations.done', ['reservations' => $reservations]);
     }
 
@@ -66,8 +67,7 @@ class ReservationController extends Controller
      */
     public function store(CreateReservationRequest $request, Reservation $reservation)
     {
-        // dd($request->all());
-        $number = Time().rand(0, 100000);
+        $number = Time().rand(0, 100);
         $data = [
             'customer_id'       => $request->customer_id,
             'trip_id'           => $request->trip_id,

@@ -118,7 +118,7 @@
                                 <?php $__empty_1 = true; $__currentLoopData = $trips; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trip): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <?php $reservedSeats = 0 ?> 
                                     <?php $__currentLoopData = $trip->reservations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reservation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <?php if(!$reservation->conceled_at): ?>
+                                        <?php if(!$reservation->canceled_at): ?>
                                             <?php $reservedSeats += $reservation->passengers->count() ?> 
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -8,6 +8,16 @@
 
         </div>
     </div>
+
+        <div class="col col-xl-6 col-lg-6 col-md-6">
+            <div class="form-group">
+                <?php echo Form::label('type', 'نوع الشركة', ['class' => 'control-label']); ?>
+
+                <?php echo Form::select('type', CompanyType(), null, ['id' => 'type', 'class' => "select2 form-control  <?php echo e($errors->has('type') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('type')); ?>", 'required']); ?>
+
+            </div>
+        </div>
+
     <div class="col col-xl-6 col-lg-6 col-md-6">
         <div class="form-group">
             <?php echo Form::label('logo', 'Logo', ['class' => 'control-label']); ?>
@@ -17,6 +27,8 @@
         </div>
     </div>
 </div>
+
+
 <div class="row">
     <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="form-group">
@@ -45,3 +57,4 @@
     </div>
 </div>
 <?php endif; ?>
+<?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/Modules/Company/Providers/../Resources/views/companies/form.blade.php ENDPATH**/ ?>

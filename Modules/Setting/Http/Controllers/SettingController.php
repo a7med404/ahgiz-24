@@ -15,15 +15,26 @@ class SettingController extends Controller
         // dd($siteSetting);
         return view('setting::settings.index', ['stieSetting' => $siteSetting]);
       }
+
+
     
       public function store(Request $request, Setting $siteSetting){
-        // dd($request->file($siteSetting->name_setting));
-        foreach (array_except($request->toArray(), ['submit', '_token']) as $key => $req) {
-            $updateSetting = $siteSetting->where('name_setting', $key)->get()[0];
-            $u = $updateSetting->fill(['value' => $req])->save();
+        
+        if ($request->has('password')) {
+          $password  = $request->password;
+          if (Hash::check($password, auth()->user()->password)) {
+            foreach (array_except($request->toArray(), ['password', 'submit', '_token']) as $key => $req) {
+              $updateSetting = $siteSetting->where('name_setting', $key)->get()[0];
+              $u = $updateSetting->fill(['value' => $req])->save();
+            }
+            Session::flash('flash_massage_type');
+            return redirect()->back()->withFlashMassage('Setting Saved Successfully');
+            
+          } else {
+            Session::flash('flash_massage_type', 4);
+            return redirect()->back()->withFlashMassage('Password Not Right');
+          }
         }
-        Session::flash('flash_massage_type');
-        return redirect()->back()->withFlashMassage('Setting Saved Successfully');
       }
 
 }

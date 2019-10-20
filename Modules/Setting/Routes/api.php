@@ -16,4 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/setting', function (Request $request) {
     return $request->user();
 });
-Route::get('getSetting', 'API\ApiAppSettingController');
+
+
+Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'settings'], function () {
+
+    Route::get('get-settings-stations', 'ApiSettingController');
+});

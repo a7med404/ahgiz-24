@@ -19,7 +19,6 @@ class CreateTripsTable extends Migration
             $table->string('arrive_time');
             $table->string('number');
             $table->integer('price');
-            $table->integer('reserveration_id');
             $table->integer('saleprice');
             $table->date('date');
             $table->unsignedBigInteger('company_id')->foreign()->references('id')->on('companies');

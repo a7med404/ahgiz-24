@@ -30,7 +30,11 @@ php artisan module:seed
 php artisan module:publish-migration
 
 
-php artisan migrate --path=/Modules/Address/Database/Migrations/2019_09_28_040656_create_cities_table.php
+php artisan migrate --path=/Modules/User/Database/Migrations/2014_10_12_100000_create_password_resets_table.php
+
+
+php artisan module:make-event OTPCustomer Customer
+
 
 // the migration
 

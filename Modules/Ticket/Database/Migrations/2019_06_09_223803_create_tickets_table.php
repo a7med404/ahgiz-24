@@ -15,7 +15,8 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
-
+            $table->unsignedBigInteger('ticket_number');
+            $table->unsignedBigInteger('reservation_id')->foreign()->references('id')->on('reservations');
             $table->timestamps();
         });
     }

@@ -53,7 +53,7 @@
                             <div class="text-center">
                                 <h3 class="text-capitalize l-r-border"> الحجوزات التي قمت بها</h3>
                                 <?php $__empty_1 = true; $__currentLoopData = $customerInfo->reservations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reservation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                    <?php if(!$reservation->conceled_at): ?>
+                                    <?php if(!$reservation->canceled_at): ?>
                                         <div class="cars-list scale">
                                             <div class="row">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">

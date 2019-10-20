@@ -10,13 +10,13 @@ use Modules\User\Entities\User;
 use Modules\Reservation\Entities\Passenger;
 class Reservation extends Model
 {
-    
+
     protected $fillable = ['customer_id', 'number', 'trip_id', 'user_id', 'pay_method', 'conceled_at', 'status'];
 
     public function customer(){
         return $this->belongsTo(Customer::class);
     }
-    
+
     public function passengers(){
         return $this->hasMany(Passenger::class);
     }
@@ -34,7 +34,7 @@ class Reservation extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function seats(){
-        return $this->BelongsToMany(Seat::class, 'seat_reservations');
-    }
+    // public function seats(){
+    //     return $this->BelongsToMany(Seat::class, 'seat_reservations');
+    // }
 }

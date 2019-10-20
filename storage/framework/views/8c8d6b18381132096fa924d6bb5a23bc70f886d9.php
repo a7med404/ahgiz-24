@@ -41,8 +41,8 @@
                   <?php elseif($setting->type == 0): ?>
                     <?php echo Form::textarea($setting->name_setting, $setting->value, ['id' => '<?php echo e($setting->name_setting); ?>', 'class' => "form-control <?php echo e($errors->has($setting->name_setting) ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old($setting->name_setting)); ?>", 'autofocus']); ?>
 
-                  <?php elseif($setting->type == 4): ?>
-                    <?php echo Form::select($setting->name_setting, getSelect('role'), null, ['placeholder' => $setting->slug, 'class' => "form-control <?php echo e($errors->has($setting->name_setting) ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old($setting->name_setting)); ?>", 'required']); ?>
+                  <?php elseif($setting->type == 3): ?>
+                    <?php echo Form::select($setting->name_setting, getSettingSelect($setting->name_setting), null, ['placeholder' => $setting->slug, 'class' => "form-control <?php echo e($errors->has($setting->name_setting) ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old($setting->name_setting)); ?>", 'required']); ?>
 
                   <?php else: ?>
                     <?php echo Form::file($setting->name_setting, ['id' => '<?php echo e($setting->name_setting); ?>', 'class' => "form-control <?php echo e($errors->has($setting->name_setting) ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old($setting->name_setting)); ?>", 'autofocus']); ?>
@@ -59,7 +59,7 @@
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-4">
-              <button name="submit" type="submit" class="btn btn-primary">
+              <button name="submit" type="submit" class="btn btn-primary delete-confirm">
                 Save Settings
               </button>
             </div>
@@ -85,7 +85,7 @@
 <script>
     $(document).ready(function () {
         $("input").iCheck({
-            checkboxClass: "icheckbox_square-yellow",
+            checkboxClass: "icheckbox_square-red",
             radioClass: "iradio_square-yellow",
             increaseArea: "20%" // optional
         });
@@ -95,4 +95,4 @@
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('cpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('cpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/Modules/Setting/Providers/../Resources/views/settings/index.blade.php ENDPATH**/ ?>

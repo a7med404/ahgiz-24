@@ -137,7 +137,7 @@ class WebsiteController extends Controller
             })->where('number', $request->number)->select('customers.id as customer_id', 'customers.phone_number', 'reservations.*')->first();
             if($reservation){
                 if($reservation->phone_number === $request->phone_number){
-                    $reservation->update(['conceled_at' => now()]);
+                    $reservation->update(['canceled_at' => now()]);
                     Session::flash('flash_massage_type', 1);
                     return redirect()->back()->withFlashMassage('تم الغاء الحجز بنجاح.');
                 }else{

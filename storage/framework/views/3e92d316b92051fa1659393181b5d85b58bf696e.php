@@ -73,6 +73,8 @@
                   </a>
                   <ul class="treeview-menu">
                     <li><a href="<?php echo e(route('trips.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_trips')); ?></a></li>
+                    <li><a href="<?php echo e(route('trips.previous')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_previous_trips')); ?></a></li>
+                    <li><a href="<?php echo e(route('trips.next')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_next_trip')); ?></a></li>
                     <li><a href="<?php echo e(route('trips.create')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.add_trip')); ?></a></li>
                   </ul>
                 </li>
@@ -100,6 +102,19 @@
                 </li>
               </ul>
             </li>
+            <li class="treeview">
+                          <a href="#">
+                            <i class="fa fa-users text-yellow"></i> <span><?php echo e(__('home/sidebar.tickets')); ?></span>
+                            <span class="pull-right-container">
+                              <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                          </a>
+                          <ul class="treeview-menu" style="display: none;">
+                            <li><a href="<?php echo e(route('ticket.index')); ?>"><i class="fa fa-circle-o text-aqua"></i>
+                                <?php echo e(__('home/sidebar.all_tickets')); ?></a></li>
+                           
+                          </ul>
+                        </li>
 
             
             <li class="header">قسم الشركات</li>
@@ -137,50 +152,19 @@
               </ul>
             </li>
             
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-bus text-red"></i> <span><?php echo e(__('home/sidebar.vehicles')); ?></span>
+            <li>
+              <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.stations')); ?>
+
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
-              <ul class="treeview-menu" style="display: none;">
-                <li><a href="<?php echo e(route('vehicles.index')); ?>"><i class="fa fa-circle-o text-aqua"></i> <?php echo e(__('home/sidebar.all_vehicles')); ?></a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.vehicles')); ?> 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="<?php echo e(route('vehicles.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_vehicles')); ?></a></li>
-                    <li><a href="<?php echo e(route('vehicles.create')); ?>"><i class="fa fa-circle-o"></i><?php echo e(__('home/sidebar.add_vehicle')); ?></a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.stations')); ?> 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="<?php echo e(route('stations.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_stations')); ?></a></li>
-                    <li><a href="<?php echo e(route('stations.create')); ?>"><i class="fa fa-circle-o"></i><?php echo e(__('home/sidebar.add_station')); ?></a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-yellow"></i> <?php echo e(__('home/sidebar.routes')); ?> 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="<?php echo e(route('routes.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_routes')); ?></a></li>
-                    <li><a href="<?php echo e(route('routes.create')); ?>"><i class="fa fa-circle-o"></i><?php echo e(__('home/sidebar.add_route')); ?></a></li>
-                  </ul>
-                </li>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo e(route('stations.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_stations')); ?></a></li>
+                
               </ul>
             </li>
+            
             <li class="header">قسم الادارة</li>
             <li class="treeview">
               <a href="#">
@@ -191,28 +175,8 @@
               </a>
               <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo e(route('users.index')); ?>"><i class="fa fa-circle-o text-aqua"></i> كل المستخدمين</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.roles')); ?> 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="<?php echo e(route('roles.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_roles')); ?></a></li>
-                    <li><a href="<?php echo e(route('roles.create')); ?>"><i class="fa fa-circle-o"></i><?php echo e(__('home/sidebar.add_role')); ?></a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-yellow"></i> <?php echo e(__('home/sidebar.permissions')); ?> 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="<?php echo e(route('permissions.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_permissions')); ?></a></li>
-                    <li><a href="<?php echo e(route('permissions.create')); ?>"><i class="fa fa-circle-o"></i><?php echo e(__('home/sidebar.add_permission')); ?></a></li>
-                  </ul>
-                </li>
+                <li><a href="<?php echo e(route('roles.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_roles')); ?></a></li>
+                <li><a href="<?php echo e(route('permissions.index')); ?>"><i class="fa fa-circle-o"></i><?php echo e(__('home/sidebar.all_permissions')); ?></a></li>
               </ul>
             </li>
           
@@ -225,17 +189,7 @@
               </a>
               <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo e(route('settings.index')); ?>"><i class="fa fa-circle-o text-aqua"></i> <?php echo e(__('home/sidebar.settings')); ?></a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.testimonials')); ?> 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="<?php echo e(route('testimonials.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_testimonials')); ?></a></li>
-                    <li><a href="<?php echo e(route('testimonials.create')); ?>"><i class="fa fa-circle-o"></i><?php echo e(__('home/sidebar.add_testimonial')); ?></a></li>
-                  </ul>
-                </li>
+                <li><a href="<?php echo e(route('testimonials.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_testimonials')); ?></a></li>
               </ul>
             </li>
             <li class="header m-b-20"></li>

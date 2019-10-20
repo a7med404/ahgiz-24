@@ -166,7 +166,18 @@
               </ul>
             </li>
             {{-- @endif --}}
-            <li class="treeview">
+            <li>
+              <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.stations') }}
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{ route('stations.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_stations') }}</a></li>
+                {{-- <li><a href="{{ route('stations.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_station') }}</a></li> --}}
+              </ul>
+            </li>
+            {{-- <li class="treeview">
               <a href="#">
                 <i class="fa fa-bus text-red"></i> <span>{{ __('home/sidebar.vehicles') }}</span>
                 <span class="pull-right-container">
@@ -221,7 +232,7 @@
                   </ul>
                 </li>
               </ul>
-            </li>
+            </li> --}}
             <li class="header">قسم الادارة</li>
             <li class="treeview">
               <a href="#">
@@ -232,28 +243,8 @@
               </a>
               <ul class="treeview-menu" style="display: none;">
                 <li><a href="{{ route('users.index') }}"><i class="fa fa-circle-o text-aqua"></i> كل المستخدمين</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.roles') }} 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('roles.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_roles') }}</a></li>
-                    <li><a href="{{ route('roles.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_role') }}</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-yellow"></i> {{ __('home/sidebar.permissions') }} 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('permissions.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_permissions') }}</a></li>
-                    <li><a href="{{ route('permissions.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_permission') }}</a></li>
-                  </ul>
-                </li>
+                <li><a href="{{ route('roles.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_roles') }}</a></li>
+                <li><a href="{{ route('permissions.index') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.all_permissions') }}</a></li>
               </ul>
             </li>
           
@@ -266,17 +257,7 @@
               </a>
               <ul class="treeview-menu" style="display: none;">
                 <li><a href="{{ route('settings.index') }}"><i class="fa fa-circle-o text-aqua"></i> {{ __('home/sidebar.settings') }}</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.testimonials') }} 
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('testimonials.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_testimonials') }}</a></li>
-                    <li><a href="{{ route('testimonials.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_testimonial') }}</a></li>
-                  </ul>
-                </li>
+                <li><a href="{{ route('testimonials.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_testimonials') }}</a></li>
               </ul>
             </li>
 

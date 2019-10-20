@@ -83,6 +83,14 @@ $table->tinyInteger('status'); --}}
     </div>
     <div class="col col-xl-4 col-lg-4 col-md-4">
         <div class="form-group">
+            {!! Form::label('saleprice', 'سعر  بيع التذكرة', ['class' => 'control-label']) !!}
+            {!! Form::text('saleprice', null, ['id' => 'saleprice', 'class' => "form-control
+            {{ $errors->has('saleprice') ? ' is-invalid' : '' }}", 'value' => "{{ old('saleprice') }}", 'required', 'autofocus'])
+            !!}
+        </div>
+    </div>
+    <div class="col col-xl-4 col-lg-4 col-md-4">
+        <div class="form-group">
             {!! Form::label('seats_number', 'عدد المقاعد', ['class' => 'control-label']) !!}
             {!! Form::text('seats_number', null, ['id' => 'seats_number', 'class' => "form-control  {{ $errors->has('seats_number') ? ' is-invalid' : '' }}", 'value' => "{{ old('seats_number') ? 49 : old('seats_number')}}", 'required', 'autofocus']) !!}
         </div>

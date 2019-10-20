@@ -19,7 +19,7 @@ class CreateReservationsTable extends Migration
             $table->unsignedBigInteger('trip_id')->foreign()->references('id')->on('trips');
             $table->unsignedBigInteger('user_id')->foreign()->references('id')->on('users')->nullable();
             $table->unsignedBigInteger('number')->unique();
-            $table->dateTime('conceled_at')->nullable();
+            $table->dateTime('canceled_at')->nullable();
             $table->tinyInteger('pay_method')->nullable();
             $table->integer('status');
             $table->timestamps();

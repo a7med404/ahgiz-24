@@ -13,18 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/reservation', function (Request $request) {
-    return $request->user();
-});
+Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'reservations'], function () {
 
-Route::get('myreserv/{id}', 'API\ApiReservationController@myReservations');
-Route::get('myreserv-details/{id}', 'API\ApiReservationController@myReservationDetails');
-Route::post('available-reserve', 'API\ApiReservationController@availableReservation');
-Route::post('cancel-reservation', 'API\ApiReservationController@cancelReservation');
-
-Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'reservation'], function () {
+    Route::get('my-reservations/{id}', 'ApiReservationController@myReservations')->name('customer-reservations');
+    Route::get('my-reservation-details/{id}', 'ApiReservationController@myReservationDetails')->name('my-reservation-details');
     
-    
+    Route::post('cancel-reservation', 'ApiReservationController@cancelReservation')->name('cancele-reservation');
 
-    Route::resource('reservations', 'ApiReservationController');
+    Route::post('available-reservation', 'ApiReservationController@availableReservation');
+    // Route::resource('reservations', 'ApiReservationController');
 });
