@@ -40,7 +40,11 @@ class ApiCustomerController extends Controller
         // }
 
         // update data for customer 
-        $customer = Customer::where('id', $id)->update($request->all());
+        $data = [
+            'c_name' => $request->c_name,
+            'email' => $request->email
+        ];
+        $customer = Customer::where('id', $id)->update($data);
         if ($customer) {
             return response()->json(['message' => 'User Created Successfuly'], 200);
         }
