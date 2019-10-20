@@ -46,7 +46,7 @@ class ApiCustomerController extends Controller
         ];
         $customer = Customer::where('id', $id)->update($data);
         if ($customer) {
-            return response()->json( 200);
+            return response()->json(null, 200);
         }
         return response()->json(['errors' => 'Invalid Customer id'], 404);
     }
@@ -137,7 +137,7 @@ class ApiCustomerController extends Controller
                 'error'         => false,
                 'message'       => 'Customer Deleted Successfully',
                 'status_code'   => 200
-            ]);
+            ], 200);
         }
         return response()->json(['status' => false], 500);
     }
@@ -165,8 +165,7 @@ class ApiCustomerController extends Controller
             return response()->json([
                 'error'         => false,
                 'message'       => 'you are logged out',
-                'status_code'   => 204
-            ]);
+            ], 200);
         }
         return response()->json(['status' => false], 500);
     }
