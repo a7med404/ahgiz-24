@@ -109,7 +109,7 @@ class ApiCustomerController extends Controller
             $json['customer_logout'] = route('customer-logout-api');
             $json['customer_delete'] = route('customer-delete');
             $json['my_reservations'] = route('my-reservations', ['id' => $customer->id]);
-            $json['search_reservation'] = route('search-reservation', ['id' => $customer->id]);
+            $json['search_reservation'] = route('search-reservation');
 
             return response()->json(['customer' => $json], 200);
         }
