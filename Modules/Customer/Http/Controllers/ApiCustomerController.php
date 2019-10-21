@@ -78,6 +78,7 @@ class ApiCustomerController extends Controller
             $json['customer_logout'] = route('customer-logout-api');
             $json['customer_delete'] = route('customer-delete');
             $json['my_reservations'] = route('customer-reservations', ['id' => $customer->id]);
+            $json['search_reservation'] = route('search-reservation');
             // if ($customer) {
             //     //TODO::handel return value of CustomerRegisteredOrLoginEvent
             //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
