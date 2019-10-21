@@ -22,6 +22,10 @@ class EventServiceProvider extends ServiceProvider
         'Modules\Customer\Events\CustomerRegisteredOrLoginEvent' => [
             'Modules\Customer\Listeners\SentOTPToCustomerListener',
         ],
+
+        'Modules\Reservation\Events\ReservationDoneEvent' => [
+            'Modules\Reservation\Listeners\SentSMSWithReservationDetailsToCustomerListener',
+        ],
     ];
 
     /**

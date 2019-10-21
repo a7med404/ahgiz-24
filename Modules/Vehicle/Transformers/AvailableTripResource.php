@@ -34,7 +34,7 @@ class AvailableTripResource extends JsonResource
             'company'           => __('app/messages.agency').' '.$this->company->name,  
             'number'            => $this->number,
             'avalibale_seats'   => $this->seats_number - $this->seatNumber(),
-            'reserve_step_one'    => route('reserve-step-one', ['tripId' => $this->id, 'customerId' => auth()->user()->id]),
+            'reserve_step_one'    => route('reserve-step-one', ['tripId' => $this->id]),
         ];
     }
 }

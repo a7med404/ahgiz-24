@@ -124,6 +124,7 @@ class ApiCustomerController extends Controller
 
     public function deleteAccount(Request $request)
     {
+        #TODO:: chack when delete something delete items that belong to it
         $customerForDelete = Auth::user();
         $customerTokens = $customerForDelete->tokens;
 

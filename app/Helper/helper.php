@@ -2,6 +2,7 @@
 use Modules\Reservation\Transformers\SinglePassengerResource;
 
 function getSetting($settingName = 'side_name'){
+    #TODO:: check if no value must return something
     return Modules\Setting\Entities\Setting::where('name_setting', $settingName)->get()[0]->value;
 }
 function getTestimonial(){

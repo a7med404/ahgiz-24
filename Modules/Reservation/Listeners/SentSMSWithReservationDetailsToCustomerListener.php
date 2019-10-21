@@ -1,12 +1,13 @@
 <?php
 
-namespace Modules\Customer\Listeners;
+namespace Modules\Reservation\Listeners;
 
-use Modules\Customer\Events\CustomerRegisteredOrLoginEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
+use Modules\Reservation\Events\ReservationDoneEvent;
 
-class SentOTPToCustomerListener implements ShouldQueue
+class SentSMSWithReservationDetailsToCustomerListener implements ShouldQueue
 {
     use InteractsWithQueue;
 
@@ -23,13 +24,17 @@ class SentOTPToCustomerListener implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  CustomerRegisteredOrLoginEvent  $event
+     * @param  ReservationDoneEvent  $event
      * @return void
      */
-    public function handle(CustomerRegisteredOrLoginEvent $event)
+    public function handle(ReservationDoneEvent $event)
     {
-        //Sent TOP
-        $url = "https://mazinhost.com/smsv1/sms/api?action=send-sms&api_key=YWhqZXoyNDpRfnZrR2VZTHt2NWh7SE44&to=". $event->customer->phone_number. "&from=ahjez-24&sms=".$event->message;
+        dd($event->message);
+        /**
+         * Sent Reservation Details To Customer
+         * ! TODO::check if it there any type of URL to sent sms
+        */
+        $url = "https://mazinhost.com/smsv1/sms/api?action=send-sms&api_key=YWhqZXoyNDpRfnZrR2VZTHt2NWh7SE44&to=" . $event->contact . "&from=ahjez-24&sms=" . $event->message;
 
         $client = new \GuzzleHttp\Client();
         // $response = $client->request('GET', $url);
@@ -42,17 +47,15 @@ class SentOTPToCustomerListener implements ShouldQueue
         # Send an asynchronous request.
         $request = new \GuzzleHttp\Psr7\Request('GET', $url);
         $promise = $client->sendAsync($request)->then(function ($response) use ($event) {
-            if($response->getStatusCode() == 200){
+            if ($response->getStatusCode() == 200) {
                 return $response->getBody();
-            }else {
-                return $event->customer;
+            } else {
+                return $event->reservation;
             }
         });
-        # TODO:: return and handle response
         $promise->wait();
-        return $event->customer;
+        Log::info($event->reservation);
+        return $event->reservation;
 
     }
-
-    
 }

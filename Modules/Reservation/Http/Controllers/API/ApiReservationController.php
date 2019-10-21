@@ -3,18 +3,14 @@
 namespace Modules\Reservation\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Reservation\Entities\Reservation;
 use Modules\Reservation\Transformers\ReservationResource;
-use Modules\Vehicle\Transformers\TripResource;
 use Modules\Vehicle\Transformers\AvailableTripResource;
 use Modules\Reservation\Transformers\SingleReservationResource;
-use Modules\Customer\Entities\Customer;
 use Modules\Vehicle\Entities\Trip;
-use Auth;
-use DB;
-use Modules\Vehicle\Transformers\SingleTripResource;
+use Modules\Reservation\Entities\Passenger;
+use Modules\Reservation\Events\ReservationDoneEvent;
 
 class ApiReservationController extends Controller
 {
@@ -68,7 +64,6 @@ class ApiReservationController extends Controller
         return AvailableTripResource::collection(collect($validTrips));
     }
 
-
     public function cancelReservation(Request $request)
     {
         $reservation = Reservation::join('customers', function ($join) {
@@ -87,34 +82,46 @@ class ApiReservationController extends Controller
     }
 
 
-
-    // public function     reserveStepOne(Request $request, $id)
-    // {
-    //     $trip =  Trip::orderBy('id')->where('id', $request->id)->first();
-    //     return new SingleTripResource($trip);
-    // }
-
-
-    public function     reserveStepOne(Request $request)
+    public function reserveStepOne(Request $request, $tripId)
     {
-        $seats = $request->seats;
+        #TODO:: this stap must be in transaction
+        $seats = $request->seats_number;
         $data = [
-            'customer_id'       => Auth::guard('customer')->user()->id,
-            'trip_id'           => $request->trip_id,
-            'number'            => $request->number,
+            'customer_id'       => auth()->user()->id,
+            'trip_id'           => $tripId,
+            'number'            =>  Time() . rand(0, 100),
             'status'            => 1,
         ];
+        #TODO:: Save contact information on passengers table if the customer changed his contact info
+        // if (addSudanKey($request->contact_number) != auth()->user()->phone_number) {
+        //     dd(auth()->user()->phone_number, 555);
+        // }else{
+
+        // }
         $reservation = Reservation::create($data);
         if ($reservation) {
             if ($seats) {
+
+                $contact = auth()->user()->phone_number;
+                if (addSudanKey($request->contact_number) != auth()->user()->phone_number) {
+                    $contact = addSudanKey($request->contact_number);
+                }
                 while ($seats >= 1) {
                     Passenger::create([
-                        'name'              => request($seats . '-name'),
-                        'gender'            => request($seats . '-gender'),
+                        'name'              => $seats . 'ajj',//request($seats . '-name'),
+                        'gender'            => $seats,//request($seats . '-gender'),
                         'reservation_id'    => $reservation->id,
+                        'phone_number'      => $contact,
                     ]);
                     $seats--;
                 }
+
+                # Sent Reservation details to phone number => $contact
+                #TODO::custom SMS content SMSStyle
+                if ($contact) {
+                    event(new ReservationDoneEvent($reservation, $contact));
+                }
+
             }
         }
 
