@@ -29,7 +29,6 @@ class SentSMSWithReservationDetailsToCustomerListener implements ShouldQueue
      */
     public function handle(ReservationDoneEvent $event)
     {
-        dd($event->message);
         /**
          * Sent Reservation Details To Customer
          * ! TODO::check if it there any type of URL to sent sms
@@ -54,7 +53,8 @@ class SentSMSWithReservationDetailsToCustomerListener implements ShouldQueue
             }
         });
         $promise->wait();
-        Log::info($event->reservation);
+        return $url;
+        // Log::info($event->reservation);
         return $event->reservation;
 
     }
