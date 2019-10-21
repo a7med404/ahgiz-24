@@ -13,7 +13,7 @@ class AvailableTripResource extends JsonResource
      * @return array
      */
     
-     public function dds(){
+     public function seatNumber(){
         $reservations = $this->reservations->map(function ($reservation) {
             $passengers = $reservation->passengers->count();
             return  $passengers;
@@ -32,9 +32,9 @@ class AvailableTripResource extends JsonResource
             'departure_time'    => $this->departure_time,
             'arrive_time'       => $this->arrive_time,
             'company'           => __('app/messages.agency').' '.$this->company->name,  
-            // 'number'            => $this->number,
-            'avalibale_seats'   => $this->seats_number - $this->dds(),
-            'reserve_step_one'    => route('reserve-step-one', ['id' => $this->id]),
+            'number'            => $this->number,
+            'avalibale_seats'   => $this->seats_number - $this->seatNumber(),
+            'reserve_step_one'    => route('reserve-step-one', ['tripId' => $this->id, 'customerId' => auth()->user()->id]),
         ];
     }
 }
