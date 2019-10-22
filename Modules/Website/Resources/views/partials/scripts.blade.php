@@ -12,7 +12,7 @@
 {{-- <script src="{{ asset('modules/master/website/js/ion.rangeSlider.min.js') }}"> </script> --}}
 <script src="{{ asset('modules/master/website/js/bootstrap-datepicker.js') }}"></script>
 <script src="{{ asset('modules/master/website/js/bootstrap-datepicker.ar.js') }}"></script>
-{{-- <script src="{{ asset('modules/master/website/js/bootstrap-select.js') }}"></script> --}}
+<script src="{{ asset('modules/master/website/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('modules/master/website/js/wow.min.js') }}"></script>
 <script src="{{ asset('modules/master/website/js/toastr.min.js') }}"></script>
 <script src="{{ asset('modules/master/website/js/frontend.js') }}"></script>
