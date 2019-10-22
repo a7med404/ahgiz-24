@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/bootstrap.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/bootstrap-rtl.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/font-awesome.min.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/fonts.min.css')); ?>">
+    
     
     
     

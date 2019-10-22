@@ -1,4 +1,4 @@
-<script src="{{ asset('js/app.js') }}"></script>  
+{{-- <script src="{{ asset('js/app.js') }}"></script>   --}}
   
 <script src="{{ asset('modules/master/website/js/jquery.min.js') }}"></script>
 <script src="{{ asset('modules/master/website/js/bootstrap.min.js') }}"></script>
