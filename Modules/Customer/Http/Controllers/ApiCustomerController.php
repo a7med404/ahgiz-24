@@ -74,15 +74,16 @@ class ApiCustomerController extends Controller
             $json['access_token'] = $customer->createToken('MyApp')->accessToken;
             $json['isNew'] = 0;
             $json['otp'] = $this->optValue;
-            $json['customer_update'] = route('customer-update', ['id' => $customer->id]);
-            $json['customer_logout'] = route('customer-logout-api');
-            $json['customer_delete'] = route('customer-delete');
-            $json['my_reservations'] = route('customer-reservations', ['id' => $customer->id]);
+            $json['customer_update']    = route('customer-update', ['id' => $customer->id]);
+            $json['customer_logout']    = route('customer-logout-api');
+            $json['customer_delete']    = route('customer-delete');
+            $json['my_reservations']    = route('customer-reservations', ['id' => $customer->id]);
             $json['search_reservation'] = route('search-reservation');
-            // if ($customer) {
-            //     //TODO::handel return value of CustomerRegisteredOrLoginEvent
-            //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
-            // }
+            $json['get_bus_stations'] = route('get-bus-stations');
+            if ($customer) {
+                //TODO::handel return value of CustomerRegisteredOrLoginEvent
+                event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
+            }
             return response()->json(['customer' => $json], 200);
         } else {
             // created data for customer 
@@ -111,6 +112,7 @@ class ApiCustomerController extends Controller
             $json['customer_delete'] = route('customer-delete');
             $json['my_reservations'] = route('my-reservations', ['id' => $customer->id]);
             $json['search_reservation'] = route('search-reservation');
+            $json['get_bus_stations'] = route('get-bus-stations');
 
             return response()->json(['customer' => $json], 200);
         }

@@ -26,16 +26,17 @@ class ReservationDoneEvent implements ShouldQueue
         $this->reservation = $reservation;
         $this->contact     = $contact;
         $this->message     = 
-            __('app/messages.reservation_message') . " : " . $reservation->number. "\n" .
-            __('app/messages.customer_message') . " : " . $reservation->customer->c_name . "\n" .
-            __('app/messages.company_message') . " : " . $reservation->trip->company->name . "\n" .
-            __('app/messages.from_message') . " : " . $reservation->trip->fromStation->name . "\n" .
-            __('app/messages.to_message') . " : " . $reservation->trip->toStation->name . "\n" .
-            __('app/messages.date_message') . " : " . $reservation->trip->date . "\n" .
-            __('app/messages.departure_time_message') . " : " .$reservation->trip->departure_time . "\n" .
-            __('app/messages.passengers_number_message') . " : " . $reservation->passengers->count() . "\n" .
-            __('app/messages.hotline_message') . " : ". getSetting('hot_line') ."\n \n \n".
-            getSetting('side_name') . "\n";
+            __('app/messages.reservation_message') . " : " . $reservation->number. "%0a" .
+            __('app/messages.customer_message') . " : " . $reservation->customer->c_name . "%0a" .
+            __('app/messages.company_message') . " : " . $reservation->trip->company->name . "%0a" .
+            __('app/messages.from_message') . " : " . $reservation->trip->fromStation->name . "%0a" .
+            __('app/messages.to_message') . " : " . $reservation->trip->toStation->name . "%0a" .
+            __('app/messages.date_message') . " : " . $reservation->trip->date . "%0a" .
+            __('app/messages.departure_time_message') . " : " .$reservation->trip->departure_time . "%0a" .
+            __('app/messages.passengers_number_message') . " : " . $reservation->passengers->count() . "%0a" .
+            __('app/messages.departure_blance_message') . " : " . $reservation->passengers->count() * $reservation->trip->price. "%0a" .
+            __('app/messages.hotline_message') . " : ". getSetting('hot_line') ."%0a %0a %0a".
+            getSetting('side_name') . "%0a";
     }
 
     /**

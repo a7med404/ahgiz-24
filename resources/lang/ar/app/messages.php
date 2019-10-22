@@ -13,4 +13,7 @@ return [
     'departure_time_message'      => 'زمن القيام',
     'passengers_number_message'   => 'عدد المقاعد',
     'hotline_message'             => 'الخط الساخن',
+    'departure_blance_message'    => 'المبلغ',
 ];
+
+

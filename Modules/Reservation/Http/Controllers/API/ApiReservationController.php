@@ -127,8 +127,7 @@ class ApiReservationController extends Controller
 
         $blance = $reservation->passengers->count() * $reservation->trip->price;
         return response()->json([
-            'error'         => false,
-            'message'       => 'you are logged out',
+            'blance'         => $blance,
             'status_code'   => 200
         ]);
         Session::flash('flash_massage_type', 1);
