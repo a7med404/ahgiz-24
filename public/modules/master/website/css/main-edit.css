@@ -72,9 +72,9 @@ header .slider {
   background-image: url("../images/landing-users.png");
   background-position: 0 0;
   background-repeat: repeat;
-  -webkit-animation: sidedownscroll 30s linear infinite;
-  animation: sidedownscroll 30s infinite ease;
-  /* animation: sidedownscroll 30s infinite cubic-bezier(.6,-0.28,.74,.05); */
+  -webkit-animation: sidedownscroll 60s linear infinite;
+  animation: sidedownscroll 60s infinite ease;
+  /* animation: sidedownscroll 60s infinite cubic-bezier(.6,-0.28,.74,.05); */
   background-size: auto;
 
 
