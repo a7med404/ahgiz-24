@@ -69,7 +69,7 @@ class ApiReservationController extends Controller
         $reservation = Reservation::join('customers', function ($join) {
             $join->on('reservations.customer_id', '=', 'customers.id');
         })->where('number', $request->number)->select('customers.id as customer_id', 'customers.phone_number', 'reservations.*')->first();
-        if ($reservation) {
+        if ($reservation) { 
             if ($reservation->phone_number === addSudanKey($request->phone_number)) {
                 $reservation->update(['canceled_at' => now()]);
                 return response()->json(['message' => 'reservation canceled'], 200);
