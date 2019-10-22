@@ -26,7 +26,7 @@ body {
 }
 
 .navbar-header button svg{
-  fill: #d84f57;
+  fill: #FFCC33;
 }
 .hover-box {
   background-color: #fafbfd !important;
@@ -57,7 +57,7 @@ body {
 }
 
 header .all-nav {
-  border-top: 3px solid #d84f57;
+  border-top: 3px solid #FFCC33;
 }
 header .navbar-collapse {
   padding-right: 0 !important;
@@ -138,7 +138,7 @@ header .slider .layout .content {
 
 
 .footer {
-  border-top: 1px solid #d84f57;
+  border-top: 1px solid #FFCC33;
 }
 .search {
   top: 50%;
@@ -198,7 +198,7 @@ header .slider .layout .content {
 .search .tabs li.active>a:focus,
 .search .tabs li.active>a:hover,
 .search .tabs li.active>a {
-  background-color: #d84f57;
+  background-color: #FFCC33;
   color: #FFF;
 }
 
@@ -216,7 +216,7 @@ header .slider .layout .content {
 .search-btn {
   padding: 10px 10px;
   min-height: 40px;
-  background-color: #d84f57;
+  background-color: #FFCC33;
   border-radius: 4px 0px 0px 4px;
 }
 
@@ -344,7 +344,7 @@ svg {
   border-radius: 0px;
   background-color: #fefefe;
   border: 1px solid #dee2e6;
-  border-bottom: 1px solid #d84f57;
+  border-bottom: 1px solid #FFCC33;
 }
 
 .show-cars .cars-list {
@@ -408,7 +408,7 @@ svg {
 
 
 .h-light {
-  color: #d84f57;
+  color: #FFCC33;
 }
 
 
@@ -423,7 +423,7 @@ svg {
 }
 
 .profile .ads .title{
-  background-color: #d84f574d;
+  background-color: #FFCC334d;
   padding: 15px;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
@@ -521,7 +521,7 @@ svg {
   width: 100%;
   padding: 10px;
   border-radius: unset !important;
-  background: #d84f57;
+  background: #FFCC33;
   color: #FFF;
 }
 .select-seats a:hover {
@@ -612,7 +612,7 @@ div.seatCharts-seat.available:focus {
   border-radius: 4px !important;
   padding-left: 7px;
   width: 100%;
-  background: #D84F57;
+  background: #FFCC33;
   color: #FFF;
 }
 @media(min-width: 768px){
@@ -667,7 +667,7 @@ div.seatCharts-seat.available:focus {
   border: none !important;
   color: #FFF;
   padding: 10px 0;
-  background-color: #d84f57;
+  background-color: #FFCC33;
 }
 
 .bus-details .panel .social-register {
@@ -739,7 +739,7 @@ div.seatCharts-seat.available:focus {
 .pay .tabs .btn-custom {
   width: 100%;
   border-radius: 4px !important;
-  background: #d84f57;
+  background: #FFCC33;
   color: #FFF;
   font-size: 16px;
 }
@@ -752,7 +752,7 @@ div.seatCharts-seat.available:focus {
 #quote-carousel .carousel-indicators .active {
   width: 18px;
   height: 18px;
-  background: #d84f57;
+  background: #FFCC33;
 }
 
 #quote-carousel .carousel-indicators li {
@@ -971,7 +971,7 @@ select.selectpicker {
 }
 
 .bootstrap-select.btn-group .dropdown-menu li a:hover {
-  color: #d84f57;
+  color: #FFCC33;
   background-color: #dee2e6;
 }
 
@@ -996,12 +996,12 @@ select.selectpicker {
 
 .bootstrap-select.btn-group .dropdown-menu li.selected a {
   color: #FFF;
-  background-color: #d84f57;
+  background-color: #FFCC33;
 }
 
 .bootstrap-select.btn-group .dropdown-menu li.selected a:hover {
   color: #FFF;
-  background-color: #d84f57;
+  background-color: #FFCC33;
 }
 
 .bootstrap-select.btn-group .dropdown-menu li a.opt {
@@ -1341,6 +1341,6 @@ select.selectpicker {
 /************************** modal **************************/
 .sa-confirm-button-container .btn-primary {
   color: #fff;
-  background-color: #d84f57;
+  background-color: #FFCC33;
   border: none;
 }
