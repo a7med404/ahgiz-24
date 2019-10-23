@@ -1,12 +1,12 @@
 
     <link rel="stylesheet" href="{{ asset('modules/master/website/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('modules/master/website/css/bootstrap-rtl.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('modules/master/website/css/font-awesome.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('modules/master/website/css/font-awesome.min.css') }}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('modules/master/website/css/fonts.min.css') }}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('modules/master/website/css/sweetalert.css') }}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('modules/master/website/css/icheck-1.x/all.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('modules/master/website/css/icheck-1.x/all.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('modules/master/website/css/pgwslider.min.css') }}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('modules/master/website/css/fontawesome.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('modules/master/website/css/fontawesome.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('modules/master/website/css/ion.rangeSlider.min.css') }}">
     <link rel="stylesheet" href="{{ asset('modules/master/website/css/ion.rangeSlider.skinFlat.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('modules/master/website/css/toastr.min.css') }}">

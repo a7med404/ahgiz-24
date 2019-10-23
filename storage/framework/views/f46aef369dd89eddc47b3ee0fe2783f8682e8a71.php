@@ -1,4 +1,4 @@
-<script src="<?php echo e(asset('js/app.js')); ?>"></script>  
+
   
 <script src="<?php echo e(asset('modules/master/website/js/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('modules/master/website/js/bootstrap.min.js')); ?>"></script>

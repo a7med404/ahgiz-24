@@ -23,10 +23,12 @@ class Reservation extends Model
     {
         return $this->hasMany(Passenger::class);
     }
+
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
     }
+    
     public function trip()
     {
         return $this->belongsTo(Trip::class);

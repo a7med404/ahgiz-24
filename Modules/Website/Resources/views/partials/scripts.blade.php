@@ -1,10 +1,10 @@
 {{-- <script src="{{ asset('js/app.js') }}"></script>   --}}
-  
+  # TODO:: add files onley to his needed page
 <script src="{{ asset('modules/master/website/js/jquery.min.js') }}"></script>
 <script src="{{ asset('modules/master/website/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('modules/master/website/js/jquery.nicescroll.min.js') }}"></script>
-{{-- <script src="{{ asset('modules/master/website/js/moment.min.js') }}"></script> --}}
-{{-- <script src="{{ asset('modules/master/website/js/icheck.min.js') }}"> </script> --}}
+<script src="{{ asset('modules/master/website/js/moment.min.js') }}"></script>
+<script src="{{ asset('modules/master/website/js/icheck.min.js') }}"> </script>
 <script src="{{ asset('modules/master/website/fonts/fontawesome-all.js') }}"> </script>
 {{-- <script src="{{ asset('modules/master/website/js/pgwslider.min.js') }}"></script> --}}
 {{-- <script src="{{ asset('modules/master/website/js/sweetalert.min.js') }}"></script> --}}
