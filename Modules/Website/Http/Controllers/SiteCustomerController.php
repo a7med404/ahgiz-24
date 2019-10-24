@@ -39,6 +39,7 @@ class SiteCustomerController extends Controller
      */
     public function store(CreateCustomerRequest $request, Customer $customer)
     {
+        // dd($request->all());
         $data = [
             'first_name'    => $request->first_name,
             'last_name'     => $request->last_name,
