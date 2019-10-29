@@ -1,4 +1,4 @@
-@extends('cpanel.layouts.master')
+@extends('adminCpanel.layouts.master')
 @section('title')
 Home
 @stop

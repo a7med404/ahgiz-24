@@ -1,4 +1,4 @@
-@extends('cpanel.layouts.layout')
+@extends('adminCpanel.layouts.layout')
 @section('title')
   Customer Informations
 @endsection 
@@ -10,8 +10,8 @@
                         <div class="row">
                             <div class="col-lg-12  float-right">
                                 <ol class="breadcrumb">
-                                    <li><i class="fa fa-home"></i><a href="{{ url('\cpanel') }}">HOME</a></li>
-                                    <li><i class="fa fa-users"></i><a href="{{ url('\cpanel\customers') }}">All Customers</a></li>							  	
+                                    <li><i class="fa fa-home"></i><a href="{{ url('\adminCpanel') }}">HOME</a></li>
+                                    <li><i class="fa fa-users"></i><a href="{{ url('\adminCpanel\customers') }}">All Customers</a></li>							  	
                                     <li><i class="fa fa-user"></i>Customer Informations</li>						  	
                                 </ol>
                             </div><!-- /.col-lg-12 -->
@@ -189,7 +189,7 @@
                                     <td>{{ level()[$car->level] }}</td>
                                     <td>
                                       <a class="btn btn-info btn-xs"   href="{{ route('cars.edit', ['id' => $car->id]) }}">Edit</a>
-                                      <a class="btn btn-danger btn-xs" href="{{ url('cpanel/car/'.$car->id.'/delete') }}">Delete</a>
+                                      <a class="btn btn-danger btn-xs" href="{{ url('adminCpanel/car/'.$car->id.'/delete') }}">Delete</a>
                                     </td>
                                   </tr>
                                   @endforeach

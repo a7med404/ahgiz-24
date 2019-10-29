@@ -549,8 +549,8 @@ th {
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
-    padding: 0;
-    margin-left: 0;
+    padding: 0 !important;
+    margin-left: 0 !important;
     border: none;
 }
 .pagination>.active>a,
@@ -583,6 +583,19 @@ div.dataTables_filter {
 div.dataTables_paginate {
   text-align: left;
 }
+.pagination>li>a,
+.pagination>li>span {
+  padding: 2px 9px !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    border: 1px solid #eee !important;
+}
+
+table.dataTable thead th,
+table.dataTable thead td {
+    border-bottom: 1px solid #9a9a9a !important;
+}
+
 
 /************* Tabel ********************/
 table {

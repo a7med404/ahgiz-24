@@ -11,17 +11,52 @@
 |
 */
 
+use App\DataTables\CustomerDataTable;
+use Modules\Customer\Entities\Customer;
+use Yajra\DataTables\Contracts\DataTable;
+use Yajra\DataTables\Html\Builder;
+
 Route::prefix('customer')->group(function() {
     Route::get('/', 'CustomerController@index');
 });
 
-Route::get('/cusR', 'ApiCustomerController@register');
 
-Route::prefix('cpanel')->group(function() {
+Route::prefix('adminCpanel')->group(function() {
     Route::group(['middleware' => ['web', 'auth']], function(){
         Route::Resource('customers', 'CustomerController');
         Route::get('customers/delete/{id}', 'CustomerController@destroy')->name('customers.delete');
-      
+
+
+        Route::get('customers-dataTables', 'CustomerController@customerDataTables')->name('customers-dataTables');
+
+        Route::get('customers-data', function(CustomerDataTable $dataTable, Builder $builder){
+            if (request()->ajax()) {
+                return DataTables::of(Customer::orderBy('id', 'desc')->get())->toJson();
+            }
+            $dataTable = $builder->columns([
+                ['data' => 'id', 'name' => 'id', 'title' => 'Id'],
+                ['data' => 'name', 'name' => 'name', 'title' => 'Name'],
+                ['data' => 'email', 'name' => 'email', 'title' => 'Email'],
+                ['data' => 'created_at', 'name' => 'created_at', 'title' => 'Created At'],
+                ['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'Updated At'],
+            ]);
+            return view('customer::customers.index', compact('dataTable'));
+
+            return $dataTable->render('customer::customers.index2');
+
+            return $this->datatables
+                ->eloquent($this->query())
+                ->make(true);
+
+            // ->parameters([
+            //     'searching' => false,
+            // ])
+            return Yajra\Datatables\Datatables::of(Customer::query())->parameters([
+                'buttons' => ['csv', 'excel', 'pdf', 'print'],
+            ])->make(true);
+        });
+
+        Route::get('customers-data2', 'CustomerController@customerDataTables');
     });
 
 
@@ -33,42 +68,6 @@ Route::prefix('cpanel')->group(function() {
     //     Route::get('/customer/logout', 'AllCustomerController@logout')->name('all-customers-logout');
 
     // });
-
-    
-    // Route::middleware('role:superadministrator|administrator')->group(function () {
-
-    //     /*
-    //     |--------------------------------------------------------------------------
-    //     | change sidesetting
-    //     |--------------------------------------------------------------------------
-    //     */
-    //     Route::get('/sitesetting', 'SiteSettingController@index')->name('site-setting');
-    //     Route::post('/sitesetting/update', 'SiteSettingController@store')->name('site-setting-update');
-    
-    
-    
-    
-    //     /*
-    //     |--------------------------------------------------------------------------
-    //     | Resource For Roles
-    //     |--------------------------------------------------------------------------
-    //     */
-    //     Route::Resource('roles', 'RoleController');
-    //     Route::get('roles/delete/{id}', 'RoleController@destroy')->name('roles.delete');
-    
-    
-    
-    
-    //     /*
-    //     |--------------------------------------------------------------------------
-    //     | Resource For Permissions
-    //     |--------------------------------------------------------------------------
-    //     */
-    //     Route::Resource('permissions', 'PermissionController');
-    //     Route::get('permissions/delete/{id}', 'PermissionController@destroy')->name('permissions.delete');
-    
-    //   });
-    
 
 
 });

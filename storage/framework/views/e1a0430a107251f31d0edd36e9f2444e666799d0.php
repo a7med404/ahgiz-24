@@ -1,9 +1,8 @@
-@extends('cpanel.layouts.master')
-@section('title')
+<?php $__env->startSection('title'); ?>
 Home
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div>
         <section class="content-header">
           <h1> لوحة التحكم <small>  </small></h1>
@@ -22,7 +21,7 @@ Home
                 <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text"> عدد المستخدمين</span>
-                <span class="info-box-number">{{ $user }}</span>
+                <span class="info-box-number"><?php echo e($user); ?></span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -35,7 +34,7 @@ Home
     
                 <div class="info-box-content">
                   <span class="info-box-text">حجوزات تم الغائها </span>
-                <span class="info-box-number">{{ $cancelRes }}</span>
+                <span class="info-box-number"><?php echo e($cancelRes); ?></span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -48,7 +47,7 @@ Home
     
                 <div class="info-box-content">
                   <span class="info-box-text">الحجوزات المكتملة</span>
-                  <span class="info-box-number">{{ $complateRes }}</span>
+                  <span class="info-box-number"><?php echo e($complateRes); ?></span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -61,7 +60,7 @@ Home
     
                 <div class="info-box-content">
                   <span class="info-box-text"> الحجوزات المؤقتة</span>
-                <span class="info-box-number">{{ $TempRes }}</span>
+                <span class="info-box-number"><?php echo e($TempRes); ?></span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -199,20 +198,21 @@ Home
                         <!-- /.box-header -->
                         <div class="box-body">
                         <ul class="products-list product-list-in-box">
-                            @foreach ($pendingRes as $pending)
+                            <?php $__currentLoopData = $pendingRes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pending): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li class="item">
                             <div class="product-img">
                                 <img src="modules/master/images/default-50x50.gif" alt="Product Image">
                             </div>   
                             <div class="product-info">
-                                <a href="javascript:void(0)" class="product-title"> {{ $pending->customer->first_name }}{{ $pending->customer->last_name }} 
-                                <span class="label label-success pull-left">{{ $pending->passengers->count() }}</span></a>
+                                <a href="javascript:void(0)" class="product-title"> <?php echo e($pending->customer->first_name); ?><?php echo e($pending->customer->last_name); ?> 
+                                <span class="label label-success pull-left"><?php echo e($pending->passengers->count()); ?></span></a>
                                     <span class="product-description">
-                                    {{ reservationStatus()[$pending->status] }}
+                                    <?php echo e(reservationStatus()[$pending->status]); ?>
+
                                     </span>
                             </div>
                             </li>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <!-- /.item -->
                         </ul>
                         </div>
@@ -265,10 +265,10 @@ Home
     
     
     </div>
-@stop
+<?php $__env->stopSection(); ?>
 
 
-@section('footer')
+<?php $__env->startSection('footer'); ?>
 
   
 <script>
@@ -1365,4 +1365,6 @@ Home
     
                  
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('adminCpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/resources/views/adminCpanel/app.blade.php ENDPATH**/ ?>

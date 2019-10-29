@@ -30,11 +30,9 @@
       <link href="{{ asset('modules/master/plugins/timepicker/bootstrap-timepicker.min.css') }}" rel="stylesheet">
 
       <!-- DataTables -->
-      {{-- <link href="{{ asset('modules/master/plugins/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-      <link href="{{ asset('modules/master/plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet"> --}}
-      
       {!! Html::style(asset('modules/master/plugins/datatables/jquery.dataTables.min.css')) !!} 
       {!! Html::style(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.css')) !!}
+      <link rel="stylesheet" href="https//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
       <!-- Ionicons -->
       <link href="{{ asset('modules/master/plugins/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
@@ -44,7 +42,7 @@
       <link rel="stylesheet" href="{{ asset('modules/master/plugins/colorpicker/bootstrap-colorpicker.min.css') }}">
       <!-- Bootstrap time Picker -->
       <link rel="stylesheet" href="{{ asset('modules/master/plugins/timepicker/bootstrap-timepicker.min.css') }}">
-      <!-- Select2 -->
+      <!-- Select2 --><link rel="stylesheet" href="{{ asset('modules/master/plugins/select2/select2.min.css') }}">
       <link rel="stylesheet" href="{{ asset('modules/master/plugins/select2/select2.min.css') }}">
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

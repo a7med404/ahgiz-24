@@ -29,7 +29,7 @@ $.widget.bridge('uibutton', $.ui.button);
 <!-- daterangepicker -->
 {{-- <script src="{{ asset('modules/master/js/script.js') }}"></script> --}}
 <script src="{{ asset('modules/master/js/moment.js') }}"></script>
-<script src="{{ asset('modules/master/js/datatables-ar.js') }}"></script>
+{{-- <script src="{{ asset('modules/master/js/datatables-ar.js') }}"></script> --}}
 <script src="{{ asset('modules/master/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- datepicker -->
 <script src="{{ asset('modules/master/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
@@ -57,9 +57,6 @@ $.widget.bridge('uibutton', $.ui.button);
 <!-- date-range-picker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="{{ asset('modules/master/plugins/daterangepicker/daterangepicker.js') }}"></script>
-<!-- DataTable -->
-{{-- <script src="{{ asset('modules/master/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js') }}"></script> --}}
 <!-- bootstrap color picker -->
 <script src="{{ asset('modules/master/plugins/colorpicker/bootstrap-colorpicker.min.js') }}"></script>
 <!-- bootstrap time picker -->
@@ -79,6 +76,8 @@ $.widget.bridge('uibutton', $.ui.button);
 
 {!! Html::script(asset('modules/master/plugins/datatables/jquery.dataTables.min.js')) !!}
 {!! Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')) !!}
+
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script>
 
  

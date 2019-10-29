@@ -18,7 +18,7 @@ Route::prefix('reservation')->group(function() {
 
 
 
-Route::prefix('cpanel')->group(function() {
+Route::prefix('adminCpanel')->group(function() {
     Route::group(['middleware' => ['web', 'auth']], function(){
         
         Route::resource('reservations','ReservationController');

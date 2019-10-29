@@ -1,4 +1,4 @@
-@extends('cpanel.layouts.master')
+@extends('adminCpanel.layouts.master')
 @section('title')
   User Informations
 @endsection
@@ -10,8 +10,8 @@
                 <div class="row">
                   <div class="col-lg-12  float-right">
                     <ol class="breadcrumb">
-                      <li><i class="fa fa-home"></i><a href="{{ url('\cpanel') }}">HOME</a></li>
-                      <li><i class="fa fa-users"></i><a href="{{ url('\cpanel\users') }}">All Users</a></li>
+                      <li><i class="fa fa-home"></i><a href="{{ url('\adminCpanel') }}">HOME</a></li>
+                      <li><i class="fa fa-users"></i><a href="{{ url('\adminCpanel\users') }}">All Users</a></li>
                       <li><i class="fa fa-user"></i>User Informations</li>
                     </ol>
                   </div><!-- /.col-lg-12 -->
@@ -167,7 +167,7 @@
                                     <td>{{ level()[$offer->level] }}</td>
                                     <td>
                                       <a class="btn btn-info btn-xs"   href="{{ route('offers.edit', ['id' => $offer->id]) }}">Edit</a>
-                                      <a class="btn btn-danger btn-xs" href="{{ url('cpanel/offer/'.$offer->id.'/delete') }}">Delete</a>
+                                      <a class="btn btn-danger btn-xs" href="{{ url('adminCpanel/offer/'.$offer->id.'/delete') }}">Delete</a>
                                     </td>
                                   </tr>
                                   @endforeach

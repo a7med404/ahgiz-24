@@ -57,7 +57,7 @@ class ApiUserController extends Controller
         }
         Session::flash('flash_massage_type');
         return response()->json(['message' => 'تم الحفظ بنجاح', 'data' => $newUser], 201);
-        return redirect('cpanel/users')->withFlashMassage('User Added Susscefully');
+        return redirect('adminCpanel/users')->withFlashMassage('User Added Susscefully');
     }
 
     /**

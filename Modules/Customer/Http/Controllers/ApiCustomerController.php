@@ -42,11 +42,13 @@ class ApiCustomerController extends Controller
         // update data for customer 
         $data = [
             'c_name' => $request->c_name,
-            'email' => $request->email
+            'email' => $request->email,
+            'gender' => $request->gender,
+            'birthdate' => $request->birthdate
         ];
         $customer = Customer::where('id', $id)->update($data);
         if ($customer) {
-            return response()->json(null, 200);
+            return response()->json(['message' => 'updated done'], 200);
         }
         return response()->json(['errors' => 'Invalid Customer id'], 404);
     }

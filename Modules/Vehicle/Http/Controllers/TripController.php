@@ -78,7 +78,7 @@ class TripController extends Controller
         ];
         $trip->create($data);
         Session::flash('flash_massage_type', 1);
-        return redirect('cpanel/trips')->withFlashMassage('Trip Added Successfully');
+        return redirect('adminCpanel/trips')->withFlashMassage('Trip Added Successfully');
     }
 
     /**

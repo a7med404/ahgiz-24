@@ -1,4 +1,4 @@
-@extends('cpanel.layouts.layout')
+@extends('adminCpanel.layouts.layout')
 @section('title')
   All Customers
 @endsection
@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-lg-12  float-right">
                         <ol class="breadcrumb">
-                            <li><i class="fa fa-home"></i><a href="{{ url('\cpanel') }}">HOME</a></li>
+                            <li><i class="fa fa-home"></i><a href="{{ url('\adminCpanel') }}">HOME</a></li>
                             <li><i class="fa fa-users"></i>All Customers </li>
                         </ol>
                     </div><!-- /.col-lg-12 -->
@@ -152,7 +152,7 @@
                     "orderable":false,
                 },
             ],
-            ajax: '{{ url('cpanel/customers/data') }}',
+            ajax: '{{ url('adminCpanel/customers/data') }}',
             columns: [
                 {data: 'id', 'name':'id'},
                 {data: 'first_name', 'name':'first_name'},

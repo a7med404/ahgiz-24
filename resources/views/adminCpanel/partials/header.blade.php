@@ -3,7 +3,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{{route('cpanel')}}" class="logo">
+    <a href="{{route('adminCpanel')}}" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>A</b>24</span>
     <!-- logo for regular state and mobile devices -->

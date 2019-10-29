@@ -1,5 +1,5 @@
 
-@extends('cpanel.layouts.master')
+@extends('adminCpanel.layouts.master')
 @section('title')
 {{ __('home/sidebar.all_stations') }}
 @endsection
@@ -11,8 +11,8 @@
 <section class="content-header">
     <h1>{{ __('home/sidebar.all_stations') }} <small>it all starts here</small></h1>
     <ol class="breadcrumb">
-        <li><a href="{{ url('\cpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
-        <li><a href="{{ url('\cpanel\stations') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.all_stations') }} </a></li>
+        <li><a href="{{ url('\adminCpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
+        <li><a href="{{ url('\adminCpanel\stations') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.all_stations') }} </a></li>
         <li class="active"> {{ __('home/sidebar.edit_station') }} {{ $stationInfo->name }} </li>
     </ol>
 </section>

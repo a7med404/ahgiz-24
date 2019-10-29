@@ -2,6 +2,7 @@
 
 namespace Modules\Customer\Http\Controllers;
 
+use App\DataTables\CustomerDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -10,17 +11,56 @@ use Modules\Customer\Http\Requests\CreateCustomerRequest;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use Carbon\Carbon;
+use Yajra\DataTables\DataTables;
+use Yajra\DataTables\Html\Builder;
 
 class CustomerController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function index(CustomerDataTable $dataTable, Builder $builder)
     {
-        $customers = Customer::orderBy('id', 'desc')->get();
-        return view('customer::customers.index', ['customers' => $customers]);
+        // return view('customer::customers.index3');
+        // return $dataTable->render('customer::customers.index');
+
+        // if (request()->ajax()) {
+        //     return DataTables::of(Customer::orderBy('id', 'desc')->get())->toJson();
+        // }
+
+        // // $dataTable = $builder->columns($dataTable->getColumns());
+        // $dataTable = $builder->columns([
+        //     ['data' => 'id', 'name' => 'id', 'title' => 'Id', 'width' => '60', 'addClass' => 'text-center'],
+        //     ['data' => 'c_name', 'name' => 'c_name', 'title' => __('home/labels.name')],
+        //     ['data' => 'phone_number', 'name' => 'phone_number', 'title' => __('home/labels.phone_number')],
+        //     // ['data' =>  'customer.reservations', 'name' => 'his_reservation', 'title' => __('home/labels.his_reservation')],
+        //     ['data' => 'email', 'name' => 'email', 'title' => __('home/labels.email')],
+        //     ['data' => 'birthdate', 'name' => 'birthdate', 'title' => __('home/labels.birthdate')],
+        //     ['data' => 'created_at', 'name' => 'created_at', 'title' => 'Created At'],
+        //     ['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'Updated At'],
+        // ]);
+        return view('customer::customers.index3');
+    } 
+
+
+    public function customerDataTables(CustomerDataTable $dataTable)
+    {
+        return DataTables::of(Customer::orderBy('id', 'desc')->get())
+
+            ->addColumn('options', function ($customer) {
+                return view('customer::customers.colums.options', ['id' => $customer->id, 'routeName' => 'customers']);
+            })
+            ->rawColumns(['options'])
+            ->addColumn('his_reservation', function (Customer $customer) {
+                return $customer->reservations->count();
+                return '<span class="badge-info">'.$customer->reservations->count().'</span>';
+            })
+            ->removeColumn('password')
+            // ->setRowClass('{{ $id % 2 == 0 ? "alert-success" : "alert-warning" }}')
+            ->setRowId('{{$id}}')
+            ->make(true);
     }
 
     /**
@@ -48,7 +88,7 @@ class CustomerController extends Controller
         ];
         $customer->create($data);
         Session::flash('flash_massage_type', 1);
-        return redirect('cpanel/customers')->withFlashMassage('Customer Added Successfully');
+        return redirect('adminCpanel/customers')->withFlashMassage('Customer Added Successfully');
     }
 
     /**

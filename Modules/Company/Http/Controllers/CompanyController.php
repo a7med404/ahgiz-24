@@ -48,7 +48,7 @@ class CompanyController extends Controller
         ]);
         Session::flash('flash_massage_type');
         // return response()->json(['message' => 'تم الحفظ بنجاح'], 201);
-        return redirect('cpanel/companies')->withFlashMassage('Company Added Susscefully');
+        return redirect('adminCpanel/companies')->withFlashMassage('Company Added Susscefully');
     }
 
     /**

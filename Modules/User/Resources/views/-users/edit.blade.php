@@ -1,4 +1,4 @@
-@extends('cpanel.layouts.master')
+@extends('adminCpanel.layouts.master')
 @section('title')
 Edit Users
 @endsection
@@ -12,10 +12,10 @@ Edit Users
     <div class="row">
         <div class="col-lg-12  float-right">
             <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="{{ url('\cpanel') }}">HOME</a></li>
-                <li><i class="fa fa-users"></i><a href="{{ url('\cpanel\users') }}">All Users</a></li>
+                <li><i class="fa fa-home"></i><a href="{{ url('\adminCpanel') }}">HOME</a></li>
+                <li><i class="fa fa-users"></i><a href="{{ url('\adminCpanel\users') }}">All Users</a></li>
                 <li><i class="fa fa-laptop"></i>
-                    <a href="{{ url('/cpanel/users/'.$userInfo->id) }}">
+                    <a href="{{ url('/adminCpanel/users/'.$userInfo->id) }}">
                         Users Information {{ $userInfo->name }}
                     </a>
                 </li>
@@ -25,7 +25,7 @@ Edit Users
     <!-- End  Breadcrumb -->
 
     {!! Form::model($userInfo, ['route' => ['users.update', $userInfo->id], 'method' => "PATCH"]) !!}
-      @include('cpanel.users.form')
+      @include('adminCpanel.users.form')
     {!! Form::close() !!}
 
 @endsection

@@ -59,7 +59,7 @@ class UserController extends Controller
             $request->roles != null ? $newUser->attachRoles($request->roles) : $newUser->attachRole('user');
           }
         Session::flash('flash_massage_type');
-        return redirect('cpanel/users')->withFlashMassage('User Added Susscefully');
+        return redirect('adminCpanel/users')->withFlashMassage('User Added Susscefully');
     }
 
     /**

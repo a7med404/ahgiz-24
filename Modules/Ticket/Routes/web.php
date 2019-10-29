@@ -15,7 +15,7 @@ Route::prefix('ticket')->group(function() {
     Route::get('/', 'TicketController@index');
 });
 
-Route::prefix('cpanel')->group(function() {
+Route::prefix('adminCpanel')->group(function() {
     Route::group(['middleware' => ['web', 'auth']], function(){
         Route::Resource('ticket', 'TicketController');
       

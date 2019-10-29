@@ -1,5 +1,5 @@
 
-@extends('cpanel.layouts.master')
+@extends('adminCpanel.layouts.master')
 @section('title')
   Add New User
 @endsection
@@ -13,8 +13,8 @@
     <div class="row">
       <div class="col-lg-12  float-right">
         <ol class="breadcrumb">
-          <li><i class="fa fa-home"></i><a href="{{ url('\cpanel') }}">HOME</a></li>
-          <li><i class="fa fa-users"></i><a href="{{ url('\cpanel\users') }}">All Users</a></li>
+          <li><i class="fa fa-home"></i><a href="{{ url('\adminCpanel') }}">HOME</a></li>
+          <li><i class="fa fa-users"></i><a href="{{ url('\adminCpanel\users') }}">All Users</a></li>
           <li><i class="fa fa-user"></i>Add New User</li>
         </ol>
       </div><!-- /.col-lg-12 -->

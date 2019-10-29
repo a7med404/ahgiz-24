@@ -44,7 +44,7 @@ class StationController extends Controller
         ];
         $station->create($data);
         Session::flash('flash_massage_type', 1);
-        return redirect('cpanel/stations')->withFlashMassage('Station Added Successfully');
+        return redirect('adminCpanel/stations')->withFlashMassage('Station Added Successfully');
     }
 
     /**

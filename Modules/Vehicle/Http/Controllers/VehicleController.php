@@ -45,7 +45,7 @@ class VehicleController extends Controller
         ];
         $vehicle->create($data);
         Session::flash('flash_massage_type', 1);
-        return redirect('cpanel/vehicles')->withFlashMassage('Vehicle Added Successfully');
+        return redirect('adminCpanel/vehicles')->withFlashMassage('Vehicle Added Successfully');
     }
 
     /**

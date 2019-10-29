@@ -1,4 +1,4 @@
-@extends('cpanel.layouts.master')
+@extends('adminCpanel.layouts.master')
 @section('title')
 {{ __('home/sidebar.all_trips') }}
 @endsection
@@ -13,7 +13,7 @@
 <section class="content-header">
     <h1>{{ __('home/sidebar.trip_number') }} {{ $tripInfo->number }} <small>{{ $tripInfo->company->name }}</small></h1>
     <ol class="breadcrumb">
-        <li><a href="{{ url('\cpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
+        <li><a href="{{ url('\adminCpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
         <li class="active"> {{ __('home/sidebar.all_trips') }} </li>
     </ol>
 </section>

@@ -32,7 +32,7 @@ Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('ver
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 
-Route::prefix('cpanel')->group(function() {
+Route::prefix('adminCpanel')->group(function() {
     Route::group(['middleware' => ['web', 'auth']], function(){
         /**
          * Users Routes  ==================================================================================> 

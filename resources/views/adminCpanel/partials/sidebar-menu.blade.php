@@ -30,7 +30,7 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="active treeview">
-              <a href="{{route('cpanel')}}">
+              <a href="{{route('adminCpanel')}}">
                 <i class="fa fa-dashboard"></i>
                 <span>الرئيسية</span>
                 <span class="pull-right-container">

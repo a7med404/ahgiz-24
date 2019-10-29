@@ -18,7 +18,7 @@ Route::prefix('address')->group(function() {
 
 
 
-Route::prefix('cpanel')->group(function() {
+Route::prefix('adminCpanel')->group(function() {
     Route::group(['middleware' => ['web', 'auth']], function(){
         Route::resource('addresses','AddressController');
         Route::get('addresses/delete/{id}', 'AddressController@destroy')->name('addresses.delete');

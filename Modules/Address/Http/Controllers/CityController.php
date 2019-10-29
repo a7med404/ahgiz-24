@@ -40,7 +40,7 @@ class CityController extends Controller
     {
         $station->create($request->all());
         Session::flash('flash_massage_type', 1);
-        return redirect('cpanel/cities')->withFlashMassage('City Added Successfully');
+        return redirect('adminCpanel/cities')->withFlashMassage('City Added Successfully');
     }
 
     /**

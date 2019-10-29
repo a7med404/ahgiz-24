@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::group(['namespace' => 'API', 'prefix' => 'cpanel'], function () {
+Route::group(['namespace' => 'API', 'prefix' => 'adminCpanel'], function () {
     Route::resource('users','ApiUserController');
 
     Route::get('users/city/{city_id}/local/{local_id}','ApiUserController@getDelegate');

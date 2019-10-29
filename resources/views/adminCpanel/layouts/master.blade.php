@@ -13,25 +13,25 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
   
     <title>{{ config('app.name', 'Laravel') }} || @yield('title') </title>
-    @include('cpanel.partials.styles')
+    @include('adminCpanel.partials.styles')
     @yield('header')
   </head>
   
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper" id="app">
-      @include('cpanel.partials.header')
-      @include('cpanel.partials.sidebar-menu')
+      @include('adminCpanel.partials.header')
+      @include('adminCpanel.partials.sidebar-menu')
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         @yield('content')
       </div>
       <!-- /.content-wrapper -->
-      @include('cpanel.partials.footer')
-      @include('cpanel.partials.control-sidebar')
+      @include('adminCpanel.partials.footer')
+      @include('adminCpanel.partials.control-sidebar')
     </div>
     <!-- ./wrapper -->
 
-    @include('cpanel.partials.scripts')
+    @include('adminCpanel.partials.scripts')
     @yield('footer') 
       <script>
         toastr.options = {
@@ -52,8 +52,8 @@
           "hideMethod": "fadeOut"
         }
       </script>
-    @include('cpanel.partials.toastr')
-    @include('cpanel.partials.errors')
+    @include('adminCpanel.partials.toastr')
+    @include('adminCpanel.partials.errors')
   </body>
 </html>
 

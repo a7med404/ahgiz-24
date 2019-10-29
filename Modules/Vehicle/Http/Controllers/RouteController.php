@@ -45,7 +45,7 @@ class RouteController extends Controller
         ];
         $route->create($data);
         Session::flash('flash_massage_type', 1);
-        return redirect('cpanel/routes')->withFlashMassage('Route Added Successfully');
+        return redirect('adminCpanel/routes')->withFlashMassage('Route Added Successfully');
     }
 
     /**
