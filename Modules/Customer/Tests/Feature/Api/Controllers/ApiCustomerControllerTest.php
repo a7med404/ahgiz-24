@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Faker\Generator as Faker;
 use Faker\Factory;
+use Modules\Customer\Entities\Customer;
 
 class ApiCustomerControllerTest extends TestCase
 {
@@ -16,7 +17,7 @@ class ApiCustomerControllerTest extends TestCase
      *
      * @test
      */
-    public function can_create_new_user()
+    public function it_can_create_a_user()
     {
         /**
          * * Given => pre condition to let test work [user is authenticated]
@@ -25,6 +26,7 @@ class ApiCustomerControllerTest extends TestCase
          */
 
         $faker = Factory::create();
+        
         $phoneNumber = $faker->e164PhoneNumber();
 
         $data = [
@@ -37,7 +39,14 @@ class ApiCustomerControllerTest extends TestCase
             // 'birthdate' => now(),
         ];
         $response = $this->json('POST', route('login-register'), $data);
-        $response->assertStatus(200);
+        $response->assertJsonStructure([
+            "customer" => [
+                "id", "c_name", "phone_number", "email", "gender", "birthdate", "access_token", "isNew", "otp", "customer_update", "customer_logout", "customer_delete", "my_reservations", "search_reservation", "get_bus_stations"
+            ]
+        ]);
+        // $this->assertEquals($data['phone_number'], $response->phone_number);  
+        // $response->assertIsobj(Customer::class);
+        // $response->assertStatus(200);
         // ->assertJson([
         //     "customer"
         //     // 'c_name' => null,

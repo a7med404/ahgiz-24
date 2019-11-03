@@ -81,7 +81,7 @@ class ApiCustomerController extends Controller
             $json['customer_delete']    = route('customer-delete');
             $json['my_reservations']    = route('customer-reservations', ['id' => $customer->id]);
             $json['search_reservation'] = route('search-reservation');
-            $json['get_bus_stations'] = route('get-bus-stations');
+            $json['get_bus_stations']   = route('get-bus-stations');
             // if ($customer) {
             //     //TODO::handel return value of CustomerRegisteredOrLoginEvent
             //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
@@ -125,7 +125,7 @@ class ApiCustomerController extends Controller
         $number = random_int(1000, 9999);
         return $number;
     }
-
+ 
     ///////////////////// forget password ////////////////////////////////////
 
     public function deleteAccount(Request $request)

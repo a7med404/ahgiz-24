@@ -20,7 +20,7 @@ class CustomerControllerTest extends TestCase
      */
     public function customer_add()
     {
-        $data = factory(Customer::class, 2)->make();
+        $data = factory(Customer::class, 2)->make(); 
         $this->assertTrue(is_object($data));
     }
 }

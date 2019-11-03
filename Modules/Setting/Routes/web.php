@@ -30,8 +30,8 @@ Route::prefix('adminCpanel')->group(function() {
         
     });
 
-        Route::get('/app-settings', 'AppSettingController@index')->name('app-setting');
-        Route::post('/app-settings/update', 'AppSettingController@store')->name('app-setting-update');
+        // Route::get('/app-settings', 'AppSettingController@index')->name('app-setting');
+        // Route::post('/app-settings/update', 'AppSettingController@store')->name('app-setting-update');
 
     
 

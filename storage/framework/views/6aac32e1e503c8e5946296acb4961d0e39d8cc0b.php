@@ -131,7 +131,7 @@
             serverSide: true,
             autoWidth: false,
             select: true,
-            ajax: '<?php echo route('users-dataTables'); ?>',
+            ajax: '<?php echo route("users.dataTables"); ?>',
             columns: [
                 { data: 'id', name: 'id', "width": "10%"},
                 { data: 'name', name: 'name', "width": "20%" },
