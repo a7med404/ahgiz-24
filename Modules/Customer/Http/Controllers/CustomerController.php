@@ -48,7 +48,8 @@ class CustomerController extends Controller
 
     public function customerDataTables()
     {
-        dd(request());
+        $a = DataTables::of(Customer::orderBy('id', 'desc')->get());
+        dd($a, request());
         return DataTables::of(Customer::orderBy('id', 'desc')->get())
             ->addColumn('options', function ($customer) {
                 return view('customer::customers.colums.options', ['id' => $customer->id, 'routeName' => 'customers']);
