@@ -11,7 +11,9 @@ use Modules\Customer\Http\Requests\CreateCustomerRequest;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use Carbon\Carbon;
-use Yajra\DataTables\DataTables;
+// use Yajra\DataTables\DataTables;
+use Yajra\Datatables\Facades\Datatables;
+// use Datatables;
 use Yajra\DataTables\Html\Builder;
 
 class CustomerController extends Controller
@@ -21,7 +23,7 @@ class CustomerController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index(CustomerDataTable $dataTable, Builder $builder)
+    public function index()
     {
         return view('customer::customers.index');
         // return view('customer::customers.index3');
