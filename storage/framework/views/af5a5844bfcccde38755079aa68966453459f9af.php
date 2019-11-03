@@ -69,3 +69,4 @@
   </body>
 </html>
 
+<?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/Modules/Website/Providers/../Resources/views/layouts/master.blade.php ENDPATH**/ ?>

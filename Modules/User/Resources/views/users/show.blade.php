@@ -52,7 +52,7 @@
               <hr>
               <strong><i class="fa fa-book margin-r-5"></i> {{ __('home/labels.note') }}</strong>
               <p class="text-muted"> {{ $userInfo->note }} </p>
-              
+
               <a href="{{ route('users.edit',  ['id' => $userInfo->id]) }}" class="btn btn-primary btn-block"><b>تعديل بيانات الشركة</b></a>
 
             </div>
@@ -82,11 +82,11 @@
                         </div>
                       </div>
                       <div class="box-body">
-                        {{ getLocal()[$address->city] }} / 
-                        {{ getLocal()[$address->local] }} / 
-                        {{ $address->street_2 }} / 
-                        {{ $address->street_1 }} / 
-                        {{ $address->number }} 
+                        {{ getLocal()[$address->city] }} /
+                        {{ getLocal()[$address->local] }} /
+                        {{ $address->street_2 }} /
+                        {{ $address->street_1 }} /
+                        {{ $address->number }}
                       </div>
                       <div class="box-footer">
                         <a type="button" class="btn btn-box-tool pull-left delete-confirm" href="{{ route('addresses.delete',  ['id' => $address->id]) }}"><i class="fa fa-times"></i></a>
@@ -112,10 +112,10 @@
                         </div>
                       </div>
                       <div class="box-body">
-                        {{ $contact->number_1 }} / 
-                        {{ $contact->number_2 }} / 
-                        {{ $contact->email }} / 
-                        {{ $contact->note }} 
+                        {{ $contact->number_1 }} /
+                        {{ $contact->number_2 }} /
+                        {{ $contact->email }} /
+                        {{ $contact->note }}
                       </div>
                       <div class="box-footer">
                         <a type="button" class="btn btn-box-tool pull-left delete-confirm" href="{{ route('contacts.delete',  ['id' => $contact->id]) }}"><i class="fa fa-times"></i></a>

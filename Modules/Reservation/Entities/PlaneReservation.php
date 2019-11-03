@@ -13,18 +13,21 @@ use Modules\Vehicle\Entities\Station;
 
 class PlaneReservation extends Model
 {
-    
+
     protected $fillable = ['customer_id','from_station_id','to_station_id','company_id','user_id','date','status','canceled_at','from_date','to_date'];
 
-    public function customer(){
+    public function customer()
+    {
         return $this->belongsTo(Customer::class);
     }
 
-    public function trip(){
+    public function trip()
+    {
         return $this->belongsTo(Trip::class);
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
@@ -38,9 +41,10 @@ class PlaneReservation extends Model
         return $this->hasOne(Station::Class, 'id', 'to_station_id');
     }
 
-    public function company(){
+
+    public function company()
+    {
+
         return $this->belongsTo(Company::class);
     }
-
-
 }

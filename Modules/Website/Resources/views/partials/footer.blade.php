@@ -10,10 +10,10 @@
             <p>{{getSetting('site_bio')}}</p>
             <div class="social-links">
               <ul class="links list-unstyled">
-                <li><a href="{{getSetting('FaceBooklink')}}"><i class="fa fa-facebook"></i></a></li>
+                {{-- <li><a href="{{getSetting('FaceBooklink')}}"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="{{getSetting('site_bio')}}"><i class="fa fa-google"></i></a></li>
                 <li><a href="{{getSetting('site_bio')}}"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="{{getSetting('twitter')}}"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="{{getSetting('twitter')}}"><i class="fa fa-twitter"></i></a></li> --}}
               </ul>
             </div>
           </div>

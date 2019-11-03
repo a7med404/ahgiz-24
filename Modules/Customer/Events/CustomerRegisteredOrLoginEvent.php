@@ -24,6 +24,6 @@ class CustomerRegisteredOrLoginEvent implements ShouldQueue
     public function __construct(Customer $customer, $otp)
     {
         $this->customer = $customer;
-        $this->message  = __('app/messages.otp_message')."\n".$otp;
+        $this->message  = __('app/messages.otp_message')."%0a".$otp;
     }
 }

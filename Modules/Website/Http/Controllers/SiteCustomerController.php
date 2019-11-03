@@ -39,6 +39,7 @@ class SiteCustomerController extends Controller
      */
     public function store(CreateCustomerRequest $request, Customer $customer)
     {
+        // dd($request->all());
         $data = [
             'first_name'    => $request->first_name,
             'last_name'     => $request->last_name,
@@ -149,7 +150,7 @@ class SiteCustomerController extends Controller
         //         ->with('status','You are Logged in as Admin!');
         // }
 
-        if(Auth::guard('customer')->attempt(['phone_number' => request('phone_number'), 'password' => request('password')], $rememberme)){
+        if(Auth::guard('customer')->attempt(['phone_number' => request('phone_number'), 'password' => request('phone_number')], $rememberme)){
           Session::flash('flash_massage_type');
           if(URL::previous() == route('singin')){
             return redirect()->route('profile')->withFlashMassage('Login Susscefully');

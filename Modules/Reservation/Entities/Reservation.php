@@ -8,30 +8,37 @@ use Modules\Vehicle\Entities\Trip;
 use Modules\Vehicle\Entities\Seat;
 use Modules\User\Entities\User;
 use Modules\Reservation\Entities\Passenger;
+
 class Reservation extends Model
 {
 
-    protected $fillable = ['customer_id', 'number', 'trip_id', 'user_id', 'pay_method', 'conceled_at', 'status'];
+    protected $fillable = ['customer_id', 'number', 'trip_id', 'user_id', 'pay_method', 'canceled_at', 'status'];
 
-    public function customer(){
+    public function customer()
+    {
         return $this->belongsTo(Customer::class);
     }
 
-    public function passengers(){
+    public function passengers()
+    {
         return $this->hasMany(Passenger::class);
     }
-    public function tickets(){
+
+    public function tickets()
+    {
         return $this->hasMany(Ticket::class);
     }
-    public function trip(){
+
+    public function trip()
+    {
         return $this->belongsTo(Trip::class);
     }
 
     // public function trips(){
     //     return $this->hasMany(Trip::class, 'reserveration_id');
     // }
-    
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 

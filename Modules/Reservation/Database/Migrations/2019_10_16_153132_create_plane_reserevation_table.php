@@ -25,7 +25,7 @@ class CreatePlaneresrvationTable extends Migration
             $table->date('seat');
             $table->text('note');
             $table->boolean('status')->default(0);
-            $table->dateTime('conceled_at')->nullable();
+            $table->dateTime('canceled_at')->nullable();
             $table->timestamps();
         });
     }

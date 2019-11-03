@@ -48,6 +48,7 @@ class SentOTPToCustomerListener implements ShouldQueue
                 return $event->customer;
             }
         });
+        # TODO:: return and handle response
         $promise->wait();
         return $event->customer;
 

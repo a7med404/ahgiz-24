@@ -10,4 +10,4 @@
         </script>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-<?php endif; ?>
+<?php endif; ?><?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/resources/views/cpanel/partials/errors.blade.php ENDPATH**/ ?>

@@ -33,4 +33,4 @@
                   toastr.error("<?php echo e(Session::get('flash_massage')); ?>","error")
               </script>
           <?php endswitch; ?>
-        <?php endif; ?>
+        <?php endif; ?><?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/Modules/Website/Providers/../Resources/views/partials/toastr.blade.php ENDPATH**/ ?>

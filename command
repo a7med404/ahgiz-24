@@ -1,6 +1,6 @@
 php artisan module:make Website
 
-php artisan module:use Vehicle
+php artisan module:use Reservation
 
 php artisan module:make-resource PlaneStationResource
 
@@ -21,7 +21,7 @@ php artisan module:make-request CreateCompanyRequest
 
 php artisan module:make-resource PlaneCompanyResource
 
-php artisan module:make-model    Company --migration
+php artisan module:make-model Company --migration
 
 php artisan module:migrate Setting
 
@@ -33,7 +33,7 @@ php artisan module:publish-migration
 php artisan migrate --path=/Modules/Reservation/Database/Migrations/2019_10_16_153132_create_plane_resrvation_table.php
 
 
-php artisan module:make-event OTPCustomer Customer
+php artisan module:make-listener SentSMSWithReservationDetailsToCustomerListener Reservation
 
 
 // the migration

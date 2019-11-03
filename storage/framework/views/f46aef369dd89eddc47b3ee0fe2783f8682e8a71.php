@@ -1,15 +1,15 @@
-<script src="<?php echo e(asset('js/app.js')); ?>"></script>  
+
   
 <script src="<?php echo e(asset('modules/master/website/js/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('modules/master/website/js/bootstrap.min.js')); ?>"></script>
 <script src="<?php echo e(asset('modules/master/website/js/jquery.nicescroll.min.js')); ?>"></script>
-<script src="<?php echo e(asset('modules/master/website/js/moment.min.js')); ?>"></script>
-<script src="<?php echo e(asset('modules/master/website/js/icheck.min.js')); ?>"> </script>
+
+
 <script src="<?php echo e(asset('modules/master/website/fonts/fontawesome-all.js')); ?>"> </script>
-<script src="<?php echo e(asset('modules/master/website/js/pgwslider.min.js')); ?>"></script>
-<script src="<?php echo e(asset('modules/master/website/js/sweetalert.min.js')); ?>"></script>
-<script src="<?php echo e(asset('modules/master/website/js/jquery.smartWizard.js')); ?>"></script>
-<script src="<?php echo e(asset('modules/master/website/js/ion.rangeSlider.min.js')); ?>"> </script>
+
+
+
+
 <script src="<?php echo e(asset('modules/master/website/js/bootstrap-datepicker.js')); ?>"></script>
 <script src="<?php echo e(asset('modules/master/website/js/bootstrap-datepicker.ar.js')); ?>"></script>
 <script src="<?php echo e(asset('modules/master/website/js/bootstrap-select.js')); ?>"></script>
@@ -17,7 +17,7 @@
 <script src="<?php echo e(asset('modules/master/website/js/toastr.min.js')); ?>"></script>
 <script src="<?php echo e(asset('modules/master/website/js/frontend.js')); ?>"></script>
 <!-- Select2 -->
-<script src="<?php echo e(asset('modules/master/plugins/select2/select2.full.min.js')); ?>"></script>
+
 
 
 <script>
@@ -42,4 +42,4 @@
       live:         true        // default
   })
   wow.init();
-</script>
+</script><?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/Modules/Website/Providers/../Resources/views/partials/scripts.blade.php ENDPATH**/ ?>

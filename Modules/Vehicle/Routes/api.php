@@ -13,10 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/vehicle', function (Request $request) {
-    return $request->user();
+Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'vehicles'], function () {
+
+    Route::get('get-bus-stations', 'ApiStationController@getBusStation')->name('get-bus-stations');
+    route::get('get-plane-stations', 'ApiStationController@getPlaneStation');
+
 });
-
-Route::post('getStation', 'API\ApiStationController@getStation');
-route::get('plane-stations','API\ApiStationController@planestation');
-

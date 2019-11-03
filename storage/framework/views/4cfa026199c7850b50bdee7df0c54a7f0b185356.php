@@ -24,13 +24,9 @@
 
         </div>
     </div> 
-    <div class="col col-xl-6 col-lg-6 col-md-6">
-        <div class="form-group">
-            <?php echo Form::label('seat_id', 'المسار(من)', ['class' => 'control-label']); ?>
-
-            
+    
         </div>
-    </div>
+    </div> --}}
 </div>
 
 <?php if(isset($reservationInfo)): ?>

@@ -58,7 +58,7 @@
                                 @foreach ($user->roles as $key => $role)
                                     <a href="{{ route('roles.show',  ['id' => $role->id]) }}" class="label label-info m-r-5">
                                         {{ $role->display_name }}
-                                    </a> 
+                                    </a>
                                 @endforeach
                             </td>
                             <td>
@@ -83,7 +83,7 @@
                                     <p>لا توجد بيانات في هذا الجدول</p>
                                 </div>
                             </td>
-                        </tr>   
+                        </tr>
                         @endforelse
                     </tbody>
                 </table>

@@ -20,7 +20,7 @@ class PlaneReservationController extends Controller
     {
 
         $planereservations = PlaneReservation::where('canceled_at', null)->orderBy('id', 'desc')->get();
-        return view('reservation::planereservation.index',['planereservations'=> $planereservations]);
+        return view('reservation::planereservation.index', ['planereservations' => $planereservations]);
     }
 
     // show pending plane reservations //
@@ -86,7 +86,7 @@ class PlaneReservationController extends Controller
 
         $planereservationsInfo = PlaneReservation::findOrFail($id);
         return view('reservation::planereservation.edit', ['planereservationsInfo' => $planereservationsInfo]);
-     }
+    }
 
     /**
      * Update the specified resource in storage.
@@ -97,7 +97,7 @@ class PlaneReservationController extends Controller
     public function update(Request $request, $id)
     {
         $planereservationsInfo = PlaneReservation::findOrFail($id);
-        $data = [   
+        $data = [
             'customer_id'     => $request->customer_id,
             'from_station_id' => $request->from_station_id,
             'to_station_id'   => $request->to_station_id,

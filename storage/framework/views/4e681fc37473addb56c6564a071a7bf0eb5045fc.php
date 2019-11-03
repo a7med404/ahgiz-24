@@ -62,7 +62,7 @@
                                     <a href="<?php echo e(route('roles.show',  ['id' => $role->id])); ?>" class="label label-info m-r-5">
                                         <?php echo e($role->display_name); ?>
 
-                                    </a> 
+                                    </a>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </td>
                             <td>
@@ -87,7 +87,7 @@
                                     <p>لا توجد بيانات في هذا الجدول</p>
                                 </div>
                             </td>
-                        </tr>   
+                        </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>

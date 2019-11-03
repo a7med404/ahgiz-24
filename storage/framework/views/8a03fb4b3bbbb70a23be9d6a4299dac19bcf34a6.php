@@ -10,10 +10,7 @@
             <p><?php echo e(getSetting('site_bio')); ?></p>
             <div class="social-links">
               <ul class="links list-unstyled">
-                <li><a href="<?php echo e(getSetting('FaceBooklink')); ?>"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="<?php echo e(getSetting('site_bio')); ?>"><i class="fa fa-google"></i></a></li>
-                <li><a href="<?php echo e(getSetting('site_bio')); ?>"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="<?php echo e(getSetting('twitter')); ?>"><i class="fa fa-twitter"></i></a></li>
+                
               </ul>
             </div>
           </div>
@@ -59,4 +56,4 @@
     </div>
   </div>
   <!-- End of start Page-->
-</footer>
+</footer><?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/Modules/Website/Providers/../Resources/views/partials/footer.blade.php ENDPATH**/ ?>

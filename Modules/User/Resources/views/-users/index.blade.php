@@ -84,7 +84,7 @@
       //     "targets":[1, 3, 7],
       //     "orderable":false,
       //   },
-      // ], 
+      // ],
       "stateSave": false,
       "responsive": true,
       "order": [[0, 'desc']],

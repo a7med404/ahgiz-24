@@ -31,18 +31,27 @@ class ApiCustomerController extends Controller
         if (empty($id))
             return response()->json(['errors' => 'Invalid Customer id'], 404);
 
-        $validator = Validator::make($request->all(), [
-            'c_name' => 'required|string|max:14',
-            // 'email' => 'email|string|min:5',
-        ]);
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
+        // $validator = Validator::make($request->all(), [
+        //     'c_name' => 'required|string|max:14',
+        //     // 'email' => 'email|string|min:5',
+        // ]);
+        // if ($validator->fails()) {
+        //     return response()->json(['errors' => $validator->errors()], 422);
+        // }
 
+<<<<<<< HEAD
         // update data for customer
         $customer = Customer::where('id', $id)->update($request->all());
+=======
+        // update data for customer 
+        $data = [
+            'c_name' => $request->c_name,
+            'email' => $request->email
+        ];
+        $customer = Customer::where('id', $id)->update($data);
+>>>>>>> 6c1a0e68ed2e072ff2eda2a0e51e989d0a33a394
         if ($customer) {
-            return response()->json(['message' => 'User Created Successfuly'], 200);
+            return response()->json(null, 200);
         }
         return response()->json(['errors' => 'Invalid Customer id'], 404);
     }
@@ -70,14 +79,16 @@ class ApiCustomerController extends Controller
             $json['access_token'] = $customer->createToken('MyApp')->accessToken;
             $json['isNew'] = 0;
             $json['otp'] = $this->optValue;
-            $json['customer_update'] = route('customer-update', ['id' => $customer->id]);
-            $json['customer_logout'] = route('customer-logout-api');
-            $json['customer_delete'] = route('customer-delete');
-            $json['my_reservations'] = route('customer-reservations', ['id' => $customer->id]);
-            // if ($customer) {
-            //     //TODO::handel return value of CustomerRegisteredOrLoginEvent
-            //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
-            // }
+            $json['customer_update']    = route('customer-update', ['id' => $customer->id]);
+            $json['customer_logout']    = route('customer-logout-api');
+            $json['customer_delete']    = route('customer-delete');
+            $json['my_reservations']    = route('customer-reservations', ['id' => $customer->id]);
+            $json['search_reservation'] = route('search-reservation');
+            $json['get_bus_stations'] = route('get-bus-stations');
+            if ($customer) {
+                //TODO::handel return value of CustomerRegisteredOrLoginEvent
+                event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
+            }
             return response()->json(['customer' => $json], 200);
         } else {
             // created data for customer
@@ -105,6 +116,8 @@ class ApiCustomerController extends Controller
             $json['customer_logout'] = route('customer-logout-api');
             $json['customer_delete'] = route('customer-delete');
             $json['my_reservations'] = route('my-reservations', ['id' => $customer->id]);
+            $json['search_reservation'] = route('search-reservation');
+            $json['get_bus_stations'] = route('get-bus-stations');
 
             return response()->json(['customer' => $json], 200);
         }
@@ -120,6 +133,7 @@ class ApiCustomerController extends Controller
 
     public function deleteAccount(Request $request)
     {
+        #TODO:: chack when delete something delete items that belong to it
         $customerForDelete = Auth::user();
         $customerTokens = $customerForDelete->tokens;
 
@@ -133,7 +147,7 @@ class ApiCustomerController extends Controller
                 'error'         => false,
                 'message'       => 'Customer Deleted Successfully',
                 'status_code'   => 200
-            ]);
+            ], 200);
         }
         return response()->json(['status' => false], 500);
     }
@@ -161,8 +175,7 @@ class ApiCustomerController extends Controller
             return response()->json([
                 'error'         => false,
                 'message'       => 'you are logged out',
-                'status_code'   => 204
-            ]);
+            ], 200);
         }
         return response()->json(['status' => false], 500);
     }

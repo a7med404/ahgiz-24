@@ -57,3 +57,4 @@
   </body>
 </html>
 
+<?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/resources/views/cpanel/layouts/master.blade.php ENDPATH**/ ?>

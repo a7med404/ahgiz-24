@@ -182,4 +182,4 @@
         <!-- Add the sidebar's background. This div must be placed
                 immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
-        
+        <?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/resources/views/cpanel/partials/control-sidebar.blade.php ENDPATH**/ ?>
