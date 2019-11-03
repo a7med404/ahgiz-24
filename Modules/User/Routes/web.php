@@ -33,6 +33,7 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 
 
 Route::prefix('adminCpanel')->group(function() {
+    Route::get('users/users-dataTables', 'UserController@userDataTables')->name('users.dataTables');
     Route::group(['middleware' => ['web', 'auth']], function(){
         /**
          * Users Routes  ==================================================================================> 
@@ -44,7 +45,6 @@ Route::prefix('adminCpanel')->group(function() {
         Route::get('users/delete/{id}', 'UserController@destroy')->name('users.delete');
         #change level For Users
         Route::get('users/{user}/editLevel', 'UserController@editLevel')->name('users.editLevel');
-        Route::get('users/users-dataTables', 'UserController@userDataTables')->name('users-dataTables');
 
 
     });

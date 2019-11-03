@@ -12,7 +12,7 @@
     <link rel="icon" href="<?php echo e(asset('admin/images/visa.png')); ?>" type="image/ico" />
 
     <title>Ahgiz-24! || <?php echo $__env->yieldContent('title'); ?> </title>
-    <?php echo $__env->make('cpanel.partials.styles', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('adminCpanel.partials.styles', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->yieldContent('header'); ?>
 
   </head>
@@ -73,7 +73,7 @@
     <!-- /.login-box -->
 
 
-    <?php echo $__env->make('cpanel.partials.scripts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('adminCpanel.partials.scripts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->yieldContent('footer'); ?> 
       <script>
         toastr.options = {
@@ -102,8 +102,8 @@
         });
       </script>
 
-    <?php echo $__env->make('cpanel.partials.toastr', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <?php echo $__env->make('cpanel.partials.errors', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('adminCpanel.partials.toastr', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('adminCpanel.partials.errors', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
   </body>
 </html>
 

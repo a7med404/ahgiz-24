@@ -52,12 +52,12 @@
                             <td>{{ $company->id }}</td>
                             <td>{{ $company->name }}</td>
                             <td>{{ $company->logo }}</td>
-                            @if($company->type == 1){
-                                <td>{{ 'شـركة طـيران' }}</td>
-                            }@else{
-                                <td>{{ 'شـركة بصـات' }}</td>
-                            }
-                            @endif
+                                @if($company->type == 1){
+                                        <td>{{ 'شـركة طـيران' }}</td>
+                                    }@else{
+                                        <td>{{ 'شـركة بصـات' }}</td>
+                                }
+                                @endif
                             <td>{{ $company->note }}</td>
                             <td>
                                 <div class="dropdown">
@@ -81,7 +81,7 @@
                                     <p>لا توجد بيانات في هذا الجدول</p>
                                 </div>
                             </td>
-                        </tr>   
+                        </tr>
                         @endforelse
                     </tbody>
                 </table>

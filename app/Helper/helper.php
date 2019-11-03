@@ -255,7 +255,6 @@ function getSelect($tableName){
         default:
             $list = \DB::table('companies')->pluck('name', 'id');
             break;
-
     }
 }
 

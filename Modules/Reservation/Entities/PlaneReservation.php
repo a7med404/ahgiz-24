@@ -1,15 +1,12 @@
 <?php
 
 namespace Modules\Reservation\Entities;
-
 use Illuminate\Database\Eloquent\Model;
 use Modules\Customer\Entities\Customer;
 use Modules\Vehicle\Entities\Trip;
 use Modules\User\Entities\User;
 use Modules\Company\Entities\Company;
 use Modules\Vehicle\Entities\Station;
-
-
 
 class PlaneReservation extends Model
 {

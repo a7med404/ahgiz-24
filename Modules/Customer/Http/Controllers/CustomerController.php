@@ -16,7 +16,7 @@ use Yajra\DataTables\Html\Builder;
 
 class CustomerController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      * @return Response
@@ -43,7 +43,7 @@ class CustomerController extends Controller
         //     ['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'Updated At'],
         // ]);
         return view('customer::customers.index3');
-    } 
+    }
 
 
     public function customerDataTables(CustomerDataTable $dataTable)

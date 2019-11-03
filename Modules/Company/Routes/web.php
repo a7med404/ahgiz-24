@@ -15,9 +15,11 @@ Route::prefix('company')->group(function() {
     Route::get('/', 'CompanyController@index');
 });
 
-
 Route::prefix('adminCpanel')->group(function() {
     Route::group(['middleware' => ['web', 'auth']], function(){
+
+        Route::get('companies-dataTables', 'CompanyController@companiesDataTables')->name('companies-dataTables');
+
         Route::resource('companies','CompanyController');
         Route::get('companies/delete/{id}', 'CompanyController@destroy')->name('companies.delete');
     });
@@ -32,10 +34,10 @@ Route::prefix('adminCpanel')->group(function() {
     //     */
     //     Route::get('/sitesetting', 'SiteSettingController@index')->name('site-setting');
     //     Route::post('/sitesetting/update', 'SiteSettingController@store')->name('site-setting-update');
-    
-    
-    
-    
+
+
+
+
     //     /*
     //     |--------------------------------------------------------------------------
     //     | Resource For Roles
@@ -43,10 +45,10 @@ Route::prefix('adminCpanel')->group(function() {
     //     */
     //     Route::Resource('roles', 'RoleController');
     //     Route::get('roles/delete/{id}', 'RoleController@destroy')->name('roles.delete');
-    
-    
-    
-    
+
+
+
+
     //     /*
     //     |--------------------------------------------------------------------------
     //     | Resource For Permissions
@@ -54,9 +56,9 @@ Route::prefix('adminCpanel')->group(function() {
     //     */
     //     Route::Resource('permissions', 'PermissionController');
     //     Route::get('permissions/delete/{id}', 'PermissionController@destroy')->name('permissions.delete');
-    
+
     //   });
-    
+
 
 
 });

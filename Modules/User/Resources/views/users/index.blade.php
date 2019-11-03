@@ -127,5 +127,114 @@
         });
     });
 
+        var table = $('#data').DataTable({
+            processing: true,
+            serverSide: true,
+            autoWidth: false,
+            select: true,
+            ajax: '{!! route("users.dataTables") !!}',
+            columns: [
+                { data: 'id', name: 'id', "width": "10%"},
+                { data: 'name', name: 'name', "width": "20%" },
+                { data: 'phone_number', name: 'phone_number', "width": "15%" },
+                // { data: 'email', name: 'email', "width": "10%"},
+                { data: 'status', name: 'status', "width": "10%"},
+                { data: 'last_login', name: 'last_login', "width": "15%"},
+                { data: 'roles', name: 'roles', "width": "15%", orderable: false},
+                { data: 'options', name: 'options', orderable: false, "width": "10%"},
+            ],
+            "language": {
+                "url": "{{ asset('modules/master/data/Arabic.json') }}"
+            },
+            "stateSave": false,
+            "responsive": true,
+            "order": [[0, 'desc']],
+            "pagingType": "full_numbers",
+            'searchDelay' : 350,
+            bAutoWidth: false,
+            aLengthMenu: [
+                [10, 25, 50, 100, 200, -1],
+                [10, 25, 50, 100, 200, "All"]
+            ],
+            iDisplayLength: 10,
+            fixedHeader: true,
+            dom: 'Blfrtip',
+            buttons: [
+                {
+                    extend: 'pdf',
+                    title: 'Test Data export',
+                    exportOptions: {columns: "thead th:not(.noExport)"}
+                },
+                {
+                    extend: 'excel',
+                    title: 'Test Data export',
+                    exportOptions: {columns: "thead th:not(.noExport)"}
+                },
+                {
+                    extend: 'print',
+                    title: 'Test Data export',
+                    exportOptions: {columns: "thead th:not(.noExport)"}
+
+                },
+                {
+                    extend: 'csv',
+                    title: 'Test Data export',
+                    exportOptions: {columns: "thead th:not(.noExport)"}
+                },
+                {
+                    extend: 'copy',
+                    title: 'Test copy export',
+                    exportOptions: {columns: "thead th:not(.noExport)"}
+                }
+            ],
+            initComplete: function ()
+            {
+                var r = $('#data tfoot tr');
+                r.find('th').each(function(){
+                    $(this).css('padding', 8);
+                });
+                $('#data thead').append(r);
+                $('#search_0').css('text-align', 'center');
+            }
+
+        });
+
+
+        // $('.filter-select').change(function(){
+        //     // setTimeout(function(table) {
+        //         // delaySuccess(
+        //             table.column($(this).data('column'))
+        //             .search($(this).val())
+        //             .draw();
+        //         // );
+        //     // }, 2000);
+
+        // });
+
+
+        $('.filter-select').change(function(){
+            table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
+
+        });
+
+        $('.filter-input').keyup(function(){
+            table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
+        });
+
+
+        $('#data tbody').on( 'mouseover', 'td', function () {
+            var colIdx = table.cell(this).index().column;
+            if ( colIdx !== lastIdx ) {
+                $( table.cells().nodes() ).removeClass( 'highlight' );
+                $( table.column( colIdx ).nodes() ).addClass( 'highlight' );
+            }
+        })
+        .on( 'mouseleave', function () {
+            $( table.cells().nodes() ).removeClass( 'highlight' );
+        });
 </script>
 @endsection

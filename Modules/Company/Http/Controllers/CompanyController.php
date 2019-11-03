@@ -17,7 +17,25 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('company::companies.index', ['companies' => Company::all()]);
+        return view('company::companies.index');
+    }
+    public function companyDataTables(CustomerDataTable $dataTable)
+    {
+        return DataTables::of(Customer::orderBy('id', 'desc')->get())
+            ->addColumn('options', function ($customer) {
+                return view('Company::companies.colums.options', ['id' => $company->id, 'routeName' => 'companies']);
+            })
+            ->addColumn('his_reservation', function (Customer $customer) {
+                return '<span class="label label-info">' . $customer->reservations->count() . '</span>';
+            })
+            ->editColumn('gender', function ($customer) {
+                return $customer->gender == 0 ? '<span class="label label-success">' . maleOrfemale()[$customer->gender] . '</span>' : '<span class="label label-warning">' . maleOrfemale()[$customer->gender] . '</span>';
+            })
+            ->rawColumns(['his_reservation', 'options', 'gender'])
+            ->removeColumn('password')
+            // ->setRowClass('{{ $gender == 0 ? "alert alert-success" : "alert alert-warning" }}')
+            ->setRowId('{{$id}}')
+            ->make(true);
     }
 
     /**
@@ -95,7 +113,7 @@ class CompanyController extends Controller
         ];
         $companyUpdate->fill($data)->save();
         if ($companyUpdate) {
-            
+
         }
         Session::flash('flash_massage_type');
         return redirect()->back()->withFlashMassage('Company Updated Susscefully');
