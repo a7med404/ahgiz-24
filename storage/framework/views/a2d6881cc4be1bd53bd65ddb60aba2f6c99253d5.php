@@ -13,7 +13,7 @@
 <section class="content-header">
     <h1><?php echo e(__('home/sidebar.conceled')); ?> <small>it all starts here</small></h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo e(url('\cpanel')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(__('home/sidebar.HOME')); ?> </a></li>
+        <li><a href="<?php echo e(url('\adminCpanel')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(__('home/sidebar.HOME')); ?> </a></li>
         <li class="active"> <?php echo e(__('home/sidebar.conceled')); ?> </li>
     </ol>
 </section>
@@ -126,4 +126,4 @@
 
 
 
-<?php echo $__env->make('cpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/barca/fouad/works/a7jiz/a7giz-24/Modules/Reservation/Providers/../Resources/views/planereservation/conceled.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('adminCpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/barca/fouad/works/a7jiz/a7giz-24/Modules/Reservation/Providers/../Resources/views/planereservation/conceled.blade.php ENDPATH**/ ?>
