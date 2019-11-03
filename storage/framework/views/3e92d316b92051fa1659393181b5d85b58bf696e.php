@@ -30,7 +30,7 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="active treeview">
-              <a href="<?php echo e(route('cpanel')); ?>">
+              <a href="<?php echo e(route('adminCpanel')); ?>">
                 <i class="fa fa-dashboard"></i>
                 <span>الرئيسية</span>
                 <span class="pull-right-container">
@@ -225,4 +225,4 @@
         </section>
         <!-- /.sidebar -->
     </aside>
-<?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/resources/views/cpanel/partials/sidebar-menu.blade.php ENDPATH**/ ?>
+<?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/resources/views/adminCpanel/partials/sidebar-menu.blade.php ENDPATH**/ ?>

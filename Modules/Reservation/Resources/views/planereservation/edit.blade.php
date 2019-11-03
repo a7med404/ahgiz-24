@@ -1,5 +1,5 @@
 
-@extends('cpanel.layouts.master')
+@extends('adminCpanel.layouts.master')
 @section('title')
 {{ __('home/sidebar.all_reservations') }}
 @endsection
@@ -11,8 +11,13 @@
 <section class="content-header">
     <h1>{{ __('home/sidebar.all_reservations') }} <small>it all starts here</small></h1>
     <ol class="breadcrumb">
+<<<<<<< HEAD
         <li><a href="{{ url('\cpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
         <li><a href="{{ url('\cpanel\planeReservations') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.all_planeReservations') }} </a></li>
+=======
+        <li><a href="{{ url('\adminCpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
+        <li><a href="{{ url('\adminCpanel\reservations') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.all_reservations') }} </a></li>
+>>>>>>> 84d175c7ca9710f74c293205bef0beda446c306a
         <li class="active"> {{ __('home/sidebar.edit_reservation') }} {{ $planereservationsInfo->name }} </li>
     </ol>
 </section>

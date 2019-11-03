@@ -1,4 +1,4 @@
-@extends('cpanel.layouts.layout')
+@extends('adminCpanel.layouts.layout')
 @section('title')
   Edit Customer Information
 @endsection
@@ -12,8 +12,8 @@
                         <div class="row">
                             <div class="col-lg-12  float-right">
                                 <ol class="breadcrumb">
-                                    <li><i class="fa fa-home"></i><a href="{{ url('\cpanel') }}">HOME</a></li>
-                                    <li><i class="fa fa-users"></i><a href="{{ url('\cpanel\customers') }}">All Customers</a></li>						  	
+                                    <li><i class="fa fa-home"></i><a href="{{ url('\adminCpanel') }}">HOME</a></li>
+                                    <li><i class="fa fa-users"></i><a href="{{ url('\adminCpanel\customers') }}">All Customers</a></li>						  	
                                     <li><i class="fa fa-user"></i>Edit Customer Information</li>						  	
                                 </ol>
                             </div><!-- /.col-lg-12 -->
@@ -21,7 +21,7 @@
                         <!-- End  Breadcrumb -->
                         
                         {!! Form::model($customerInfo, ['route' => ['customers.update', $customerInfo->id], 'method' => "PATCH", 'class' => 'form', 'files' => true]) !!}
-                        @include('cpanel.customers.form')
+                        @include('adminCpanel.customers.form')
                         {!! Form::close() !!}
                     @endsection
     

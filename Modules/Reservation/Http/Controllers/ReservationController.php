@@ -105,6 +105,11 @@ class ReservationController extends Controller
         if($reservation){
             if($request->seat_id){
                 $reservation->seats()->attach($request->seat_id);
+<<<<<<< HEAD
+=======
+                Session::flash('flash_massage_type', 1);
+                return redirect('adminCpanel/reservations')->withFlashMassage('Reservation Added Successfully');
+>>>>>>> 84d175c7ca9710f74c293205bef0beda446c306a
             }
             Session::flash('flash_massage_type', 1);
             return redirect()->back()->withFlashMassage('Reservation Added Successfully');

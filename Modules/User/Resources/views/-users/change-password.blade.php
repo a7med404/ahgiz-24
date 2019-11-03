@@ -10,10 +10,10 @@
                 <div class="col-lg-12">
                     <h3 class="page-header"><i class="fa fa-laptop"></i> Change Password  </h3>
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-home"></i><a href="{{ url('/cpanel') }}">HOME</a></li>
-                        <li><i class="fa fa-home"></i><a href="{{ url('/cpanel/profile') }}">My Profile</a></li>
+                        <li><i class="fa fa-home"></i><a href="{{ url('/adminCpanel') }}">HOME</a></li>
+                        <li><i class="fa fa-home"></i><a href="{{ url('/adminCpanel/profile') }}">My Profile</a></li>
                         <li><i class="fa fa-laptop"></i>
-                            <a href="{{ url('/cpanel/users/') }}">
+                            <a href="{{ url('/adminCpanel/users/') }}">
                              Change Password
                             </a>
                         </li>						  	
@@ -33,7 +33,7 @@
             <div class="card">
                 <div class="card-body">
                         
-                    {!! Form::open(['url' => ['cpanel/users/'.$userInfo->id.'/update-password'], 'method' => "PATCH"]) !!}
+                    {!! Form::open(['url' => ['adminCpanel/users/'.$userInfo->id.'/update-password'], 'method' => "PATCH"]) !!}
 
 
                             <div class="form-group row">

@@ -15,7 +15,7 @@ class ApiRoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('cpanel.users.add', ['roles' => $roles]);
+        return view('adminCpanel.users.add', ['roles' => $roles]);
         return view('user::index');
     }
 

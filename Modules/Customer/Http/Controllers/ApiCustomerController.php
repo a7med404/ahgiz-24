@@ -46,12 +46,14 @@ class ApiCustomerController extends Controller
         // update data for customer 
         $data = [
             'c_name' => $request->c_name,
-            'email' => $request->email
+            'email' => $request->email,
+            'gender' => $request->gender,
+            'birthdate' => $request->birthdate
         ];
         $customer = Customer::where('id', $id)->update($data);
 >>>>>>> 6c1a0e68ed2e072ff2eda2a0e51e989d0a33a394
         if ($customer) {
-            return response()->json(null, 200);
+            return response()->json(['message' => 'updated done'], 200);
         }
         return response()->json(['errors' => 'Invalid Customer id'], 404);
     }
@@ -85,10 +87,10 @@ class ApiCustomerController extends Controller
             $json['my_reservations']    = route('customer-reservations', ['id' => $customer->id]);
             $json['search_reservation'] = route('search-reservation');
             $json['get_bus_stations'] = route('get-bus-stations');
-            if ($customer) {
-                //TODO::handel return value of CustomerRegisteredOrLoginEvent
-                event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
-            }
+            // if ($customer) {
+            //     //TODO::handel return value of CustomerRegisteredOrLoginEvent
+            //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
+            // }
             return response()->json(['customer' => $json], 200);
         } else {
             // created data for customer
@@ -99,10 +101,17 @@ class ApiCustomerController extends Controller
             // Access token
             $accessToken = $customer->createToken('customerToken')->accessToken;
 
+<<<<<<< HEAD
             // return response
             if ($customer) {
                 event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
             }
+=======
+            // // return response 
+            // if ($customer) {
+            //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
+            // }
+>>>>>>> 84d175c7ca9710f74c293205bef0beda446c306a
             $json['id'] = $customer->id;
             $json['c_name'] = $customer->c_name;
             $json['phone_number'] = $customer->phone_number;
@@ -119,7 +128,7 @@ class ApiCustomerController extends Controller
             $json['search_reservation'] = route('search-reservation');
             $json['get_bus_stations'] = route('get-bus-stations');
 
-            return response()->json(['customer' => $json], 200);
+            return response()->json(['customer' => $json], 201);
         }
     }
 

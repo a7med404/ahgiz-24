@@ -18,7 +18,6 @@ Route::middleware('auth:api')->get('/setting', function (Request $request) {
 });
 
 
-Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'settings'], function () {
-
+Route::group(['namespace' => 'API',  'prefix' => 'settings'], function () {
     Route::get('get-settings-stations', 'ApiSettingController');
 });

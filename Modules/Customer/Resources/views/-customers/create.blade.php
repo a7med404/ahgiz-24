@@ -1,5 +1,5 @@
 
-@extends('cpanel.layouts.layout')
+@extends('adminCpanel.layouts.layout')
 @section('title')
   Add New Customer
 @endsection 
@@ -13,8 +13,8 @@
                         <div class="row">
                             <div class="col-lg-12  float-right">
                                 <ol class="breadcrumb">
-                                    <li><i class="fa fa-home"></i><a href="{{ url('\cpanel') }}">HOME</a></li>
-                                    <li><i class="fa fa-users"></i><a href="{{ url('\cpanel\customers') }}">All Customers</a></li>							  	
+                                    <li><i class="fa fa-home"></i><a href="{{ url('\adminCpanel') }}">HOME</a></li>
+                                    <li><i class="fa fa-users"></i><a href="{{ url('\adminCpanel\customers') }}">All Customers</a></li>							  	
                                     <li><i class="fa fa-user"></i>Add New Customers</li>						  	
                                 </ol>
                             </div><!-- /.col-lg-12 -->
@@ -22,7 +22,7 @@
                         <!-- End  Breadcrumb -->
                         
                         {!! Form::open(['route' => ['customers.store'], 'method' => "POST", 'class' => 'form', 'files' => true]) !!}
-                        @include('cpanel.customers.form')
+                        @include('adminCpanel.customers.form')
                         {!! Form::close() !!}
 
                     @endsection

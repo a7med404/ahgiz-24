@@ -17,7 +17,7 @@ class CreateStationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 200);
             $table->boolean('type')->nullable();
-            $table->integer('city')->nullable();
+            $table->integer('city_id')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });

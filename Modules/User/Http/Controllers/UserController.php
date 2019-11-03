@@ -9,12 +9,13 @@ use Modules\User\Entities\User;
 use \Hash;
 use \Session;
 use Modules\User\Entities\Role;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('auth');
+    //   $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -27,6 +28,41 @@ class UserController extends Controller
         $allUsers = $user->all(); 
         return view('user::users.index', ['users' => $allUsers, 'roles' => $roles]);
     }
+
+
+    public function userDataTables()
+    {
+        return DataTables::of(User::orderBy('id', 'desc')->get())
+            ->addColumn('options', function ($user) {
+                return view('user::users.colums.options', ['id' => $user->id, 'routeName' => 'users']);
+            })
+            ->addColumn('last_login', function (User $user) {
+                if($user->last_login != null) {
+                    return \Carbon\Carbon::parse($user->last_login)->diffForhumans();
+                }
+                return $user->last_login;
+            })
+
+            ->addColumn('roles', function ($user) {
+                // $data = [];
+                // foreach ($user->roles as $role) {
+                    return view('user::users.colums.role', ['roles' => $user->roles]);
+                    // $data[] = '<span class="label label-light-info">'.$role->display_name.'</span>';
+                // }
+                // return $data;
+            })
+            ->editColumn('status', function ($user) {
+                return $user->status == 0 ? '<span class="label label-light-warning">' . status()[$user->status] . '</span>' : '<span class="label label-light-success">' . status()[$user->status] . '</span>';
+            })
+            ->rawColumns(['last_login', 'roles', 'options', 'status'])
+            // ->removeColumn('password')
+            // ->setRowClass('{{ $status == 0 ? "alert alert-success" : "alert alert-warning" }}')
+            ->setRowId('{{$id}}')
+            ->make(true);
+        
+    }
+
+
     /**
      * Show the form for creating a new resource.
      * @return Response
@@ -53,13 +89,14 @@ class UserController extends Controller
             'username'      => $request->username,
             'status'        => $request->status,
             'note'          => $request->note,
+            'last_login'    => now(),
             'password'      => Hash::make($request->password),
         ]);
         if ($newUser) {
             $request->roles != null ? $newUser->attachRoles($request->roles) : $newUser->attachRole('user');
           }
         Session::flash('flash_massage_type');
-        return redirect('cpanel/users')->withFlashMassage('User Added Susscefully');
+        return redirect('adminCpanel/users')->withFlashMassage('User Added Susscefully');
     }
 
     /**
@@ -94,10 +131,12 @@ class UserController extends Controller
     {
         $userUpdate = $Oneuser->findOrFail($id);
         $data = [
-            'name'  => $request->name,
-            'phone' => $request->phone, 
-            'email' => $request->email, 
-            'admin' => $request->admin
+            'name'          => $request->name,
+            'phone_number'  => $request->phone_number,
+            'email'         => $request->email,
+            'username'      => $request->username,
+            'status'        => $request->status,
+            'note'          => $request->note,
         ];
         $userUpdate->fill($data)->save();
         if ($userUpdate) {

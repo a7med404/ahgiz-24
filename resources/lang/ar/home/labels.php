@@ -17,8 +17,11 @@ return [
     'from' => 'مـن',
     'to' => 'الـي',
     'pay_method' => 'طريقة الدفع',
+<<<<<<< HEAD
     'from_date' => 'من تاريخ',
     'to_date' => 'الى تاريخ',
+=======
+>>>>>>> 84d175c7ca9710f74c293205bef0beda446c306a
 
     'f_name' => 'الاسم',
     'l_name' => 'اسم الوالد',
@@ -26,12 +29,20 @@ return [
     'email' => 'البريد الالكتروني',
     'gender' => 'النوع',
     'brith_date' => 'تاريخ الميلاد',
-    'has_reservation' => 'الحجوزات الخاصة به',
+    'his_reservation' => 'الحجوزات الخاصة به',
+    'reservations' => 'الحجوزات ',
 
 
     'trip_number' => 'رقم الرحلة',
     'cusromer' => 'المستفيد',
+    'last_login' => 'اخر دخول',
+
     'user' => 'المستخدم',
+<<<<<<< HEAD
+=======
+    'city' => 'المدينة',
+    'type' => 'النوع',
+>>>>>>> 84d175c7ca9710f74c293205bef0beda446c306a
 
 
     'name' => 'الاسم',
@@ -47,6 +58,7 @@ return [
     'options' => 'خيارت',
     'number' => 'الرقم',
     'date' => 'التاريخ',
+    'roles' => 'الدور',
 
     // plne reservation //
 

@@ -11,7 +11,7 @@
 |
 */
 Route::group(['middleware' => ['web', 'auth']], function(){
-    Route::get('/cpanel', 'DashboardController@index')->name('cpanel');
+    Route::get('/adminCpanel', 'DashboardController@index')->name('adminCpanel');
 });
 
 

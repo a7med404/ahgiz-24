@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $syperMethod    = Reservation::where('pay_method',3)->count(); 
         $bankMethod    = Reservation::where('pay_method',2)->count(); 
         $cashMethod    = Reservation::where('pay_method',1)->count(); 
-        return view('cpanel.app',compact('user','cancelRes','complateRes','TempRes','pendingRes',
+        return view('adminCpanel.app',compact('user','cancelRes','complateRes','TempRes','pendingRes',
                                 'genderFemale','genderMale','syperMethod','bankMethod','cashMethod'));
     }
 }

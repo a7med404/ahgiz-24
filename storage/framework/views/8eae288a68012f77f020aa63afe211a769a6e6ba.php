@@ -133,4 +133,4 @@ $.widget.bridge('uibutton', $.ui.button);
 
 
 
-<?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/resources/views/cpanel/partials/scripts.blade.php ENDPATH**/ ?>
+<?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/resources/views/adminCpanel/partials/scripts.blade.php ENDPATH**/ ?>

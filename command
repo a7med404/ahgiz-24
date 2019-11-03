@@ -8,14 +8,14 @@ php artisan module:unuse
 
   CompanyController
 
-php artisan module:use Company
+php artisan module:use Customer
 
 php artisan module:make-controller CompanyController
 php artisan module:make-controller API/ApiCompanyController
 
 php artisan module:make-factory CompanyFactory
 
-php artisan module:make-seed CompanyTableSeeder
+php artisan module:make-seed CustomerTableSeeder
 
 php artisan module:make-request CreateCompanyRequest
 
@@ -35,6 +35,13 @@ php artisan migrate --path=/Modules/Reservation/Database/Migrations/2019_10_16_1
 
 php artisan module:make-listener SentSMSWithReservationDetailsToCustomerListener Reservation
 
+
+
+php artisan datatables:make Customer --model Customer
+
+php artisan module:make-test Api/Controllers/UserControllerTest User
+php artisan module:make-test Api/Controllers/ApiCustomerControllerTest --feature Customer
+php artisan module:make-test Controllers/CustomerControllerTest Customer
 
 // the migration
 

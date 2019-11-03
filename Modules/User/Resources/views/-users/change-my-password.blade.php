@@ -1,4 +1,4 @@
-@extends('cpanel.layouts.master')
+@extends('adminCpanel.layouts.master')
 @section('title')
     Change Password
 @endsection
@@ -9,10 +9,10 @@
     <div class="col-lg-12">
       <h3 class="page-header"><i class="fa fa-laptop"></i> Change Password  </h3>
       <ol class="breadcrumb">
-        <li><i class="fa fa-home"></i><a href="{{ url('/cpanel') }}">HOME</a></li>
-        <li><i class="fa fa-home"></i><a href="{{ url('/cpanel/profile') }}">My Profile</a></li>
+        <li><i class="fa fa-home"></i><a href="{{ url('/adminCpanel') }}">HOME</a></li>
+        <li><i class="fa fa-home"></i><a href="{{ url('/adminCpanel/profile') }}">My Profile</a></li>
         <li><i class="fa fa-laptop"></i>
-          <a href="{{ url('/cpanel/users/') }}">
+          <a href="{{ url('/adminCpanel/users/') }}">
            Change Password
           </a>
         </li>
@@ -42,7 +42,7 @@
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
-      {!! Form::open(['url' => ['cpanel/users/'.$userInfo->id.'/update-password'], 'method' => "PATCH"]) !!}
+      {!! Form::open(['url' => ['adminCpanel/users/'.$userInfo->id.'/update-password'], 'method' => "PATCH"]) !!}
       <div class="row">
         <div class="col-md-3 custom-input">
           {!! Form::password('old_password', null, ['id' => 'old_password', 'class' => "form-control  {{ $errors->has('old_password') ? ' is-invalid' : '' }}", 'value' => "{{ old('old_password') }}", 'required', 'autofocus']) !!}

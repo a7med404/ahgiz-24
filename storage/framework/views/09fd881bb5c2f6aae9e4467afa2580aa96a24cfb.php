@@ -1,0 +1,2 @@
+(function(window,$){window.LaravelDataTables=window.LaravelDataTables||{};window.LaravelDataTables["%1$s"]=$("#%1$s").DataTable(%2$s);})(window,jQuery);
+<?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/vendor/yajra/laravel-datatables-html/src/resources/views/script.blade.php ENDPATH**/ ?>

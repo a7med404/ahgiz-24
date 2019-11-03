@@ -16,7 +16,7 @@
 <section class="content-header">
     <h1><?php echo e(__('home/sidebar.trip_number')); ?> <?php echo e($tripInfo->number); ?> <small><?php echo e($tripInfo->company->name); ?></small></h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo e(url('\cpanel')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(__('home/sidebar.HOME')); ?> </a></li>
+        <li><a href="<?php echo e(url('\adminCpanel')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(__('home/sidebar.HOME')); ?> </a></li>
         <li class="active"> <?php echo e(__('home/sidebar.all_trips')); ?> </li>
     </ol>
 </section>
@@ -418,4 +418,4 @@
 
 
 
-<?php echo $__env->make('cpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/Modules/Reservation/Providers/../Resources/views/reservations/show.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('adminCpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/a7med404/a7meD404/WD_WORK/WorkingFolder/work-on/a7giz-24/Modules/Reservation/Providers/../Resources/views/reservations/show.blade.php ENDPATH**/ ?>

@@ -36,11 +36,11 @@ class CityController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(CreateCityRequest $request, City $station)
+    public function store(CreateCityRequest $request, City $city)
     {
-        $station->create($request->all());
+        $city->create($request->all());
         Session::flash('flash_massage_type', 1);
-        return redirect('cpanel/cities')->withFlashMassage('City Added Successfully');
+        return redirect('adminCpanel/cities')->withFlashMassage('City Added Successfully');
     }
 
     /**
