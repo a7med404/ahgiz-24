@@ -22,7 +22,7 @@ class CreateCustomerRequest extends FormRequest
             'email'         => 'nullable|string|email|max:255',
             'password'      => 'required|string|min:6',
             'gender'        => 'nullable|boolean', 
-            'brithdate'     => 'nullable|date',
+            'birthdate'     => 'nullable|date',
         ];
     }
 

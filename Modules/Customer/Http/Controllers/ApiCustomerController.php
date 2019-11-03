@@ -105,7 +105,7 @@ class ApiCustomerController extends Controller
             $json['phone_number'] = $customer->phone_number;
             $json['email'] = $customer->email;
             $json['gender'] = $customer->gender;
-            $json['brithdate'] = $customer->brithdate;
+            $json['birthdate'] = $customer->birthdate;
             $json['access_token'] = $accessToken;
             $json['isNew'] = 1;
             $json['otp'] = $this->optValue;

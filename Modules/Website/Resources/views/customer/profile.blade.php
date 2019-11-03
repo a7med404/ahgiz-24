@@ -38,7 +38,7 @@
                     <li class="text-capitalize">رقم الهاتف: <span>{{ $customerInfo->phone_number }}</span> </li>
                     <li class="text-capitalize">البريد الالكتروني: <span>{{ $customerInfo->email }}</span> </li>
                     <li class="text-capitalize">النوع: <span>{{ $customerInfo->gender }}</span> </li>
-                    <li class="text-capitalize">تاريخ الميلاد: <span>{{ $customerInfo->brithdate }}</span> </li>
+                    <li class="text-capitalize">تاريخ الميلاد: <span>{{ $customerInfo->birthdate }}</span> </li>
                     </ul><a>
                     <button type="button" data-toggle="modal" data-target="#popup-form" href="#" class="btn btn-custom text-uppercase">تعديل المعلومات الشخصية <i class="fa fa-chevron-left"></i></button></a>
                 </div>

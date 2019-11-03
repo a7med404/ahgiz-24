@@ -11,22 +11,22 @@ class CreateWebsitesTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('websites', function (Blueprint $table) {
-            $table->bigIncrements('id');
+    // public function up()
+    // {
+    //     Schema::create('websites', function (Blueprint $table) {
+    //         $table->bigIncrements('id');
 
-            $table->timestamps();
-        });
-    }
+    //         $table->timestamps();
+    //     });
+    // }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('websites');
-    }
+    // /**
+    //  * Reverse the migrations.
+    //  *
+    //  * @return void
+    //  */
+    // public function down()
+    // {
+    //     Schema::dropIfExists('websites');
+    // }
 }
