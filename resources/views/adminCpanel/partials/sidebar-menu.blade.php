@@ -165,18 +165,32 @@
                 </li>
               </ul>
             </li>
-            {{-- @endif --}}
-            <li>
-              <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.stations') }}
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-industry text-aqua"></i> <span>{{ __('home/sidebar.all_stations') }}</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="{{ route('stations.index') }}"><i class="fa fa-circle-o"></i> {{ __('home/sidebar.all_stations') }}</a></li>
-                {{-- <li><a href="{{ route('stations.create') }}"><i class="fa fa-circle-o"></i>{{ __('home/sidebar.add_station') }}</a></li> --}}
+              <ul class="treeview-menu" style="display: none;">
+                <li><a href="{{ route('stations.index') }}"><i class="fa fa-circle-o text-aqua"></i> {{ __('home/sidebar.all_stations') }}</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o text-red"></i> {{ __('home/sidebar.stations') }}
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="{{ route('stations.index') }}"><i class="fa fa-circle-o"></i>
+                        {{ __('home/sidebar.all_stations') }}</a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
+
+
+            {{-- @endif --}}
             {{-- <li class="treeview">
               <a href="#">
                 <i class="fa fa-bus text-red"></i> <span>{{ __('home/sidebar.vehicles') }}</span>

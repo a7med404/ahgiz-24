@@ -16,7 +16,6 @@ class ApiReservationController extends Controller
 {
     public function myReservations(Request $request, $id)
     {
-
         $reservations = Reservation::orderBy('id')->where('customer_id', $id)->get();
         return ReservationResource::collection($reservations);
     }
@@ -24,7 +23,7 @@ class ApiReservationController extends Controller
     public function myReservationDetails($id)
     {
         return new SingleReservationResource(Reservation::findOrFail($id));
-    }
+    } 
 
     public function availableReservation(Request $request, Trip $trip)
     {

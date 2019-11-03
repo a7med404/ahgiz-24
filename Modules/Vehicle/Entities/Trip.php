@@ -43,6 +43,7 @@ class Trip extends Model
     {
         return $this->hasMany(Seat::class);
     }
+    
     public function fromStation()
     {
         return $this->hasOne(Station::Class, 'id', 'from_station_id');

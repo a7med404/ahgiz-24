@@ -144,7 +144,7 @@ class CustomerDataTable extends DataTable
             })
             ->editColumn('mybu', function ($model) {
                 return '<a href="' . url('/adminpanel/bu/' . $model->id) . '"> <span class="btn btn-danger btn-circle"> <i class="fa fa-link"></i> </span> </a>';
-            })
+            }) 
 
             ->editColumn('control', function ($model) {
                 $all = '<a href="' . url('/adminpanel/users/' . $model->id . '/edit') . '" class="btn btn-info btn-circle"><i class="fa fa-edit"></i></a> ';

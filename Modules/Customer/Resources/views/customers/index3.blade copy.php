@@ -33,15 +33,16 @@
                     title="Remove"><i class="fa fa-times"></i></button>
             </div>
         </div>
-        <div class="box-body">
-            <div class="col col-xl-2 col-lg-2 col-md-2">
-                <div class="form-group">
-                    {!! Form::label('gender', 'المسار(الي)', ['class' => 'control-label']) !!}
-                    {!! Form::select('gender', getSelect('station'), null, ['id' => 'gender', 'class' => "select2
-                    form-control {{ $errors->has('gender') ? ' is-invalid' : '' }}", 'data-column' => '0', 'value' =>
-                    "{{ old('gender') }}"]) !!}
+
+            {{-- <div class="col col-xl-12 col-lg-12 col-md-12">
+                <div class="col col-xl-2 col-lg-3 col-md-3">
+                    <div class="form-group">
+                        {!! Form::label('gender', 'المسار(الي)', ['class' => 'control-label']) !!}
+                        {!! Form::text('gender', null, ['id' => 'gender', 'data-column' => "0", 'class' => "form-control filter-input {{ $errors->has('gender') ? ' is-invalid' : '' }}", 'value' => "{{ old('gender') }}", 'autofocus']) !!}
+                    </div>
                 </div>
-            </div>
+            </div> --}}
+        <div class="box-body">
             <div class="table-responsive">
                 <table id="data" class="table table-bordered table-hover">
                     <thead>
@@ -94,15 +95,15 @@
 
         $('#data thead th').each( function () {
             if($(this).index() < 3 ){
-                var classname = $(this).index() == 2  ?  'date' : 'dateslash';
+                var classname = $(this).index() == 3  ?  'filter-select' : 'filter-input';
                 var title = $(this).html();
                 if($(this).index() == 0 ){
-                    $(this).html( '<input type="text" style="max-width:70px;" class="' + classname + '" data-value="'+ $(this).index() +'" placeholder=" '+title+'" />' );
+                    $(this).html( '<input type="text" style="max-width:70px;" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'" placeholder=" '+title+'" />' );
                 }else{
-                    $(this).html( '<input type="text" style="max-width:200px;" class="' + classname + '" data-value="'+ $(this).index() +'"placeholder=" البحث '+title+'" />' );
+                    $(this).html( '<input type="text" style="max-width:200px;" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'"placeholder=" البحث '+title+'" />' );
                 }
             }else if($(this).index() == 3){
-                $(this).html( '<select class="select2 form-control"><option value="0"> عضو </option><option value="1"> مدير الموقع </option></select>' );
+                $(this).html( '<select data-column="'+ $(this).index() +'" class="select2 form-control"><option value="0"> عضو </option><option value="1"> مدير الموقع </option></select>' );
             }
         });
 
@@ -179,20 +180,20 @@
 
         });
 
-        table.columns().eq(0).each(function(colIdx) {
-            $('input', table.column(colIdx).header()).on('keyup change', function() {
-                table.column(colIdx).search(this.value).draw();
-            });
-        });
+        // table.columns().eq(0).each(function(colIdx) {
+        //     $('input', table.column(colIdx).header()).on('keyup change', function() {
+        //         table.column(colIdx).search(this.value).draw();
+        //     });
+        // });
 
-        table.columns().eq(0).each(function(colIdx) {
-            $('select', table.column(colIdx).header()).on('change', function() {
-                table.column(colIdx).search(this.value).draw();
-            });
-            $('select', table.column(colIdx).header()).on('click', function(e) {
-                e.stopPropagation();
-            });
-        });
+        // table.columns().eq(0).each(function(colIdx) {
+        //     $('select', table.column(colIdx).header()).on('change', function() {
+        //         table.column(colIdx).search(this.value).draw();
+        //     });
+        //     $('select', table.column(colIdx).header()).on('click', function(e) {
+        //         e.stopPropagation();
+        //     });
+        // });
 
 
         // table.columns().flatten().each( function ( colIdx ) {

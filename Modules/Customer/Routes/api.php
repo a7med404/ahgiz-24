@@ -23,7 +23,7 @@ Route::middleware('auth:api')->get('/customer', function (Request $request) {
     |*/
     Route::group(['prefix' => 'auth'], function () {
 
-        Route::post('/login-register', 'ApiCustomerController@loginRegister');
+        Route::post('/login-register', 'ApiCustomerController@loginRegister')->name('login-register');
 
     /*
     | This group for all API Routes 'middleware' => 'auth'

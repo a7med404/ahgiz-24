@@ -534,11 +534,10 @@ table.dataTable {
     width: calc(100% - 5px);
 }
 
-/* table.dataTable thead {
-  background-color: #2a3f54;
-  color: #FFF;
+table.dataTable thead tr:first-child {
+  background-color: #f4f4f4;
   margin: auto -2px;
-} */
+}
 
 th {
     text-align: center;
@@ -575,6 +574,29 @@ th {
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active{
     border: none;
 }
+/* @media (min-width: 992px) {
+  .table-responsive {
+      overflow-x: initial;
+  }
+} */
+
+
+.dataTables_filter input,
+.dataTables_filter select,
+.dataTables_length input,
+.dataTables_length select {
+    /* border: 1px solid #eee; */
+    height: 33px;
+    padding: 7px 15px;
+    font-size: 14px;
+    border-radius: 2px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    line-height: 100%;
+    /* background-color: #fff; */
+    outline: none;
+}
+
 
 div.dataTables_filter {
   text-align: left;
@@ -595,8 +617,52 @@ table.dataTable thead th,
 table.dataTable thead td {
     border-bottom: 1px solid #9a9a9a !important;
 }
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 0 !important;
+    margin-right: 0.5em !important;
+}
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 0 !important;
+    margin-right: 0.5em !important;
+}
+/************* DataTabel Buttons********************/
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+    color: #666 !important;
+}
 
+.dt-buttons {
+  margin-bottom: 20px;
+}
+.buttons-copy ,
+.buttons-csv ,
+.buttons-excel,
+.buttons-pdf,
+.buttons-print  
+{
+  background-color: transparent;
+  border: 1px solid #ffcc33;
+  color: #73879C;
+  padding: 2px 29px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+}
 
+.buttons-copy:hover,
+.buttons-csv:hover,
+.buttons-excel:hover,
+.buttons-pdf:hover,
+.buttons-print:hover {
+    box-shadow: 0 0 2em #fc39;
+    color: #9a9a9a;
+    border-color: #ffcc33;
+}
 /************* Tabel ********************/
 table {
     box-shadow: 0 7px 6px -6px #CFCFCF;
@@ -1115,4 +1181,104 @@ html body .b-t {
 
 html body .b-all {
     border: 1px solid rgba(120, 130, 140, 0.13)!important
+}
+
+
+/***************************************/
+
+
+.label {
+    padding: 3px 10px;
+    line-height: 13px;
+    color: #ffffff;
+    font-weight: 400;
+    border-radius: 4px;
+    font-size: 75%
+}
+
+.label-rounded {
+    border-radius: 60px
+}
+
+.label-custom {
+    background-color: #00897b
+}
+
+.label-success {
+    background-color: #26dad2
+}
+
+.label-info {
+    background-color: #1976d2
+}
+
+.label-warning {
+    background-color: #ffb22b
+}
+
+.label-danger {
+    background-color: #ef5350
+}
+
+.label-megna {
+    background-color: #00897b
+}
+
+.label-primary {
+    background-color: #5c4ac7
+}
+
+.label-purple {
+    background-color: #7460ee
+}
+
+.label-red {
+    background-color: #fb3a3a
+}
+
+.label-inverse {
+    background-color: #2f3d4a
+}
+
+.label-default {
+    background-color: #f2f4f8
+}
+
+.label-white {
+    background-color: #ffffff
+}
+
+.label-light-success {
+    background-color: #e8fdeb;
+    color: #26dad2
+}
+
+.label-light-info {
+    background-color: #cfecfe;
+    color: #1976d2
+}
+
+.label-light-warning {
+    background-color: #fff8ec;
+    color: #ffb22b
+}
+
+.label-light-danger {
+    background-color: #f9e7eb;
+    color: #ef5350
+}
+
+.label-light-megna {
+    background-color: #e0f2f4;
+    color: #00897b
+}
+
+.label-light-primary {
+    background-color: #f1effd;
+    color: #5c4ac7
+}
+
+.label-light-inverse {
+    background-color: #f6f6f6;
+    color: #2f3d4a
 }

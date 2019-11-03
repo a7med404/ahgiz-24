@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\Vehicle\Entities\Station;
 use Modules\Vehicle\Http\Requests\CreateStationRequest;
 use Session;
+use Yajra\DataTables\DataTables;
 
 class StationController extends Controller
 {
@@ -17,10 +18,27 @@ class StationController extends Controller
      */
     public function index()
     {
-        $stations = Station::orderBy('id', 'desc')->get();
-        return view('vehicle::stations.index', ['stations' => $stations]);
+        // $stations = Station::orderBy('id', 'desc')->get();
+        return view('vehicle::stations.index');
     }
 
+    public function stationDataTables()
+    {
+        return DataTables::of(Station::orderBy('id', 'desc')->get())
+            ->addColumn('options', function ($station) {
+                return view('vehicle::stations.colums.options', ['id' => $station->id, 'routeName' => 'stations']);
+            })
+            ->editColumn('type', function ($station) {
+                return $station->type == 0 ? '<span class="label label-light-warning">' . StationType()[$station->type] . '</span>' : '<span class="label label-light-success">' . StationType()[$station->type] . '</span>';
+            })
+            ->editColumn('city', function ($station) {
+                return getName('cities', $station->city_id);
+            })
+            ->rawColumns(['options', 'type'])
+            ->setRowId('{{$id}}')
+            ->make(true);
+        
+    }
     /**
      * Show the form for creating a new resource.
      * @return Response

@@ -1,10 +1,10 @@
 
-  
+  # TODO:: add files onley to his needed page
 <script src="<?php echo e(asset('modules/master/website/js/jquery.min.js')); ?>"></script>
 <script src="<?php echo e(asset('modules/master/website/js/bootstrap.min.js')); ?>"></script>
 <script src="<?php echo e(asset('modules/master/website/js/jquery.nicescroll.min.js')); ?>"></script>
-
-
+<script src="<?php echo e(asset('modules/master/website/js/moment.min.js')); ?>"></script>
+<script src="<?php echo e(asset('modules/master/website/js/icheck.min.js')); ?>"> </script>
 <script src="<?php echo e(asset('modules/master/website/fonts/fontawesome-all.js')); ?>"> </script>
 
 

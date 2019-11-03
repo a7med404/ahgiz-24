@@ -44,7 +44,8 @@ Route::prefix('adminCpanel')->group(function() {
         Route::get('users/delete/{id}', 'UserController@destroy')->name('users.delete');
         #change level For Users
         Route::get('users/{user}/editLevel', 'UserController@editLevel')->name('users.editLevel');
-        
+        Route::get('users/users-dataTables', 'UserController@userDataTables')->name('users-dataTables');
+
 
     });
 

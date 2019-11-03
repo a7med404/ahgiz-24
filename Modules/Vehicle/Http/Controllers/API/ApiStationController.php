@@ -16,11 +16,9 @@ class ApiStationController extends Controller
     return StationResource::collection(Station::orderBy('id')->where('status', 1)->where('type', 0)->get()); 
  }   
 
- // get plane stations //
+ # get plane stations 
  public function getPlaneStation(){
-
-   $planeStations = Station::orderBy('id')->where('status', 1)->where('type', 1)->get();
-   return PlaneStationResource::collection($planeStations);
+    return PlaneStationResource::collection(Station::orderBy('id')->where('status', 1)->where('type', 1)->get());
  }
 
 }

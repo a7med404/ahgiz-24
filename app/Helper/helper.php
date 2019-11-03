@@ -11,6 +11,7 @@ function getTestimonial(){
 
 function maleOrfemale(){
     return [
+        '' => '...',
         '0' => 'Female',
         '1' => 'Male',
     ];
@@ -206,7 +207,7 @@ function getSelect($tableName){
             return $list->toArray();
             break;
         case 'cities':
-            $list = \DB::table('cities')->pluck('name', 'id');
+            $list = \DB::table('cities')->where('parent_id', null)->pluck('name', 'id');
             return $list->toArray();
             break;
         case 'station':
@@ -277,6 +278,10 @@ function getName($tableName, $id)
     switch ($tableName) {
         case 'trips':
             $list = \DB::table('trips')->pluck('name', 'id');
+            return $list[$id];
+            break;
+        case 'cities':
+            $list = \DB::table('cities')->pluck('name', 'id');
             return $list[$id];
             break;
         case 'stations':

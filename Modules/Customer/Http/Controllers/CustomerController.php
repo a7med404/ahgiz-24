@@ -23,6 +23,7 @@ class CustomerController extends Controller
      */
     public function index(CustomerDataTable $dataTable, Builder $builder)
     {
+        return view('customer::customers.index');
         // return view('customer::customers.index3');
         // return $dataTable->render('customer::customers.index');
 
@@ -48,17 +49,18 @@ class CustomerController extends Controller
     public function customerDataTables(CustomerDataTable $dataTable)
     {
         return DataTables::of(Customer::orderBy('id', 'desc')->get())
-
             ->addColumn('options', function ($customer) {
                 return view('customer::customers.colums.options', ['id' => $customer->id, 'routeName' => 'customers']);
             })
-            ->rawColumns(['options'])
             ->addColumn('his_reservation', function (Customer $customer) {
-                return $customer->reservations->count();
-                return '<span class="badge-info">'.$customer->reservations->count().'</span>';
+                return '<span class="label label-info">' . $customer->reservations->count() . '</span>';
             })
+            ->editColumn('gender', function ($customer) {
+                return $customer->gender == 0 ? '<span class="label label-success">' . maleOrfemale()[$customer->gender] . '</span>' : '<span class="label label-warning">' . maleOrfemale()[$customer->gender] . '</span>';
+            })
+            ->rawColumns(['his_reservation', 'options', 'gender'])
             ->removeColumn('password')
-            // ->setRowClass('{{ $id % 2 == 0 ? "alert-success" : "alert-warning" }}')
+            // ->setRowClass('{{ $gender == 0 ? "alert alert-success" : "alert alert-warning" }}')
             ->setRowId('{{$id}}')
             ->make(true);
     }
@@ -79,6 +81,7 @@ class CustomerController extends Controller
      */
     public function store(CreateCustomerRequest $request, Customer $customer)
     {
+        return "ok";
         $data = [
             'first_name'    => $request->first_name,
             'last_name'     => $request->last_name,

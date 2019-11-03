@@ -165,19 +165,33 @@
                 </li>
               </ul>
             </li>
-            
-            <li>
-              <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.stations')); ?>
 
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-industry text-aqua"></i> <span><?php echo e(__('home/sidebar.all_stations')); ?></span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo e(route('stations.index')); ?>"><i class="fa fa-circle-o"></i> <?php echo e(__('home/sidebar.all_stations')); ?></a></li>
-                
+              <ul class="treeview-menu" style="display: none;">
+                <li><a href="<?php echo e(route('stations.index')); ?>"><i class="fa fa-circle-o text-aqua"></i> <?php echo e(__('home/sidebar.all_stations')); ?></a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.stations')); ?>
+
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?php echo e(route('stations.index')); ?>"><i class="fa fa-circle-o"></i>
+                        <?php echo e(__('home/sidebar.all_stations')); ?></a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
+
+
+            
             
             <li class="header">قسم الادارة</li>
             <li class="treeview">

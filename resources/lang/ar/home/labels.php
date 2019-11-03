@@ -25,11 +25,16 @@ return [
     'gender' => 'النوع',
     'brith_date' => 'تاريخ الميلاد',
     'his_reservation' => 'الحجوزات الخاصة به',
+    'reservations' => 'الحجوزات ',
 
 
     'trip_number' => 'رقم الرحلة',
     'cusromer' => 'المستفيد',
+    'last_login' => 'اخر دخول',
+
     'user' => 'المستخدم',
+    'city' => 'المدينة',
+    'type' => 'النوع',
 
 
     'name' => 'الاسم',
@@ -45,6 +50,7 @@ return [
     'options' => 'خيارت',
     'number' => 'الرقم',
     'date' => 'التاريخ',
+    'roles' => 'الدور',
 
     // plne reservation //
 

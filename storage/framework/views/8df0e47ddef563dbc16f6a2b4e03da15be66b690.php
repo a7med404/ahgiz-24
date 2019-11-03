@@ -36,17 +36,10 @@
                     title="Remove"><i class="fa fa-times"></i></button>
             </div>
         </div>
+
+            
         <div class="box-body">
-            <div class="col col-xl-2 col-lg-2 col-md-2">
-                <div class="form-group">
-                    <?php echo Form::label('gender', 'المسار(الي)', ['class' => 'control-label']); ?>
-
-                    <?php echo Form::select('gender', getSelect('station'), null, ['id' => 'gender', 'class' => "select2
-                    form-control <?php echo e($errors->has('gender') ? ' is-invalid' : ''); ?>", 'data-column' => '0', 'value' =>
-                    "<?php echo e(old('gender')); ?>"]); ?>
-
-                </div>
-            </div>
+            
             <div class="table-responsive">
                 <table id="data" class="table table-bordered table-hover">
                     <thead>
@@ -54,8 +47,9 @@
                             <th>id</th>
                             <th><?php echo e(__('home/labels.name')); ?></th>
                             <th><?php echo e(__('home/labels.phone_number')); ?></th>
+                            <th><?php echo e(__('home/labels.email')); ?></th>
                             <th><?php echo e(__('home/labels.gender')); ?></th>
-                            <th><?php echo e(__('home/labels.his_reservation')); ?></th>
+                            <th><?php echo e(__('home/labels.reservations')); ?></th>
                             <th><?php echo e(__('home/labels.options')); ?></th>
                         </tr>
                     </thead>
@@ -64,11 +58,12 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>id</th>
+                            <th>ID</th>                            
                             <th><?php echo e(__('home/labels.name')); ?></th>
                             <th><?php echo e(__('home/labels.phone_number')); ?></th>
+                            <th><?php echo e(__('home/labels.email')); ?></th>
                             <th><?php echo e(__('home/labels.gender')); ?></th>                            
-                            <th><?php echo e(__('home/labels.his_reservation')); ?></th>
+                            <th><?php echo e(__('home/labels.reservations')); ?></th>
                             <th><?php echo e(__('home/labels.options')); ?></th>
                         </tr>
                     </tfoot>
@@ -98,19 +93,42 @@
 
 
 <script type="text/javascript">
+
+// $('#add').click(function(){
+//     $.ajax({
+//         type: POST,
+//         url: '<?php echo route('customers.store'); ?>',
+//         data: {
+//             '_token': $('input[name=_token]').val(),            
+//             'c_name': $('input[name=c_name]').val(),
+//             'email': $('input[name=email]').val(),
+//             'phone_number': $('input[name=phone_number]').val(),
+//         },
+//         success: function(data){
+//             if((data.errors)){
+//                 $('.error').removeClass('hidden');
+//                 $('.error').text(data.errors.title);
+//                 $('.error').text(data.errors.body);            
+//             }else{
+//                 console.log("done");
+//             }
+//         }
+//     })
+// });
+
     var lastIdx = null;
 
-        $('#data thead th').each( function () {
-            if($(this).index() < 3 ){
-                var classname = $(this).index() == 2  ?  'date' : 'dateslash';
+        $('#data tfoot th').each( function () {
+            if($(this).index() < 4 || $(this).index() == 5){
+                var classname = $(this).index() == 4  ?  'filter-select' : 'filter-input';
                 var title = $(this).html();
-                if($(this).index() == 0 ){
-                    $(this).html( '<input type="text" style="max-width:70px;" class="' + classname + '" data-value="'+ $(this).index() +'" placeholder=" '+title+'" />' );
+                if($(this).index() == 0 || $(this).index() == 5){
+                    $(this).html( '<input type="text" style="max-width:70px;" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'" placeholder=" '+title+'" />' );
                 }else{
-                    $(this).html( '<input type="text" style="max-width:200px;" class="' + classname + '" data-value="'+ $(this).index() +'"placeholder=" البحث '+title+'" />' );
+                    $(this).html( '<input type="text" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'"placeholder=" البحث '+title+'" />' );
                 }
-            }else if($(this).index() == 3){
-                $(this).html( '<select class="select2 form-control"><option value="0"> عضو </option><option value="1"> مدير الموقع </option></select>' );
+            }else if($(this).index() == 4){
+                $(this).html( '<select data-column="'+ $(this).index() +'" class="filter-select select2 form-control"><option value=""> all </option><option value="<?php echo e(maleOrfemale()[0]); ?>"> انثئ </option><option value="<?php echo e(maleOrfemale()[1]); ?>"> ذكر </option></select>' );
             }
         });
 
@@ -121,13 +139,13 @@
             select: true,
             ajax: '<?php echo route('customers-dataTables'); ?>',
             columns: [
-                { data: 'id', name: 'id'},
-                { data: 'c_name', name: 'c_name' },
-                { data: 'phone_number', name: 'phone_number' },
-                { data: 'gender', name: 'gender', orderable: false },                
-                { data: 'his_reservation', name: 'his_reservation', orderable: false },
-                { data: 'options', name: 'options', orderable: false },
-                // { data: 'created_at', name: 'created_at'},
+                { data: 'id', name: 'id', "width": "10%"},
+                { data: 'c_name', name: 'c_name', "width": "30%" },
+                { data: 'phone_number', name: 'phone_number', "width": "15%" },
+                { data: 'email', name: 'email', "width": "10%"},
+                { data: 'gender', name: 'gender', "width": "10%"},                
+                { data: 'his_reservation', name: 'his_reservation', "width": "15%"},
+                { data: 'options', name: 'options', orderable: false, "width": "10%"},
             ],
             "language": {
                 "url": "<?php echo e(asset('modules/master/data/Arabic.json')); ?>"
@@ -137,15 +155,7 @@
             "order": [[0, 'desc']],
             "pagingType": "full_numbers",
             'searchDelay' : 3500,
-    
             bAutoWidth: false,
-            // aoColumns : [
-            // { sWidth: '15%' },
-            // { sWidth: '15%' },
-            // { sWidth: '15%' },
-            // { sWidth: '15%' },
-            // { sWidth: '10%' }
-            // ],
             aLengthMenu: [
                 [10, 25, 50, 100, 200, -1],
                 [10, 25, 50, 100, 200, "All"]
@@ -176,56 +186,17 @@
 
             "dom": '<"pull-left text-left" T><"pullright" i><"clearfix"><"pull-right text-right" f > <"pull-left text-left" l><"clearfix">rt<"pull-right text-right" pi > <"pull-left text-left" l><"clearfix"> '
             ,initComplete: function ()
-                {
-                    var r = $('#data tfoot tr');
-                    r.find('th').each(function(){
-                        $(this).css('padding', 8);
-                    });
-                    $('#data thead').append(r);
-                    $('#search_0').css('text-align', 'center');
-                }
+            {
+                var r = $('#data tfoot tr');
+                r.find('th').each(function(){
+                    $(this).css('padding', 8);
+                });
+                $('#data thead').append(r);        
+                $('#search_0').css('text-align', 'center');
+            }
 
         });
 
-        table.columns().eq(0).each(function(colIdx) {
-            $('input', table.column(colIdx).header()).on('keyup change', function() {
-                table.column(colIdx).search(this.value).draw();
-            });
-        });
-
-        table.columns().eq(0).each(function(colIdx) {
-            $('select', table.column(colIdx).header()).on('change', function() {
-                table.column(colIdx).search(this.value).draw();
-            });
-            $('select', table.column(colIdx).header()).on('click', function(e) {
-                e.stopPropagation();
-            });
-        });
-
-
-        // table.columns().flatten().each( function ( colIdx ) {
-        //     // Create the select list and search operation
-        //     var select = $('<select />')
-        //         .appendTo(
-        //             table.column(colIdx).footer()
-        //         )
-        //         .on( 'change', function () {
-        //             table
-        //                 .column( colIdx )
-        //                 .search( $(this).val() )
-        //                 .draw();
-        //         } );
-        
-        //     // Get the search data for the first column and add to the select list
-        //     table
-        //         .column( colIdx )
-        //         .cache( 'search' )
-        //         .sort()
-        //         .unique()
-        //         .each( function ( d ) {
-        //             select.append( $('<option value="'+d+'">'+d+'</option>') );
-        //         } );
-        // } );
 
         $('.filter-select').change(function(){
             table.column($(this).data('column'))
@@ -238,6 +209,7 @@
             .search($(this).val())
             .draw();
         });
+
 
         $('#data tbody').on( 'mouseover', 'td', function () {
             var colIdx = table.cell(this).index().column;

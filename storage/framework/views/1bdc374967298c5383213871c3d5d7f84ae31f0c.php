@@ -1,19 +1,19 @@
 
     <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/bootstrap.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/bootstrap-rtl.min.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/font-awesome.min.css')); ?>">
     
     
     
+    <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/icheck-1.x/all.css')); ?>">
     
-    
+    <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/fontawesome.min.css')); ?>">
     
     <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/toastr.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/datepicker3.css')); ?>">
     
     <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/animate.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/framework.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/framework-rtl.css')); ?>">
+    
     <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/main.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/main-edit.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('modules/master/website/css/main-rtl.css')); ?>">

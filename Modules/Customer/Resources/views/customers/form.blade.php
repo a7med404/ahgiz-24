@@ -1,14 +1,14 @@
 
 <div class="row">
     <div class="form-group col-md-6">
-        {!! Form::label('first_name','{{__("home/labels.f_name") }}', ['class' => 'form-label']) !!}
-        {!! Form::text('first_name', null, ['id' => 'first_name', 'class' => "form-control  {{ $errors->has('first_name') ? ' is-invalid' : '' }}", 'value' => "{{ old('first_name') }}", 'required', 'autofocus']) !!}
+        {!! Form::label('c_name','{{__("home/labels.name") }}', ['class' => 'form-label']) !!}
+        {!! Form::text('c_name', null, ['id' => 'c_name', 'class' => "form-control  {{ $errors->has('c_name') ? ' is-invalid' : '' }}", 'value' => "{{ old('c_name') }}", 'required', 'autofocus']) !!}
     </div>
 
-    <div class="form-group col-md-6">
+    {{-- <div class="form-group col-md-6">
         {!! Form::label('last_name','{{ __("home/labels.l_name") }}', ['class' => 'form-label']) !!}
         {!! Form::text('last_name', null, ['id' => 'last_name', 'class' => "form-control  {{ $errors->has('last_name') ? ' is-invalid' : '' }}", 'value' => "{{ old('last_name') }}", 'required', 'autofocus']) !!}
-    </div>
+    </div> --}}
 </div>
 
 <div class="row">

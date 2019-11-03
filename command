@@ -39,6 +39,10 @@ php artisan module:make-listener SentSMSWithReservationDetailsToCustomerListener
 
 php artisan datatables:make Customer --model Customer
 
+php artisan module:make-test Api/Controllers/UserControllerTest User
+php artisan module:make-test Api/Controllers/ApiCustomerControllerTest --feature Customer
+php artisan module:make-test Controllers/CustomerControllerTest Customer
+
 // the migration
 
 

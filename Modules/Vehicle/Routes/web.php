@@ -18,6 +18,8 @@ Route::prefix('vehicle')->group(function() {
 
 
 Route::prefix('adminCpanel')->group(function() {
+    Route::get('vehicles/stations-dataTables', 'StationController@stationDataTables')->name('stations-dataTables');
+
     Route::group(['middleware' => ['web', 'auth']], function(){
         
         Route::resource('vehicles','VehicleController');

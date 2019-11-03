@@ -16,6 +16,6 @@ use Illuminate\Http\Request;
 Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'vehicles'], function () {
 
     Route::get('get-bus-stations', 'ApiStationController@getBusStation')->name('get-bus-stations');
-    route::get('get-plane-stations', 'ApiStationController@getPlaneStation');
+    Route::get('get-plane-stations', 'ApiStationController@getPlaneStation')->name('get-plane-stations');
 
 });

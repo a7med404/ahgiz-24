@@ -82,10 +82,10 @@ class ApiCustomerController extends Controller
             $json['my_reservations']    = route('customer-reservations', ['id' => $customer->id]);
             $json['search_reservation'] = route('search-reservation');
             $json['get_bus_stations'] = route('get-bus-stations');
-            if ($customer) {
-                //TODO::handel return value of CustomerRegisteredOrLoginEvent
-                event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
-            }
+            // if ($customer) {
+            //     //TODO::handel return value of CustomerRegisteredOrLoginEvent
+            //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
+            // }
             return response()->json(['customer' => $json], 200);
         } else {
             // created data for customer 
@@ -96,10 +96,10 @@ class ApiCustomerController extends Controller
             // Access token 
             $accessToken = $customer->createToken('customerToken')->accessToken;
 
-            // return response 
-            if ($customer) {
-                event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
-            }
+            // // return response 
+            // if ($customer) {
+            //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
+            // }
             $json['id'] = $customer->id;
             $json['c_name'] = $customer->c_name;
             $json['phone_number'] = $customer->phone_number;
@@ -116,7 +116,7 @@ class ApiCustomerController extends Controller
             $json['search_reservation'] = route('search-reservation');
             $json['get_bus_stations'] = route('get-bus-stations');
 
-            return response()->json(['customer' => $json], 200);
+            return response()->json(['customer' => $json], 201);
         }
     }
 

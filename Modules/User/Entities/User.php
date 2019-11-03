@@ -44,7 +44,7 @@ class User extends Authenticatable
     }
 
 
-    public function PlaneReservations(){
+    public function planeReservations(){
         return $this->hasMany(PlaneReservation::class);
     }
 }

@@ -14,7 +14,7 @@
 
     <div class="form-group col-md-6">
         {!! Form::label('city', 'المدينة', ['class' => 'control-label']) !!}
-        {!! Form::select('city', getCity(), null, ['id' => 'city', 'class' => "form-control {{ $errors->has('city') ? ' is-invalid' : '' }}", 'value' => "{{ old('city') }}", 'required']) !!}
+        {!! Form::select('city', getSelect('cities'), null, ['id' => 'city', 'class' => "form-control {{ $errors->has('city') ? ' is-invalid' : '' }}", 'value' => "{{ old('city') }}", 'required']) !!}
     </div>
 </div>
 
