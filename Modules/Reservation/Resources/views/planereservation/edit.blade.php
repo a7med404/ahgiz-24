@@ -12,7 +12,7 @@
     <h1>{{ __('home/sidebar.all_reservations') }} <small>it all starts here</small></h1>
     <ol class="breadcrumb">
         <li><a href="{{ url('\cpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
-        <li><a href="{{ url('\cpanel\reservations') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.all_reservations') }} </a></li>
+        <li><a href="{{ url('\cpanel\planeReservations') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.all_planeReservations') }} </a></li>
         <li class="active"> {{ __('home/sidebar.edit_reservation') }} {{ $planereservationsInfo->name }} </li>
     </ol>
 </section>
@@ -38,7 +38,7 @@
                     {!! Form::close() !!}
                 </div>
             </div>
-    
+
         </div>
         <!-- /.box-body -->
     </div>

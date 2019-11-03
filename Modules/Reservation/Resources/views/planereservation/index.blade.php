@@ -24,7 +24,7 @@
     <div class="box box-info">
         <div class="box-header with-border">
             {{-- <h3 class="box-title">Title</h3>
-            <button type="button" data-toggle="modal" data-target="#popup-form" href="#" class="btn btn-info"> 
+            <button type="button" data-toggle="modal" data-target="#popup-form" href="#" class="btn btn-info">
                 <i class="fa fa-user-plus"></i> {{ __('home/sidebar.add_PlaneReservation') }} </button> --}}
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -42,29 +42,30 @@
                             <th>#id</th>
                             {{-- <th>{{ __('home/labels.cusromer') }}</th> --}}
                             <th>{{ __('home/labels.company_name') }}</th>
-                            <th>{{ __('home/labels.date') }}</th>
-                            {{-- <th>{{ __('home/labels.from_station_id') }}</th>
-                            {{-- <th>{{ __('home/labels.company') }}</th> --}}
-                            <th>{{ __('home/labels.from') }}</th> 
-
-                            <th>{{ __('home/labels.to') }}</th> 
+                            <th>{{ __('home/labels.from_date') }}</th>
+                            <th>{{ __('home/labels.to_date') }}</th>
+                            <th>{{ __('home/labels.from') }}</th>
+                            <th>{{ __('home/labels.to') }}</th>
                             <th>{{ __('home/labels.status') }}</th>
-                            {{-- <th>{{ __('home/labels.pay_method') }}</th> --}}
-                            {{-- <th>{{ __('home/labels.user') }}</th> --}}
+                            <th>{{ __('home/labels.note') }}</th>
+
                             <th>{{ __('home/labels.options') }}</th>
                         </tr>
                     </thead>
-                    <tbody>      
+                    <tbody>
                         @forelse($planereservations as $planereservation)
                         <tr>
                             <td>{{ $planereservation->id }}</td>
                             <td>{{ $planereservation->company->name }}</td>
                             {{-- <td ><span data-toggle="tooltip" data-original-title="{{$reservation->customer->first_name .' '. $reservation->customer->last_name}}"></span></td> --}}
-                            <td>{{ $planereservation->date }}</td>
+                            <td>{{ $planereservation->fom_date }}</td>
+                            <td>{{ $planereservation->to_date}}</td>
                             <td>{{ $planereservation->fromStation->name }}</td>
                             <td>{{ $planereservation->toStation->name }}</td>
                             {{-- <td>{{ $reservation->trip->company->name }}</td> --}}
-                            <td>{{ reservationStatus()[$planereservation->status] }}</td>
+                            <td class="{{ toggleStatus()[$planereservation->status] }}">{{ reservationStatus()[$planereservation->status] }}</td>
+                            <td>{{ $planereservation->note}}</td>
+
                             {{-- <td>{{ payMethod()[$reservation->pay_method] }}</td> --}}
                             {{-- <td>{{ $reservation->user->name }}</td> --}}
                             <td>
@@ -89,7 +90,7 @@
                                     <p>لا توجد بيانات في هذا الجدول</p>
                                 </div>
                             </td>
-                        </tr>   
+                        </tr>
                         @endforelse
                     </tbody>
                 </table>
@@ -140,7 +141,7 @@
         });
     });
 
-    
+
 </script>
 @endsection
 

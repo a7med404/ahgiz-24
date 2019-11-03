@@ -1,5 +1,5 @@
 <?php $__env->startSection('title'); ?>
-<?php echo e(__('home/sidebar.done-reservations')); ?>
+<?php echo e(__('home/sidebar.pendding-reservations')); ?>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('header'); ?>
@@ -14,10 +14,10 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <section class="content-header">
-    <h1><?php echo e(__('home/sidebar.done-reservations')); ?> <small>it all starts here</small></h1>
+    <h1><?php echo e(__('home/sidebar.pendding-reservations')); ?> <small>it all starts here</small></h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo e(url('\cpanel')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(__('home/sidebar.HOME')); ?> </a></li>
-        <li class="active"> <?php echo e(__('home/sidebar.done-reservations')); ?> </li>
+        <li class="active"> <?php echo e(__('home/sidebar.pendding-reservations')); ?> </li>
     </ol>
 </section>
 
@@ -42,21 +42,33 @@
                 <table id="table_id" class="table table-bordered table-hover table-condensed">
                     <thead>
                         <tr>
-                            <th>#number</th>
-                            <th><?php echo e(__('home/labels.cusromer')); ?></th>
-                            <th><?php echo e(__('home/labels.date')); ?></th>
-                            <th><?php echo e(__('home/labels.trip_number')); ?></th>
-                            <th><?php echo e(__('home/labels.seats_number')); ?></th>
+                            <th>#id</th>
+                            
+                            <th><?php echo e(__('home/labels.company_name')); ?></th>
+                            <th><?php echo e(__('home/labels.from_date')); ?></th>
+                            <th><?php echo e(__('home/labels.to_date')); ?></th>
+                            <th><?php echo e(__('home/labels.from')); ?></th>
+                            <th><?php echo e(__('home/labels.to')); ?></th>
+                            <th><?php echo e(__('home/labels.status')); ?></th>
+                            <th><?php echo e(__('home/labels.note')); ?></th>
                             <th><?php echo e(__('home/labels.options')); ?></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $__empty_1 = true; $__currentLoopData = $reservations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reservation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <?php $__empty_1 = true; $__currentLoopData = $planereservations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planereservation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
-                            <td><?php echo e($reservation->id); ?></td>
-                            <td ><span v-text="<?php echo e($reservation->customer->phone_number); ?>"  data-toggle="tooltip" data-original-title="<?php echo e($reservation->customer->first_name .' '. $reservation->customer->last_name); ?>"></span></td>
-                            <td><?php echo e($reservation->trip->date); ?></td>
-                            <td ><span v-text="<?php echo e($reservation->trip->number); ?>"  data-toggle="tooltip" data-original-title="<?php echo e($reservation->trip->fromStation->name .' - '. $reservation->trip->toStation->name); ?>"></span></td>
+                            <td><?php echo e($planereservation->id); ?></td>
+                            <td><?php echo e($planereservation->company->name); ?></td>
+                            
+                            <td><?php echo e($planereservation->fom_date); ?></td>
+                            <td><?php echo e($planereservation->to_date); ?></td>
+                            <td><?php echo e($planereservation->fromStation->name); ?></td>
+                            <td><?php echo e($planereservation->toStation->name); ?></td>
+                            
+                            <td class="<?php echo e(toggleStatus()[$planereservation->status]); ?>"><?php echo e(reservationStatus()[$planereservation->status]); ?></td>
+                            <td><?php echo e($planereservation->note); ?></td>
+
+                            
                             
                             <td>
                                 <div class="dropdown">
@@ -64,11 +76,11 @@
                                         <span class="fa fa-ellipsis-h"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo e(route('reservations.show',  ['id' => $reservation->id])); ?>">استعراض</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo e(route('reservations.edit',  ['id' => $reservation->id])); ?>">تعديل</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#}">استعراض</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo e(route('planeReservations.edit',  ['id' => $planereservation->id])); ?>">تعديل</a></li>
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php echo e(__('home/sidebar.contacts')); ?></a></li>
                                         <li role="presentation" class="divider"></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="delete-confirm" href="<?php echo e(route('reservations.delete',['id' => $reservation->id])); ?>">حذف</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="delete-confirm" href="<?php echo e(route('planeReservations.delete',['id' => $planereservation->id])); ?>">حذف</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -104,6 +116,7 @@
 <?php echo Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')); ?>
 
 <script>
+
     $(document).ready(function () {
         /*
             For iCheck =====================================>
@@ -121,4 +134,4 @@
 
 
 
-<?php echo $__env->make('cpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/barca/fouad/works/a7jiz/a7giz-24/Modules/Reservation/Providers/../Resources/views/reservations/done.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('cpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/barca/fouad/works/a7jiz/a7giz-24/Modules/Reservation/Providers/../Resources/views/planereservation/pendding.blade.php ENDPATH**/ ?>

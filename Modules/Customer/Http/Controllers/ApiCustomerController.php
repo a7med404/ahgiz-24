@@ -23,7 +23,7 @@ class ApiCustomerController extends Controller
 {
 
     public $optValue;
-    ////////////// for Registerain Customers ///////////// 
+    ////////////// for Registerain Customers /////////////
 
     public function update(Request $request, $id)
     {
@@ -39,7 +39,7 @@ class ApiCustomerController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        // update data for customer 
+        // update data for customer
         $customer = Customer::where('id', $id)->update($request->all());
         if ($customer) {
             return response()->json(['message' => 'User Created Successfuly'], 200);
@@ -58,7 +58,7 @@ class ApiCustomerController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
-
+        
         if (Auth::guard('customer')->attempt(['phone_number' => addSudanKey($request->phone_number), 'password' => addSudanKey($request->phone_number)])) {
             $customer = Auth::guard('customer')->user();
             $json['id'] = $customer->id;
@@ -80,15 +80,15 @@ class ApiCustomerController extends Controller
             // }
             return response()->json(['customer' => $json], 200);
         } else {
-            // created data for customer 
+            // created data for customer
             $customer = Customer::create([
                 'phone_number'      => addSudanKey($request->phone_number),
                 'password'          => Hash::make(addSudanKey($request->phone_number)),
             ]);
-            // Access token 
+            // Access token
             $accessToken = $customer->createToken('customerToken')->accessToken;
 
-            // return response 
+            // return response
             if ($customer) {
                 event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
             }

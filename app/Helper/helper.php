@@ -58,7 +58,7 @@ function tripStatus(){
 function reservationStatus(){
     return [
         '0' => 'ﻣﺘﺎﺣﺔ ﻟﻠﺤﺠﺰ ',
-        '1' => 'ﺣﺠﺰ ﻣﺆﻗ,'   ,   
+        '1' => 'ﺣﺠﺰ ﻣﺆﻗ,'   ,
         '2' => 'اﻛﺘﻤﻞ اﻟﺤﺠﺰ ',
         '3' => 'تزكرة',
     ];
@@ -67,7 +67,7 @@ function reservationStatus(){
 function payMethod(){
     return [
         '1' =>'ﻘــﺪﻱ',
-        '2' => 'ﺗﻄﺒﻴﻖ ﺑﻨﻜﻚ',        
+        '2' => 'ﺗﻄﺒﻴﻖ ﺑﻨﻜﻚ',
         '3' => 'ﺗﻄﺒﻴﻖ ﺳﺎﻳﺒﺮ',
     ];
 }
@@ -76,7 +76,15 @@ function toggleTrusted(){
     return [
         '0' => 'label label-danger',
         '1' => 'label label-success',
-        '3' => 'labe lalel-primary',
+    ];
+}
+
+
+function toggleStatus(){
+    return [
+        '0' => 'label label-danger',
+        '1' => 'label label-success',
+        '2' => 'labe label-primary',
     ];
 }
 
@@ -146,7 +154,7 @@ function getCity()
         '7' => 'Coupe',
         '8' => 'Wagon',
     ];
-} 
+}
 
 
 function CompanyType()
@@ -154,9 +162,9 @@ function CompanyType()
     return [
         '0' => 'شـركة بصات',
         '1' => 'شـركة طيران',
-        
+
     ];
-} 
+}
 
 
 function StationType()
@@ -165,7 +173,7 @@ function StationType()
         '0' => 'محطــة بصات',
         '1' => 'محطــة طيران',
     ];
-} 
+}
 
 
 function getLocal(){
@@ -230,6 +238,10 @@ function getSelect($tableName){
             $list = \DB::table('seats')->pluck('name', 'id');
             return $list->toArray();
             break;
+            // case 'reservStatutus':
+            // $list = \DB::table('reservations')->pluck('status', 'id');
+            // return $list->toArray();
+            // break;
         case 'company':
             $list = \DB::table('companies')->pluck('name', 'id');
             array_add($list, '', 'الكل');
@@ -241,6 +253,7 @@ function getSelect($tableName){
         default:
             $list = \DB::table('companies')->pluck('name', 'id');
             break;
+
     }
 }
 
@@ -307,7 +320,7 @@ function showRoute($name, $id)
 
 
 function getDefaultImage($imageName){
-    
+
     return $imageName == null ? "default_customer_image.png" : "$imageName";
 }
 function getLogo($imageName = null){

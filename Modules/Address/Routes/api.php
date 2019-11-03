@@ -17,6 +17,7 @@ Route::middleware('auth:api')->get('/address', function (Request $request) {
     return $request->user();
 });
 
+
 Route::prefix('address')->group(function() {
     Route::get('/loacls/{id}', 'AddressController@getLocals');
 });
@@ -25,5 +26,15 @@ Route::group(['prefix' => '/addresses'], function () {
     Route::resource('/addresses','AddressController');
     Route::resource('/contacts','ContactController');
     Route::resource('/identifcations','IdentifcationController');
+    Route::resource('user', 'UserController');
+
+
 
 });
+
+
+    // show the cities //
+    Route::get('/cities','API\ApicityController@cities');
+
+    // show the cities child //
+    route::get('cities/{id}','API\ApicityController@getcities');

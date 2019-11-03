@@ -20,7 +20,10 @@ class CreatePlaneresrvationTable extends Migration
             $table->integer('to_station_id');
             $table->integer('company_id');
             $table->integer('user_id');
-            $table->date('date');
+            $table->date('from_date');
+            $table->date('to_date');
+            $table->date('seat');
+            $table->text('note');
             $table->boolean('status')->default(0);
             $table->dateTime('conceled_at')->nullable();
             $table->timestamps();

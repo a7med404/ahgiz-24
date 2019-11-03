@@ -1,5 +1,5 @@
 <?php $__env->startSection('title'); ?>
-<?php echo e(__('home/sidebar.all_trips')); ?>
+<?php echo e(__('home/sidebar.next_trips')); ?>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('header'); ?>
@@ -14,12 +14,13 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <section class="content-header">
-    <h1><?php echo e(__('home/sidebar.all_trips')); ?> <small>it all starts here</small></h1>
+    <h1>عــدد <?php echo e(__('home/sidebar.next_trips')); ?> <?php echo e($trips->count()); ?></h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo e(url('\cpanel')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(__('home/sidebar.HOME')); ?> </a></li>
-        <li class="active"> <?php echo e(__('home/sidebar.all_trips')); ?> </li>
+        <li class="active"> <?php echo e(__('home/sidebar.next_trips')); ?> </li>
     </ol>
 </section>
+
 <!-- Main content -->
 <section class="content">
     <!-- Default box -->
@@ -87,7 +88,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
 
 <!--    <div class="col col-xl-2 col-lg-2 col-md-2">
             <div class="form-group">
@@ -103,10 +104,10 @@
 
                 </div>
             </div>
-
+                
         <div class="col col-lg-1 col-md-1 col-sm-1 col-1">
                 <div class="form-group m-t-25"><button href="#" class="btn btn-primary search-btn" type="submit">بحــث</button>
-                </div>
+                </div>            
         </div>
             </div>
            <?php echo Form::close(); ?>
@@ -127,7 +128,7 @@
                             <th><?php echo e(__('home/labels.options')); ?></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody>      
                         <?php $__empty_1 = true; $__currentLoopData = $trips; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trip): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <td><?php echo e($trip->number); ?></td>
@@ -161,7 +162,7 @@
                                     <p>لا توجد بيانات في هذا الجدول</p>
                                 </div>
                             </td>
-                        </tr>
+                        </tr>   
                         <?php endif; ?>
                     </tbody>
                 </table>
@@ -207,4 +208,4 @@
 
 
 
-<?php echo $__env->make('cpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/barca/fouad/works/a7jiz/a7giz-24/Modules/Vehicle/Providers/../Resources/views/trips/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('cpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/barca/fouad/works/a7jiz/a7giz-24/Modules/Vehicle/Providers/../Resources/views/trips/next.blade.php ENDPATH**/ ?>

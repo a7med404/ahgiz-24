@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\Reservation\Entities\Reservation;
 use Modules\Reservation\Http\Requests\CreateReservationRequest;
 use Session;
+use DB;
 
 class ReservationController extends Controller
 {
@@ -16,9 +17,35 @@ class ReservationController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $reservations = Reservation::where('canceled_at', null)->orderBy('id', 'desc')->get();
+        if($request->has('filter')){
+            $requestAll = array_except($request->toArray(), ['date_from','date_to']);
+            $query = Reservation::where('canceled_at', null)->join('trips', function ($join) {
+
+                $join->on('reservations.trip_id', '=', 'trips.id');
+            })->select('reservations.*');
+
+            foreach ($requestAll as $key => $req) {
+                if (!($req == "" || null)) {
+                    $query->where($key, $req);
+                }
+            }
+
+            if (!($request->date_from == "" || null) && ($request->date_to   == "" || null)) {
+                $query = $query->where('date', '>=', $request->date_from);
+            }elseif (($request->date_from == "" || null) && !($request->date_to   == "" || null)) {
+                $query = $query->where('date', '<=', $request->date_to);
+            }elseif(!($request->date_from == "" || null) && !($request->date_to   == "" || null)){
+                $query = $query->whereBetween('date', [$request->date_from, $request->date_to]);
+            }
+
+            $reservations = $query->get();
+        }else {
+            // $trips = Trip::orderBy('id', 'desc')->get();
+            $reservations = Reservation::where('canceled_at', null)->orderBy('id', 'desc')->get();
+
+        }
         return view('reservation::reservations.index', ['reservations' => $reservations]);
     }
 
@@ -40,7 +67,7 @@ class ReservationController extends Controller
         return view('reservation::reservations.done', ['reservations' => $reservations]);
     }
 
-    
+
     public function markAsPayed($id)
     {
         $reservationInfo = Reservation::findOrFail($id);
@@ -78,9 +105,9 @@ class ReservationController extends Controller
         if($reservation){
             if($request->seat_id){
                 $reservation->seats()->attach($request->seat_id);
-                Session::flash('flash_massage_type', 1);
-                return redirect('cpanel/reservations')->withFlashMassage('Reservation Added Successfully');
             }
+            Session::flash('flash_massage_type', 1);
+            return redirect()->back()->withFlashMassage('Reservation Added Successfully');
         }
     }
 
@@ -102,7 +129,7 @@ class ReservationController extends Controller
      */
     public function edit($id)
     {
-        $reservationInfo = Reservation::with('seats')->findOrFail($id);
+        $reservationInfo = Reservation::with('passengers')->findOrFail($id);
         return view('reservation::reservations.edit', ['reservationInfo' => $reservationInfo]);
     }
 
@@ -115,19 +142,23 @@ class ReservationController extends Controller
     public function update(CreateReservationRequest $request, $id)
     {
         $reservationInfo = Reservation::findOrFail($id);
+        $number = Time().rand(0, 100);
+
         $data = [
             'customer_id'       => $request->customer_id,
             'reservation_id'    => $request->reservation_id,
+            'number'            => $number,
             'trip_id'           => $request->trip_id,
             'status'            => $request->status
         ];
         $reservation = $reservationInfo->fill($data)->save();
         if($reservation){
             if($request->seat_id){
-                $reservationInfo->seats()->sync($request->seat_id);
-                Session::flash('flash_massage_type', 2);
-                return redirect()->back()->withFlashMassage('Reservation Updated Successfully');
+                $reservationInfo->passengers()->sync($request->seat_id);
+
             }
+            Session::flash('flash_massage_type', 2);
+            return redirect()->back()->withFlashMassage('Reservation Updated Successfully');
         }
     }
 

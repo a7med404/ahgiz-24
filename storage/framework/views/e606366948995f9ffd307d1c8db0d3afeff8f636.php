@@ -12,8 +12,8 @@
     <h1><?php echo e(__('home/sidebar.all_reservations')); ?> <small>it all starts here</small></h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo e(url('\cpanel')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(__('home/sidebar.HOME')); ?> </a></li>
-        <li><a href="<?php echo e(url('\cpanel\planeReservations')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(__('home/sidebar.all_planeReservations')); ?> </a></li>
-        <li class="active"> <?php echo e(__('home/sidebar.edit_reservation')); ?> <?php echo e($planereservationsInfo->name); ?> </li>
+        <li><a href="<?php echo e(url('\cpanel\reservations')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(__('home/sidebar.all_reservations')); ?> </a></li>
+        <li class="active"> <?php echo e(__('home/sidebar.edit_reservation')); ?> <?php echo e($reservationInfo->name); ?> </li>
     </ol>
 </section>
 
@@ -33,14 +33,14 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-6">
-                    <?php echo Form::model($planereservationsInfo, ['route' => ['planeReservations.update', $planereservationsInfo->id], 'method' => "PATCH", 'files' => true]); ?>
+                    <?php echo Form::model($reservationInfo, ['route' => ['reservations.update', $reservationInfo->id], 'method' => "PATCH", 'files' => true]); ?>
 
-                    <?php echo $__env->make('reservation::planereservation.form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    <?php echo $__env->make('reservation::reservations.form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     <?php echo Form::close(); ?>
 
                 </div>
             </div>
-
+    
         </div>
         <!-- /.box-body -->
     </div>
@@ -75,5 +75,4 @@
 
 </script>
 <?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('cpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/barca/fouad/works/a7jiz/a7giz-24/Modules/Reservation/Providers/../Resources/views/planereservation/edit.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('cpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/barca/fouad/works/a7jiz/a7giz-24/Modules/Reservation/Providers/../Resources/views/reservations/edit.blade.php ENDPATH**/ ?>

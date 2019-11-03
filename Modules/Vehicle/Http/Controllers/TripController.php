@@ -30,13 +30,14 @@ class TripController extends Controller
             }
 
             if (!($request->date_from == "" || null) && ($request->date_to   == "" || null)) {
+
+
                 $query = $query->where('date', '>=', $request->date_from);
             }elseif (($request->date_from == "" || null) && !($request->date_to   == "" || null)) {
                 $query = $query->where('date', '<=', $request->date_to);
             }elseif(!($request->date_from == "" || null) && !($request->date_to   == "" || null)){
                 $query = $query->whereBetween('date', [$request->date_from, $request->date_to]);
             }
-            
 
             $trips = $query->get();
         }else {
@@ -133,7 +134,7 @@ class TripController extends Controller
     }
     public function search(Request $request)
     {
-        // get all trip 
+        // get all trip
         $searchTrip = Trip::orderBy('id')->where('from_station_id','$request->from_station_id')
                                          ->where('to_station_id','$request->to_station_id')
                                          ->where('departure_time','$request->departure_time')

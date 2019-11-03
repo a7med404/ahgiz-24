@@ -3,7 +3,7 @@
 return [
     'trip_date' => 'تاريخ الرحلة',
     'trip' => 'الرحلة',
-    
+
     // company type //
     'CompanyType' => 'نوع الشركة',
 
@@ -17,7 +17,9 @@ return [
     'from' => 'مـن',
     'to' => 'الـي',
     'pay_method' => 'طريقة الدفع',
-    
+    'from_date' => 'من تاريخ',
+    'to_date' => 'الى تاريخ',
+
     'f_name' => 'الاسم',
     'l_name' => 'اسم الوالد',
     'phone_number' => 'رقم الهاتف',
@@ -30,12 +32,12 @@ return [
     'trip_number' => 'رقم الرحلة',
     'cusromer' => 'المستفيد',
     'user' => 'المستخدم',
-    
+
 
     'name' => 'الاسم',
     'logo' => 'الشعار',
     'description' => 'الوصـف',
-    
+
     'ticket_number' => 'رقم التذكرة',
 
     'seats_number' => 'عدد المقاعد',
@@ -49,5 +51,5 @@ return [
     // plne reservation //
 
     'company_name' => 'اسم الشركة',
-    
+
 ];

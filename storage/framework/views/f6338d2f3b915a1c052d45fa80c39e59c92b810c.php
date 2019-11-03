@@ -58,7 +58,6 @@
                                 <td><?php echo e('شـركة بصـات'); ?></td>
                             }
                             <?php endif; ?>
-                            
                             <td><?php echo e($company->note); ?></td>
                             <td>
                                 <div class="dropdown">

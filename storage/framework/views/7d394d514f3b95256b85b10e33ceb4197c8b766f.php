@@ -202,7 +202,7 @@ Home
                             <li class="item">
                             <div class="product-img">
                                 <img src="modules/master/images/default-50x50.gif" alt="Product Image">
-                            </div>
+                            </div>   
                             <div class="product-info">
                                 <a href="javascript:void(0)" class="product-title"> <?php echo e($pending->customer->first_name); ?><?php echo e($pending->customer->last_name); ?> 
                                 <span class="label label-success pull-left"><?php echo e($pending->passengers->count()); ?></span></a>

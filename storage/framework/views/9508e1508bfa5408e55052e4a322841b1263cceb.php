@@ -21,16 +21,6 @@
 <!-- Main content -->
 <section class="content">
     <!-- Default box -->
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">Title</h3>
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                    title="Collapse"><i class="fa fa-minus"></i></button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip"
-                    title="Remove"><i class="fa fa-times"></i></button>
-            </div>
-        </div>
         <div class="box-body">
             <div class="table-responsive">
                 
@@ -44,12 +34,13 @@
                             <th><?php echo e(__('home/labels.departure_time')); ?></th>
                             
                             <th><?php echo e(__('home/labels.seats_number')); ?></th>
+                            <th><?php echo e(__('home/labels.status')); ?></th>
                             
                             
                             <th><?php echo e(__('home/labels.options')); ?></th>
                         </tr>
                     </thead>
-                    <tbody>      
+                    <tbody>
                         <?php $__empty_1 = true; $__currentLoopData = $reservations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reservation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <td><?php echo e($reservation->id); ?></td>
@@ -59,6 +50,7 @@
                             <td><?php echo e($reservation->trip->departure_time); ?></td>
                             
                             <td><?php echo e($reservation->passengers->count()); ?></td>
+                            <td><?php echo e(reservationStatus()[$reservation->status]); ?></td>
                             
                             
                             <td>
@@ -83,7 +75,7 @@
                                     <p>لا توجد بيانات في هذا الجدول</p>
                                 </div>
                             </td>
-                        </tr>   
+                        </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>

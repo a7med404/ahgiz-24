@@ -40,28 +40,30 @@
                             <th>#id</th>
                             
                             <th><?php echo e(__('home/labels.company_name')); ?></th>
-                            <th><?php echo e(__('home/labels.date')); ?></th>
-                            
-                            <th><?php echo e(__('home/labels.from')); ?></th> 
-
-                            <th><?php echo e(__('home/labels.to')); ?></th> 
+                            <th><?php echo e(__('home/labels.from_date')); ?></th>
+                            <th><?php echo e(__('home/labels.to_date')); ?></th>
+                            <th><?php echo e(__('home/labels.from')); ?></th>
+                            <th><?php echo e(__('home/labels.to')); ?></th>
                             <th><?php echo e(__('home/labels.status')); ?></th>
-                            
-                            
+                            <th><?php echo e(__('home/labels.note')); ?></th>
+
                             <th><?php echo e(__('home/labels.options')); ?></th>
                         </tr>
                     </thead>
-                    <tbody>      
+                    <tbody>
                         <?php $__empty_1 = true; $__currentLoopData = $planereservations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $planereservation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <td><?php echo e($planereservation->id); ?></td>
                             <td><?php echo e($planereservation->company->name); ?></td>
                             
-                            <td><?php echo e($planereservation->date); ?></td>
+                            <td><?php echo e($planereservation->fom_date); ?></td>
+                            <td><?php echo e($planereservation->to_date); ?></td>
                             <td><?php echo e($planereservation->fromStation->name); ?></td>
                             <td><?php echo e($planereservation->toStation->name); ?></td>
                             
-                            <td><?php echo e(reservationStatus()[$planereservation->status]); ?></td>
+                            <td class="<?php echo e(toggleStatus()[$planereservation->status]); ?>"><?php echo e(reservationStatus()[$planereservation->status]); ?></td>
+                            <td><?php echo e($planereservation->note); ?></td>
+
                             
                             
                             <td>
@@ -86,7 +88,7 @@
                                     <p>لا توجد بيانات في هذا الجدول</p>
                                 </div>
                             </td>
-                        </tr>   
+                        </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
@@ -137,7 +139,7 @@
         });
     });
 
-    
+
 </script>
 <?php $__env->stopSection(); ?>
 

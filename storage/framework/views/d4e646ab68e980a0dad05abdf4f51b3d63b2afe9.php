@@ -58,7 +58,7 @@
                             <td ><span v-text="<?php echo e($reservation->customer->phone_number); ?>"  data-toggle="tooltip" data-original-title="<?php echo e($reservation->customer->first_name .' '. $reservation->customer->last_name); ?>"></span></td>
                             <td><?php echo e($reservation->trip->date); ?></td>
                             <td ><span v-text="<?php echo e($reservation->trip->number); ?>"  data-toggle="tooltip" data-original-title="<?php echo e($reservation->trip->fromStation->name .' - '. $reservation->trip->toStation->name); ?>"></span></td>
-                            <td><?php echo e($reservation->seats->count()); ?></td>
+                            <td><?php echo e($reservation->passengers->count()); ?></td>
                             <td><?php echo e(reservationStatus()[$reservation->status]); ?></td>
                             <td>
                                 <div class="dropdown">

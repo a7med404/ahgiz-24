@@ -21,16 +21,6 @@
 <!-- Main content -->
 <section class="content">
     <!-- Default box -->
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">Title</h3>
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                    title="Collapse"><i class="fa fa-minus"></i></button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip"
-                    title="Remove"><i class="fa fa-times"></i></button>
-            </div>
-        </div>
         <div class="box-body">
             <div class="table-responsive">
                 {{-- <reservation></reservation> --}}
@@ -44,12 +34,13 @@
                             <th>{{ __('home/labels.departure_time') }}</th>
                             {{-- <th>{{ __('home/labels.company') }}</th> --}}
                             <th>{{ __('home/labels.seats_number') }}</th>
+                            <th>{{ __('home/labels.status') }}</th>
                             {{-- <th>{{ __('home/labels.pay_method') }}</th> --}}
                             {{-- <th>{{ __('home/labels.user') }}</th> --}}
                             <th>{{ __('home/labels.options') }}</th>
                         </tr>
                     </thead>
-                    <tbody>      
+                    <tbody>
                         @forelse($reservations as $reservation)
                         <tr>
                             <td>{{ $reservation->id }}</td>
@@ -59,6 +50,7 @@
                             <td>{{ $reservation->trip->departure_time }}</td>
                             {{-- <td>{{ $reservation->trip->company->name }}</td> --}}
                             <td>{{ $reservation->passengers->count() }}</td>
+                            <td>{{ reservationStatus()[$reservation->status] }}</td>
                             {{-- <td>{{ payMethod()[$reservation->pay_method] }}</td> --}}
                             {{-- <td>{{ $reservation->user->name }}</td> --}}
                             <td>
@@ -83,7 +75,7 @@
                                     <p>لا توجد بيانات في هذا الجدول</p>
                                 </div>
                             </td>
-                        </tr>   
+                        </tr>
                         @endforelse
                     </tbody>
                 </table>

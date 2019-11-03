@@ -5,6 +5,8 @@ namespace Modules\Address\Http\Controllers\API;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Address\Entities\City;
+use Modules\Address\Transformers\CityResource;
 
 class ApicityController extends Controller
 {
@@ -14,8 +16,11 @@ class ApicityController extends Controller
      */
     public function index()
     {
-        return view('address::index');
+
+        // return view('address::index');
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -76,4 +81,19 @@ class ApicityController extends Controller
     {
         //
     }
+
+    // show cities //
+
+    public function cities(){
+
+        $cities = City::orderBy('id','desc')->where('parent_id',NULL)->get();
+        return CityResource::collection($cities);
+    }
+
+    public function getcities($id){
+
+        $getcities = City::findOrFail($id)->where('parent_id',$id)->get();
+        return CityResource::collection($getcities);
+    }
+
 }

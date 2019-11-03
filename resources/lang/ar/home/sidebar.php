@@ -92,7 +92,7 @@ return [
     'all_routes' => 'كل الخطوط',
     'add_route' => 'اضافة خط نقل جديد',
     'edit_route' => 'تعديل بيانات خط النقل',
-    
+
     'trips' => 'الرحلات',
     'all_trips' => 'كل الرحلات',
     'add_trip' => 'اضافة رحلة جديد',
@@ -100,7 +100,7 @@ return [
     'trip_number' => 'رحلة رقم',
     'all_previous_trips' => 'الرحلات السابقة',
     'all_next_trip' => 'الرحلات التالية' ,
-    
+
     'reservations' => 'الحجوزات',
     'all_reservations' => 'كل الحجوزات',
     'pendding-reservations' => 'الحجوزات المؤقتة',
@@ -111,7 +111,7 @@ return [
     'reservation_number' => 'حجز رقم',
 
     'all_tickets' => 'كل التذاكر',
-    
+
 
     /*
     |--------------------------------------------------------------------------
@@ -131,7 +131,7 @@ return [
     'all_testimonials' => 'اراء العملاء',
     'add_testimonial' => 'اضافة جديد',
     'edit_testimonial' => 'تعديل بيانات',
-    
+
     'edit_customer' => 'تعديل بيانات المستفيدين',
 
     // cities //
@@ -141,11 +141,11 @@ return [
 
     // pane reservations //
     'planeReservation' => 'حجوزات الطــيران ',
-    'all_planeReservations' => 'كل الحجوزات',
+    'all_planeReservations' => ' كل حجوزات الطــيران',
     'add_PlaneReservation' => 'إَضافة حجــز',
     'edit_PlaneReservation' => 'تعديل بيانات الحجز',
 
 
 
-    
+
 ];

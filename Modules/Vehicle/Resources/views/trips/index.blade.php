@@ -17,7 +17,6 @@
         <li class="active"> {{ __('home/sidebar.all_trips') }} </li>
     </ol>
 </section>
-
 <!-- Main content -->
 <section class="content">
     <!-- Default box -->
@@ -76,7 +75,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 <!--    <div class="col col-xl-2 col-lg-2 col-md-2">
             <div class="form-group">
@@ -91,10 +90,10 @@
                     {!! Form::select('company_id', getSelect('company'), null, ['id' => 'company_id', 'class' => "select2 form-control  {{ $errors->has('company_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('company_id') }}"]) !!}
                 </div>
             </div>
-                
+
         <div class="col col-lg-1 col-md-1 col-sm-1 col-1">
                 <div class="form-group m-t-25"><button href="#" class="btn btn-primary search-btn" type="submit">بحــث</button>
-                </div>            
+                </div>
         </div>
             </div>
            {!! Form::close() !!}
@@ -114,7 +113,7 @@
                             <th>{{ __('home/labels.options') }}</th>
                         </tr>
                     </thead>
-                    <tbody>      
+                    <tbody>
                         @forelse($trips as $trip)
                         <tr>
                             <td>{{ $trip->number }}</td>
@@ -148,7 +147,7 @@
                                     <p>لا توجد بيانات في هذا الجدول</p>
                                 </div>
                             </td>
-                        </tr>   
+                        </tr>
                         @endforelse
                     </tbody>
                 </table>
