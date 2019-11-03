@@ -205,7 +205,7 @@ Home
                                 <img src="modules/master/images/default-50x50.gif" alt="Product Image">
                             </div>   
                             <div class="product-info">
-                                <a href="javascript:void(0)" class="product-title"> {{ $pending->customer->first_name }}{{ $pending->customer->last_name }} 
+                                {{-- <a href="javascript:void(0)" class="product-title"> {{ $pending->customer->c_name }} --}}
                                 <span class="label label-success pull-left">{{ $pending->passengers->count() }}</span></a>
                                     <span class="product-description">
                                     {{ reservationStatus()[$pending->status] }}
