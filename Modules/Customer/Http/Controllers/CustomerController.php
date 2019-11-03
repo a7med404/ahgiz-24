@@ -11,9 +11,7 @@ use Modules\Customer\Http\Requests\CreateCustomerRequest;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use Carbon\Carbon;
-// use Yajra\DataTables\DataTables;
-// use Yajra\Datatables\Facades\Datatables;
-use Datatables;
+use Yajra\DataTables\DataTables;
 use Yajra\DataTables\Html\Builder;
 
 class CustomerController extends Controller
