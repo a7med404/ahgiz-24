@@ -8,14 +8,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Modules\Reservation\Entities\Reservation;
 use Modules\Reservation\Entities\PlaneReservation;
 
-
+     
 class Customer extends Authenticatable
 {
     use HasApiTokens;
     protected $table = "customers";
     protected $fillable = [
         'id', 'c_name', 'phone_number', 'email','password','birthdate',
-    ];  
+    ];
 
     protected $hidden = [
          'remember_token',
