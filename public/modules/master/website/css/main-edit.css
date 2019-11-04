@@ -67,18 +67,30 @@ header .navbar-collapse {
 header .slider .layout {
   background-color: rgba(221, 38, 41, 0.4);
 }
+@media(max-width: 768px) {
+  header .slider {
+    background-image: url("../images/landing-users.png");
+    background-position: 0 0;
+    background-repeat: repeat;
+    -webkit-animation: sidedownscroll 70s linear infinite;
+    animation: sidedownscroll 70s infinite ease;
+    /* animation: sidedownscroll 60s infinite cubic-bezier(.6,-0.28,.74,.05); */
+    background-size: auto;
+    height: 75vh;
+  }
+}
 
-header .slider {
-  background-image: url("../images/landing-users.png");
-  background-position: 0 0;
-  background-repeat: repeat;
-  -webkit-animation: sidedownscroll 60s linear infinite;
-  animation: sidedownscroll 60s infinite ease;
-  /* animation: sidedownscroll 60s infinite cubic-bezier(.6,-0.28,.74,.05); */
-  background-size: auto;
-
-
-  height: 75vh;
+@media(max-width: 768px) {
+  header .slider {
+      background-image: url("../images/landing-users.png");
+      background-position: 0 0;
+      background-repeat: repeat;
+      -webkit-animation: sidedownscroll 100s linear infinite;
+      animation: sidedownscroll 100s infinite ease;
+      /* animation: sidedownscroll 60s infinite cubic-bezier(.6,-0.28,.74,.05); */
+      background-size: auto;
+      height: 75vh;
+  }
 }
 
 

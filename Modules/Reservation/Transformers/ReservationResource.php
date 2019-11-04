@@ -30,7 +30,7 @@ class ReservationResource extends JsonResource
             'passengers'                => $this->passengers->count(),
             'canceled_at'                => $this->canceled_at,
             // 'seats_number'              => $this->trip->seats_number,
-            'status'                    => $this->status,
+            'status'                    => reservationStatus()[$this->status],
             'is_valid'                  => (strtotime($this->trip->date . $this->trip->departure_time) >= strtotime(now()->toDateTimeString())) ? true : false,
             'my_reservation_details'    => route('my-reservation-details', ['id' => $this->id]),
             'cancele_reservation'       => route('cancele-reservation'),
