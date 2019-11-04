@@ -25,7 +25,7 @@ class ApiSettingController extends Controller
         foreach ($siteSetting as $key => $item) {
             $settings[$item->name_setting] = $item->value;
         }
-        return [
+        return [ 
             'bus_stations' => $busStations,
             'plane_stations' => $planeStations,
             'plane_company' => $planeCompany,

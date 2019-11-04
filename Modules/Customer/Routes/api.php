@@ -28,7 +28,8 @@ Route::middleware('auth:api')->get('/customer', function (Request $request) {
     /*
     | This group for all API Routes 'middleware' => 'auth'
     */
-        Route::group(['middleware' => 'auth:api'], function () {
+        // Route::group(['middleware' => 'auth:api'], function () {
+        Route::group([], function () {
             #this function for complate register and update customer profile
             
             Route::post('/customer-update/{id}', 'ApiCustomerController@update')->name('customer-update');

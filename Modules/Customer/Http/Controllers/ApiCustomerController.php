@@ -75,7 +75,7 @@ class ApiCustomerController extends Controller
             $json['birthdate'] = $customer->birthdate;
             $json['access_token'] = $customer->createToken('MyApp')->accessToken;
             $json['isNew'] = 0;
-            $json['otp'] = $this->optValue;
+            // $json['otp'] = $this->optValue;
             $json['customer_update']    = route('customer-update', ['id' => $customer->id]);
             $json['customer_logout']    = route('customer-logout-api');
             $json['customer_delete']    = route('customer-delete');
@@ -108,7 +108,7 @@ class ApiCustomerController extends Controller
             $json['birthdate'] = $customer->birthdate;
             $json['access_token'] = $accessToken;
             $json['isNew'] = 1;
-            $json['otp'] = $this->optValue;
+            // $json['otp'] = $this->optValue;
             $json['customer_update'] = route('customer-update', ['id' => $customer->id]);
             $json['customer_logout'] = route('customer-logout-api');
             $json['customer_delete'] = route('customer-delete');
