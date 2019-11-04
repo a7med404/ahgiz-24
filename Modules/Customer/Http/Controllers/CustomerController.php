@@ -21,7 +21,7 @@ class CustomerController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index(CustomerDataTable $dataTable, Builder $builder)
+    public function index()
     {
         return view('customer::customers.index');
         // return view('customer::customers.index3');
@@ -46,7 +46,7 @@ class CustomerController extends Controller
     }
 
 
-    public function customerDataTables(CustomerDataTable $dataTable)
+    public function customerDataTables()
     {
         return DataTables::of(Customer::orderBy('id', 'desc')->get())
             ->addColumn('options', function ($customer) {
