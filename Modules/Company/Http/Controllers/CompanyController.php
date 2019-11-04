@@ -19,20 +19,18 @@ class CompanyController extends Controller
     {
         return view('company::companies.index');
     }
-    public function companyDataTables(CustomerDataTable $dataTable)
+    public function companiesDataTables()
     {
-        return DataTables::of(Customer::orderBy('id', 'desc')->get())
-            ->addColumn('options', function ($customer) {
-                return view('Company::companies.colums.options', ['id' => $company->id, 'routeName' => 'companies']);
+        return DataTables::of(Company::orderBy('id', 'desc')->get())
+            ->addColumn('options', function ($company) {
+                return view('Company::companies.column.options', ['id' => $company->id, 'routeName' => 'companies']);
             })
-            ->addColumn('his_reservation', function (Customer $customer) {
-                return '<span class="label label-info">' . $customer->reservations->count() . '</span>';
+
+            ->editColumn('type', function ($company) {
+                return $company->type == 0 ? '<span class="label label-success">' . Companytype()[$company->type] . '</span>' : '<span class="label label-warning">' . Companytype()[$company->type] . '</span>';
             })
-            ->editColumn('gender', function ($customer) {
-                return $customer->gender == 0 ? '<span class="label label-success">' . maleOrfemale()[$customer->gender] . '</span>' : '<span class="label label-warning">' . maleOrfemale()[$customer->gender] . '</span>';
-            })
-            ->rawColumns(['his_reservation', 'options', 'gender'])
-            ->removeColumn('password')
+            ->rawColumns(['options','type'])
+            ->removeColumn('password','contact_id','address_id')
             // ->setRowClass('{{ $gender == 0 ? "alert alert-success" : "alert alert-warning" }}')
             ->setRowId('{{$id}}')
             ->make(true);

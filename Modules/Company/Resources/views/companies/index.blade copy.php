@@ -91,7 +91,7 @@
 
         $('#data tfoot th').each( function () {
             if($(this).index() < 3 || $(this).index() == 4){
-                var classname = $(this).index() == 4  ?  'filter-select' : 'filter-input';
+                var classname = $(this).index() == 3  ?  'filter-select' : 'filter-input';
                 var title = $(this).html();
                 if($(this).index() == 0 || $(this).index() == 5){
                     $(this).html( '<input type="text" style="max-width:70px;" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'" placeholder=" '+title+'" />' );
@@ -99,7 +99,7 @@
                     $(this).html( '<input type="text" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'"placeholder=" البحث '+title+'" />' );
                 }
             }else if($(this).index() == 4){
-                $(this).html( '<select data-column="'+ $(this).index() +'" class="filter-select select2 form-control"><option value=""> all </option><option value="{{maleOrfemale()[0]}}">   </option><option value="{{maleOrfemale()[1]}}"> ذكر </option></select>' );
+                $(this).html( '<select data-column="'+ $(this).index() +'" class="filter-select select2 form-control"><option value=""> all </option><option value="{{Companytype()[0]}}"> بصـــات </option><option value="{{Companytype()[1]}}">طيران</option></select>' );
             }
         });
 

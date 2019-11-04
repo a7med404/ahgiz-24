@@ -36,54 +36,30 @@
         <div class="box-body">
             <div class="table-responsive">
                 <table id="table_id" class="table table-bordered table-hover table-condensed">
-                    <thead>
+                <thead>
                         <tr>
-                            <th>#ID</th>
-                            <th>{{ __("home/labels.name") }}</th>
-                            <th>{{ __("home/labels.logo") }}</th>
-                            <th>{{ __("home/labels.CompanyType") }}</th>
-                            <th>{{ __("home/labels.note") }}</th>
+                            <th>id</th>
+                            <th>{{ __('home/labels.name') }}</th>
+                            <th>{{ __('home/labels.logo') }}</th>
+                            <th>{{ __('home/labels.CompanyType') }}</th>
+                            <th>{{ __('home/labels.note') }}</th>
                             <th>{{ __('home/labels.options') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($companies as $company)
-                        <tr >
-                            <td>{{ $company->id }}</td>
-                            <td>{{ $company->name }}</td>
-                            <td>{{ $company->logo }}</td>
-                                @if($company->type == 1){
-                                        <td>{{ 'شـركة طـيران' }}</td>
-                                    }@else{
-                                        <td>{{ 'شـركة بصـات' }}</td>
-                                }
-                                @endif
-                            <td>{{ $company->note }}</td>
-                            <td>
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                                        <span class="fa fa-ellipsis-h"></span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('companies.show',  ['id' => $company->id]) }}">استعراض</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('companies.edit',  ['id' => $company->id]) }}">تعديل</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{ __('home/sidebar.contacts') }}</a></li>
-                                        <li role="presentation" class="divider"></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="delete-confirm" href="{{ route('companies.delete',['id' => $company->id]) }}">حذف</a></li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="7">
-                                <div class="text-center">
-                                    <p>لا توجد بيانات في هذا الجدول</p>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforelse
+
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>{{ __('home/labels.name') }}</th>
+                            <th>{{ __('home/labels.logo') }}</th>
+                            <th>{{ __('home/labels.CompanyType') }}</th>
+                            <th>{{ __('home/labels.note') }}</th>
+                            <th>{{ __('home/labels.options') }}</th>
+                        </tr>
+                    </tfoot>
+                </table>
                 </table>
             </div>
         </div>
@@ -96,24 +72,129 @@
 
 @stop
 @section('footer')
-<!-- icheck -->
+<!-- icheck -->footerfooter     
 {!! Html::script(asset('modules/master/plugins/icheck.min.js')) !!}
-{{-- <!-- dataTable -->
+ <!-- dataTable -->
 {!! Html::script(asset('modules/master/plugins/datatables/jquery.dataTables.min.js')) !!}
-{!! Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')) !!} --}}
-<script>
+{!! Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')) !!}
+{!! Html::script('https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js') !!}
+{!! Html::script('https://cdn.datatables.net/buttons/1.6.0/js/buttons.flash.min.js') !!}
+{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js') !!}
+{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js') !!}
+{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js') !!}
+{!! Html::script('https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js') !!}
+{!! Html::script('https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js') !!}
 
-    $(document).ready(function () {
-        /*
-            For iCheck =====================================>
-        */
-        $("input").iCheck({
-            checkboxClass: "icheckbox_square-red",
-            radioClass: "iradio_square-yellow",
-            increaseArea: "20%" // optional
+<script type="text/javascript">
+
+    var lastIdx = null;
+
+        $('#data tfoot th').each( function () {
+            if($(this).index() < 3 || $(this).index() == 4){
+                var classname = $(this).index() == 3  ?  'filter-select' : 'filter-input';
+                var title = $(this).html();
+                if($(this).index() == 0 || $(this).index() == 5){
+                    $(this).html( '<input type="text" style="max-width:70px;" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'" placeholder=" '+title+'" />' );
+                }else{
+                    $(this).html( '<input type="text" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'"placeholder=" البحث '+title+'" />' );
+                }
+            }else if($(this).index() == 4){
+                $(this).html( '<select data-column="'+ $(this).index() +'" class="filter-select select2 form-control"><option value=""> all </option><option value="{{Companytype()[0]}}"> بصـــات </option><option value="{{Companytype()[1]}}">طيران</option></select>' );
+            }
         });
-    });
 
+        var table = $('#data').DataTable({
+            processing: true,
+            serverSide: true,
+            autoWidth: false,
+            select: true,
+            ajax: '{!! route('companies-dataTables') !!}',
+            columns: [
+                { data: 'id', name: 'id', "width": "10%"},
+                { data: 'name', name: 'name', "width": "30%" },
+                { data: 'logo', name: 'logo', "width": "15%" },
+                { data: 'CompanyType', name: 'CompanyType', "width": "10%"},
+                { data: 'note', name: 'note', "width": "10%"},
+                { data: 'options', name: 'options', orderable: false, "width": "10%"},
+            ],
+            "language": {
+                "url": "{{ asset('modules/master/data/Arabic.json') }}"
+            },
+            "stateSave": false,
+            "responsive": true,
+            "order": [[0, 'desc']],
+            "pagingType": "full_numbers",
+            'searchDelay' : 3500,
+            bAutoWidth: false,
+            aLengthMenu: [
+                [10, 25, 50, 100, 200, -1],
+                [10, 25, 50, 100, 200, "All"]
+            ],
+            iDisplayLength: 10,
+            fixedHeader: true,
+
+            "oTableTools": {
+                "aButtons": [
+                    {
+                        "sExtends": "csv",
+                        "sButtonText": "ملف اكسل",
+                        "sCharSet": "utf16le"
+                    },
+                    {
+                        "sExtends": "copy",
+                        "sButtonText": "نسخ المعلومات",
+                    },
+                    {
+                        "sExtends": "print",
+                        "sButtonText": "طباعة",
+                        "mColumns": "visible",
+                    }
+                ],
+
+                "sSwfPath": "{{ asset('modules/master/data/copy_csv_xls_pdf.swf') }}"
+            },
+
+            "dom": '<"pull-left text-left" T><"pullright" i><"clearfix"><"pull-right text-right" f > <"pull-left text-left" l><"clearfix">rt<"pull-right text-right" pi > <"pull-left text-left" l><"clearfix"> ',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            dom: 'Blfrtip',
+            initComplete: function ()
+            {
+                var r = $('#data tfoot tr');
+                r.find('th').each(function(){
+                    $(this).css('padding', 8);
+                });
+                $('#data thead').append(r);
+                $('#search_0').css('text-align', 'center');
+            }
+
+        });
+
+
+        $('.filter-select').change(function(){
+            table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
+        });
+
+        $('.filter-input').keyup(function(){
+            table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
+        });
+
+
+        $('#data tbody').on( 'mouseover', 'td', function () {
+            var colIdx = table.cell(this).index().column;
+            if ( colIdx !== lastIdx ) {
+                $( table.cells().nodes() ).removeClass( 'highlight' );
+                $( table.column( colIdx ).nodes() ).addClass( 'highlight' );
+            }
+        })
+        .on( 'mouseleave', function () {
+            $( table.cells().nodes() ).removeClass( 'highlight' );
+        });
 </script>
 @endsection
 

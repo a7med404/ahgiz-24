@@ -18,10 +18,10 @@ Route::prefix('company')->group(function() {
 Route::prefix('adminCpanel')->group(function() {
     Route::group(['middleware' => ['web', 'auth']], function(){
 
-        Route::get('companies-dataTables', 'CompanyController@companiesDataTables')->name('companies-dataTables');
+        Route::get('companies-dataTables','CompanyController@companiesDataTables')->name('companies-dataTables');
 
         Route::resource('companies','CompanyController');
-        Route::get('companies/delete/{id}', 'CompanyController@destroy')->name('companies.delete');
+        Route::get('companies/delete/{id}','CompanyController@destroy')->name('companies.delete');
     });
 
 
