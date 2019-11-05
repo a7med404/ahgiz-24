@@ -22,14 +22,13 @@ Route::middleware('auth:api')->get('/customer', function (Request $request) {
     |--------------------------------------------------------------------------
     |*/
     Route::group(['prefix' => 'auth'], function () {
-
         Route::post('/login-register', 'ApiCustomerController@loginRegister')->name('login-register');
 
     /*
     | This group for all API Routes 'middleware' => 'auth'
     */
-        // Route::group(['middleware' => 'auth:api'], function () {
-        Route::group([], function () {
+        Route::group(['middleware' => 'auth:api'], function () {
+        // Route::group([], function () {
             #this function for complate register and update customer profile
             
             Route::post('/customer-update/{id}', 'ApiCustomerController@update')->name('customer-update');

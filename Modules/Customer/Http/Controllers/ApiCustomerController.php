@@ -133,6 +133,7 @@ class ApiCustomerController extends Controller
         #TODO:: chack when delete something delete items that belong to it
         $customerForDelete = Auth::user();
         $customerTokens = $customerForDelete->tokens;
+        // dd($customerTokens);
 
         foreach ($customerTokens as $token) {
             $token->revoke();
