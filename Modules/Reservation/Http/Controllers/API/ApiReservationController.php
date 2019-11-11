@@ -135,7 +135,7 @@ class ApiReservationController extends Controller
         $data = ['pay_method' => $payMethod];
         $reservation = $reservationInfo->fill($data)->save();
         if ($reservation) {
-            return response()->json(['message' => "Payment Method Set Successfully"], 200);
+            return response()->json(['message' => "Payment Method Set Successfully", 'data' => $reservationInfo], 200);
         }
     }
 
