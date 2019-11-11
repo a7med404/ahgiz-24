@@ -131,24 +131,25 @@ class ApiReservationController extends Controller
         if (!$reservationInfo) {
             return response()->json(['error' => "Reservation Not Found"], 404);
         }
-
-        $data = ['pay_method' => $payMethod];
-        $reservation = $reservationInfo->fill($data)->save();
+        $reservation = $reservationInfo->fill(['pay_method' => $payMethod])->save();
         if ($reservation) {
             return response()->json(['message' => "Payment Method Set Successfully"], 200);
         }
     }
 
 
-    public function markAsPaid($id)
+
+    public function markAsPaid(Request $request, $number)
     {
-        $reservationInfo = Reservation::findOrFail($id);
-        $reservation = $reservationInfo->fill(['status'   => 2])->save();
+        $reservationInfo = Reservation::where('number', $number)->first();
+        if (!$reservationInfo) {
+            return response()->json(['error' => "Reservation Not Found"], 404);
+        }
+
+        $reservation = $reservationInfo->fill(['status' => 2])->save();
         if ($reservation) {
-            Session::flash('flash_massage_type', 2);
-            return redirect()->back()->withFlashMassage('Reservation Updated Successfully');
+            return response()->json(['message' => "Payment Set Successfully"], 200);
         }
     }
-
 
 }
