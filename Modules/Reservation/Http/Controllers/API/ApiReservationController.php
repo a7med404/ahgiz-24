@@ -84,7 +84,9 @@ class ApiReservationController extends Controller
     public function reserveStepOne(Request $request, $tripId)
     {
         #TODO:: this stap must be in transaction
-        $seats = $request->seats_number;
+        $names = $request->names;
+        $genders = $request->genders;
+
         $data = [
             'customer_id'       => auth()->user()->id,
             'trip_id'           => $tripId,
@@ -99,20 +101,22 @@ class ApiReservationController extends Controller
         // }
         $reservation = Reservation::create($data);
         if ($reservation) {
-            if ($seats) {
+            if ($names) {
 
                 $contact = auth()->user()->phone_number;
                 if (addSudanKey($request->contact_number) != auth()->user()->phone_number) {
                     $contact = addSudanKey($request->contact_number);
                 }
-                while ($seats >= 1) {
+                $key = 0;
+                while ($names->count() >= 1) {
                     Passenger::create([
-                        'name'              => $seats . 'ajj',//request($seats . '-name'),
-                        'gender'            => $seats,//request($seats . '-gender'),
+                        'name'              => $names[$key],//request($seats . '-name'),
+                        'gender'            => $genders[$key],//request($seats . '-gender'),
                         'reservation_id'    => $reservation->id,
                         'phone_number'      => $contact,
                     ]);
-                    $seats--;
+                    $names++;
+                    $key++;
                 }
 
                 # Sent Reservation details to phone number => $contact
