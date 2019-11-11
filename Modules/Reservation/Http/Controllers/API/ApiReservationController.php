@@ -86,7 +86,9 @@ class ApiReservationController extends Controller
         #TODO:: this stap must be in transaction
         $names = $request->names;
         $genders = $request->genders;
+        
 
+        // dd($tripId, auth()->user()->id, $names, $genders);
         $data = [
             'customer_id'       => auth()->user()->id,
             'trip_id'           => $tripId,
