@@ -127,7 +127,7 @@ class ApiReservationController extends Controller
 
     public function reserveSteptow(Request $request, $id, $payMethod)
     {
-        $reservationInfo = Reservation::find($id)->first();
+        $reservationInfo = Reservation::find($id);
         if (!$reservationInfo) {
             return response()->json(['error' => "Reservation Not Found"], 404);
         }
