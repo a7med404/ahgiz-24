@@ -80,7 +80,6 @@ class ApiReservationController extends Controller
         }
     }
 
-
     public function reserveStepOne(Request $request, $tripId)
     {
         #TODO:: this stap must be in transaction
@@ -94,11 +93,6 @@ class ApiReservationController extends Controller
             'status'            => 1,
         ];
         #TODO:: Save contact information on passengers table if the customer changed his contact info
-        // if (addSudanKey($request->contact_number) != auth()->user()->phone_number) {
-        //     dd(auth()->user()->phone_number, 555);
-        // }else{
-
-        // }
         $reservation = Reservation::create($data);
         if ($reservation) {
             if ($names) {
@@ -120,16 +114,41 @@ class ApiReservationController extends Controller
                 if ($contact) {
                     event(new ReservationDoneEvent($reservation, $contact));
                 }
-
             }
         }
 
         $blance = $reservation->passengers->count() * $reservation->trip->price;
         return response()->json([
-            'reservation_number' => $reservation->number
-        ]);
-        Session::flash('flash_massage_type', 1);
-        // return redirect()->route('pay-page')->with(['reservation' => $reservation, 'blance' => $blance])->withFlashMassage('تم اجراء حجز مبدئي الرجاء تأكيد الحجز عن طريق سداد رسوم التزاكر.');
-        return view('website::booking-steps.pay', ['reservation' => $reservation, 'blance' => $blance])->withFlashMassage('Reservation Added Successfully');
+            'reservation_number' => $reservation->number,
+            'blance' => $blance,
+            'reserve_step_two'   => route('reserve-step-two', ['id' => $reservation->id])
+        ], 200);
     }
+
+    public function reserveSteptow(Request $request, $id, $payMethod)
+    {
+        $reservationInfo = Reservation::find($id)->first();
+        if (!$reservationInfo) {
+            return response()->json(['error' => "Reservation Not Found"], 404);
+        }
+
+        $data = ['pay_method' => $payMethod];
+        $reservation = $reservationInfo->fill($data)->save();
+        if ($reservation) {
+            return response()->json(['message' => "Payment Method Set Successfully"], 200);
+        }
+    }
+
+
+    public function markAsPaid($id)
+    {
+        $reservationInfo = Reservation::findOrFail($id);
+        $reservation = $reservationInfo->fill(['status'   => 2])->save();
+        if ($reservation) {
+            Session::flash('flash_massage_type', 2);
+            return redirect()->back()->withFlashMassage('Reservation Updated Successfully');
+        }
+    }
+
+
 }

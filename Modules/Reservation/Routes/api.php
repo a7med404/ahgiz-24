@@ -23,7 +23,10 @@ Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'res
 
     Route::post('search-reservation', 'ApiReservationController@availableReservation')->name('search-reservation');
     Route::post('reserve-step-one/{tripId}', 'ApiReservationController@reserveStepOne')->name('reserve-step-one');
-    Route::get('reserve-step-two/{id}', 'ApiReservationController@reserveSteptow')->name('reserve-step-two');
+    Route::get('reserve-step-two/{id}/pay-method/{payMethod}', 'ApiReservationController@reserveSteptow')->name('reserve-step-two');
+   
+    Route::get('reserve-step-three/{id}', 'ApiReservationController@markAsPaid')->name('reserve-step-three');
 
+    // 
     // Route::resource('reservations', 'ApiReservationController');
 });

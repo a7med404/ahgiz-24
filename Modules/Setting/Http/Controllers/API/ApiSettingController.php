@@ -12,13 +12,14 @@ use Modules\Setting\Transformers\SettingResource;
 use Modules\Vehicle\Entities\Station;
 use Modules\Vehicle\Transformers\PlaneStationResource;
 use \DB;
+use Modules\Vehicle\Transformers\StationResource;
 
 class ApiSettingController extends Controller
 {
     public function __invoke()
     {
-        $busStations = PlaneStationResource::collection(Station::where('type', 0)->get());
-        $planeStations = PlaneStationResource::collection(Station::where('type', 1)->get());
+        $busStations = StationResource::collection(Station::orderBy('id')->where('status', 1)->where('type', 0)->get());
+        $planeStations = PlaneStationResource::collection(Station::orderBy('id')->where('status', 1)->where('type', 1)->get());
         $planeCompany = PlaneCompanyResource::collection(Company::where('type', 1)->get());
         $siteSetting = \DB::table('settings')->select('name_setting', 'value')->get();
         $settings = [];
