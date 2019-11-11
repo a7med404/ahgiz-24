@@ -86,10 +86,7 @@ class ApiReservationController extends Controller
         #TODO:: this stap must be in transaction
         $names = explode(",", str_replace("]", "", str_replace("[", "", str_replace("\"", "", $request->names))));
         $genders = explode(",", str_replace("]", "", str_replace("[", "", str_replace("\"", "", $request->genders))));
-        // $genders = $request->genders;
         
-
-        // dd($tripId, auth()->user()->id, $names, $genders);
         $data = [
             'customer_id'       => auth()->user()->id,
             'trip_id'           => $tripId,
@@ -105,13 +102,11 @@ class ApiReservationController extends Controller
         $reservation = Reservation::create($data);
         if ($reservation) {
             if ($names) {
-
                 $contact = auth()->user()->phone_number;
                 if (addSudanKey($request->contact_number) != auth()->user()->phone_number) {
                     $contact = addSudanKey($request->contact_number);
                 }
                 foreach ($names as $key => $value) {
-                    // dd($names[$key], $genders[$key]);
                     $s = Passenger::create([
                         'name'              => $names[$key], //request($seats . '-name'),
                         'gender'            => $genders[$key], //request($seats . '-gender'),
@@ -119,22 +114,12 @@ class ApiReservationController extends Controller
                         'phone_number'      => $contact,
                     ]);
                 }
-                // while (count($names) >= 0) {
-                //     Passenger::create([
-                //         'name'              => $names[$key],//request($seats . '-name'),
-                //         'gender'            => $genders[$key],//request($seats . '-gender'),
-                //         'reservation_id'    => $reservation->id,
-                //         'phone_number'      => $contact,
-                //     ]);
-                //     $names++;
-                //     $key++;
-                // }
 
                 # Sent Reservation details to phone number => $contact
                 #TODO::custom SMS content SMSStyle
-                // if ($contact) {
-                //     event(new ReservationDoneEvent($reservation, $contact));
-                // }
+                if ($contact) {
+                    event(new ReservationDoneEvent($reservation, $contact));
+                }
 
             }
         }
