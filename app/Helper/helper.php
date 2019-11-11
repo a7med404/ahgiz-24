@@ -9,6 +9,7 @@ function getTestimonial(){
     return Modules\Setting\Entities\Testimonial::where('status', 1)->get();
 }
 
+#TODO:: Server time 
 function maleOrfemale(){
     return [
         '' => '...',

@@ -141,8 +141,7 @@ class ApiReservationController extends Controller
 
         $blance = $reservation->passengers->count() * $reservation->trip->price;
         return response()->json([
-            'blance'         => $blance,
-            'status_code'   => 200
+            'reservation_number' => $reservation->number
         ]);
         Session::flash('flash_massage_type', 1);
         // return redirect()->route('pay-page')->with(['reservation' => $reservation, 'blance' => $blance])->withFlashMassage('تم اجراء حجز مبدئي الرجاء تأكيد الحجز عن طريق سداد رسوم التزاكر.');
