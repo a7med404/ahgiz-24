@@ -151,5 +151,4 @@ class ApiReservationController extends Controller
             return response()->json(['message' => "Payment Set Successfully"], 200);
         }
     }
-
 }

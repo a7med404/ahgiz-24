@@ -2,9 +2,9 @@
 
 namespace Modules\Address\Transformers;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class cityResource extends Resource
+class cityResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,6 +14,11 @@ class cityResource extends Resource
      */
     public function toArray($request)
     {
+        return [
+            'id'         => $this->id,
+            'name'       => $this->name,
+            'parent_id'  => $this->parent_id,
+        ];
         return parent::toArray($request);
     }
 }
