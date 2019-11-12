@@ -12,6 +12,7 @@ use Modules\Setting\Transformers\SettingResource;
 use Modules\Vehicle\Entities\Station;
 use Modules\Vehicle\Transformers\PlaneStationResource;
 use \DB;
+use Modules\Address\Entities\City;
 use Modules\Address\Transformers\CityResource;
 use Modules\Vehicle\Transformers\StationResource;
 
