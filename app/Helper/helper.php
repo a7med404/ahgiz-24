@@ -66,6 +66,15 @@ function reservationStatus(){
     ];
 }
 
+function reservationStatusForApp()
+{
+    return [
+        '0' => 'ﻣﺘﺎﺣﺔ  ',
+        '1' => 'مؤقت',
+        '2' => 'مكتمل',
+        '3' => 'تزكرة',
+    ];
+}
 function payMethod(){
     return [
         '1' =>'ﻘــﺪﻱ',

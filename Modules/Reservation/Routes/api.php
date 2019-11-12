@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'reservations'], function () {
+    // Route::group(['namespace' => 'API', 'prefix' => 'reservations'], function () {
 
     Route::get('my-reservations/{id}', 'ApiReservationController@myReservations')->name('customer-reservations');
     Route::get('my-reservation-details/{id}', 'ApiReservationController@myReservationDetails')->name('my-reservation-details');
