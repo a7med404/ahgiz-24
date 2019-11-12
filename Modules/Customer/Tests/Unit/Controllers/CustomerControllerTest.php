@@ -12,7 +12,7 @@ use Modules\Customer\Entities\Customer;
 class CustomerControllerTest extends TestCase
 {
     // use DatabaseTransactions;
-    use DatabaseMigrations;
+    // use DatabaseMigrations;
     /**
      * A basic unit test example.
      *

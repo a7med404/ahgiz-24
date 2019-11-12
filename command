@@ -8,10 +8,10 @@ php artisan module:unuse
 
   CompanyController
 
-php artisan module:use Customer
+php artisan module:use Address
 
 php artisan module:make-controller CompanyController
-php artisan module:make-controller API/ApiCompanyController
+php artisan module:make-controller API/ApiAddressController
 
 php artisan module:make-factory CompanyFactory
 

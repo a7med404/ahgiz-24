@@ -68,7 +68,7 @@
               <li><a href="#contact" data-toggle="tab">بيانات الاتصال</a></li>
             </ul>
             <div class="tab-content">
-              <div class="tab-pane" id="address">
+              <div class="tab-pane active" id="address">
                 <button type="button" data-toggle="modal" data-target="#popup-form" href="#" class="btn btn-info"> <i class="fa fa-user-plus"></i> اضافة عنوان جديد </button>
                 <hr>
                 <div class="row">
@@ -76,14 +76,14 @@
                   <div class="col-md-4">
                     <div class="box box-success box-shadow">
                       <div class="box-header with-border">
-                        <h3 class="box-title">{{ getCity()[$address->city] }} <i class="fa fa-map-marker"></i> </h3>
+                        <h3 class="box-title">{{ getSelect('cities')[$address->city] }} <i class="fa fa-map-marker"></i> </h3>
                         <div class="box-tools pull-right">
                           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         </div>
                       </div>
                       <div class="box-body">
-                        {{ getLocal()[$address->city] }} / 
-                        {{ getLocal()[$address->local] }} / 
+                        {{ getSelect('cities')[$address->city] }} / 
+                        {{ getSelect('sub_cities')[$address->local] }} / 
                         {{ $address->street_2 }} / 
                         {{ $address->street_1 }} / 
                         {{ $address->number }} 
@@ -98,7 +98,7 @@
                 </div>
               </div>
 
-              <div class="tab-pane active" id="contact">
+              <div class="tab-pane " id="contact">
                 <button type="button" data-toggle="modal" data-target="#popup-form-contact" href="#" class="btn btn-info"> <i class="fa fa-user-plus"></i> اضافة جهة اتصال </button>
                 <hr>
                 <div class="row">

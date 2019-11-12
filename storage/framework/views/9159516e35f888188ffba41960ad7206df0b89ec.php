@@ -29,7 +29,7 @@
         <div class="form-group">
             <?php echo Form::label('city', 'المدينة', ['class' => 'control-label']); ?>
 
-            <?php echo Form::select('city', getCity(), null, ['id' => 'city', 'class' => "form-control <?php echo e($errors->has('city') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('city')); ?>", 'required']); ?>
+            <?php echo Form::select('city', getSelect('cities'), null, ['id' => 'city', 'class' => "form-control select2 <?php echo e($errors->has('city') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('city')); ?>", 'required']); ?>
 
         </div>
     </div>
@@ -37,7 +37,7 @@
         <div class="form-group">
             <?php echo Form::label('local', 'المحلية', ['class' => 'control-label']); ?>
 
-            <?php echo Form::select('local', getLocal(), null, ['id' => 'local', 'class' => "form-control <?php echo e($errors->has('local') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('local')); ?>", 'required']); ?>
+            <?php echo Form::select('local', getSelect('sub_cities'), null, ['id' => 'local', 'class' => "form-control select2 <?php echo e($errors->has('local') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('local')); ?>", 'required']); ?>
 
         </div>
     </div>

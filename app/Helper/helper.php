@@ -220,6 +220,10 @@ function getSelect($tableName){
             $list = \DB::table('cities')->where('parent_id', null)->pluck('name', 'id');
             return $list->toArray();
             break;
+        case 'sub_cities':
+            $list = \DB::table('cities')->where('parent_id', '!=', null)->pluck('name', 'id');
+            return $list->toArray();
+            break;
         case 'station':
             $list = \DB::table('stations')->pluck('name', 'id');
             array_add($list, '', 'الكل');

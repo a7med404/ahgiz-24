@@ -22,13 +22,13 @@
     <div class="col col-xl-6 col-lg-6 col-md-6">
         <div class="form-group">
             {!! Form::label('city', 'المدينة', ['class' => 'control-label']) !!}
-            {!! Form::select('city', getCity(), null, ['id' => 'city', 'class' => "form-control {{ $errors->has('city') ? ' is-invalid' : '' }}", 'value' => "{{ old('city') }}", 'required']) !!}
+            {!! Form::select('city', getSelect('cities'), null, ['id' => 'city', 'class' => "form-control select2 {{ $errors->has('city') ? ' is-invalid' : '' }}", 'value' => "{{ old('city') }}", 'required']) !!}
         </div>
     </div>
     <div class="col col-xl-6 col-lg-6 col-md-6">
         <div class="form-group">
             {!! Form::label('local', 'المحلية', ['class' => 'control-label']) !!}
-            {!! Form::select('local', getLocal(), null, ['id' => 'local', 'class' => "form-control {{ $errors->has('local') ? ' is-invalid' : '' }}", 'value' => "{{ old('local') }}", 'required']) !!}
+            {!! Form::select('local', getSelect('sub_cities'), null, ['id' => 'local', 'class' => "form-control select2 {{ $errors->has('local') ? ' is-invalid' : '' }}", 'value' => "{{ old('local') }}", 'required']) !!}
         </div>
     </div>
 </div>
