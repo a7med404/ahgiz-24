@@ -21,7 +21,8 @@ Route::prefix('address')->group(function() {
     Route::get('/loacls/{id}', 'AddressController@getLocals');
 });
 // Route::group(['prefix' => 'addresses'], function () {
-Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'addresses'], function () {
+// Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'addresses'], function () {
+    Route::group(['namespace' => 'API', 'prefix' => 'addresses'], function () {
 
     Route::resource('addresses','AddressController');
     Route::resource('contacts','ContactController');
