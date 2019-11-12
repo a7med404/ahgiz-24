@@ -4,7 +4,7 @@ namespace Modules\Address\Transformers;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class cityResource extends JsonResource
+class CityResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

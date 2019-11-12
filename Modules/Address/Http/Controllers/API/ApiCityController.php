@@ -12,7 +12,7 @@ class ApiCityController extends Controller
 {
     public function cities()
     {
-        return cityResource::collection(City::orderBy('id')->get());
+        return CityResource::collection(City::orderBy('id')->get());
     }
 
     public function mainCities()
