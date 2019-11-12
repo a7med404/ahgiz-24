@@ -111,9 +111,9 @@ class ApiReservationController extends Controller
 
                 # Sent Reservation details to phone number => $contact
                 #TODO::custom SMS content SMSStyle
-                if ($contact) {
-                    event(new ReservationDoneEvent($reservation, $contact));
-                }
+                // if ($contact) {
+                //     event(new ReservationDoneEvent($reservation, $contact));
+                // }
             }
         }
 
