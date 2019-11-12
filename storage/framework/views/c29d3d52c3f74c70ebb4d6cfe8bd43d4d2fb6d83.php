@@ -19,7 +19,7 @@
     <div class="form-group col-md-6">
         <?php echo Form::label('city', 'المدينة', ['class' => 'control-label']); ?>
 
-        <?php echo Form::select('city', getCity(), null, ['id' => 'city', 'class' => "form-control <?php echo e($errors->has('city') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('city')); ?>", 'required']); ?>
+        <?php echo Form::select('city', getSelect('cities'), null, ['id' => 'city', 'class' => "form-control <?php echo e($errors->has('city') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('city')); ?>", 'required']); ?>
 
     </div>
 </div>

@@ -9,6 +9,8 @@ use Modules\Reservation\Entities\Reservation;
 use Modules\Reservation\Http\Requests\CreateReservationRequest;
 use Session;
 use DB;
+use Yajra\DataTables\DataTables;
+
 
 class ReservationController extends Controller
 {
@@ -17,56 +19,165 @@ class ReservationController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        if($request->has('filter')){
-            $requestAll = array_except($request->toArray(), ['date_from','date_to']);
-            $query = Reservation::where('canceled_at', null)->join('trips', function ($join) {
+        return view('reservation::reservations.index');
 
-                $join->on('reservations.trip_id', '=', 'trips.id');
-            })->select('reservations.*');
+        // if($request->has('filter')){
+        //     $requestAll = array_except($request->toArray(), ['date_from','date_to']);
+        //     $query = Reservation::where('canceled_at', null)->join('trips', function ($join) {
 
-            foreach ($requestAll as $key => $req) {
-                if (!($req == "" || null)) {
-                    $query->where($key, $req);
-                }
-            }
+        //         $join->on('reservations.trip_id', '=', 'trips.id');
+        //     })->select('reservations.*');
 
-            if (!($request->date_from == "" || null) && ($request->date_to   == "" || null)) {
-                $query = $query->where('date', '>=', $request->date_from);
-            }elseif (($request->date_from == "" || null) && !($request->date_to   == "" || null)) {
-                $query = $query->where('date', '<=', $request->date_to);
-            }elseif(!($request->date_from == "" || null) && !($request->date_to   == "" || null)){
-                $query = $query->whereBetween('date', [$request->date_from, $request->date_to]);
-            }
+        //     foreach ($requestAll as $key => $req) {
+        //         if (!($req == "" || null)) {
+        //             $query->where($key, $req);
+        //         }
+        //     }
 
-            $reservations = $query->get();
-        }else {
-            // $trips = Trip::orderBy('id', 'desc')->get();
-            $reservations = Reservation::where('canceled_at', null)->orderBy('id', 'desc')->get();
+        //     if (!($request->date_from == "" || null) && ($request->date_to   == "" || null)) {
+        //         $query = $query->where('date', '>=', $request->date_from);
+        //     }elseif (($request->date_from == "" || null) && !($request->date_to   == "" || null)) {
+        //         $query = $query->where('date', '<=', $request->date_to);
+        //     }elseif(!($request->date_from == "" || null) && !($request->date_to   == "" || null)){
+        //         $query = $query->whereBetween('date', [$request->date_from, $request->date_to]);
+        //     }
 
-        }
-        return view('reservation::reservations.index', ['reservations' => $reservations]);
+        //     $reservations = $query->get();
+        // }else {
+        //     // $trips = Trip::orderBy('id', 'desc')->get();
+        //     $reservations = Reservation::where('canceled_at', null)->orderBy('id', 'desc')->get();
+
+        // }
     }
+
+    // reservation datatables //
+
+        public function reservationDataTables()
+        {
+            return DataTables::of( Reservation::where('canceled_at', null)->orderBy('id', 'desc')->get())
+            ->addColumn('options', function ($reservation) {
+                return view('reservation::reservations.colums.options', ['id' => $reservation->id, 'routeName' => 'reservations']);
+            })
+            ->addColumn('seat_numbers', function ($reservation) {
+                return $reservation->trip->seats_number ;
+            })
+                    ->editColumn('customer_id', function ($reservation) {
+                return $reservation->customer->c_name;
+            })
+            ->editColumn('trip_id', function ($reservation) {
+                return $reservation->trip->date;
+            })
+            // ->editColumn('status', function ($done) {
+            //     return $done->reservStatutus()[$done->status] ;
+            // })
+
+            ->rawColumns([ 'options','customer_id','trip_id','seat_numbers'])
+            ->removeColumn('pay_method','user_id')
+            // ->setRowClass('{{ $gender == 0 ? "alert alert-success" : "alert alert-warning" }}')
+            ->setRowId('{{$id}}')
+            ->make(true);
+        }
 
     public function conceled()
     {
-        $reservations = Reservation::where('canceled_at', '!=', null)->orderBy('id', 'desc')->get();
-        return view('reservation::reservations.conceled', ['reservations' => $reservations]);
+        // $reservations = Reservation::where('canceled_at', '!=', null)->orderBy('id', 'desc')->get();
+        return view('reservation::reservations.conceled');
+    }
+
+    public function canceledDataTables()
+    {
+        return DataTables::of(Reservation::where('canceled_at', '!=', null)->orderBy('id', 'desc')->get())
+        ->addColumn('options', function ($cancel) {
+            return view('reservation::reservations.colums.options', ['id' => $cancel->id, 'routeName' => 'reservations']);
+        })
+        ->addColumn('seat_numbers', function ($cancel) {
+            return $cancel->trip->seats_number ;
+        })
+                ->editColumn('customer_id', function ($cancel) {
+            return $cancel->customer->c_name;
+        })
+        ->editColumn('trip_id', function ($cancel) {
+            return $cancel->trip->date;
+        })
+        // ->editColumn('status', function ($done) {
+        //     return $done->reservStatutus()[$done->status] ;
+        // })
+
+        ->rawColumns([ 'options','customer_id','trip_id','seat_numbers'])
+        ->removeColumn('pay_method','user_id')
+        // ->setRowClass('{{ $gender == 0 ? "alert alert-success" : "alert alert-warning" }}')
+        ->setRowId('{{$id}}')
+        ->make(true);
+
     }
 
     public function pendding()
     {
-        $reservations = Reservation::where('canceled_at', null)->where('status', 1)->orderBy('id', 'desc')->get();
-        return view('reservation::reservations.pendding', ['reservations' => $reservations]);
+        // $reservations =
+        return view('reservation::reservations.pendding');
+    }
+
+    // pendding datatable //
+
+    public function pendingDataTables()
+    {
+        return DataTables::of( Reservation::where('canceled_at', null)->where('status', 1)->orderBy('id', 'desc')->get())
+        ->addColumn('options', function ($pending) {
+            return view('reservation::reservations.colums.options', ['id' => $pending->id, 'routeName' => 'reservations']);
+        })
+        ->addColumn('seat_numbers', function ($pending) {
+            return $pending->trip->seats_number ;
+        })
+                ->editColumn('customer_id', function ($pending) {
+            return $pending->customer->c_name;
+        })
+        ->editColumn('trip_id', function ($pending) {
+            return $pending->trip->date;
+        })
+        // ->editColumn('status', function ($done) {
+        //     return $done->reservStatutus()[$done->status] ;
+        // })
+
+        ->rawColumns([ 'options','customer_id','trip_id','seat_numbers'])
+        ->removeColumn('pay_method','user_id')
+        // ->setRowClass('{{ $gender == 0 ? "alert alert-success" : "alert alert-warning" }}')
+        ->setRowId('{{$id}}')
+        ->make(true);
     }
 
     public function done()
     {
-        $reservations = Reservation::where('canceled_at', null)->where('status', 2)->orderBy('id', 'desc')->get();
-        return view('reservation::reservations.done', ['reservations' => $reservations]);
+        // $reservations = Reservation::where('canceled_at', null)->where('status', 2)->orderBy('id', 'desc')->get();
+        return view('reservation::reservations.done');
     }
 
+    public function doneDataTables()
+    {
+        return DataTables::of( Reservation::where('canceled_at', null)->where('status', 2)->orderBy('id', 'desc')->get())
+            ->addColumn('options', function ($done) {
+                return view('reservation::reservations.colums.options', ['id' => $done->id, 'routeName' => 'reservations']);
+            })
+            ->addColumn('seat_numbers', function ($done) {
+                return $done->trip->seats_number ;
+            })
+                    ->editColumn('customer_id', function ($done) {
+                return $done->customer->c_name;
+            })
+            ->editColumn('trip_id', function ($done) {
+                return $done->trip->date;
+            })
+            // ->editColumn('status', function ($done) {
+            //     return $done->reservStatutus()[$done->status] ;
+            // })
+
+            ->rawColumns([ 'options','customer_id','trip_id','seat_numbers'])
+            ->removeColumn('pay_method','user_id')
+            // ->setRowClass('{{ $gender == 0 ? "alert alert-success" : "alert alert-warning" }}')
+            ->setRowId('{{$id}}')
+            ->make(true);
+    }
 
     public function markAsPayed($id)
     {

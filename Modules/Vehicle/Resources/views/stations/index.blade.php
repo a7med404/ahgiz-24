@@ -85,7 +85,6 @@
 {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js') !!}
 {!! Html::script('https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js') !!}
 {!! Html::script('https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js') !!}
-
 <script type="text/javascript">
     var lastIdx = null;
 
@@ -113,7 +112,7 @@
                 { data: 'id', name: 'id', "width": "10%"},
                 { data: 'name', name: 'name', "width": "20%" },
                 { data: 'city', name: 'city', "width": "15%" },
-                { data: 'type', name: 'type', "width": "10%"},                
+                { data: 'type', name: 'type', "width": "10%"},
                 { data: 'options', name: 'options', orderable: false, "width": "10%"},
             ],
             "language": {
@@ -147,7 +146,7 @@
                     extend: 'print',
                     title: 'Test Data export',
                     exportOptions: {columns: "thead th:not(.noExport)"}
-                
+
                 },
                 {
                     extend: 'csv',
@@ -166,7 +165,7 @@
                 r.find('th').each(function(){
                     $(this).css('padding', 8);
                 });
-                $('#data thead').append(r);        
+                $('#data thead').append(r);
                 $('#search_0').css('text-align', 'center');
             }
 
@@ -176,7 +175,7 @@
             table.column($(this).data('column'))
             .search($(this).val())
             .draw();
-            
+
         });
 
         $('.filter-input').keyup(function(){

@@ -59,4 +59,5 @@ return [
 
     'company_name' => 'اسم الشركة',
 
+    'parents' => 'المدينة',
 ];

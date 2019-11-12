@@ -23,9 +23,17 @@ Route::prefix('adminCpanel')->group(function() {
 
         Route::resource('reservations','ReservationController');
         Route::get('reservations-conceled', 'ReservationController@conceled')->name('reservations.conceled');
+        Route::get('reservations-conceled', 'ReservationController@conceled')->name('reservations.conceled');
         Route::get('reservations/delete/{id}', 'ReservationController@destroy')->name('reservations.delete');
         Route::get('reservations-pendding', 'ReservationController@pendding')->name('reservations.pendding');
         Route::get('reservations-done', 'ReservationController@done')->name('reservations.done');
+
+        // datatables //
+        Route::get('reservations-dataTables','ReservationController@reservationDataTables')->name('reservation-dataTables');
+
+        Route::get('pendings-dataTables','ReservationController@pendingDataTables')->name('pendings-dataTables');
+        Route::get('dones-dataTables','ReservationController@doneDataTables')->name('dones-dataTables');
+        Route::get('canceleds-dataTables','ReservationController@canceledDataTables')->name('canceleds-dataTables');
 
         Route::get('mark-as-payed/{id}', 'ReservationController@markAsPayed')->name('reservations.mark-as-payed');
 

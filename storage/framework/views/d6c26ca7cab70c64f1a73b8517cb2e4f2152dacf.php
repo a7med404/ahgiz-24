@@ -1,18 +1,13 @@
 
 <div class="row">
     <div class="form-group col-md-6">
-        <?php echo Form::label('first_name','<?php echo e(__("home/labels.f_name")); ?>', ['class' => 'form-label']); ?>
+        <?php echo Form::label('c_name','<?php echo e(__("home/labels.name")); ?>', ['class' => 'form-label']); ?>
 
-        <?php echo Form::text('first_name', null, ['id' => 'first_name', 'class' => "form-control  <?php echo e($errors->has('first_name') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('first_name')); ?>", 'required', 'autofocus']); ?>
-
-    </div>
-
-    <div class="form-group col-md-6">
-        <?php echo Form::label('last_name','<?php echo e(__("home/labels.l_name")); ?>', ['class' => 'form-label']); ?>
-
-        <?php echo Form::text('last_name', null, ['id' => 'last_name', 'class' => "form-control  <?php echo e($errors->has('last_name') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('last_name')); ?>", 'required', 'autofocus']); ?>
+        <?php echo Form::text('c_name', null, ['id' => 'c_name', 'class' => "form-control  <?php echo e($errors->has('c_name') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('c_name')); ?>", 'required', 'autofocus']); ?>
 
     </div>
+
+    
 </div>
 
 <div class="row">

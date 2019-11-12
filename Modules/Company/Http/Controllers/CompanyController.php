@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Company\Entities\Company;
 use App\Helper\UploadFile;
+use Yajra\DataTables\DataTables;
 use \Session;
 
 class CompanyController extends Controller
@@ -23,7 +24,7 @@ class CompanyController extends Controller
     {
         return DataTables::of(Company::orderBy('id', 'desc')->get())
             ->addColumn('options', function ($company) {
-                return view('Company::companies.column.options', ['id' => $company->id, 'routeName' => 'companies']);
+                return view('company::companies.column.options', ['id' => $company->id, 'routeName' => 'companies']);
             })
 
             ->editColumn('type', function ($company) {

@@ -17,7 +17,10 @@ Route::prefix('ticket')->group(function() {
 
 Route::prefix('adminCpanel')->group(function() {
     Route::group(['middleware' => ['web', 'auth']], function(){
-        Route::Resource('ticket', 'TicketController');
-      
+        Route::get('tickets-dataTables', 'TicketController@ticketDataTables')->name('tickets-dataTables');
+        Route::get('tickets/delete/{id}', 'TicketController@destroy')->name('tickets.delete');
+
+        Route::Resource('tickets', 'TicketController');
+
     });
 });

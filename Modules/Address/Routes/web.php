@@ -25,6 +25,7 @@ Route::prefix('adminCpanel')->group(function() {
 
         Route::resource('contacts','ContactController');
         Route::get('contacts/delete/{id}', 'ContactController@destroy')->name('contacts.delete');
+        Route::get('cities-dataTables', 'CityController@cityDataTables')->name('cities-dataTables');
 
         Route::resource('cities','CityController');
         Route::get('cities/delete/{id}', 'CityController@destroy')->name('cities.delete');
@@ -40,10 +41,10 @@ Route::prefix('adminCpanel')->group(function() {
     //     */
     //     Route::get('/sitesetting', 'SiteSettingController@index')->name('site-setting');
     //     Route::post('/sitesetting/update', 'SiteSettingController@store')->name('site-setting-update');
-    
-    
-    
-    
+
+
+
+
     //     /*
     //     |--------------------------------------------------------------------------
     //     | Resource For Roles
@@ -51,10 +52,10 @@ Route::prefix('adminCpanel')->group(function() {
     //     */
     //     Route::Resource('roles', 'RoleController');
     //     Route::get('roles/delete/{id}', 'RoleController@destroy')->name('roles.delete');
-    
-    
-    
-    
+
+
+
+
     //     /*
     //     |--------------------------------------------------------------------------
     //     | Resource For Permissions
@@ -62,9 +63,9 @@ Route::prefix('adminCpanel')->group(function() {
     //     */
     //     Route::Resource('permissions', 'PermissionController');
     //     Route::get('permissions/delete/{id}', 'PermissionController@destroy')->name('permissions.delete');
-    
+
     //   });
-    
+
 
 
 });

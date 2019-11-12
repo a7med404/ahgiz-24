@@ -124,7 +124,7 @@
                             </span>
                           </a>
                           <ul class="treeview-menu" style="display: none;">
-                            <li><a href="{{ route('ticket.index') }}"><i class="fa fa-circle-o text-aqua"></i>
+                            <li><a href="{{ route('tickets.index') }}"><i class="fa fa-circle-o text-aqua"></i>
                                 {{ __('home/sidebar.all_tickets') }}</a></li>
 
                           </ul>

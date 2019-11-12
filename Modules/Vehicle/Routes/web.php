@@ -21,10 +21,10 @@ Route::prefix('adminCpanel')->group(function() {
     Route::get('vehicles/stations-dataTables', 'StationController@stationDataTables')->name('stations-dataTables');
 
     Route::group(['middleware' => ['web', 'auth']], function(){
-        
+
         Route::resource('vehicles','VehicleController');
         Route::get('vehicles/delete/{id}', 'VehicleController@destroy')->name('vehicles.delete');
-        
+
         Route::resource('stations','StationController');
         Route::get('stations/delete/{id}', 'StationController@destroy')->name('stations.delete');
 
@@ -37,7 +37,13 @@ Route::prefix('adminCpanel')->group(function() {
         route::get('/previous-trip','TripController@previousTrip')->name('trips.previous');
         route::get('/next-trip','TripController@nextTrip')->name('trips.next');
 
-        
+        // datatables //
+
+        Route::get('trips-dataTables','TripController@tripDataTables')->name('trip-dataTables');
+        Route::get('next-dataTables','TripController@nextDataTables')->name('next-dataTables');
+        Route::get('previous-dataTables','TripController@previousDataTables')->name('previous-dataTables');
+
+
     });
 
 
@@ -50,10 +56,10 @@ Route::prefix('adminCpanel')->group(function() {
     //     */
     //     Route::get('/sitesetting', 'SiteSettingController@index')->name('site-setting');
     //     Route::post('/sitesetting/update', 'SiteSettingController@store')->name('site-setting-update');
-    
-    
-    
-    
+
+
+
+
     //     /*
     //     |--------------------------------------------------------------------------
     //     | Resource For Roles
@@ -61,10 +67,10 @@ Route::prefix('adminCpanel')->group(function() {
     //     */
     //     Route::Resource('roles', 'RoleController');
     //     Route::get('roles/delete/{id}', 'RoleController@destroy')->name('roles.delete');
-    
-    
-    
-    
+
+
+
+
     //     /*
     //     |--------------------------------------------------------------------------
     //     | Resource For Permissions
@@ -72,9 +78,9 @@ Route::prefix('adminCpanel')->group(function() {
     //     */
     //     Route::Resource('permissions', 'PermissionController');
     //     Route::get('permissions/delete/{id}', 'PermissionController@destroy')->name('permissions.delete');
-    
+
     //   });
-    
+
 
 
 });

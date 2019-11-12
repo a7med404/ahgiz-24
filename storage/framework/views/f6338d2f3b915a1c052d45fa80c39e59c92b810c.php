@@ -35,12 +35,12 @@
         </div>
         <div class="box-body">
             <div class="table-responsive">
-                <table id="table_id" class="table table-bordered table-hover table-condensed">
+                <table id="data" class="table table-bordered table-hover table-condensed">
                 <thead>
                         <tr>
                             <th>id</th>
                             <th><?php echo e(__('home/labels.name')); ?></th>
-                            <th><?php echo e(__('home/labels.logo')); ?></th>
+                            
                             <th><?php echo e(__('home/labels.CompanyType')); ?></th>
                             <th><?php echo e(__('home/labels.note')); ?></th>
                             <th><?php echo e(__('home/labels.options')); ?></th>
@@ -53,7 +53,7 @@
                         <tr>
                             <th>ID</th>
                             <th><?php echo e(__('home/labels.name')); ?></th>
-                            <th><?php echo e(__('home/labels.logo')); ?></th>
+                            
                             <th><?php echo e(__('home/labels.CompanyType')); ?></th>
                             <th><?php echo e(__('home/labels.note')); ?></th>
                             <th><?php echo e(__('home/labels.options')); ?></th>
@@ -69,10 +69,9 @@
     <?php echo $__env->make('company::companies.add', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </section>
 <!-- /.content -->
-
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('footer'); ?>
-<!-- icheck -->
+<!-- icheck -->footerfooter
 <?php echo Html::script(asset('modules/master/plugins/icheck.min.js')); ?>
 
  <!-- dataTable -->
@@ -100,16 +99,16 @@
     var lastIdx = null;
 
         $('#data tfoot th').each( function () {
-            if($(this).index() < 3 || $(this).index() == 4){
+            if($(this).index() < 2 || $(this).index() == 3){
                 var classname = $(this).index() == 3  ?  'filter-select' : 'filter-input';
                 var title = $(this).html();
-                if($(this).index() == 0 || $(this).index() == 5){
+                if($(this).index() == 0){
                     $(this).html( '<input type="text" style="max-width:70px;" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'" placeholder=" '+title+'" />' );
                 }else{
                     $(this).html( '<input type="text" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'"placeholder=" البحث '+title+'" />' );
                 }
-            }else if($(this).index() == 4){
-                $(this).html( '<select data-column="'+ $(this).index() +'" class="filter-select select2 form-control"><option value=""> all </option><option value="<?php echo e(Companytype()[0]); ?>"> بصـــات </option><option value="<?php echo e(Companytype()[1]); ?>">طيران</option></select>' );
+            }else if($(this).index() == 2){
+                $(this).html( '<select data-column="'+ $(this).index() +'" class="filter-select select2 form-control"><option value=""> all </option><option value="<?php echo e(CompanyType()[0]); ?>"> بصـــات </option><option value="<?php echo e(CompanyType()[1]); ?>">طيران</option></select>' );
             }
         });
 
@@ -122,8 +121,8 @@
             columns: [
                 { data: 'id', name: 'id', "width": "10%"},
                 { data: 'name', name: 'name', "width": "30%" },
-                { data: 'logo', name: 'logo', "width": "15%" },
-                { data: 'CompanyType', name: 'CompanyType', "width": "10%"},
+                // { data: 'logo', name: 'logo', "width": "15%" },
+                { data: 'type', name: 'type', "width": "10%"},
                 { data: 'note', name: 'note', "width": "10%"},
                 { data: 'options', name: 'options', orderable: false, "width": "10%"},
             ],

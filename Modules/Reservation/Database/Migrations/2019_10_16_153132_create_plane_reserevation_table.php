@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlaneresrvationTable extends Migration
+class CreatePlanereservationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePlaneresrvationTable extends Migration
      */
     public function up()
     {
-        Schema::create('plane_resrvations', function (Blueprint $table) {
+        Schema::create('plane_reservations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('customer_id');
             $table->integer('from_station_id');
@@ -37,6 +37,6 @@ class CreatePlaneresrvationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plane_resrvations');
+        Schema::dropIfExists('plane_reservations');
     }
 }

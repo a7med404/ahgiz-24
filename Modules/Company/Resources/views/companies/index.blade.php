@@ -35,12 +35,12 @@
         </div>
         <div class="box-body">
             <div class="table-responsive">
-                <table id="table_id" class="table table-bordered table-hover table-condensed">
+                <table id="data" class="table table-bordered table-hover table-condensed">
                 <thead>
                         <tr>
                             <th>id</th>
                             <th>{{ __('home/labels.name') }}</th>
-                            <th>{{ __('home/labels.logo') }}</th>
+                            {{-- <th>{{ __('home/labels.logo') }}</th> --}}
                             <th>{{ __('home/labels.CompanyType') }}</th>
                             <th>{{ __('home/labels.note') }}</th>
                             <th>{{ __('home/labels.options') }}</th>
@@ -53,7 +53,7 @@
                         <tr>
                             <th>ID</th>
                             <th>{{ __('home/labels.name') }}</th>
-                            <th>{{ __('home/labels.logo') }}</th>
+                            {{-- <th>{{ __('home/labels.logo') }}</th> --}}
                             <th>{{ __('home/labels.CompanyType') }}</th>
                             <th>{{ __('home/labels.note') }}</th>
                             <th>{{ __('home/labels.options') }}</th>
@@ -69,10 +69,9 @@
     @include('company::companies.add')
 </section>
 <!-- /.content -->
-
 @stop
 @section('footer')
-<!-- icheck -->footerfooter     
+<!-- icheck -->footerfooter
 {!! Html::script(asset('modules/master/plugins/icheck.min.js')) !!}
  <!-- dataTable -->
 {!! Html::script(asset('modules/master/plugins/datatables/jquery.dataTables.min.js')) !!}
@@ -90,16 +89,16 @@
     var lastIdx = null;
 
         $('#data tfoot th').each( function () {
-            if($(this).index() < 3 || $(this).index() == 4){
+            if($(this).index() < 2 || $(this).index() == 3){
                 var classname = $(this).index() == 3  ?  'filter-select' : 'filter-input';
                 var title = $(this).html();
-                if($(this).index() == 0 || $(this).index() == 5){
+                if($(this).index() == 0){
                     $(this).html( '<input type="text" style="max-width:70px;" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'" placeholder=" '+title+'" />' );
                 }else{
                     $(this).html( '<input type="text" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'"placeholder=" البحث '+title+'" />' );
                 }
-            }else if($(this).index() == 4){
-                $(this).html( '<select data-column="'+ $(this).index() +'" class="filter-select select2 form-control"><option value=""> all </option><option value="{{Companytype()[0]}}"> بصـــات </option><option value="{{Companytype()[1]}}">طيران</option></select>' );
+            }else if($(this).index() == 2){
+                $(this).html( '<select data-column="'+ $(this).index() +'" class="filter-select select2 form-control"><option value=""> all </option><option value="{{CompanyType()[0]}}"> بصـــات </option><option value="{{CompanyType()[1]}}">طيران</option></select>' );
             }
         });
 
@@ -112,8 +111,8 @@
             columns: [
                 { data: 'id', name: 'id', "width": "10%"},
                 { data: 'name', name: 'name', "width": "30%" },
-                { data: 'logo', name: 'logo', "width": "15%" },
-                { data: 'CompanyType', name: 'CompanyType', "width": "10%"},
+                // { data: 'logo', name: 'logo', "width": "15%" },
+                { data: 'type', name: 'type', "width": "10%"},
                 { data: 'note', name: 'note', "width": "10%"},
                 { data: 'options', name: 'options', orderable: false, "width": "10%"},
             ],

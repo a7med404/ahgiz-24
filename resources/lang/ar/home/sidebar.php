@@ -124,7 +124,6 @@ return [
     'settings' => 'الإعدادات',
     'settings_section' => 'قسم الإعدادات',
     'log_out' => 'تسجيل خروج',
-
     'see_alerts' => 'مشاهدة كل الإشعارات',
 
     'testimonials' => 'اراء العملاء',

@@ -56,8 +56,8 @@
                             <td><?php echo e($planereservation->id); ?></td>
                             <td><?php echo e($planereservation->company->name); ?></td>
                             
-                            <td><?php echo e($planereservation->fom_date); ?></td>
-                            <td><?php echo e($planereservation->to_date); ?></td>
+                            <td><?php echo e($planereservation->date); ?></td>
+                            <td><?php echo e($planereservation->date); ?></td>
                             <td><?php echo e($planereservation->fromStation->name); ?></td>
                             <td><?php echo e($planereservation->toStation->name); ?></td>
                             

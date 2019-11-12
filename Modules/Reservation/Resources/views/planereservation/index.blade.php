@@ -58,8 +58,8 @@
                             <td>{{ $planereservation->id }}</td>
                             <td>{{ $planereservation->company->name }}</td>
                             {{-- <td ><span data-toggle="tooltip" data-original-title="{{$reservation->customer->first_name .' '. $reservation->customer->last_name}}"></span></td> --}}
-                            <td>{{ $planereservation->fom_date }}</td>
-                            <td>{{ $planereservation->to_date}}</td>
+                            <td>{{ $planereservation->date }}</td>
+                            <td>{{ $planereservation->date}}</td>
                             <td>{{ $planereservation->fromStation->name }}</td>
                             <td>{{ $planereservation->toStation->name }}</td>
                             {{-- <td>{{ $reservation->trip->company->name }}</td> --}}

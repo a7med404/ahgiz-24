@@ -82,6 +82,14 @@ function toggleTrusted(){
 }
 
 
+
+// function reservStatutus(){
+//     return [
+//         '0' => 'label label-danger',
+//         '1' => 'label label-success',
+//         '2' => 'labe label-primary',
+//     ];
+// }
 function toggleStatus(){
     return [
         '0' => 'label label-danger',
@@ -240,10 +248,10 @@ function getSelect($tableName){
             $list = \DB::table('seats')->pluck('name', 'id');
             return $list->toArray();
             break;
-            // case 'reservStatutus':
-            // $list = \DB::table('reservations')->pluck('status', 'id');
-            // return $list->toArray();
-            // break;
+            case 'reservStatutus':
+            $list = \DB::table('reservations')->pluck('status', 'id');
+            return $list->toArray();
+            break;
         case 'company':
             $list = \DB::table('companies')->pluck('name', 'id');
             array_add($list, '', 'الكل');
@@ -300,7 +308,11 @@ function getName($tableName, $id)
             $list = \DB::table('stations')->pluck('name', 'id');
             return $list[$id];
             break;
-            default:
+        case 'city':
+            $list = \DB::table('stations')->pluck('name', 'id');
+            return $list[$id];
+            break;
+        default:
             $list = \DB::table('trips')->pluck('name', 'id');
             return $list->toArray();
             break;
