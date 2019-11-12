@@ -39,16 +39,6 @@
     </div>
 </div> 
 <div class="row">
-    <div class="col col-xl-6 col-lg-6 col-md-6">
-        <div class="form-group">
-            <?php echo Form::label('trip_id', 'المدينة', ['class' => 'control-label']); ?>
-
-            <?php echo Form::select('trip_id', getSelect('cities'), null, ['id' => 'trip_id', 'class' => "select2 form-control  <?php echo e($errors->has('trip_id') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('trip_id')); ?>", 'required']); ?>
-
-        </div>
-    </div>
-</div> 
-<div class="row">
     <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="form-group">
             <?php echo Form::label('note', 'Note', ['class' => 'control-label']); ?>
