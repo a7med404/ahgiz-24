@@ -24,7 +24,7 @@ class ReservationResource extends JsonResource
             'toStation'                 => $this->trip->toStation->name,
             'departure_time'            => $this->trip->departure_time,
             'arrive_time'               => $this->trip->arrive_time,
-            // 'number'                    => $this->trip->number,
+            'number'                    => $this->number,
             'saleprice'                 => $this->trip->saleprice,
             'date'                      => $this->trip->date,
             'passengers'                => $this->passengers->count(),
