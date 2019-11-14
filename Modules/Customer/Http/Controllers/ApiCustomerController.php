@@ -82,7 +82,7 @@ class ApiCustomerController extends Controller
             $json['my_reservations']    = route('customer-reservations', ['id' => $customer->id]);
             $json['search_reservation'] = route('search-reservation');
             $json['get_bus_stations']   = route('get-bus-stations');
-            $json['cancele_reservation'] = route('cancele-reservation');
+            $json['cancel_reservation'] = route('cancel-reservation');
             // if ($customer) {
             //     //TODO::handel return value of CustomerRegisteredOrLoginEvent
             //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
@@ -116,7 +116,7 @@ class ApiCustomerController extends Controller
             $json['my_reservations'] = route('my-reservations', ['id' => $customer->id]);
             $json['search_reservation'] = route('search-reservation');
             $json['get_bus_stations'] = route('get-bus-stations');
-            $json['cancele_reservation'] = route('cancele-reservation');
+            $json['cancel_reservation'] = route('cancel-reservation');
             
             return response()->json(['customer' => $json], 201);
         }
