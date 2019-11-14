@@ -41,9 +41,9 @@ class ApiCustomerController extends Controller
 
         // update data for customer 
         $data = [
-            'c_name' => $request->c_name,
-            'email' => $request->email,
-            'gender' => $request->gender,
+            'c_name'    => $request->c_name,
+            'email'     => $request->email,
+            'gender'    => $request->gender,
             'birthdate' => $request->birthdate
         ];
         $customer = Customer::where('id', $id)->update($data);
