@@ -33,7 +33,7 @@ class ReservationResource extends JsonResource
             'status'                    => reservationStatusForApp()[$this->status],
             'is_valid'                  => (strtotime($this->trip->date . $this->trip->departure_time) >= strtotime(now()->toDateTimeString())) ? true : false,
             'my_reservation_details'    => route('my-reservation-details', ['id' => $this->id]),
-            'cancele_reservation'       => route('cancele-reservation'),
+            'cancel_reservation'       => route('cancel-reservation'),
             // 'editRoute'         => showRoute('reservations', $this->id),
         ];
         // return parent::toArray($request);
