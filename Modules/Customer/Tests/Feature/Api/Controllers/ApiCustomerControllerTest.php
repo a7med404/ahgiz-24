@@ -37,7 +37,7 @@ use DatabaseTransactions;
         ]);
         $response->assertJsonStructure([
             "customer" => [
-                "id", "c_name", "phone_number", "email", "gender", "birthdate", "access_token", "isNew", "otp", "customer_update", "customer_logout", "customer_delete", "my_reservations", "search_reservation", "get_bus_stations"
+                "id", "c_name", "phone_number", "email", "gender", "birthdate", "access_token", "isNew", "customer_update", "customer_logout", "customer_delete", "my_reservations", "search_reservation", "get_bus_stations"
             ]
         ])->assertStatus(200);
     }

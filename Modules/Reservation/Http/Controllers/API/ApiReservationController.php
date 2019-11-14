@@ -73,10 +73,10 @@ class ApiReservationController extends Controller
                 $reservation->update(['canceled_at' => now()]);
                 return response()->json(['message' => 'reservation canceled'], 200);
             } else {
-                return response()->json(['message' => 'uncorrect phone number'], 422);
+                return response()->json(['message' => 'uncorrect phone number'], 400);
             }
         } else {
-            return response()->json(['message' => 'uncorrect Reservation number'], 422);
+            return response()->json(['message' => 'uncorrect Reservation number'], 400);
         }
     }
 
@@ -111,9 +111,9 @@ class ApiReservationController extends Controller
 
                 # Sent Reservation details to phone number => $contact
                 #TODO::custom SMS content SMSStyle
-                // if ($contact) {
-                //     event(new ReservationDoneEvent($reservation, $contact));
-                // }
+                if ($contact) {
+                    event(new ReservationDoneEvent($reservation, $contact));
+                }
             }
         }
 

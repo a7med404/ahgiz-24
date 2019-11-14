@@ -67,6 +67,7 @@ class ApiCustomerController extends Controller
 
         if (Auth::guard('customer')->attempt(['phone_number' => addSudanKey($request->phone_number), 'password' => addSudanKey($request->phone_number)])) {
             $customer = Auth::guard('customer')->user();
+            dd($customer->id);
             $json['id'] = $customer->id;
             $json['c_name'] = $customer->c_name;
             $json['phone_number'] = $customer->phone_number;
