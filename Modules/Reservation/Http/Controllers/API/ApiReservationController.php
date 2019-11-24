@@ -81,7 +81,7 @@ class ApiReservationController extends Controller
     }
 
     public function reserveStepOne(Request $request, $tripId)
-    {
+    { 
         #TODO:: this stap must be in transaction
         $names = explode(",", str_replace("]", "", str_replace("[", "", str_replace("\"", "", $request->names))));
         $genders = explode(",", str_replace("]", "", str_replace("[", "", str_replace("\"", "", $request->genders))));
@@ -121,7 +121,7 @@ class ApiReservationController extends Controller
         return response()->json([
             'reservation_number' => $reservation->number,
             'blance' => $blance,
-            'reserve_step_two'   => route('reserve-step-two', ['id' => $reservation->id])
+            // 'reserve_step_two'   => route('reserve-step-two', ['id' => $reservation->id])
         ], 200);
     }
 
