@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'reservations'], function () {
     // Route::group(['namespace' => 'API', 'prefix' => 'reservations'], function () {
-
+    
     Route::get('my-reservations/{id}', 'ApiReservationController@myReservations')->name('customer-reservations');
     Route::get('my-reservation-details/{id}', 'ApiReservationController@myReservationDetails')->name('my-reservation-details');
     
@@ -27,6 +27,9 @@ Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'res
    
     Route::get('reserve-step-three/{number}', 'ApiReservationController@markAsPaid')->name('reserve-step-three');
 
+
+
+    Route::post('add-plane-reservation', 'ApiPlaneController@addPlaneReservation')->name('add-plane-reservation');
     // 
     // Route::resource('reservations', 'ApiReservationController');
 });

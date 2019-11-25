@@ -8,10 +8,11 @@ php artisan module:unuse
 
   CompanyController
 
-php artisan module:use Address
+php artisan module:use Reservation
+php artisan module:make-controller API/ApiPlaneController
 
 php artisan module:make-controller CompanyController
-php artisan module:make-controller API/ApiAddressController
+php artisan module:make-controller API/ApiPlaneController
 
 php artisan module:make-factory CompanyFactory
 
@@ -30,7 +31,7 @@ php artisan module:seed
 php artisan module:publish-migration
 
 
-php artisan migrate --path=/Modules/User/Database/Migrations/2014_10_12_100000_create_password_resets_table.php
+php artisan migrate --path=/Modules/Reservation/Database/Migrations/2019_10_16_153132_create_plane_resrvation_table.php
 
 
 php artisan module:make-listener SentSMSWithReservationDetailsToCustomerListener Reservation
