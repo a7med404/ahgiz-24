@@ -41,9 +41,9 @@ class ApiCustomerController extends Controller
 
         // update data for customer
         $data = [
-            'c_name' => $request->c_name,
-            'email' => $request->email,
-            'gender' => $request->gender,
+            'c_name'    => $request->c_name,
+            'email'     => $request->email,
+            'gender'    => $request->gender,
             'birthdate' => $request->birthdate
         ];
         $customer = Customer::where('id', $id)->update($data);
@@ -82,6 +82,7 @@ class ApiCustomerController extends Controller
             $json['my_reservations']    = route('customer-reservations', ['id' => $customer->id]);
             $json['search_reservation'] = route('search-reservation');
             $json['get_bus_stations']   = route('get-bus-stations');
+            $json['cancel_reservation'] = route('cancel-reservation');
             // if ($customer) {
             //     //TODO::handel return value of CustomerRegisteredOrLoginEvent
             //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
@@ -115,7 +116,8 @@ class ApiCustomerController extends Controller
             $json['my_reservations'] = route('my-reservations', ['id' => $customer->id]);
             $json['search_reservation'] = route('search-reservation');
             $json['get_bus_stations'] = route('get-bus-stations');
-
+            $json['cancel_reservation'] = route('cancel-reservation');
+            
             return response()->json(['customer' => $json], 201);
         }
     }

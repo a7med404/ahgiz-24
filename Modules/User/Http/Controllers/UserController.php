@@ -200,4 +200,6 @@ class UserController extends Controller
         $userInfo = $Oneuser->findOrfail($id);
         return view('user::users.change-my-password', ['userInfo' => $userInfo]);
     }
+
+    
 }

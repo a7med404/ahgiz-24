@@ -21,14 +21,25 @@ Route::middleware('auth:api')->get('/address', function (Request $request) {
 Route::prefix('address')->group(function() {
     Route::get('/loacls/{id}', 'AddressController@getLocals');
 });
-Route::group(['prefix' => '/addresses'], function () {
+// Route::group(['prefix' => 'addresses'], function () {
+// Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'addresses'], function () {
+    Route::group(['namespace' => 'API', 'prefix' => 'addresses'], function () {
 
+<<<<<<< HEAD
     Route::resource('/addresses','AddressController');
     Route::resource('/contacts','ContactController');
     Route::resource('/identifcations','IdentifcationController');
     Route::resource('user', 'UserController');
 
 
+=======
+    Route::resource('addresses','AddressController');
+    Route::resource('contacts','ContactController');
+    Route::resource('identifcations','IdentifcationController');
+    
+    Route::get('cities/all', 'ApiCityController@cities');
+    Route::post('get-delegate', 'ApiAddressController@getDelegate');
+>>>>>>> b1d728e7d9bd1e2625aeb5fdefce73d377cc69e9
 
 });
 

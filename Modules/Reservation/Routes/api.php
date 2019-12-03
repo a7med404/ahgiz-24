@@ -15,15 +15,21 @@ use Illuminate\Http\Request;
 
 Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'reservations'], function () {
     // Route::group(['namespace' => 'API', 'prefix' => 'reservations'], function () {
-
+    
     Route::get('my-reservations/{id}', 'ApiReservationController@myReservations')->name('customer-reservations');
     Route::get('my-reservation-details/{id}', 'ApiReservationController@myReservationDetails')->name('my-reservation-details');
     
-    Route::post('cancel-reservation', 'ApiReservationController@cancelReservation')->name('cancele-reservation');
+    Route::post('cancel-reservation', 'ApiReservationController@cancelReservation')->name('cancel-reservation');
 
     Route::post('search-reservation', 'ApiReservationController@availableReservation')->name('search-reservation');
     Route::post('reserve-step-one/{tripId}', 'ApiReservationController@reserveStepOne')->name('reserve-step-one');
-    Route::get('reserve-step-two/{id}', 'ApiReservationController@reserveSteptow')->name('reserve-step-two');
+    Route::get('reserve-step-two/{id}/pay-method/{payMethod}', 'ApiReservationController@reserveSteptow')->name('reserve-step-two');
+   
+    Route::get('reserve-step-three/{number}', 'ApiReservationController@markAsPaid')->name('reserve-step-three');
 
+
+
+    Route::post('add-plane-reservation', 'ApiPlaneController@addPlaneReservation')->name('add-plane-reservation');
+    // 
     // Route::resource('reservations', 'ApiReservationController');
 });

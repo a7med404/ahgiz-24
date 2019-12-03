@@ -9,6 +9,7 @@ function getTestimonial(){
     return Modules\Setting\Entities\Testimonial::where('status', 1)->get();
 }
 
+#TODO:: Server time 
 function maleOrfemale(){
     return [
         '' => '...',
@@ -233,6 +234,10 @@ function getSelect($tableName){
             break;
         case 'cities':
             $list = \DB::table('cities')->where('parent_id', null)->pluck('name', 'id');
+            return $list->toArray();
+            break;
+        case 'sub_cities':
+            $list = \DB::table('cities')->where('parent_id', '!=', null)->pluck('name', 'id');
             return $list->toArray();
             break;
         case 'station':

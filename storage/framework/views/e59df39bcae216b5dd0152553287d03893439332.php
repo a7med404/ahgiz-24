@@ -16,7 +16,7 @@
 <section class="content-header">
     <h1><?php echo e(__('home/sidebar.all_trips')); ?> <small>it all starts here</small></h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo e(url('\adminCpanel')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(__('home/sidebar.HOME')); ?> </a></li>
+        <li><a href="<?php echo e(url('\cpanel')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(__('home/sidebar.HOME')); ?> </a></li>
         <li class="active"> <?php echo e(__('home/sidebar.all_trips')); ?> </li>
     </ol>
 </section>

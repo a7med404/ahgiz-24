@@ -19,12 +19,12 @@ class ReservationResource extends JsonResource
             'id'                        => $this->id,
             // 'customer'                  => $this->customer->c_name,
             // 'user'                      => $this->user,
-            'company'                   => $this->trip->company->name,
+            'company'                   => $this->trip->company->name,  
             'fromStation'               => $this->trip->fromStation->name,
             'toStation'                 => $this->trip->toStation->name,
             'departure_time'            => $this->trip->departure_time,
             'arrive_time'               => $this->trip->arrive_time,
-            // 'number'                    => $this->trip->number,
+            'number'                    => $this->number,
             'saleprice'                 => $this->trip->saleprice,
             'date'                      => $this->trip->date,
             'passengers'                => $this->passengers->count(),
@@ -33,7 +33,7 @@ class ReservationResource extends JsonResource
             'status'                    => reservationStatusForApp()[$this->status],
             'is_valid'                  => (strtotime($this->trip->date . $this->trip->departure_time) >= strtotime(now()->toDateTimeString())) ? true : false,
             'my_reservation_details'    => route('my-reservation-details', ['id' => $this->id]),
-            'cancele_reservation'       => route('cancele-reservation'),
+            'cancel_reservation'       => route('cancel-reservation'),
             // 'editRoute'         => showRoute('reservations', $this->id),
         ];
         // return parent::toArray($request);

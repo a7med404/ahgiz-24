@@ -73,18 +73,19 @@ class ApiReservationController extends Controller
                 $reservation->update(['canceled_at' => now()]);
                 return response()->json(['message' => 'reservation canceled'], 200);
             } else {
-                return response()->json(['message' => 'uncorrect phone number'], 422);
+                return response()->json(['message' => 'uncorrect phone number'], 400);
             }
         } else {
-            return response()->json(['message' => 'uncorrect Reservation number'], 422);
+            return response()->json(['message' => 'uncorrect Reservation number'], 400);
         }
     }
 
-
     public function reserveStepOne(Request $request, $tripId)
-    {
+    { 
         #TODO:: this stap must be in transaction
-        $seats = $request->seats_number;
+        $names = explode(",", str_replace("]", "", str_replace("[", "", str_replace("\"", "", $request->names))));
+        $genders = explode(",", str_replace("]", "", str_replace("[", "", str_replace("\"", "", $request->genders))));
+        
         $data = [
             'customer_id'       => auth()->user()->id,
             'trip_id'           => $tripId,
@@ -92,27 +93,20 @@ class ApiReservationController extends Controller
             'status'            => 1,
         ];
         #TODO:: Save contact information on passengers table if the customer changed his contact info
-        // if (addSudanKey($request->contact_number) != auth()->user()->phone_number) {
-        //     dd(auth()->user()->phone_number, 555);
-        // }else{
-
-        // }
         $reservation = Reservation::create($data);
         if ($reservation) {
-            if ($seats) {
-
+            if ($names) {
                 $contact = auth()->user()->phone_number;
                 if (addSudanKey($request->contact_number) != auth()->user()->phone_number) {
                     $contact = addSudanKey($request->contact_number);
                 }
-                while ($seats >= 1) {
-                    Passenger::create([
-                        'name'              => $seats . 'ajj',//request($seats . '-name'),
-                        'gender'            => $seats,//request($seats . '-gender'),
+                foreach ($names as $key => $value) {
+                    $s = Passenger::create([
+                        'name'              => $names[$key], //request($seats . '-name'),
+                        'gender'            => $genders[$key], //request($seats . '-gender'),
                         'reservation_id'    => $reservation->id,
                         'phone_number'      => $contact,
                     ]);
-                    $seats--;
                 }
 
                 # Sent Reservation details to phone number => $contact
@@ -120,17 +114,41 @@ class ApiReservationController extends Controller
                 if ($contact) {
                     event(new ReservationDoneEvent($reservation, $contact));
                 }
-
             }
         }
 
         $blance = $reservation->passengers->count() * $reservation->trip->price;
         return response()->json([
-            'blance'         => $blance,
-            'status_code'   => 200
-        ]);
-        Session::flash('flash_massage_type', 1);
-        // return redirect()->route('pay-page')->with(['reservation' => $reservation, 'blance' => $blance])->withFlashMassage('تم اجراء حجز مبدئي الرجاء تأكيد الحجز عن طريق سداد رسوم التزاكر.');
-        return view('website::booking-steps.pay', ['reservation' => $reservation, 'blance' => $blance])->withFlashMassage('Reservation Added Successfully');
+            'reservation_number' => $reservation->number,
+            'blance' => $blance,
+            // 'reserve_step_two'   => route('reserve-step-two', ['id' => $reservation->id])
+        ], 200);
+    }
+
+    public function reserveSteptow(Request $request, $id, $payMethod)
+    {
+        $reservationInfo = Reservation::find($id);
+        if (!$reservationInfo) {
+            return response()->json(['error' => "Reservation Not Found"], 404);
+        }
+        $reservation = $reservationInfo->fill(['pay_method' => $payMethod])->save();
+        if ($reservation) {
+            return response()->json(['message' => "Payment Method Set Successfully"], 200);
+        }
+    }
+
+
+
+    public function markAsPaid(Request $request, $number)
+    {
+        $reservationInfo = Reservation::where('number', $number)->first();
+        if (!$reservationInfo) {
+            return response()->json(['error' => "Reservation Not Found"], 404);
+        }
+
+        $reservation = $reservationInfo->fill(['status' => 2])->save();
+        if ($reservation) {
+            return response()->json(['message' => "Payment Set Successfully"], 200);
+        }
     }
 }

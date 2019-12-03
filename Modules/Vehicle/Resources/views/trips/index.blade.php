@@ -32,7 +32,75 @@
             title="Remove"><i class="fa fa-times"></i></button>
     </div>
 </div>
+<<<<<<< HEAD
         <div class="box-body">
+=======
+<div class="box-body">
+        {{-- {!! Form::open(['route' => 'trips.search', 'method' => "POST"]) !!} --}}
+        <form  role="form">
+
+        {!! Form::hidden('filter', null, ['value' => "{{ old('filter') }}"]) !!}
+<div class="row">
+    <div class="col col-xl-2 col-lg-2 col-md-2">
+        <div class="form-group">
+            {!! Form::label('from_station_id', 'المسار(من)', ['class' => 'control-label']) !!}
+            {!! Form::select('from_station_id', getSelect('station'), null, ['id' => 'from_station_id', 'class' => "select2 form-control  {{ $errors->has('from_station_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('from_station_id') }}"]) !!}
+        </div>
+    </div>
+    <div class="col col-xl-2 col-lg-2 col-md-2">
+        <div class="form-group">
+            {!! Form::label('to_station_id', 'المسار(الي)', ['class' => 'control-label']) !!}
+            {!! Form::select('to_station_id', getSelect('station'), null, ['id' => 'to_station_id', 'class' => "select2 form-control  {{ $errors->has('to_station_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('to_station_id') }}"]) !!}
+        </div>
+    </div>
+    <div class="col col-xl-2 col-lg-2 col-md-2">
+        <div class="bootstrap-timepicker">
+            <div class="form-group">
+                {!! Form::label('date_from', 'من تاريخ', ['class' => 'control-label']) !!}
+                <div class="input-group">
+                    {!! Form::text('date_from', null, ['id' => 'date_from', 'class' => "form-control  {{ $errors->has('date_from') ? ' is-invalid' : '' }}", 'value' => "{{ old('date_from') }}", 'autofocus']) !!}
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col col-xl-2 col-lg-2 col-md-2">
+        <div class="bootstrap-timepicker">
+            <div class="form-group">
+                {!! Form::label('date_to', 'الى تاريخ', ['class' => 'control-label']) !!}
+                <div class="input-group">
+                    {!! Form::text('date_to', null, ['id' => 'date_to', 'class' => "form-control  {{ $errors->has('date_to') ? ' is-invalid' : '' }}", 'value' => "{{ old('date_to') }}", 'autofocus']) !!}
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+<!--    <div class="col col-xl-2 col-lg-2 col-md-2">
+            <div class="form-group">
+                {{-- {!! Form::label('price', 'سعر التذكرة', ['class' => 'control-label']) !!}
+                {!! Form::text('price', null, ['id' => 'price', 'class' => "form-control  {{ $errors->has('price') ? ' is-invalid' : '' }}", 'value' => "{{ old('price') }}", 'autofocus']) !!} --}}
+            </div>
+        </div>
+    -->
+        <div class="col col-xl-2 col-lg-3 col-md-3">
+                <div class="form-group">
+                    {!! Form::label('company_id', 'الشركة', ['class' => 'control-label']) !!}
+                    {!! Form::select('company_id', getSelect('company'), null, ['id' => 'company_id', 'class' => "select2 form-control  {{ $errors->has('company_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('company_id') }}"]) !!}
+                </div>
+            </div>
+                
+        <div class="col col-lg-1 col-md-1 col-sm-1 col-1">
+                <div class="form-group m-t-25"><button href="#" class="btn btn-primary search-btn" type="submit">بحــث</button>
+                </div>            
+        </div>
+            </div>
+           {!! Form::close() !!}
+>>>>>>> b1d728e7d9bd1e2625aeb5fdefce73d377cc69e9
             <div class="table-responsive">
                 <table id="data" class="table table-bordered table-hover">
                     <thead>

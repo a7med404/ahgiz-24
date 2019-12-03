@@ -12,24 +12,29 @@ use Modules\Setting\Transformers\SettingResource;
 use Modules\Vehicle\Entities\Station;
 use Modules\Vehicle\Transformers\PlaneStationResource;
 use \DB;
+use Modules\Address\Entities\City;
+use Modules\Address\Transformers\CityResource;
+use Modules\Vehicle\Transformers\StationResource;
 
 class ApiSettingController extends Controller
 {
     public function __invoke()
     {
-        $busStations = PlaneStationResource::collection(Station::where('type', 0)->get());
-        $planeStations = PlaneStationResource::collection(Station::where('type', 1)->get());
-        $planeCompany = PlaneCompanyResource::collection(Company::where('type', 1)->get());
-        $siteSetting = \DB::table('settings')->select('name_setting', 'value')->get();
+        $busStations   = StationResource::collection(Station::orderBy('id')->where('status', 1)->where('type', 0)->get());
+        $planeStations = PlaneStationResource::collection(Station::orderBy('id')->where('status', 1)->where('type', 1)->get());
+        $planeCompany  = PlaneCompanyResource::collection(Company::where('type', 1)->get());
+        $cities        = CityResource::collection(City::orderBy('id')->get());;
+        $siteSetting   = \DB::table('settings')->select('name_setting', 'value')->get();
         $settings = [];
         foreach ($siteSetting as $key => $item) {
             $settings[$item->name_setting] = $item->value;
         }
-        return [ 
-            'bus_stations' => $busStations,
-            'plane_stations' => $planeStations,
-            'plane_company' => $planeCompany,
-            'settings' => $settings
+        return [
+            'buses_stations'  => $busStations,
+            'planes_stations' => $planeStations,
+            'planes_company'  => $planeCompany,
+            'cities'          => $cities,
+            'settings'        => $settings
         ];
     }
 }
