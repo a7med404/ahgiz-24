@@ -42,9 +42,10 @@
                             <th>#id</th>
                             
                             <th><?php echo e(__('home/labels.date')); ?></th>
-                            <th><?php echo e(__('home/labels.trip_number')); ?></th>
-                            <th><?php echo e(__('home/labels.departure_time')); ?></th>
                             
+                            <th><?php echo e(__('home/labels.from')); ?> - <?php echo e(__('home/labels.to')); ?></th>
+                            <th><?php echo e(__('home/labels.departure_time')); ?></th>
+                            <th><?php echo e(__('home/labels.company')); ?></th>
                             <th><?php echo e(__('home/labels.seats_number')); ?></th>
                             <th><?php echo e(__('home/labels.status')); ?></th>
                             
@@ -58,9 +59,9 @@
                             <td><?php echo e($reservation->id); ?></td>
                             
                             <td><?php echo e($reservation->trip->date); ?></td>
-                            <td ><span data-toggle="tooltip" data-original-title="<?php echo e($reservation->trip->fromStation->name .' - '. $reservation->trip->toStation->name); ?>"></span></td>
+                            <td><?php echo e($reservation->trip->fromStation->name .' - '. $reservation->trip->toStation->name); ?></td>
                             <td><?php echo e($reservation->trip->departure_time); ?></td>
-                            
+                            <td><?php echo e($reservation->trip->company->name); ?></td>
                             <td><?php echo e($reservation->passengers->count()); ?></td>
                             <td><?php echo e(reservationStatus()[$reservation->status]); ?></td>
                             

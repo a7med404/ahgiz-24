@@ -59,7 +59,7 @@
 
         </div>
     </div>
-<div class="col col-xl-2 col-lg-2 col-md-2">
+    <div class="col col-xl-2 col-lg-2 col-md-2">
         <div class="bootstrap-timepicker">
             <div class="form-group">
                 <?php echo Form::label('date_from', 'من تاريخ', ['class' => 'control-label']); ?>
@@ -74,21 +74,21 @@
             </div>
         </div>
     </div>
-<div class="col col-xl-2 col-lg-2 col-md-2">
-    <div class="bootstrap-timepicker">
-        <div class="form-group">
-            <?php echo Form::label('date_to', 'الى تاريخ', ['class' => 'control-label']); ?>
+    <div class="col col-xl-2 col-lg-2 col-md-2">
+        <div class="bootstrap-timepicker">
+            <div class="form-group">
+                <?php echo Form::label('date_to', 'الى تاريخ', ['class' => 'control-label']); ?>
 
-            <div class="input-group">
-                <?php echo Form::text('date_to', null, ['id' => 'date_to', 'class' => "form-control  <?php echo e($errors->has('date_to') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('date_to')); ?>", 'autofocus']); ?>
+                <div class="input-group">
+                    <?php echo Form::text('date_to', null, ['id' => 'date_to', 'class' => "form-control  <?php echo e($errors->has('date_to') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('date_to')); ?>", 'autofocus']); ?>
 
-                <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div> 
+    </div> 
 
 <!--    <div class="col col-xl-2 col-lg-2 col-md-2">
             <div class="form-group">

@@ -23,7 +23,7 @@ class ApiReservationController extends Controller
     public function myReservationDetails($id)
     {
         return new SingleReservationResource(Reservation::findOrFail($id));
-    } 
+    }
 
     public function availableReservation(Request $request, Trip $trip)
     {
@@ -50,7 +50,7 @@ class ApiReservationController extends Controller
          * ! to loop through any trip and filter that trip has avaliable seat less than required
          */
         // TODO:: Fix seat number issus
-        $validTrips = $trips->map(function ($trip) use ($passengers_nubmers_for_trip, $request) {
+        $filterTrips = $trips->map(function ($trip) use ($passengers_nubmers_for_trip, $request) {
             foreach ($passengers_nubmers_for_trip as $key => $value) {
                 // dd(($trip->seats_number - $value)- $request->seats_number);
                 if (($trip->seats_number - $value) >= $request->seats_number) {
@@ -60,6 +60,13 @@ class ApiReservationController extends Controller
                 }
             }
         });
+
+        $validTrips = [];
+        foreach ($filterTrips as $key => $trip) {
+            if ($trip != null) {
+                $validTrips[] = $trip;
+            }
+        }
         return AvailableTripResource::collection(collect($validTrips));
     }
 
@@ -68,7 +75,7 @@ class ApiReservationController extends Controller
         $reservation = Reservation::join('customers', function ($join) {
             $join->on('reservations.customer_id', '=', 'customers.id');
         })->where('number', $request->number)->select('customers.id as customer_id', 'customers.phone_number', 'reservations.*')->first();
-        if ($reservation) { 
+        if ($reservation) {
             if ($reservation->phone_number === addSudanKey($request->phone_number)) {
                 $reservation->update(['canceled_at' => now()]);
                 return response()->json(['message' => 'reservation canceled'], 200);
@@ -81,11 +88,11 @@ class ApiReservationController extends Controller
     }
 
     public function reserveStepOne(Request $request, $tripId)
-    { 
+    {
         #TODO:: this stap must be in transaction
         $names = explode(",", str_replace("]", "", str_replace("[", "", str_replace("\"", "", $request->names))));
         $genders = explode(",", str_replace("]", "", str_replace("[", "", str_replace("\"", "", $request->genders))));
-        
+
         $data = [
             'customer_id'       => auth()->user()->id,
             'trip_id'           => $tripId,

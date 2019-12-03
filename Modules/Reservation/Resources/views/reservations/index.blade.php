@@ -42,9 +42,10 @@
                             <th>#id</th>
                             {{-- <th>{{ __('home/labels.cusromer') }}</th> --}}
                             <th>{{ __('home/labels.date') }}</th>
-                            <th>{{ __('home/labels.trip_number') }}</th>
+                            {{-- <th>{{ __('home/labels.trip_number') }}</th> --}}
+                            <th>{{ __('home/labels.from') }} - {{ __('home/labels.to') }}</th>
                             <th>{{ __('home/labels.departure_time') }}</th>
-                            {{-- <th>{{ __('home/labels.company') }}</th> --}}
+                            <th>{{ __('home/labels.company') }}</th>
                             <th>{{ __('home/labels.seats_number') }}</th>
                             <th>{{ __('home/labels.status') }}</th>
                             {{-- <th>{{ __('home/labels.pay_method') }}</th> --}}
@@ -58,9 +59,9 @@
                             <td>{{ $reservation->id }}</td>
                             {{-- <td ><span data-toggle="tooltip" data-original-title="{{$reservation->customer->first_name .' '. $reservation->customer->last_name}}"></span></td> --}}
                             <td>{{ $reservation->trip->date }}</td>
-                            <td ><span data-toggle="tooltip" data-original-title="{{$reservation->trip->fromStation->name .' - '. $reservation->trip->toStation->name}}"></span></td>
+                            <td>{{$reservation->trip->fromStation->name .' - '. $reservation->trip->toStation->name}}</td>
                             <td>{{ $reservation->trip->departure_time }}</td>
-                            {{-- <td>{{ $reservation->trip->company->name }}</td> --}}
+                            <td>{{ $reservation->trip->company->name }}</td>
                             <td>{{ $reservation->passengers->count() }}</td>
                             <td>{{ reservationStatus()[$reservation->status] }}</td>
                             {{-- <td>{{ payMethod()[$reservation->pay_method] }}</td> --}}
