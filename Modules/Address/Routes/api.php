@@ -17,6 +17,7 @@ Route::middleware('auth:api')->get('/address', function (Request $request) {
     return $request->user();
 });
 
+
 Route::prefix('address')->group(function() {
     Route::get('/loacls/{id}', 'AddressController@getLocals');
 });
@@ -32,3 +33,10 @@ Route::prefix('address')->group(function() {
     Route::post('get-delegate', 'ApiAddressController@getDelegate');
 
 });
+
+
+    // show the cities //
+    Route::get('/cities','API\ApicityController@cities');
+
+    // show the cities child //
+    route::get('cities/{id}','API\ApicityController@getcities');

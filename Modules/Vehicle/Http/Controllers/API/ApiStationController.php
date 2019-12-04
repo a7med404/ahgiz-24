@@ -13,10 +13,10 @@ class ApiStationController extends Controller
 {
 
  public function getBusStation(){
-    return StationResource::collection(Station::orderBy('id')->where('status', 1)->where('type', 0)->get()); 
- }   
+    return StationResource::collection(Station::orderBy('id')->where('status', 1)->where('type', 0)->get());
+ }
 
- # get plane stations 
+ # get plane stations
  public function getPlaneStation(){
     return PlaneStationResource::collection(Station::orderBy('id')->where('status', 1)->where('type', 1)->get());
  }

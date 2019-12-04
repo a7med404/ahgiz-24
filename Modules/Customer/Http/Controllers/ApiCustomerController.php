@@ -23,7 +23,7 @@ class ApiCustomerController extends Controller
 {
 
     public $optValue;
-    ////////////// for Registerain Customers ///////////// 
+    ////////////// for Registerain Customers /////////////
 
     public function update(Request $request, $id)
     {
@@ -39,7 +39,7 @@ class ApiCustomerController extends Controller
         //     return response()->json(['errors' => $validator->errors()], 422);
         // }
 
-        // update data for customer 
+        // update data for customer
         $data = [
             'c_name'    => $request->c_name,
             'email'     => $request->email,
@@ -89,15 +89,15 @@ class ApiCustomerController extends Controller
             // }
             return response()->json(['customer' => $json], 200);
         } else {
-            // created data for customer 
+            // created data for customer
             $customer = Customer::create([
                 'phone_number'      => addSudanKey($request->phone_number),
                 'password'          => Hash::make(addSudanKey($request->phone_number)),
             ]);
-            // Access token 
+            // Access token
             $accessToken = $customer->createToken('customerToken')->accessToken;
 
-            // // return response 
+            // // return response
             // if ($customer) {
             //     event(new CustomerRegisteredOrLoginEvent($customer, $this->optValue));
             // }
@@ -127,7 +127,7 @@ class ApiCustomerController extends Controller
         $number = random_int(1000, 9999);
         return $number;
     }
- 
+
     ///////////////////// forget password ////////////////////////////////////
 
     public function deleteAccount(Request $request)

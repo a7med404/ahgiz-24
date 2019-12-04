@@ -1,19 +1,17 @@
 <?php
 
 namespace Modules\Reservation\Entities;
-
 use Illuminate\Database\Eloquent\Model;
 use Modules\Customer\Entities\Customer;
 use Modules\Vehicle\Entities\Trip;
 use Modules\User\Entities\User;
 use Modules\Company\Entities\Company;
 use Modules\Vehicle\Entities\Station;
-
-
-
+    
 class PlaneReservation extends Model
 {
-    protected $fillable = ['customer_id', 'from_station_id', 'to_station_id', 'company_id', 'user_id', 'date', 'status', 'canceled_at'];
+
+    protected $fillable = ['customer_id','from_station_id','to_station_id','company_id','user_id'   ,'status','canceled_at','from_date','to_date'];
 
     public function customer()
     {
@@ -40,8 +38,10 @@ class PlaneReservation extends Model
         return $this->hasOne(Station::Class, 'id', 'to_station_id');
     }
 
+
     public function company()
     {
+
         return $this->belongsTo(Company::class);
     }
 }

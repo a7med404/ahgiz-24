@@ -6,7 +6,7 @@
             {!! Form::select('customer_id', getSelect('customer'), null, ['id' => 'customer_id', 'class' => "select2 form-control  {{ $errors->has('customer_id') ? ' is-invalid' : '' }}", 'value' => "{{ old('customer_id') }}", 'required']) !!}
         </div>
     </div>
-</div>  
+</div>
     <div class="row">
     <div class="col col-xl-6 col-lg-6 col-md-6">
         <div class="form-group">
@@ -40,7 +40,35 @@
             {!! Form::label('status', 'الحالة', ['class' => 'control-label']) !!}
             {!! Form::select('status', reservationStatus(), null, ['id' => 'status', 'class' => "select2 form-control {{ $errors->has('status') ? ' is-invalid' : '' }}", 'value' => "{{ old('status') }}", 'required']) !!}
         </div>
-    </div> 
+    </div>
+
+    <div class="col col-xl-6 col-lg-6 col-md-6">
+        <div class="form-group">
+            {!! Form::label('from_date', 'من تاريخ', ['class' => 'control-label']) !!}
+            {!! Form::date('from_date', null, ['id' => 'from_date', 'class' => " form-control {{ $errors->has('from_date') ? ' is-invalid' : '' }}", 'value' => "{{ old('from_date') }}", 'required']) !!}
+        </div>
+    </div>
+
+    <div class="col col-xl-6 col-lg-6 col-md-6">
+        <div class="form-group">
+            {!! Form::label('to_date', 'من تاريخ', ['class' => 'control-label']) !!}
+            {!! Form::date('to_date', null, ['id' => 'to_date', 'class' => " form-control {{ $errors->has('to_date') ? ' is-invalid' : '' }}", 'value' => "{{ old('to_date') }}", 'required']) !!}
+        </div>
+    </div>
+
+    <div class="col col-xl-6 col-lg-6 col-md-6">
+        <div class="form-group">
+            {!! Form::label('seat', 'من تاريخ', ['class' => 'control-label']) !!}
+            {!! Form::text('seat', null, ['id' => 'seat', 'class' => " form-control {{ $errors->has('seat') ? ' is-invalid' : '' }}", 'value' => "{{ old('seat') }}", 'required']) !!}
+        </div>
+    </div>
+
+    <div class="col col-xl-6 col-lg-6 col-md-6">
+        <div class="form-group">
+            {!! Form::label('note', 'من تاريخ', ['class' => 'control-label']) !!}
+            {!! Form::textArea('note', null, ['id' => 'note', 'class' => " form-control {{ $errors->has('note') ? ' is-invalid' : '' }}", 'value' => "{{ old('note') }}", 'required']) !!}
+        </div>
+    </div>
     {{-- <div class="col col-xl-6 col-lg-6 col-md-6">
         <div class="form-group">
             {!! Form::label('seat_id', 'المسار(من)', ['class' => 'control-label']) !!}

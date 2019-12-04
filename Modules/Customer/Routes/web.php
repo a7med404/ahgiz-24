@@ -27,7 +27,7 @@ Route::prefix('adminCpanel')->group(function() {
         Route::get('customers/delete/{id}', 'CustomerController@destroy')->name('customers.delete');
 
 
-        Route::get('customers-dataTables', 'CustomerController@customerDataTables')->name('customers-dataTables');
+        Route::get('customers-dataTables','CustomerController@customerDataTables')->name('customers-dataTables');
 
         Route::get('customers-data', function(CustomerDataTable $dataTable, Builder $builder){
             if (request()->ajax()) {
@@ -60,7 +60,7 @@ Route::prefix('adminCpanel')->group(function() {
     });
 
 
-    
+
 
     // Route::group(['middleware' => 'customer:customer'], function () {
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Ticket\Entities\Ticket;
 use Illuminate\Routing\Controller;
+use Yajra\DataTables\DataTables;
 
 class TicketController extends Controller
 {
@@ -15,12 +16,29 @@ class TicketController extends Controller
      */
     public function index()
     {
-        
-        $ticket = Ticket::all();
-        //dd($ticket);
-        return view('ticket::ticket.index',['ticket' => $ticket]);
-    }
 
+        // $ticket = Ticket::all();
+        //dd($ticket);
+        return view('ticket::ticket.index');
+    }
+    public function ticketDataTables()
+    {
+        // dd(88);
+        return DataTables::of(Ticket::orderBy('id', 'desc')->get())
+            ->addColumn('options', function ($ticket) {
+                return view('ticket::ticket.colums.options', ['id' => $ticket->id, 'routeName' => 'tickets']);
+            })
+            // // ->editColumn('type', function ($ticket) {
+            // //     return $ticket->type == 0 ? '<span class="label label-light-warning">' . ticketType()[$ticket->type] . '</span>' : '<span class="label label-light-success">' . ticketType()[$ticket->type] . '</span>';
+            // // })
+            // // ->editColumn('ticket', function ($ticket) {
+            // //     return getName('tickets', $ticket->ticket_number);
+            // // })
+            ->rawColumns(['options'])
+            // ->removeColumn('reservation_id')
+            ->setRowId('{{$id}}')
+            ->make(true);
+    }
     /**
      * Show the form for creating a new resource.
      * @return Response

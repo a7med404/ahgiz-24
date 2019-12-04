@@ -34,9 +34,9 @@
             </div>
         </div>
 
-            
+
         <div class="box-body">
-            
+
             <div class="table-responsive">
                 <table id="data" class="table table-bordered table-hover">
                     <thead>
@@ -55,11 +55,11 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>ID</th>                            
+                            <th>ID</th>
                             <th>{{ __('home/labels.name') }}</th>
                             <th>{{ __('home/labels.phone_number') }}</th>
                             <th>{{ __('home/labels.email') }}</th>
-                            <th>{{ __('home/labels.gender') }}</th>                            
+                            <th>{{ __('home/labels.gender') }}</th>
                             <th>{{ __('home/labels.reservations') }}</th>
                             <th>{{ __('home/labels.options') }}</th>
                         </tr>
@@ -100,7 +100,7 @@
 //         type: POST,
 //         url: '{!! route('customers.store') !!}',
 //         data: {
-//             '_token': $('input[name=_token]').val(),            
+//             '_token': $('input[name=_token]').val(),
 //             'c_name': $('input[name=c_name]').val(),
 //             'email': $('input[name=email]').val(),
 //             'phone_number': $('input[name=phone_number]').val(),
@@ -109,7 +109,7 @@
 //             if((data.errors)){
 //                 $('.error').removeClass('hidden');
 //                 $('.error').text(data.errors.title);
-//                 $('.error').text(data.errors.body);            
+//                 $('.error').text(data.errors.body);
 //             }else{
 //                 console.log("done");
 //             }
@@ -129,7 +129,7 @@
                     $(this).html( '<input type="text" data-column="'+ $(this).index() +'" class="' + classname + '" data-value="'+ $(this).index() +'"placeholder=" البحث '+title+'" />' );
                 }
             }else if($(this).index() == 4){
-                $(this).html( '<select data-column="'+ $(this).index() +'" class="filter-select select2 form-control"><option value=""> all </option><option value="{{maleOrfemale()[0]}}"> انثئ </option><option value="{{maleOrfemale()[1]}}"> ذكر </option></select>' );
+                $(this).html( '<select data-column="'+ $(this).index() +'" class="filter-select select2 form-control"><option value=""> all </option><option value="{{maleOrfemale()[0]}}">   </option><option value="{{maleOrfemale()[1]}}"> ذكر </option></select>' );
             }
         });
 
@@ -144,7 +144,7 @@
                 { data: 'c_name', name: 'c_name', "width": "30%" },
                 { data: 'phone_number', name: 'phone_number', "width": "15%" },
                 { data: 'email', name: 'email', "width": "10%"},
-                { data: 'gender', name: 'gender', "width": "10%"},                
+                { data: 'gender', name: 'gender', "width": "10%"},
                 { data: 'his_reservation', name: 'his_reservation', "width": "15%"},
                 { data: 'options', name: 'options', orderable: false, "width": "10%"},
             ],
@@ -196,7 +196,7 @@
                 r.find('th').each(function(){
                     $(this).css('padding', 8);
                 });
-                $('#data thead').append(r);        
+                $('#data thead').append(r);
                 $('#search_0').css('text-align', 'center');
             }
 

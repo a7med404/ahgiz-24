@@ -80,7 +80,8 @@
               <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo e(route('trips.index')); ?>"><i class="fa fa-circle-o text-aqua"></i> <?php echo e(__('home/sidebar.all_trips')); ?></a></li>
                 <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.trips')); ?> 
+                  <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.trips')); ?>
+
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -104,7 +105,8 @@
               <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo e(route('customers.index')); ?>"><i class="fa fa-circle-o text-aqua"></i> <?php echo e(__('home/sidebar.all_customers')); ?></a></li>
                 <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.customers')); ?> 
+                  <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.customers')); ?>
+
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -124,9 +126,9 @@
                             </span>
                           </a>
                           <ul class="treeview-menu" style="display: none;">
-                            <li><a href="<?php echo e(route('ticket.index')); ?>"><i class="fa fa-circle-o text-aqua"></i>
+                            <li><a href="<?php echo e(route('tickets.index')); ?>"><i class="fa fa-circle-o text-aqua"></i>
                                 <?php echo e(__('home/sidebar.all_tickets')); ?></a></li>
-                           
+
                           </ul>
                         </li>
 
@@ -142,7 +144,8 @@
               <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo e(route('companies.index')); ?>"><i class="fa fa-circle-o text-aqua"></i> كل الشركات</a></li>
                 <li>
-                  <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.companies')); ?> 
+                  <a href="#"><i class="fa fa-circle-o text-red"></i> <?php echo e(__('home/sidebar.companies')); ?>
+
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -153,7 +156,8 @@
                   </ul>
                 </li>
                 <li>
-                  <a href="#"><i class="fa fa-circle-o text-yellow"></i> <?php echo e(__('home/sidebar.contacts')); ?> 
+                  <a href="#"><i class="fa fa-circle-o text-yellow"></i> <?php echo e(__('home/sidebar.contacts')); ?>
+
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -207,7 +211,7 @@
                 <li><a href="<?php echo e(route('permissions.index')); ?>"><i class="fa fa-circle-o"></i><?php echo e(__('home/sidebar.all_permissions')); ?></a></li>
               </ul>
             </li>
-          
+
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-gears text-aqua"></i> <span><?php echo e(__('home/sidebar.settings')); ?> </span>
@@ -222,7 +226,7 @@
             </li>
 
             <li class="header">قسم المــدن</li>
-            <li class="treeview">        
+            <li class="treeview">
               <a href="#">
                 <i class="fa fa-users text-aqua"></i> <span> المـــدن</span>
                 <span class="pull-right-container">
@@ -231,7 +235,7 @@
               </a>
               <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo e(route('cities.index')); ?>"><i class="fa fa-circle-o text-aqua"></i> كل المـــدن</a></li>
-  
+
               </ul>
             </li>
             <li class="header m-b-20"></li>

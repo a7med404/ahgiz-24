@@ -10,6 +10,7 @@ use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Html\Editor\Editor;
 
+
 class CustomerDataTable extends DataTable
 {
     /**
@@ -31,7 +32,7 @@ class CustomerDataTable extends DataTable
             //         $query->where('email', 'like', "%{$request->get('email')}%");
             //     }
             // })
-            
+
             ->addColumn('his_reservation', function (Customer $customer) {
                 return $customer->reservations->count();
             })
@@ -68,11 +69,11 @@ class CustomerDataTable extends DataTable
                 ['10 rows', '25 rows', '50 rows', 'Show all']
             ],
             "paging" => true,
-                
+
             'fixedHeader' => true,
             "searching" => true,
             'searchDelay' => 3500,
-    
+
             "columnDefs" => [
                 "defaultContent" => "-",
                 "targets" => "_all"
@@ -88,7 +89,7 @@ class CustomerDataTable extends DataTable
                 //     });
                 // }",
 
-                        
+
             ])
             ->orderBy(1)
             ->buttons(
@@ -144,7 +145,7 @@ class CustomerDataTable extends DataTable
             })
             ->editColumn('mybu', function ($model) {
                 return '<a href="' . url('/adminpanel/bu/' . $model->id) . '"> <span class="btn btn-danger btn-circle"> <i class="fa fa-link"></i> </span> </a>';
-            }) 
+            })
 
             ->editColumn('control', function ($model) {
                 $all = '<a href="' . url('/adminpanel/users/' . $model->id . '/edit') . '" class="btn btn-info btn-circle"><i class="fa fa-edit"></i></a> ';

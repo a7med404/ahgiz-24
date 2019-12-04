@@ -101,11 +101,11 @@
                   <div class="form-group">
                     <label class="control-label">التمييز</label>
                     <select class="form-control select2" name="mr_d" v-model="studentparent.mr_d">
-                     <option 
-                        v-for="(value, index) in mr_ds" 
-                        :key="index" :value="index" 
-                        v-text="value" 
-                        :selected="studentparent.mr_d == index"> 
+                     <option
+                        v-for="(value, index) in mr_ds"
+                        :key="index" :value="index"
+                        v-text="value"
+                        :selected="studentparent.mr_d == index">
                      </option>
                     </select>
                   </div>
@@ -117,17 +117,17 @@
                   </div>
                 </div>
               </div>
-  
+
               <div class="row">
                 <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                   <div class="form-group">
                     <label class="control-label">الديانة</label>
                     <select class="form-control select2" name="religion" v-model="studentparent.religion">
-                      <option 
-                        v-for="(value, index) in religions" 
-                        :key="index" :value="index" 
-                        v-text="value" 
-                        :selected="studentparent.religion == index"> 
+                      <option
+                        v-for="(value, index) in religions"
+                        :key="index" :value="index"
+                        v-text="value"
+                        :selected="studentparent.religion == index">
                      </option>
                     </select>
                   </div>
@@ -136,17 +136,17 @@
                   <div class="form-group">
                     <label class="control-label">الجنسية</label>
                     <select class="form-control select2" name="nationality" v-model="studentparent.nationality">
-                      <option 
-                        v-for="(value, index) in nationalities" 
-                        :key="index" :value="index" 
-                        v-text="value" 
-                        :selected="studentparent.nationality == index"> 
+                      <option
+                        v-for="(value, index) in nationalities"
+                        :key="index" :value="index"
+                        v-text="value"
+                        :selected="studentparent.nationality == index">
                      </option>
                     </select>
                   </div>
                 </div>
               </div>
-  
+
               <div class="row">
                 <div class="col col-xl-12 col-lg-12 col-md-12">
                   <div class="form-group">
@@ -169,7 +169,7 @@
                   </div>
                 </div>
               </div>
-  
+
               <div class="row">
                 <div class="col col-xl-6 col-lg-6 col-md-6">
                   <div class="form-group">
@@ -181,17 +181,17 @@
                   <div class="form-group">
                     <label class="control-label"> الحالة الاجنماعية </label>
                     <select class="form-control select2" name="martial" v-model="studentparent.martial">
-                      <option 
-                        v-for="(value, index) in martials" 
-                        :key="index" :value="index" 
-                        v-text="value" 
-                        :selected="studentparent.martial == index"> 
+                      <option
+                        v-for="(value, index) in martials"
+                        :key="index" :value="index"
+                        v-text="value"
+                        :selected="studentparent.martial == index">
                      </option>
                     </select>
                   </div>
                 </div>
               </div>
-  
+
               <div class="row">
                 <div class="col col-xl-6 col-lg-6 col-md-6">
                   <div class="form-group">
@@ -206,7 +206,7 @@
                   </div>
                 </div>
               </div>
-  
+
               <div class="row">
                 <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                   <div class="form-group">
@@ -215,18 +215,18 @@
                   </div>
                 </div>
               </div>
-  
+
               <div class="row">
                 <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                   <div class="form-group">
                     <label class="control-label">
                       <input type="checkbox" class="minimal" name="is_die" v-model="studentparent.is_die">
-                      متوفي 
+                      متوفي
                     </label>
                   </div>
                 </div>
               </div>
-  
+
               <div class="row">
                 <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                   <div class="form-group">
@@ -235,7 +235,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="row">
                 <div class="col col-lg-6 col-md-6 col-sm-6 col-12">
                   <button href="#" class="btn btn-primary">حـــفظ</button>
@@ -250,8 +250,8 @@
       </div>
     </div>
     <!-- ... end Popup  -->
-   
-  
+
+
 @stop
 @section('footer')
   <!-- icheck -->
@@ -271,7 +271,7 @@
         "autoWidth": false
       });
     });
-    
+
     $('#table_id').DataTable({
       // processing: true,
       // serverSide: true,

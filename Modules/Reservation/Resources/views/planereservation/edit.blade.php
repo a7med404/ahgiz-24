@@ -38,7 +38,7 @@
                     {!! Form::close() !!}
                 </div>
             </div>
-    
+
         </div>
         <!-- /.box-body -->
     </div>

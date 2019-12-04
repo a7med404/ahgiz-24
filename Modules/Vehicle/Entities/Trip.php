@@ -24,14 +24,14 @@ class Trip extends Model
     {
         return $this->hasMany(PlaneReservation::class);
     }
-    
+
     // public function reservations()
     // {
     //     return $this->belongsTo(Reservation::class);
     // }
     public function company()
     {
-        return $this->belongsTo(Company::Class);
+        return $this->belongsTo (Company::Class);
     }
 
     public function route()

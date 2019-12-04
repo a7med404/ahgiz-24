@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Company\Entities\Company;
 use App\Helper\UploadFile;
+use Yajra\DataTables\DataTables;
 use \Session;
 
 class CompanyController extends Controller
@@ -17,7 +18,23 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('company::companies.index', ['companies' => Company::all()]);
+        return view('company::companies.index');
+    }
+    public function companiesDataTables()
+    {
+        return DataTables::of(Company::orderBy('id', 'desc')->get())
+            ->addColumn('options', function ($company) {
+                return view('company::companies.column.options', ['id' => $company->id, 'routeName' => 'companies']);
+            })
+
+            ->editColumn('type', function ($company) {
+                return $company->type == 0 ? '<span class="label label-success">' . Companytype()[$company->type] . '</span>' : '<span class="label label-warning">' . Companytype()[$company->type] . '</span>';
+            })
+            ->rawColumns(['options','type'])
+            ->removeColumn('password','contact_id','address_id')
+            // ->setRowClass('{{ $gender == 0 ? "alert alert-success" : "alert alert-warning" }}')
+            ->setRowId('{{$id}}')
+            ->make(true);
     }
 
     /**
@@ -95,7 +112,7 @@ class CompanyController extends Controller
         ];
         $companyUpdate->fill($data)->save();
         if ($companyUpdate) {
-            
+
         }
         Session::flash('flash_massage_type');
         return redirect()->back()->withFlashMassage('Company Updated Susscefully');

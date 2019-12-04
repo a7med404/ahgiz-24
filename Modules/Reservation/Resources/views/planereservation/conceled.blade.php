@@ -31,6 +31,7 @@
                     title="Remove"><i class="fa fa-times"></i></button>
             </div>
         </div>
+
         <div class="box-body">
             <div class="table-responsive">
                 {{-- <reservation></reservation> --}}
@@ -39,26 +40,31 @@
                         <tr>
                             <th>#id</th>
                             {{-- <th>{{ __('home/labels.cusromer') }}</th> --}}
-                            <th>{{ __('home/labels.date') }}</th>
-                            <th>{{ __('home/labels.trip_number') }}</th>
-                            <th>{{ __('home/labels.departure_time') }}</th>
-                            {{-- <th>{{ __('home/labels.company') }}</th> --}}
-                            <th>{{ __('home/labels.seats_number') }}</th>
-                            {{-- <th>{{ __('home/labels.pay_method') }}</th> --}}
-                            {{-- <th>{{ __('home/labels.user') }}</th> --}}
+                            <th>{{ __('home/labels.company_name') }}</th>
+                            <th>{{ __('home/labels.from_date') }}</th>
+                            <th>{{ __('home/labels.to_date') }}</th>
+                            <th>{{ __('home/labels.from') }}</th>
+                            <th>{{ __('home/labels.to') }}</th>
+                            <th>{{ __('home/labels.status') }}</th>
+                            <th>{{ __('home/labels.note') }}</th>
+
                             <th>{{ __('home/labels.options') }}</th>
                         </tr>
                     </thead>
-                    <tbody>      
-                        @forelse($reservations as $reservation)
+                    <tbody>
+                        @forelse($planereservations as $planereservation)
                         <tr>
-                            <td>{{ $reservation->id }}</td>
+                            <td>{{ $planereservation->id }}</td>
+                            <td>{{ $planereservation->company->name }}</td>
                             {{-- <td ><span data-toggle="tooltip" data-original-title="{{$reservation->customer->first_name .' '. $reservation->customer->last_name}}"></span></td> --}}
-                            <td>{{ $reservation->trip->date }}</td>
-                            <td ><span data-toggle="tooltip" data-original-title="{{$reservation->trip->fromStation->name .' - '. $reservation->trip->toStation->name}}"></span></td>
-                            <td>{{ $reservation->trip->departure_time }}</td>
+                            <td>{{ $planereservation->fom_date }}</td>
+                            <td>{{ $planereservation->to_date}}</td>
+                            <td>{{ $planereservation->fromStation->name }}</td>
+                            <td>{{ $planereservation->toStation->name }}</td>
                             {{-- <td>{{ $reservation->trip->company->name }}</td> --}}
-                            <td>{{ $reservation->passengers->count() }}</td>
+                            <td class="{{ toggleStatus()[$planereservation->status] }}">{{ reservationStatus()[$planereservation->status] }}</td>
+                            <td>{{ $planereservation->note}}</td>
+
                             {{-- <td>{{ payMethod()[$reservation->pay_method] }}</td> --}}
                             {{-- <td>{{ $reservation->user->name }}</td> --}}
                             <td>
@@ -67,11 +73,11 @@
                                         <span class="fa fa-ellipsis-h"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('reservations.show',  ['id' => $reservation->id]) }}">استعراض</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('reservations.edit',  ['id' => $reservation->id]) }}">تعديل</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#}">استعراض</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('planeReservations.edit',  ['id' => $planereservation->id]) }}">تعديل</a></li>
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{ __('home/sidebar.contacts') }}</a></li>
                                         <li role="presentation" class="divider"></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="delete-confirm" href="{{ route('reservations.delete',['id' => $reservation->id]) }}">حذف</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" class="delete-confirm" href="{{ route('planeReservations.delete',['id' => $planereservation->id]) }}">حذف</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -83,7 +89,7 @@
                                     <p>لا توجد بيانات في هذا الجدول</p>
                                 </div>
                             </td>
-                        </tr>   
+                        </tr>
                         @endforelse
                     </tbody>
                 </table>
