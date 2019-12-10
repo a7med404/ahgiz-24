@@ -30,7 +30,7 @@ class ApiReservationController extends Controller
         $trips =  Trip::orderBy('id')
             ->where('from_station_id', $request->from_station_id)
             ->where('to_station_id', $request->to_station_id)->where('status', 1);
-        if ($request->date != null || $request->date != '') {
+        if ($request->date != null || $request->date != 'null' || $request->date != '') {
             $trips = $trips->where('date', $request->date)->get();
         } else {
             $trips = $trips->where('date', '>=', Date('Y-m-d'))->get();
