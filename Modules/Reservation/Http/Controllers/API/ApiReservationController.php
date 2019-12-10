@@ -31,10 +31,8 @@ class ApiReservationController extends Controller
             ->where('from_station_id', $request->from_station_id)
             ->where('to_station_id', $request->to_station_id)->where('status', 1);
         if ($request->date == null || $request->date == '' || $request->date == 'null') {
-            dd("null", Date('Y-m-d'));
             $trips = $trips->where('date', '>=', Date('Y-m-d'))->get();
         } else {
-            dd("not null", Date('Y-m-d'));
             $trips = $trips->where('date', $request->date)->get();
         }
 
