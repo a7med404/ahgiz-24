@@ -35,7 +35,6 @@ class ApiReservationController extends Controller
             $trips = $trips->where('date', '>=', Date('Y-m-d'))->get();
         }
 
-        return AvailableTripResource::collection(collect($trips));
         # this section for get number of booked seats at any trip
         $passengers_nubmers_for_trip = $trips->map(function ($trip) {
             # loop through any reservation to get number of passengers for this reservation
