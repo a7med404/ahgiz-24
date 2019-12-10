@@ -30,11 +30,11 @@ class ApiReservationController extends Controller
         $trips =  Trip::orderBy('id')
             ->where('from_station_id', $request->from_station_id)
             ->where('to_station_id', $request->to_station_id)->where('status', 1);
-        if ($request->date == null || $request->date == '' || $request->date == 'null') {
+        // if ($request->date == null || $request->date == '' || $request->date == 'null') {
             $trips = $trips->where('date', '>=', Date('Y-m-d'))->get();
-        } else {
-            $trips = $trips->where('date', $request->date)->get();
-        }
+        // } else {
+        //     $trips = $trips->where('date', $request->date)->get();
+        // }
 
         # this section for get number of booked seats at any trip
         $passengers_nubmers_for_trip = $trips->map(function ($trip) {
