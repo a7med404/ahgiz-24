@@ -31,9 +31,9 @@ class ApiReservationController extends Controller
             ->where('from_station_id', $request->from_station_id)
             ->where('to_station_id', $request->to_station_id)->where('status', 1);
         if ($request->date == null || $request->date == '' || $request->date == 'null') {
-            $trips = $trips->where('date', '>=', Date('Y-m-d'))->get();
+            $trips = $trips->whereDate('date', '>=', Date('Y-m-d'))->get();
         } else {
-            $trips = $trips->get();
+            $trips = $trips->where('date', $request->date)->get();
         }
 
         # this section for get number of booked seats at any trip
