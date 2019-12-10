@@ -27,6 +27,7 @@ class ApiReservationController extends Controller
 
     public function availableReservation(Request $request, Trip $trip)
     {
+        dd(Date('Y-m-d'));
         $trips =  Trip::orderBy('id')
             ->where('from_station_id', $request->from_station_id)
             ->where('to_station_id', $request->to_station_id)->where('status', 1);
