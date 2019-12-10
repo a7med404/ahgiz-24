@@ -27,12 +27,11 @@ class ApiReservationController extends Controller
 
     public function availableReservation(Request $request, Trip $trip)
     {
-        // dd(Date('Y-m-d'));
         $trips =  Trip::orderBy('id')
             ->where('from_station_id', $request->from_station_id)
             ->where('to_station_id', $request->to_station_id)->where('status', 1);
         if ($request->date == null || $request->date == '' || $request->date == 'null') {
-            $trips = $trips->whereDate('date', '>=', "2019-12-10")->get();
+            $trips = $trips->whereDate('date', '>=', Date('Y-m-d'))->get();
         } else {
             $trips = $trips->where('date', $request->date)->get();
         }
@@ -61,7 +60,7 @@ class ApiReservationController extends Controller
                 }
             }
         });
-
+        
         $validTrips = [];
         foreach ($filterTrips as $key => $trip) {
             if ($trip != null) {
