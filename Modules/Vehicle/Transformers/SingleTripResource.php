@@ -22,7 +22,8 @@ class SingleTripResource extends JsonResource
             'toStation'         => $this->toStation->name,
             'departure_time'    => $this->departure_time,
             'arrive_time'       => $this->arrive_time,
-            'company'           => __('app/messages.agency') . ' ' . $this->company->name,
+            'company'           => $this->company->name,
+            // 'company'           => __('app/messages.agency') . ' ' . $this->company->name,
             // 'number'            => $this->number,
             'reserve_step_two'    => route('reserve-step-two', ['id' => $this->id]),
         ];
