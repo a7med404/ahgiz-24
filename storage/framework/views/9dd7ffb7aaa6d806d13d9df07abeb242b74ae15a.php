@@ -8,7 +8,7 @@
 
         </div>
     </div>
-</div>  
+</div>
     <div class="row">
     <div class="col col-xl-6 col-lg-6 col-md-6">
         <div class="form-group">
@@ -52,7 +52,43 @@
             <?php echo Form::select('status', reservationStatus(), null, ['id' => 'status', 'class' => "select2 form-control <?php echo e($errors->has('status') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('status')); ?>", 'required']); ?>
 
         </div>
-    </div> 
+    </div>
+
+    <div class="col col-xl-6 col-lg-6 col-md-6">
+        <div class="form-group">
+            <?php echo Form::label('from_date', 'من تاريخ', ['class' => 'control-label']); ?>
+
+            <?php echo Form::date('from_date', null, ['id' => 'from_date', 'class' => " form-control <?php echo e($errors->has('from_date') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('from_date')); ?>", 'required']); ?>
+
+        </div>
+    </div>
+
+    <div class="col col-xl-6 col-lg-6 col-md-6">
+        <div class="form-group">
+            <?php echo Form::label('to_date', 'من تاريخ', ['class' => 'control-label']); ?>
+
+            <?php echo Form::date('to_date', null, ['id' => 'to_date', 'class' => " form-control <?php echo e($errors->has('to_date') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('to_date')); ?>", 'required']); ?>
+
+        </div>
+    </div>
+
+    <div class="col col-xl-6 col-lg-6 col-md-6">
+        <div class="form-group">
+            <?php echo Form::label('seat', 'من تاريخ', ['class' => 'control-label']); ?>
+
+            <?php echo Form::text('seat', null, ['id' => 'seat', 'class' => " form-control <?php echo e($errors->has('seat') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('seat')); ?>", 'required']); ?>
+
+        </div>
+    </div>
+
+    <div class="col col-xl-6 col-lg-6 col-md-6">
+        <div class="form-group">
+            <?php echo Form::label('note', 'من تاريخ', ['class' => 'control-label']); ?>
+
+            <?php echo Form::textArea('note', null, ['id' => 'note', 'class' => " form-control <?php echo e($errors->has('note') ? ' is-invalid' : ''); ?>", 'value' => "<?php echo e(old('note')); ?>", 'required']); ?>
+
+        </div>
+    </div>
     
 </div>
 
