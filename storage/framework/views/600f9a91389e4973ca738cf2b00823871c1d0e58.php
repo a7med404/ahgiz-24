@@ -1,20 +1,23 @@
-@extends('adminCpanel.layouts.master')
-@section('title')
-{{ __('home/sidebar.all_trips') }}
-@endsection
-@section('header')
+<?php $__env->startSection('title'); ?>
+<?php echo e(__('home/sidebar.all_trips')); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('header'); ?>
 <!-- icheck -->
-{!! Html::style(asset('modules/master/plugins/icheck-1.x/all.css')) !!}
+<?php echo Html::style(asset('modules/master/plugins/icheck-1.x/all.css')); ?>
+
 <!-- dataTable -->
-{!! Html::style(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.css')) !!}
-{!! Html::style(asset('modules/master/plugins/datatables/jquery.dataTables.min.css')) !!}
-@endsection
-@section('content')
+<?php echo Html::style(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.css')); ?>
+
+<?php echo Html::style(asset('modules/master/plugins/datatables/jquery.dataTables.min.css')); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <section class="content-header">
-    <h1>{{ __('home/sidebar.all_trips') }} <small>it all starts here</small></h1>
+    <h1><?php echo e(__('home/sidebar.all_trips')); ?> <small>it all starts here</small></h1>
     <ol class="breadcrumb">
-        <li><a href="{{ url('\adminCpanel') }}"><i class="fa fa-dashboard"></i> {{ __('home/sidebar.HOME') }} </a></li>
-        <li class="active"> {{ __('home/sidebar.all_trips') }} </li>
+        <li><a href="<?php echo e(url('\adminCpanel')); ?>"><i class="fa fa-dashboard"></i> <?php echo e(__('home/sidebar.HOME')); ?> </a></li>
+        <li class="active"> <?php echo e(__('home/sidebar.all_trips')); ?> </li>
     </ol>
 </section>
 <!-- Main content -->
@@ -22,9 +25,9 @@
     <!-- Default box -->
 <div class="box box-info">
 <div class="box-header with-border">
-    {{-- <h3 class="box-title">Title</h3> --}}
+    
     <button type="button" data-toggle="modal" data-target="#popup-form" href="#" class="btn btn-info"> <i
-            class="fa fa-user-plus"></i> {{ __('home/sidebar.add_trip') }} </button>
+            class="fa fa-user-plus"></i> <?php echo e(__('home/sidebar.add_trip')); ?> </button>
     <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
             title="Collapse"><i class="fa fa-minus"></i></button>
@@ -39,15 +42,15 @@
                     <thead>
                         <tr>
                                 <th>#ID</th>
-                            <th>{{ __('home/labels.date') }}</th>
-                            <th>{{ __('home/labels.departure_time') }}</th>
-                            <th>{{ __('home/labels.available_seat') }}</th>
-                            <th>{{ __('home/labels.ticket_price') }}</th>
-                            <th>{{ __('home/labels.company') }}</th>
-                            <th>{{ __('home/labels.from') }}</th>
-                            <th>{{ __('home/labels.to') }}</th>
-                            <th>{{ __('home/labels.status') }}</th>
-                            <th>{{ __('home/labels.options') }}</th>
+                            <th><?php echo e(__('home/labels.date')); ?></th>
+                            <th><?php echo e(__('home/labels.departure_time')); ?></th>
+                            <th><?php echo e(__('home/labels.available_seat')); ?></th>
+                            <th><?php echo e(__('home/labels.ticket_price')); ?></th>
+                            <th><?php echo e(__('home/labels.company')); ?></th>
+                            <th><?php echo e(__('home/labels.from')); ?></th>
+                            <th><?php echo e(__('home/labels.to')); ?></th>
+                            <th><?php echo e(__('home/labels.status')); ?></th>
+                            <th><?php echo e(__('home/labels.options')); ?></th>
                         </tr>
 
                     </thead>
@@ -57,15 +60,15 @@
                     <tfoot>
                         <tr>
                             <th>#ID</th>
-                            <th>{{ __('home/labels.date') }}</th>
-                            <th>{{ __('home/labels.departure_time') }}</th>
-                            <th>{{ __('home/labels.available_seat') }}</th>
-                            <th>{{ __('home/labels.ticket_price') }}</th>
-                            <th>{{ __('home/labels.company') }}</th>
-                            <th>{{ __('home/labels.from') }}</th>
-                            <th>{{ __('home/labels.to') }}</th>
-                            <th>{{ __('home/labels.status') }}</th>
-                            <th>{{ __('home/labels.options') }}</th>
+                            <th><?php echo e(__('home/labels.date')); ?></th>
+                            <th><?php echo e(__('home/labels.departure_time')); ?></th>
+                            <th><?php echo e(__('home/labels.available_seat')); ?></th>
+                            <th><?php echo e(__('home/labels.ticket_price')); ?></th>
+                            <th><?php echo e(__('home/labels.company')); ?></th>
+                            <th><?php echo e(__('home/labels.from')); ?></th>
+                            <th><?php echo e(__('home/labels.to')); ?></th>
+                            <th><?php echo e(__('home/labels.status')); ?></th>
+                            <th><?php echo e(__('home/labels.options')); ?></th>
                         </tr>
 
                     </tfoot>
@@ -74,29 +77,39 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-            {{-- العدد الكلي: {{$stations->count()}} --}}
+            
         </div>
         <!-- /.box-footer-->
     </div>
     <!-- /.box -->
-    @include('vehicle::trips.add')
+    <?php echo $__env->make('vehicle::trips.add', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </section>
 <!-- /.content -->
 
-@stop
-@section('footer')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('footer'); ?>
 <!-- icheck -->
-{!! Html::script(asset('modules/master/plugins/icheck.min.js')) !!}
+<?php echo Html::script(asset('modules/master/plugins/icheck.min.js')); ?>
+
 <!-- dataTable -->
-{!! Html::script(asset('modules/master/plugins/datatables/jquery.dataTables.min.js')) !!}
-{!! Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')) !!}
-{!! Html::script('https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js') !!}
-{!! Html::script('https://cdn.datatables.net/buttons/1.6.0/js/buttons.flash.min.js') !!}
-{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js') !!}
-{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js') !!}
-{!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js') !!}
-{!! Html::script('https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js') !!}
-{!! Html::script('https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js') !!}
+<?php echo Html::script(asset('modules/master/plugins/datatables/jquery.dataTables.min.js')); ?>
+
+<?php echo Html::script(asset('modules/master/plugins/datatables/dataTables.bootstrap.min.js')); ?>
+
+<?php echo Html::script('https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js'); ?>
+
+<?php echo Html::script('https://cdn.datatables.net/buttons/1.6.0/js/buttons.flash.min.js'); ?>
+
+<?php echo Html::script('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'); ?>
+
+<?php echo Html::script('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js'); ?>
+
+<?php echo Html::script('https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js'); ?>
+
+<?php echo Html::script('https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js'); ?>
+
+<?php echo Html::script('https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js'); ?>
+
 <script type="text/javascript">
     var lastIdx = null;
 
@@ -117,7 +130,7 @@
             serverSide: true,
             autoWidth: false,
             select: true,
-            ajax: '{!! route('trip-dataTables') !!}',
+            ajax: '<?php echo route('trip-dataTables'); ?>',
             columns: [
                 { data: 'id', name: 'id', "width": "10%"},
                 { data: 'date', name: 'date', "width": "15%" },
@@ -131,7 +144,7 @@
                 { data: 'options', name: 'options', orderable: false, "width": "10%"},
             ],
             "language": {
-                "url": "{{ asset('modules/master/data/Arabic.json') }}"
+                "url": "<?php echo e(asset('modules/master/data/Arabic.json')); ?>"
             },
             "stateSave": false,
             "responsive": true,
@@ -211,4 +224,6 @@
             $( table.cells().nodes() ).removeClass( 'highlight' );
         });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('adminCpanel.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\ahgiz-24\Modules\Vehicle\Providers/../Resources/views/trips/index.blade.php ENDPATH**/ ?>

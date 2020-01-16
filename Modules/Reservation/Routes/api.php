@@ -28,8 +28,18 @@ Route::group(['namespace' => 'API', 'middleware' => 'auth:api', 'prefix' => 'res
     Route::get('reserve-step-three/{number}', 'ApiReservationController@markAsPaid')->name('reserve-step-three');
 
 
+    Route::get('check-reservation-number/{id}', 'ApiReservationController@checkNumber')->name('check-reservation-number');
 
-    Route::post('add-plane-reservation', 'ApiPlaneController@addPlaneReservation')->name('add-plane-reservation');
+    
+    //syber pay
+    Route::post('/syberpay/return', 'ApiPaymentController@return');
+    Route::post('syberpay/payment', 'ApiPaymentController@SyberPay');
+    Route::post('/syberpay/notify', 'ApiPaymentController@notify');
+
     // 
     // Route::resource('reservations', 'ApiReservationController');
 });
+// Route::group(['namespace' => 'API',  'prefix' => 'reservations'], function () {
+//     Route::get('check-reservation-number/{id}', 'ApiReservationController@checkNumber')->name('check-reservation-number');
+// });
+

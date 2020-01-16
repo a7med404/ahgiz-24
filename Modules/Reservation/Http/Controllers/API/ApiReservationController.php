@@ -158,4 +158,25 @@ class ApiReservationController extends Controller
             return response()->json(['message' => "Payment Set Successfully"], 200);
         }
     }
+    public function checkNumber(Request $request, $number)
+    {
+        $check=Reservation::where('number',$number)->first();
+        // return $check->number;
+        if(!$check)
+        {
+            return response()->json([
+                'error' => "Reservation Not Found",
+                'status'=>false
+        ], 404);
+        }
+        else
+        {
+            return response()->json(
+                [
+                    'message' => "Reservation is Found",
+                    'status'    =>true
+        
+        ], 200);
+        }
+    } 
 }

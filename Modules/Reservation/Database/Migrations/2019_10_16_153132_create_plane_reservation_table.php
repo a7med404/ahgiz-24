@@ -16,8 +16,8 @@ class CreatePlanereservationTable extends Migration
         Schema::create('plane_reservations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('customer_id');
-            $table->integer('from_station_id');
-            $table->integer('to_station_id');
+            $table->string('from_station_id'); // it was integer 
+            $table->string('to_station_id'); // it was integer 
             $table->integer('company_id');
             $table->integer('user_id')->nullable();
             $table->date('date')->nullable();
